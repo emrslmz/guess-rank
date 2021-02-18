@@ -1,20 +1,23 @@
 <template>
   <div class="body-home">
-    <the-header-home />
+    <the-header-home v-if="$route.name !== 'HomePageDashboard'" />
     <router-view />
-    <the-footer-home />
+    <home-page v-if="$route.name === 'HomePageDashboard'"/>
+    <the-footer-home v-if="$route.name !== 'HomePageDashboard'" />
   </div>
 </template>
 
 <script>
 import TheHeaderHome from '@/modules/home/assets/layouts/TheHeaderHome.vue';
 import TheFooterHome from '@/modules/home/assets/layouts/TheFooterHome.vue';
+import HomePage from '@/modules/home/assets/HomePage.vue';
 
 export default {
   name: 'Home',
   components: {
     TheHeaderHome,
-    TheFooterHome
+    TheFooterHome,
+    HomePage
   }
 }
 </script>
