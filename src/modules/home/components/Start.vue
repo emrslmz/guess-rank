@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div style="padding-top: 100px"></div>
-    <div class="d-flex justify-content-center align-items-center">
-        <div class="col-4 login-card">
+    <div class="d-flex justify-content-center align-items-center" v-if="!registerCard">
+        <div class="col-12 col-xl-4 login-card">
          <div class="text-center card-inside">
            <h5>LOGIN</h5>
          </div>
@@ -16,7 +16,7 @@
               <input placeholder="password" type="text" id="login-password">
             </label>
           </div>
-          <div class="px-4" align="left">
+          <div align="center">
             <label for="login-remember-me">
               <input type="checkbox" id="login-remember-me">
               Remember me
@@ -24,20 +24,79 @@
           </div>
           <div align="center">
             <div>
-              <button class="btn btn-green w-50 btn-xl">LOGIN</button>
+              <button class="btn btn-success w-25 btn-xl">LOGIN</button>
             </div>
           </div>
           <div align="center">
             <div>
-              <small>Do not you have an account yet?</small>
+              <small>Do not you have an account yet? <a href="#" @click="registerCard = true">Register</a></small>
               <br>
               <small><a href="#">I forgot my password</a></small>
             </div>
           </div>
+      </div>
+    </div>
+
+    <div class="d-xl-flex justify-content-center align-items-center" v-else>
+      <div class="col-12 col-xl-4 login-card">
+        <div class="text-center card-inside">
+          <h5>REGISTER</h5>
         </div>
+
+        <div class="d-xl-flex justify-content-between" align="center">
+          <label for="register-name">
+            <input placeholder="Name" type="text" id="register-name">
+          </label>
+          <label for="register-lastname">
+            <input placeholder="Lastame" type="text" id="register-lastname">
+          </label>
+        </div>
+
+        <div align="center">
+          <label for="register-mail">
+            <input placeholder="E-mail" type="email" id="register-mail">
+          </label>
+        </div>
+
+        <div align="center">
+          <label for="register-password">
+            <input placeholder="Password" type="text" id="register-password">
+          </label>
+        </div>
+
+
+
+        <div align="center">
+          <label for="login-remember-me">
+            <input type="checkbox" id="login-remember-me">
+            I have read and accept the <a href="#">terms.</a>
+          </label>
+        </div>
+        <div align="center">
+          <div>
+            <button class="btn btn-primary w-50 btn-xl">LOGIN</button>
+          </div>
+        </div>
+        <div align="center">
+          <div>
+            <small >Do you already have an account? <a @click="registerCard = false" href="#">Login</a></small>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</template>                                       
+</template>
+
+<script>
+export default {
+  name: 'Start',
+  data() {
+    return {
+      registerCard: false,
+    }
+  }
+}
+</script>
 
 
 <style scoped>
@@ -58,7 +117,7 @@
   color: #F5F8FA;
   outline: 0;
   border: none;
-  background-color: #2c2c2c;
+  background-color: #d3d3d3;
   min-width: 300px;
   height: 45px;
   border-radius: 10px;
@@ -69,27 +128,51 @@
   color: #F5F8FA;
   outline: 0;
   border: none;
-  background-color: #2c2c2c;
+  background-color: #d3d3d3;
   min-width: 300px;
   height: 45px;
   border-radius: 10px;
 }
 
-.btn-green {
-  border: 1px solid #cecece;
-  background-color: white;
-  color: #343A40;
+#register-name {
+  padding-left: 10px;
+  color: #F5F8FA;
+  outline: 0;
+  border: none;
+  background-color: #d3d3d3;
+  height: 45px;
   border-radius: 10px;
-  font-weight: bold;
-  transition: 0.4s;
 }
 
-.btn-green:hover {
-  border: 1px solid white;
-  background-color: #20D489;
-  color: white;
+#register-lastname {
+  padding-left: 10px;
+  color: #F5F8FA;
+  outline: 0;
+  border: none;
+  background-color: #d3d3d3;
+  height: 45px;
   border-radius: 10px;
-  font-weight: bold;
-  transition: 0.4s;
+}
+
+#register-mail {
+  padding-left: 20px;
+  color: #F5F8FA;
+  outline: 0;
+  border: none;
+  min-width: 330px;
+  background-color: #d3d3d3;
+  height: 45px;
+  border-radius: 10px;
+}
+
+#register-password {
+  padding-left: 20px;
+  color: #F5F8FA;
+  outline: 0;
+  border: none;
+  min-width: 330px;
+  background-color: #d3d3d3;
+  height: 45px;
+  border-radius: 10px;
 }
 </style>
