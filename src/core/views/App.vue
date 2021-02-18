@@ -1,6 +1,6 @@
 <template>
 <div>
-  <p>saddas</p>
+  <router-view />
 </div>
 </template>
 
