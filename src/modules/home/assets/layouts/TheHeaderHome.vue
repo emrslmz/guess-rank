@@ -20,10 +20,6 @@
           <div class="wrapper px-2">
             <a href="#"><span>SSS</span></a>
           </div>
-
-
-
-
         </div>
       </div>
     </nav>

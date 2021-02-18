@@ -4,11 +4,11 @@ export default [{
     component: () => import('@/modules/home/views/Home.vue'),
     children: [
         {
-            path: 'emres',
+            path: 'start',
             meta: {
-                title: 'Main',
+                title: 'StartPage',
             },
-            component: () => import('@/modules/home/components/emres.vue'),
+            component: () => import('@/modules/home/components/Start.vue'),
         },
 
     ]
