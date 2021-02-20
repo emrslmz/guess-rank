@@ -4,7 +4,7 @@
     <div class="d-xl-flex justify-content-center align-items-center">
      <div class="col-12 col-xl-6 text-xl-right">
        <div class="d-flex flex-column">
-        <router-link to="/sign-in-up">
+        <router-link to="/login-register">
           <button class="btn button-val btn--light">
                 <span class="btn__inner">
                   <span class="btn__slide"></span>

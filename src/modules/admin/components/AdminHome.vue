@@ -1,5 +1,5 @@
 <template>
   <admin>
-    <p>adminnn</p>
+    <p>admindsadsann</p>
   </admin>
 </template>

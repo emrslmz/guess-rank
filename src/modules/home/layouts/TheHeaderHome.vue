@@ -18,8 +18,14 @@
           </div>
 
           <div class="px-2 w-100">
-            <router-link to="/sign-in-up">
+            <router-link to="/login-register">
               <button class="btn btn-info text-white btn-sm header-button">Register Login</button>
+            </router-link>
+          </div>
+
+          <div class="px-2 w-100">
+            <router-link to="/profile">
+              <button class="btn btn-dark text-white btn-sm header-button">Profile</button>
             </router-link>
           </div>
 

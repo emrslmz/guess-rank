@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import TheHeaderHome from '@/modules/home/assets/layouts/TheHeaderHome.vue';
-import TheFooterHome from '@/modules/home/assets/layouts/TheFooterHome.vue';
-import HomePage from '@/modules/home/assets/HomePage.vue';
+import TheHeaderHome from '@/modules/home/layouts/TheHeaderHome.vue';
+import TheFooterHome from '@/modules/home/layouts/TheFooterHome.vue';
+import HomePage from '@/modules/home/components/HomePage.vue';
 
 export default {
   name: 'Home',
