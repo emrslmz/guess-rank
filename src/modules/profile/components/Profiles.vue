@@ -1,10 +1,10 @@
 <template>
 <div>
+  <div class="container">
   <div style="padding-top: 100px"></div>
-  <div class="">
-    <div class="d-xl-flex justify-content-between align-items-center">
+    <div class="d-flex row justify-content-between align-items-center">
 
-      <div class="col-12 col-xl-6 d-xl-flex justify-content-around">
+      <div class="col-12 col-xl-4 d-xl-flex justify-content-around">
           <div class="profile-left">
             <!--PROFILE-HEADER-->
             <div class="row">
@@ -57,9 +57,10 @@
           </div>
       </div>
 
-      <div class="col-12 col-xl-6 d-xl-flex justify-content-around">
+      <div class="col-12 col-md-8 d-xl-flex justify-content-around">
           <div class="profile-right"></div>
       </div>
+
 
     </div>
   </div>
@@ -77,10 +78,10 @@
 }
 
 .profile-right {
-  width: 100%;
-  min-height: 600px;
-  border-radius: 20px;
   background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  min-height: 200px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
