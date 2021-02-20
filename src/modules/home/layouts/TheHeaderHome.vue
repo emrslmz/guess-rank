@@ -9,7 +9,7 @@
 
       <div class="collapse navbar-collapse px-3" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto"></div>
-        <div class="d-flex justify-content-between">
+        <div class="d-xl-flex justify-content-between">
 
           <div class="px-2 w-100">
             <router-link to="/play">
