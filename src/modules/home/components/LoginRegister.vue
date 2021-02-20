@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div style="padding-top: 100px"></div>
+    <div style="padding-top: 150px"></div>
     <div class="d-flex justify-content-center align-items-center" v-if="!registerCard">
         <div class="col-12 col-xl-4 login-card">
          <div class="text-center card-inside">
@@ -24,7 +24,7 @@
           </div>
           <div align="center">
             <div>
-              <button class="btn btn-success w-25 btn-xl">LOGIN</button>
+              <button class="btn btn-success w-25 btn-xl" @click="login">LOGIN</button>
             </div>
           </div>
           <div align="center">
@@ -94,7 +94,11 @@ export default {
     return {
       registerCard: false,
     }
-  }
+  },
+  methods: {
+    login() {
+    },
+  },
 }
 </script>
 
@@ -114,7 +118,7 @@ export default {
 
 #login-username {
   padding-left: 20px;
-  color: #F5F8FA;
+  color: black;
   outline: 0;
   border: none;
   background-color: #d3d3d3;
@@ -125,7 +129,7 @@ export default {
 
 #login-password {
   padding-left: 20px;
-  color: #F5F8FA;
+  color: #191919;
   outline: 0;
   border: none;
   background-color: #d3d3d3;
@@ -136,7 +140,7 @@ export default {
 
 #register-name {
   padding-left: 10px;
-  color: #F5F8FA;
+  color: black;
   outline: 0;
   border: none;
   background-color: #d3d3d3;
@@ -159,7 +163,7 @@ export default {
   color: #F5F8FA;
   outline: 0;
   border: none;
-  min-width: 330px;
+  min-width: 340px;
   background-color: #d3d3d3;
   height: 45px;
   border-radius: 10px;
@@ -170,7 +174,7 @@ export default {
   color: #F5F8FA;
   outline: 0;
   border: none;
-  min-width: 330px;
+  min-width: 340px;
   background-color: #d3d3d3;
   height: 45px;
   border-radius: 10px;
