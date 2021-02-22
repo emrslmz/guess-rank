@@ -74,13 +74,14 @@
 }
 
 .play-pictures {
-  margin: 10px;
+  margin-left: 10px;
   background-position: revert;
   /*background-attachment: fixed;*/
   background-repeat: no-repeat;
-  background-size: 65px;
-  width: 80px;
-  height: 70px;
   /*border-radius: 150px;*/
+  background-size: 100px;
+  width: 100px;
+  height: 100px;
 }
+
 </style>

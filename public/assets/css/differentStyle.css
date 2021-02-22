@@ -1,3 +1,16 @@
+@keyframes transform {
+    0%{
+        transform: translate(10px, 30px);
+    }
+    25%{ }
+    50%{ }
+    75%{ }
+    100%{
+        transform: translate(30px, 10px);
+    }
+}
+
+/*  animation: transform 3s infinite alternate;    */
 /********************************************************/
 /* Valorant Button
 /*

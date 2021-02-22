@@ -38,22 +38,10 @@
   width: 40%;
   height: 500px;
   /*border-radius: 150px;*/
-  animation: transform 5s infinite alternate;
+  animation: transform 3s infinite alternate;
 }
 
 .btn {
   min-width: 75px;
-}
-
-@keyframes transform {
-  0%{
-    transform: translate(20px, 50px);
-  }
-  25%{ }
-  50%{ }
-  75%{ }
-  100%{
-    transform: translate(50px, 20px);
-  }
 }
 </style>
