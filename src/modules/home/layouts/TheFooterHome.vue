@@ -18,11 +18,12 @@
 
 <style scoped>
 footer {
-  bottom: 0;
-  position: absolute;
-  min-height: 50px;
   background-color: #191919;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 50px;
 }
 .footer-social i {
   color: #d3d3d3;
