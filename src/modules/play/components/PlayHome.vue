@@ -5,7 +5,9 @@
     <div class="d-flex row justify-content-between">
       <div class="col-12 col-xl-6">
         <div class="d-flex">
-          <div class="play-home-card mx-2"></div>
+          <div class="play-home-card mx-2">
+            <play-select-game />
+          </div>
           <div class="play-home-card mx-2"></div>
         </div>
       </div>
@@ -21,6 +23,15 @@
   </div>
 </div>
 </template>
+
+<script>
+export default {
+  name: 'PlayHome',
+  components: {
+    PlaySelectGame: () => import('@/modules/play/components/stable/PlaySelectGame.vue'),
+  }
+}
+</script>
 
 <style scoped>
 
