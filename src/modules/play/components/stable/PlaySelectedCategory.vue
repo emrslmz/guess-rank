@@ -1,27 +1,27 @@
 <template>
   <div>
-    <div class="text-center py-3">
-      <h2>Category</h2>
+    <div class="text-center pt-1">
+      <h5>Category</h5>
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center">
       <!-- DAILY AWARD-->
-      <div class="category-card bonus-card text-gold d-flex justify-content-between align-items-center px-3">
+      <div class="category-card bonus-card text-gold text-right d-flex justify-content-between align-items-center px-3">
          <div>
            <h1><i class="fas fa-history"></i></h1>
          </div>
-          <div class="text-right">
-            <h4><i class="fas fa-play-circle play-button"></i> Daily reward!</h4>
+          <div class="text-opacity">
+            <h4><i class="fas fa-play-circle"></i> Daily reward!</h4>
             <small>video viewing right</small>
           </div>
       </div>
       <!-- /DAILY AWARD-->
 
-      <div class="category-card most-popular d-flex justify-content-between align-items-center px-3">
-        <div>
+      <div class="category-card most-popular text-right d-flex justify-content-between align-items-center px-3">
+        <div class="text-opacity">
           <h1><i class="fas fa-star"></i></h1>
         </div>
         <div>
-          <h4><i class="fas fa-play-circle play-button"></i> Most Popular</h4>
+          <h4><i class="fas fa-play-circle"></i> Most Popular</h4>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
 
 <style scoped>
 .category-card {
-  margin: 10px 0 5px 0;
+  margin: 5px 0 5px 0;
   border-radius: 20px;
   width: 80%;
   min-height: 100px;

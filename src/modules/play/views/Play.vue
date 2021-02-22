@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view />
-    <play-home />
+    <play-home v-if="$route.name === 'Play'" />
   </div>
 </template>
 

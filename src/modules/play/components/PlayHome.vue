@@ -4,17 +4,17 @@
     <div style="padding-top: 100px"></div>
     <div class="d-flex row justify-content-between">
       <div class="col-12 col-xl-6">
-        <div class="d-flex">
-          <div class="play-home-card mx-2">
+        <div class="d-md-flex">
+          <div class="play-home-card my-3 my-md-auto mx-md-2">
             <play-select-game />
           </div>
-          <div class="play-home-card mx-2">
+          <div class="play-home-card mx-xl-2">
             <play-selected-category />
           </div>
         </div>
       </div>
 
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-xl-6 my-3 my-xl-auto">
         <div class="h-100 d-flex justify-content-center play-home-card">
           <div class="d-flex align-items-center">
            <h1> <i class="fas fa-play-circle play-button"></i> Play</h1>
