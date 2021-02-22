@@ -19,7 +19,7 @@
 <style scoped>
 footer {
   bottom: 0;
-  position: absolute;
+  position: sticky;
   min-height: 50px;
   background-color: #191919;
   width: 100%;

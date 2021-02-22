@@ -11,15 +11,9 @@
       </div>
 
       <div class="col-12 col-md-6">
-        <div class="play-home-card">
-          <div>
-            <h1>Play</h1>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="play-card"></div>
-            <div class="play-card"></div>
-            <div class="play-card"></div>
-            <div class="play-card"></div>
+        <div class="h-100 d-flex justify-content-center play-home-card">
+          <div class="d-flex align-items-center">
+           <h1> <i class="fas fa-play-circle"></i> Play</h1>
           </div>
         </div>
       </div>
@@ -46,7 +40,14 @@
 /*  }*/
 /*}*/
 
-.play-card {
+.play-home-card h1 {
+  font-size: 40px;
+  transition: 0.2s;
+  cursor: pointer;
+}
 
+.play-home-card h1:hover {
+  font-size: 44px;
+  transition: 0.2s;
 }
 </style>
