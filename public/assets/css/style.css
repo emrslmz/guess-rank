@@ -10,20 +10,23 @@
 }
 
 
+.text-decoration {
+    text-decoration: none;
+}
 .mouse-click {
     cursor: pointer;
 }
 
 
-.play-button {
-    opacity: 0.6;
+
+.text-opacity {
+    opacity: 0.8;
     transition: 0.2s;
     cursor: pointer;
 }
-.play-button:hover {
+.text-opacity:hover {
     opacity: 1;
     transition: 0.2s;
 }
-
 
 
