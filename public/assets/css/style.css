@@ -20,8 +20,9 @@
 
 
 .text-opacity {
-    opacity: 0.6;
+    opacity: 0.8;
     transition: 0.2s;
+    cursor: pointer;
 }
 .text-opacity:hover {
     opacity: 1;

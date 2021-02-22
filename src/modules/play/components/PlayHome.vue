@@ -31,7 +31,7 @@ export default {
   name: 'PlayHome',
   components: {
     PlaySelectGame: () => import('@/modules/play/components/stable/PlaySelectGame.vue'),
-    PlaySelectedCategory: () => import('@/modules/play/components/stable/PlaySelectedCategory.vue'),
+    PlaySelectedCategory: () => import('@/modules/play/components/stable/PlaySelectCategory.vue'),
   }
 }
 </script>

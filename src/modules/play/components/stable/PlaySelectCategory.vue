@@ -17,10 +17,10 @@
       <!-- /DAILY AWARD-->
 
       <div class="category-card most-popular text-right d-flex justify-content-between align-items-center px-3">
-        <div class="text-opacity">
+        <div class="">
           <h1><i class="fas fa-star"></i></h1>
         </div>
-        <div>
+        <div class="text-opacity">
           <h4><i class="fas fa-play-circle"></i> Most Popular</h4>
         </div>
       </div>
