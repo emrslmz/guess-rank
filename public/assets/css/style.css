@@ -2,12 +2,28 @@
 .text-lightgray {
     color: #d3d3d3;;
 }
-
 .text-lightgreen {
     color: #20D489;
 }
+.text-gold {
+    color: gold;
+}
+
 
 .mouse-click {
     cursor: pointer;
 }
+
+
+.play-button {
+    opacity: 0.6;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.play-button:hover {
+    opacity: 1;
+    transition: 0.2s;
+}
+
+
 

@@ -1,31 +1,31 @@
 <template>
   <div>
    <div class="d-flex flex-column justify-content-center align-items-center">
-     <div class="select-game-card random-card d-flex justify-content-between align-items-center">
-       <div class="text-dark ml-4"><h2><i class="fas fa-random mouse-click"></i> Random</h2></div>
+     <div class="select-game-card random-card h-100 d-flex justify-content-between align-items-center">
+       <div class="text-dark ml-4"><h2><i class="fas fa-random play-button"></i> Random</h2></div>
        <div><small>Among the added games.</small></div>
      </div>
     <!--VALORANT-->
-     <div class="select-game-card valorant-card d-flex justify-content-between align-items-center">
+     <div class="select-game-card valorant-card h-100 d-flex justify-content-between align-items-center">
        <div class="play-pictures" style="background-image: url('/assets/images/img/play-valorant-jett.png');"></div>
-       <div class="text-white mr-4"><h2><i class="fas fa-play-circle mouse-click"></i> Valorant</h2></div>
+       <div class="text-white mr-4"><h2><i class="fas fa-play-circle play-button"></i> Valorant</h2></div>
      </div>
      <!--/VALORANT-->
      <!--CSGO-->
-     <div class="select-game-card csgo-card d-flex justify-content-between align-items-center">
+     <div class="select-game-card csgo-card h-100 d-flex justify-content-between align-items-center">
        <div class="play-pictures" style="background-image: url('/assets/images/img/play-csgo-ct.png');"></div>
-       <div class="text-white mr-4"><h2><i class="fas fa-play-circle mouse-click"></i> CS:GO</h2></div>
+       <div class="text-white mr-4"><h2><i class="fas fa-play-circle play-button"></i> CS:GO</h2></div>
      </div>
      <!--/CSGO-->
      <!--PUBG-->
-     <div class="select-game-card pubg-card d-flex justify-content-between align-items-center">
+     <div class="select-game-card pubg-card h-100 d-flex justify-content-between align-items-center">
        <div class="play-pictures" style="background-image: url('/assets/images/img/play-pubg-man.png');"></div>
-       <div class="text-white mr-4"><h2><i class="fas fa-play-circle mouse-click"></i> PUBG</h2></div>
+       <div class="text-white mr-4"><h2><i class="fas fa-play-circle play-button"></i> PUBG</h2></div>
      </div>
      <!--/PUBG-->
 
      <!--PUBG-->
-     <div class="select-game-card more-card d-flex flex-column justify-content-center align-items-center">
+     <div class="select-game-card more-card h-100 d-flex flex-column justify-content-center align-items-center">
        <div class="text-white text-center">
          <h2><i class="fas fa-ellipsis-h"></i></h2>
          <small class="text-white">More Games very soon.</small>
@@ -62,7 +62,6 @@
   background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
   background-blend-mode: multiply,multiply;
 }
-
 
 .play-pictures {
   margin: 10px;

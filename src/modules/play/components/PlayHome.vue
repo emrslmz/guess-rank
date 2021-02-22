@@ -8,14 +8,16 @@
           <div class="play-home-card mx-2">
             <play-select-game />
           </div>
-          <div class="play-home-card mx-2"></div>
+          <div class="play-home-card mx-2">
+            <play-selected-category />
+          </div>
         </div>
       </div>
 
       <div class="col-12 col-md-6">
         <div class="h-100 d-flex justify-content-center play-home-card">
           <div class="d-flex align-items-center">
-           <h1> <i class="fas fa-play-circle"></i> Play</h1>
+           <h1> <i class="fas fa-play-circle play-button"></i> Play</h1>
           </div>
         </div>
       </div>
@@ -29,6 +31,7 @@ export default {
   name: 'PlayHome',
   components: {
     PlaySelectGame: () => import('@/modules/play/components/stable/PlaySelectGame.vue'),
+    PlaySelectedCategory: () => import('@/modules/play/components/stable/PlaySelectedCategory.vue'),
   }
 }
 </script>
