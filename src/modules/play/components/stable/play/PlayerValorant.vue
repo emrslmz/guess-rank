@@ -19,7 +19,7 @@
           <h6>You can choose soon.</h6>
         </div>
         <div class="d-flex text-white" v-if="showRankSelection">
-          <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz1.png');" title="valorant_iron1" alt="valorant_iron1"></div>
+          <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_altin1.png');" title="valorant_iron1" alt="valorant_iron1"></div>
           <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz2.png');" title="valorant_iron2" alt="valorant_iron2"></div>
           <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz3.png');" title="valorant_iron3" alt="valorant_iron3"></div>
 

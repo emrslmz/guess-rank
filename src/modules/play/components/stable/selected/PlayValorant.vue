@@ -6,56 +6,81 @@
        <div class="text-white text-right mr-4 col-12 col-xl-6">
          <div v-if="!selectLevel">
            <h2 class="text-opacity" @click="selectLevel = true"><i class="fas fa-play-circle"></i> Select Level</h2>
-           <!--         <div>-->
-           <!--           <button class="btn btn-danger btn-sm mr-1">How to play?</button>-->
-           <!--           <button class="btn btn-info btn-sm ml-1">Statistics</button>-->
-           <!--           <button class="btn btn-primary btn-sm ml-1">Prize</button>-->
-           <!--         </div>-->
            <small>Choose level before starting to play</small>
          </div>
          <div v-if="selectLevel">
            <h5>Choose Level</h5>
            <small>and start playing</small>
-           <div class="row d-flex justify-content-center align-items-center text-dark">
+           <div class="row text-dark">
              <div class="col-4">
-               <router-link to="valorant/play">
                  <div class="level-box">
+                   <router-link to="valorant/play">
+                       <i class="fas fa-unlock text-lightgreen"></i>
+                       level 1
+                   </router-link>
+                 </div>
+             </div>
+             <div class="col-4">
+               <div class="level-box">
+                 <router-link to="valorant/play">
                    <i class="fas fa-unlock text-lightgreen"></i>
-                   level 1
-                 </div>
-               </router-link>
-             </div>
-             <div class="col-4">
-               <div class="level-box">
-                 <i class="fas fa-unlock text-lightgreen"></i>
-                 level 2
+                   level 2
+                 </router-link>
                </div>
              </div>
              <div class="col-4">
                <div class="level-box">
-                 <i class="fas fa-unlock text-lightgreen"></i>
-                 level3
+                 <router-link to="valorant/play">
+                   <i class="fas fa-unlock text-lightgreen"></i>
+                   level 3
+                 </router-link>
                </div>
              </div>
              <div class="col-4">
                <div class="level-box">
-                 <i class="fas fa-unlock text-lightgreen"></i>
-                 level 4
+                 <router-link to="valorant/play">
+                   <i class="fas fa-unlock text-lightgreen"></i>
+                   level 4
+                 </router-link>
                </div>
              </div>
              <div class="col-4">
                <div class="level-box">
-                 <i class="fas fa-lock text-red"></i>
-                 level 5
-                 </div>
+                 <router-link to="valorant/play">
+                   <i class="fas fa-lock text-red"></i>
+                   level 5
+                 </router-link>
+               </div>
              </div>
 
           </div>
          </div>
-
        </div>
      </div>
    </div>
+    <div class="d-flex justify-content-center">
+      <div class="col-6 play-information d-flex justify-content-between align-items-center text-white">
+        <div class="col-4 d-flex justify-content-between align-items-center">
+          <h1><i class="fas fa-question"></i></h1>
+          <ul>
+            <li><small>Earn different points in each level.</small> </li>
+            <li><small>You earn the designated score for each correct answer.</small> </li>
+          </ul>
+        </div>
+        <div class="col-4 d-flex justify-content-between align-items-center">
+          <h1><i class="fas fa-exclamation"></i></h1>
+          <ul>
+            <li><small>Every video you watch has one right, you cannot watch the video you watch again.</small></li>
+          </ul>
+        </div>
+        <div class="col-4 d-flex justify-content-between align-items-center">
+          <h1><i class="fas fa-bomb"></i></h1>
+          <ul>
+            <li>Surprises await you in some videos!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -73,7 +98,7 @@ export default {
 
 <style scoped>
 .play-valorant-card {
-  margin: 100px 0 100px 0;
+  margin: 100px 0 0 0;
   border-radius: 20px;
   padding-bottom: 50px;
   width: 100%;
@@ -98,22 +123,12 @@ export default {
   animation: transform 7s infinite alternate;
 }
 
-.btn {
-  min-width: 75px;
-}
-
 .level-box {
   margin: 10px;
   width: 75px;
   height: 75px;
-  display: flex;
-  flex-direction: column;
   background: white;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
   border-radius: 5px;
-  font-size: small;
   cursor: pointer;
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
@@ -123,6 +138,15 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   transition: 0.2s;
 }
+
+.level-box a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
 .level-box:hover {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 6px, rgba(0, 0, 0, 0.24) 0px 1px 6px;
   transition: 0.2s;
@@ -130,5 +154,14 @@ export default {
 
 .level-box i {
   font-size: 24px;
+}
+
+.play-information {
+  margin: 50px 0 50px 0;
+  border-radius: 20px;
+  width: 100%;
+  height: 100px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-image: linear-gradient(-225deg, #fa4454 0%, #dc3d4b 52%, #dc3d4b 100%);
 }
 </style>
