@@ -3,8 +3,14 @@
     <div class="container">
       <div class=" d-flex justify-content-center">
         <div class="d-flex justify-content-center align-items-center col-12 player-valorant-card">
-          <div class="youtube d-flex justify-content-center align-items-center col-12">
+          <div class="youtube d-flex justify-content-center align-items-center col-12" v-if="showVideo">
             <youtube width="300%" height="550px" :video-id="videoId" :player-vars="playerVars" @playing="playing"></youtube>
+          </div>
+          <div class="d-flex justify-content-center align-items-center col-12 text-white" v-else>
+            <div class="text-center">
+              <h3>{{ videoReadyTime }}</h3>
+              <h6>Video will start soon, wait a little</h6>
+            </div>
           </div>
         </div>
       </div>
@@ -30,15 +36,29 @@ export default {
       videoId: 'TvEksPZuIak',
       playerVars: {
         autoplay: 1
-      }
+      },
+      videoReadyTime: 6,
+      showVideo: false,
     }
   },
   methods: {
     playing() {
       console.log('we are watching!!!')
-    }
-  }
-}
+    },
+    CountDownVideo() {
+      setInterval(() => {
+        if (this.videoReadyTime > 0) {
+          this.videoReadyTime--;
+        } else {
+          this.showVideo = true;
+        }
+      },1000);
+    },
+  },
+  created() {
+    this.CountDownVideo();
+  },
+};
 </script>
 
 <style scoped>
