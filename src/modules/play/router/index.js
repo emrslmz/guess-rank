@@ -10,5 +10,12 @@ export default [{
             },
             component: () => import('@/modules/play/components/stable/selected/PlayValorant.vue'),
         },
+        {
+            path: '/valorant/play',
+            meta: {
+                title: 'PlayerValorant',
+            },
+            component: () => import('@/modules/play/components/stable/play/PlayerValorant.vue'),
+        },
     ]
 }];

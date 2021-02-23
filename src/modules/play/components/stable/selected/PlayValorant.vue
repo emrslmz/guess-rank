@@ -4,12 +4,14 @@
      <div class="play-valorant-card h-100 d-xl-flex justify-content-between align-items-center">
        <div class="play-pictures" style="background-image: url('/assets/images/img/play-valorant-jett.png');"></div>
        <div class="text-white mr-4">
-         <h2 class="text-opacity"><i class="fas fa-play-circle"></i> Play</h2>
-         <div>
-           <button class="btn btn-danger btn-sm mr-1">How to play?</button>
-           <button class="btn btn-info btn-sm ml-1">Statistics</button>
-           <button class="btn btn-primary btn-sm ml-1">Prize</button>
-         </div>
+         <router-link to="/valorant/play">
+           <h2 class="text-opacity"><i class="fas fa-play-circle"></i> Play</h2>
+         </router-link>
+<!--         <div>-->
+<!--           <button class="btn btn-danger btn-sm mr-1">How to play?</button>-->
+<!--           <button class="btn btn-info btn-sm ml-1">Statistics</button>-->
+<!--           <button class="btn btn-primary btn-sm ml-1">Prize</button>-->
+<!--         </div>-->
          <small>Click the PLAY button to start</small>
        </div>
      </div>
@@ -29,6 +31,11 @@
   background-image: linear-gradient(-225deg, #fa4454 0%, #dc3d4b 52%, #dc3d4b 100%);
 }
 
+.play-valorant-card a {
+  color: white;
+  text-decoration: none;
+}
+
 .play-pictures {
   margin: 10px;
   background-position: revert;
@@ -38,7 +45,7 @@
   width: 40%;
   height: 500px;
   /*border-radius: 150px;*/
-  animation: transform 3s infinite alternate;
+  animation: transform 7s infinite alternate;
 }
 
 .btn {
