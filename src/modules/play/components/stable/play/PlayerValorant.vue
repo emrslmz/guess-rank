@@ -15,10 +15,10 @@
         </div>
       </div>
       <div class="player-valorant-rank-card d-flex align-items-center justify-content-center">
-<!--        <div class="d-flex text-white">-->
-<!--          <h6>You can choose soon.</h6>-->
-<!--        </div>-->
-        <div class="d-flex text-white">
+        <div class="d-flex text-white" v-if="!showRankSelection">
+          <h6>You can choose soon.</h6>
+        </div>
+        <div class="d-flex text-white" v-if="showRankSelection">
           <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz1.png');" title="valorant_iron1" alt="valorant_iron1"></div>
           <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz2.png');" title="valorant_iron2" alt="valorant_iron2"></div>
           <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz3.png');" title="valorant_iron3" alt="valorant_iron3"></div>
@@ -39,13 +39,14 @@ export default {
       },
       videoReadyTime: 6,
       showVideo: false,
+      showRankSelection: false,
     }
   },
   methods: {
     playing() {
       console.log('we are watching!!!')
     },
-    CountDownVideo() {
+    countDownVideo() {
       setInterval(() => {
         if (this.videoReadyTime > 0) {
           this.videoReadyTime--;
@@ -54,9 +55,15 @@ export default {
         }
       },1000);
     },
+    countDownSelection() {
+      setInterval(() => {
+        this.showRankSelection = true;
+      }, 30000);
+    }
   },
   created() {
-    this.CountDownVideo();
+    this.countDownVideo();
+    this.countDownSelection();
   },
 };
 </script>

@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .body-home {
-  min-height: 100vh;
+  min-height: 120vh;
   /*background-color: #d3d3d3;*/
   /* SUPERR */
   /*background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;*/
