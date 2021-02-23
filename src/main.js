@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './core/views/App.vue'
 import router from './router';
+import VueYoutube from 'vue-youtube'
 
+Vue.use(VueYoutube)
 Vue.config.productionTip = false
 
 new Vue({
