@@ -4,7 +4,7 @@
   <div style="padding-top: 100px"></div>
     <div class="d-flex row justify-content-between align-items-center">
 
-      <div class="col-12 col-xl-4 d-xl-flex justify-content-around">
+      <div class="col-12 col-xl-5 d-xl-flex justify-content-around">
           <div class="profile-left">
             <!--PROFILE-HEADER-->
             <div class="row">
@@ -15,11 +15,13 @@
                <div class="d-flex justify-content-between align-items-start">
                 <div class="d-flex flex-column">
                  <div>
-                   <label>
-                     <small><i class="fas fa-globe-europe"></i>: <strong>emrslmz</strong></small>
-                     <br>
-                     <small><i class="fas fa-envelope"></i>: <strong>shorproduction@gmail.com</strong></small>
-                   </label>
+                   <small><i class="fas fa-globe-europe"></i>: <strong>emrslmz</strong></small>
+                   <div class="d-flex justify-content-start align-items-center profile-rosette">
+                     <i class="fas fa-user-shield text-dark"></i>
+                     <i class="fas fa-pizza-slice text-red"></i>
+                     <i class="fas fa-puzzle-piece text-warning"></i>
+                     <i class="fas fa-crosshairs text-info"></i>
+                   </div>
                  </div>
                  <div class="d-flex justify-content-between">
                    <button class="btn btn-secondary btn-sm">Settings</button>
@@ -57,7 +59,7 @@
           </div>
       </div>
 
-      <div class="col-12 col-md-8 d-xl-flex justify-content-around">
+      <div class="col-12 col-md-7 d-xl-flex justify-content-around">
           <div class="profile-right"></div>
       </div>
 
@@ -97,12 +99,16 @@
 
 .noti-card {
   background-color: #e9e9e9;
-  width: 80%;
+  width: 90%;
   height: 80px;
   border-radius: 20px;
 }
 
 .noti-card i {
   font-size: 40px;
+}
+.profile-rosette i {
+  padding: 0 5px 10px 0;
+  font-size: 18px;
 }
 </style>
