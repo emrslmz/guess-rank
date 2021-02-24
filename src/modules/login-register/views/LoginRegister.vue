@@ -489,6 +489,7 @@ export default {
   background-color: #20D489;
   color: white;
   font-weight: bold;
+  min-width: 100px;
 }
 
 .submit-contact-us-button button:hover {

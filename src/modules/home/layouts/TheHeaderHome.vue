@@ -11,26 +11,29 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-xl-flex justify-content-between">
 
-          <div class="px-2 w-100">
-            <router-link to="/play">
-              <button class="btn btn-info text-white btn-sm header-button">Play</button>
+            <router-link to="play">
+              <div class="header-button mx-2 my-2">
+                <button class="btn btn-sm"><i class="far fa-play-circle"></i> Play</button>
+              </div>
             </router-link>
-          </div>
 
-          <div class="px-2 w-100">
-            <router-link to="/login-register">
-              <button class="btn btn-info text-white btn-sm header-button">Register Login</button>
-            </router-link>
-          </div>
 
-          <div class="px-2 w-100">
-            <router-link to="/profile">
-              <button class="btn btn-dark text-white btn-sm header-button">Profile</button>
+            <div class="w-100">
+              <router-link to="login-register">
+                <div class="header-button mx-2 my-2">
+                  <button class="btn btn-sm"><i class="far fa-play-circle"></i> Register Login</button>
+                </div>
+              </router-link>
+            </div>
+
+            <router-link to="profile">
+              <div class="header-button mx-2 my-2">
+                <button class="btn btn-sm"><i class="fas fa-user-circle"></i> Profile</button>
+              </div>
             </router-link>
           </div>
 
         </div>
-      </div>
     </nav>
   </div>
 </header>
@@ -38,8 +41,30 @@
 
 
 <style scoped>
-.header-button {
+
+.header-button button {
+  background-color: white;
+  color: #343A40;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
   min-width: 100px;
+}
+
+.header-button button:hover {
+  background-color: #3c88df;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.router-link-active button {
+  background-color: #3c88df;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
 }
 
 </style>
