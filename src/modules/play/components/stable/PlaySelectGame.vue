@@ -1,40 +1,40 @@
 <template>
   <div>
-    <div class="text-center pt-1">
-      <h5>Pick fast</h5>
-    </div>
    <div class="d-flex flex-column justify-content-center align-items-center">
-     <div class="select-game-card random-card h-100 d-flex justify-content-between align-items-center">
-       <div class="text-dark text-opacity ml-4 text-left"><h2><i class="fas fa-random play-button"></i> Random</h2></div>
-       <div><small>Among the added games.</small></div>
-     </div>
-    <!--VALORANT-->
 
-       <div class="select-game-card valorant-card h-100 d-flex justify-content-between align-items-center">
+     <!--CSGO-->
+     <div class="select-game-card daily-bonus-card h-100 d-flex justify-content-between align-items-center text-white">
+       <div><h1><i class="fas fa-history ml-4"></i></h1></div>
+       <div class="text-opacity mr-4" @click="selectedGame(0)"><h2> DAILY</h2></div>
+     </div>
+     <!--/CSGO-->
+
+    <!--VALORANT-->
+       <div class="select-game-card valorant-card h-100 d-flex justify-content-between align-items-center text-white">
            <div class="play-pictures" style="background-image: url('/assets/images/img/play-valorant-jett.png');"></div>
-         <router-link to="/valorant">
-           <div class="text-white text-opacity mr-4"><h2><i class="fas fa-play-circle"></i> Valorant</h2></div>
-         </router-link>
+<!--         <router-link to="/valorant">-->
+           <div class="text-opacity mr-4" @click="selectedGame(1)"><h2> Valorant</h2></div>
+<!--         </router-link>-->
        </div>
      <!--/VALORANT-->
      <!--CSGO-->
-     <div class="select-game-card csgo-card h-100 d-flex justify-content-between align-items-center">
+     <div class="select-game-card csgo-card h-100 d-flex justify-content-between align-items-center text-white">
        <div class="play-pictures" style="background-image: url('/assets/images/img/play-csgo-ct.png');"></div>
-       <div class="text-white text-opacity mr-4"><h2><i class="fas fa-play-circle"></i> CS:GO</h2></div>
+       <div class="text-opacity mr-4" @click="selectedGame(2)"><h2> CS:GO</h2></div>
      </div>
      <!--/CSGO-->
      <!--PUBG-->
-     <div class="select-game-card pubg-card h-100 d-flex justify-content-between align-items-center">
+     <div class="select-game-card pubg-card h-100 d-flex justify-content-between align-items-center text-white">
        <div class="play-pictures" style="background-image: url('/assets/images/img/play-pubg-man.png');"></div>
-       <div class="text-white text-opacity mr-4"><h2><i class="fas fa-play-circle"></i> PUBG</h2></div>
+       <div class="text-opacity mr-4" @click="selectedGame(3)"><h2> PUBG</h2></div>
      </div>
      <!--/PUBG-->
 
      <!--PUBG-->
-     <div class="select-game-card more-card h-100 d-flex flex-column justify-content-center align-items-center">
-       <div class="text-white text-center">
+     <div class="select-game-card more-card h-100 d-flex flex-column justify-content-center align-items-center text-white">
+       <div class="text-center">
          <h2><i class="fas fa-ellipsis-h"></i></h2>
-         <small class="text-white">More Games very soon.</small>
+         <small>More Games very soon. {{ playGame }}</small>
        </div>
      </div>
      <!--/PUBG-->
@@ -42,12 +42,28 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'PlaySelectGame',
+  data() {
+    return {
+      playGame: 2,
+    };
+  },
+  methods: {
+    selectedGame(game) {
+      this.playGame = game;
+      this.$emit('data',this.playGame);
+    },
+  },
+};
+</script>
+
 
 <style scoped>
 .select-game-card {
-  text-align: right;
-  border-radius: 20px;
-  width: 80%;
+  border-radius: 5px;
+  width: 100%;
   min-height: 100px;
   margin: 5px 0 5px 0;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -56,8 +72,8 @@
   text-decoration: none;
 }
 
-.random-card {
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+.daily-bonus-card{
+  background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
 }
 .valorant-card {
   background-image: linear-gradient(-225deg, #fa4454 0%, #dc3d4b 52%, #dc3d4b 100%);
