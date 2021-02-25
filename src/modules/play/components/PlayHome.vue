@@ -2,26 +2,21 @@
 <div>
   <div class="px-3">
     <div style="padding-top: 100px"></div>
-    <div class="d-flex row justify-content-between">
-      <div class="col-12 col-xl-6">
-        <div class="d-md-flex">
-          <div class="play-home-card my-3 my-md-auto mx-md-2">
-            <play-select-game />
-          </div>
-          <div class="play-home-card mx-xl-2">
-            <play-selected-category />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-xl-6 my-3 my-xl-auto">
+    <div class="top-banner"></div>
+     <div class="d-flex justify-content-center">
+       <div class="col-12 col-xl-3">
+         <play-select-game
+             @data="playGame=$event"
+         />
+       </div>
+       <div class="col-12 col-xl-9 my-3 my-xl-auto">
         <div class="h-100 d-flex justify-content-center play-home-card">
           <div class="d-flex align-items-center">
-           <h1> <i class="fas fa-play-circle play-button"></i> Play</h1>
+           <h1><i class="fas fa-play-circle play-button"></i> Play {{ playGame.gameId }}</h1>
           </div>
         </div>
       </div>
-    </div>
+     </div>
   </div>
 </div>
 </template>
@@ -29,9 +24,13 @@
 <script>
 export default {
   name: 'PlayHome',
+  data() {
+    return {
+      playGame: null,
+    };
+  },
   components: {
     PlaySelectGame: () => import('@/modules/play/components/stable/PlaySelectGame.vue'),
-    PlaySelectedCategory: () => import('@/modules/play/components/stable/PlaySelectCategory.vue'),
   }
 }
 </script>
@@ -40,9 +39,9 @@ export default {
 
 .play-home-card {
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 100%;
-  min-height: 600px;
+  min-height: 500px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
