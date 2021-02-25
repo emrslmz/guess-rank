@@ -4,35 +4,37 @@
   <div style="padding-top: 100px"></div>
     <div class="d-flex row justify-content-between align-items-center">
 
-      <div class="col-12 col-xl-5 d-xl-flex justify-content-around">
+      <div class="col-12 col-xl-5 mb-3">
           <div class="profile-left">
             <!--PROFILE-HEADER-->
-            <div class="row">
-              <div class="col-4 px-4 pt-3">
+            <div class="d-flex justify-content-between align-items-end">
+              <div class="px-4 pt-3">
                 <div class="profile-picture" style="background-image: url('/assets/images/img/images.jpg');"></div>
               </div>
-              <div class="col-8 pt-3">
-               <div class="d-flex justify-content-between align-items-start">
+               <div class="d-flex justify-content-around">
                 <div class="d-flex flex-column">
                  <div>
-                   <small><i class="fas fa-globe-europe"></i>: <strong>emrslmz</strong></small>
+                   <small><strong>emrslmz</strong></small>
                    <div class="d-flex justify-content-start align-items-center profile-rosette">
                      <i class="fas fa-user-shield text-dark"></i>
-                     <i class="fas fa-pizza-slice text-red"></i>
-                     <i class="fas fa-puzzle-piece text-warning"></i>
+                     <i class="fas fa-pizza-slice text-danger"></i>
+                     <i class="fas fa-puzzle-piece text-lightgray"></i>
                      <i class="fas fa-crosshairs text-info"></i>
                    </div>
                  </div>
-                 <div class="d-flex justify-content-between">
-                   <button class="btn btn-secondary btn-sm">Settings</button>
-                   <button class="btn btn-success btn-sm">Achievement</button>
+                 <div class="d-flex justify-content-start">
+                   <div class="profile-button mr-1">
+                     <button class="btn btn-sm" @click="rightCard = 2"><i class="fas fa-cog"></i> Settings</button>
+                   </div>
+                   <div class="profile-button mr-1">
+                     <button class="btn btn-sm" @click="rightCard = 3"><i class="fas fa-users"></i> Reference</button>
+                   </div>
                  </div>
                 </div>
                  <div class="profile-level pr-4">
                   <h2>18</h2>
                  </div>
                </div>
-              </div>
             </div>
             <hr>
             <!--/PROFILE-HEADER-->
@@ -59,8 +61,97 @@
           </div>
       </div>
 
-      <div class="col-12 col-md-7 d-xl-flex justify-content-around">
-          <div class="profile-right"></div>
+      <div class="col-12 col-xl-7 d-xl-flex justify-content-around mb-3">
+
+          <div class="profile-right d-flex justify-content-center align-items-center">
+            <div class="right-card-clear" v-if="rightCard === 1">
+              <small>You can use the buttons on the left side.</small>
+            </div>
+            <div class="setting-card" v-else-if="rightCard === 2">
+                <div class="text-center py-2">
+                  <h3>Setting</h3>
+                </div>
+              <div>
+                <div class="d-flex justify-content-start align-items-center">
+                  <div class="profile-picture ml-5 mx-4" style="background-image: url('/assets/images/img/images.jpg');"></div>
+
+                  <div>
+                    <label for="upload-picture">
+                      Change/upload your avatar
+                      <br>
+                      <input type="file" id="upload-picture" />
+                    </label>
+                  </div>
+
+                </div>
+                <div class="d-flex justify-content-center pt-2">
+
+                  <div class="d-flex justify-content-center align-items-center py-2 px-3">
+                    <div class="setting-icon d-flex align-items-center">
+                      <i class="far fa-id-card"></i>
+                    </div>
+                    <input class="setting-input" placeholder="Your Name" type="text" />
+                  </div>
+
+                  <div class="d-flex justify-content-center align-items-center py-2 px-3">
+                    <div class="setting-icon d-flex align-items-center">
+                      <i class="far fa-envelope"></i>
+                    </div>
+                    <input class="setting-input" placeholder="Your e-mail" type="email" />
+                  </div>
+
+                </div>
+
+               <div class="d-flex justify-content-center">
+
+                 <div class="d-flex justify-content-center align-items-center py-2 px-3">
+                   <div class="setting-icon d-flex align-items-center">
+                     <i class="far fa-user"></i>
+                   </div>
+                   <input class="setting-input" placeholder="Your Username" type="text" />
+                 </div>
+
+                 <div class="d-flex justify-content-center align-items-center py-2 px-3">
+                   <div class="setting-icon d-flex align-items-center">
+                     <i class="fas fa-key"></i>
+                   </div>
+                   <input class="setting-input" placeholder="Password" type="password" />
+                 </div>
+
+               </div>
+
+                <div class="d-flex justify-content-around">
+                 <div>
+                   <h6><i class="fas fa-globe-europe"></i> Country: Turkey</h6>
+                 </div>
+                  <div>
+                    <h6><i class="fas fa-birthday-cake"></i> Birthyear: 1963</h6>
+                  </div>
+                </div>
+                <div class="text-right save-button pt-5">
+                  <button class="btn btn-sm">Save</button>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="reference-card" v-else-if="rightCard === 3">
+              <div class="text-center py-2">
+                <h3>References</h3>
+                <small>You can get free balances and gifts by inviting your friends!</small>
+              </div>
+              <div class="d-flex justify-content-center align-items-center py-2 px-3">
+                <div class="setting-icon d-flex align-items-center">
+                  <i class="fas fa-code"></i>
+                </div>
+                <input class="setting-input" placeholder="ReferenceCode" type="text" />
+              </div>
+              <div class="text-center save-button pt-3">
+                <button class="btn btn-sm">Create</button>
+              </div>
+
+            </div>
+          </div>
       </div>
 
 
@@ -69,21 +160,32 @@
 </div>
 </template>
 
+<script>
+export default {
+  name: 'Profiles',
+  data() {
+    return {
+      rightCard: 1,
+    };
+  },
+};
+</script>
+
 <style scoped>
 .profile-left {
   width: auto;
   min-width: 300px;
   min-height: 600px;
   border-radius: 20px;
-  background-color: white;
+ background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .profile-right {
-  background-color: white;
   border-radius: 20px;
   width: 100%;
-  min-height: 200px;
+  min-height: 600px;
+  background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
@@ -91,7 +193,7 @@
   background-position: center;
   /*background-attachment: fixed;*/
   background-repeat: no-repeat;
-  background-size: 100px;
+  background-size: 80px;
   width: 80px;
   height: 80px;
   border-radius: 150px;
@@ -109,6 +211,57 @@
 }
 .profile-rosette i {
   padding: 0 5px 10px 0;
-  font-size: 18px;
+  font-size: 20px;
 }
+
+.profile-button button {
+  background-color: #26bef3;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+  min-width: 100px;
+}
+
+.profile-button button:hover {
+  background-color: #299dba;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.setting-input {
+  height: 40px;
+  border-radius: 0 8px 8px 0;
+  border: none;
+  background-color: #e9e9e9;
+  outline:none
+}
+
+.setting-icon {
+  height: 40px;
+  background-color: #e9e9e9;
+  border: none;
+  width: 30px;
+  padding: 0 30px 0 10px;
+  border-radius: 8px 0 0 8px;
+}
+
+
+
+.save-button button {
+  border-radius: 10px;
+  background-color: #20D489;
+  color: white;
+  font-weight: bold;
+  min-width: 100px;
+}
+
+.save-button button:hover {
+  background-color: #28ffa7;
+  font-weight: bold;
+  color: white;
+}
+
 </style>

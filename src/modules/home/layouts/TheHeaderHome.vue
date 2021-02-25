@@ -11,7 +11,7 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-xl-flex justify-content-between">
 
-            <router-link to="play">
+            <router-link to="/play">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-play-circle"></i> Play</button>
               </div>
@@ -19,14 +19,14 @@
 
 
             <div class="w-100">
-              <router-link to="login-register">
+              <router-link to="/login-register">
                 <div class="header-button mx-2 my-2">
                   <button class="btn btn-sm"><i class="far fa-play-circle"></i> Register Login</button>
                 </div>
               </router-link>
             </div>
 
-            <router-link to="profile">
+            <router-link to="/profile">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="fas fa-user-circle"></i> Profile</button>
               </div>
