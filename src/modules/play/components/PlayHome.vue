@@ -12,7 +12,7 @@
        <div class="col-12 col-xl-9 my-3 my-xl-auto">
         <div class="h-100 d-flex justify-content-center play-home-card">
           <div class="d-flex align-items-center">
-           <h1><i class="fas fa-play-circle play-button"></i> Play {{ playGame.gameId }}</h1>
+           <h1><i class="fas fa-play-circle play-button"></i> Play {{ playGame }}</h1>
           </div>
         </div>
       </div>
