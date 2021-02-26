@@ -11,7 +11,7 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-xl-flex justify-content-between">
 
-            <router-link to="/play">
+            <router-link to="/category">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-play-circle"></i> Play</button>
               </div>

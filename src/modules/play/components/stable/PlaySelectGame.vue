@@ -5,7 +5,7 @@
      <!--CSGO-->
      <div class="select-game-card daily-bonus-card h-100 d-flex justify-content-between align-items-center text-white">
        <div><h1><i class="fas fa-history ml-4"></i></h1></div>
-       <div class="text-opacity mr-4" @click="selectedGame(0)"><h2> DAILY</h2></div>
+       <div class="text-opacity mr-4" @click="selectedGame(99)"><h2> DAILY</h2></div>
      </div>
      <!--/CSGO-->
 
@@ -49,28 +49,32 @@ export default {
     return {
       gameData: [
         {
-          gameId: 0,
+          gameId: 99,
           gameName: 'Daily Bonus',
           gameLink: 'bonus',
           background: 'daily-bonus-card',
+          description: 'Play to earn rewards that change every day!'
         },
         {
           gameId: 1,
           gameName: 'Valorant',
-          gameLink: 'valorant',
+          gameLink: '/category/valorant',
           background: 'valorant-card',
+          description: 'Click to play!',
         },
         {
           gameId: 2,
           gameName: 'CSGO',
           gameLink: 'csgo',
           background: 'csgo-card',
+          description: 'Click to play!',
         },
         {
           gameId: 3,
           gameName: 'PUBG',
           gameLink: 'pubg',
           background: 'pubg-card',
+          description: 'Click to play!',
         },
       ],
       newData: {},

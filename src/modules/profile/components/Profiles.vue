@@ -177,7 +177,7 @@ export default {
   min-width: 300px;
   min-height: 600px;
   border-radius: 20px;
- background-color: white;
+  background-color: #FBF9F6;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
@@ -200,7 +200,7 @@ export default {
 }
 
 .noti-card {
-  background-color: #e9e9e9;
+  background-color: white;
   width: 90%;
   height: 80px;
   border-radius: 20px;
