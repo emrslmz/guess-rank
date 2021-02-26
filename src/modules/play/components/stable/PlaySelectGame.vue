@@ -5,7 +5,7 @@
      <!--CSGO-->
      <div class="select-game-card daily-bonus-card h-100 d-flex justify-content-between align-items-center text-white">
        <div><h1><i class="fas fa-history ml-4"></i></h1></div>
-       <div class="text-opacity mr-4" @click="selectedGame(0)"><h2> DAILY</h2></div>
+       <div class="text-opacity mr-4" @click="selectedGame(99)"><h2> DAILY</h2></div>
      </div>
      <!--/CSGO-->
 
@@ -34,7 +34,7 @@
      <div class="select-game-card more-card h-100 d-flex flex-column justify-content-center align-items-center text-white">
        <div class="text-center">
          <h2><i class="fas fa-ellipsis-h"></i></h2>
-         <small>More Games very soon. {{ playGame }}</small>
+         <small>More Games very soon.</small>
        </div>
      </div>
      <!--/PUBG-->
@@ -47,13 +47,44 @@ export default {
   name: 'PlaySelectGame',
   data() {
     return {
-      playGame: 2,
+      gameData: [
+        {
+          gameId: 99,
+          gameName: 'Daily Bonus',
+          gameLink: 'bonus',
+          background: 'daily-bonus-card',
+          description: 'Play to earn rewards that change every day!'
+        },
+        {
+          gameId: 1,
+          gameName: 'Valorant',
+          gameLink: '/category/valorant',
+          background: 'valorant-card',
+          description: 'Click to play!',
+        },
+        {
+          gameId: 2,
+          gameName: 'CSGO',
+          gameLink: 'csgo',
+          background: 'csgo-card',
+          description: 'Click to play!',
+        },
+        {
+          gameId: 3,
+          gameName: 'PUBG',
+          gameLink: 'pubg',
+          background: 'pubg-card',
+          description: 'Click to play!',
+        },
+      ],
+      newData: {},
     };
   },
   methods: {
-    selectedGame(game) {
-      this.playGame = game;
-      this.$emit('data',this.playGame);
+    selectedGame(game_id) {
+      this.newData = this.gameData.find(a => a.gameId === game_id);
+      this.$emit('selectedGame', this.newData);
+
     },
   },
 };
@@ -72,7 +103,7 @@ export default {
   text-decoration: none;
 }
 
-.daily-bonus-card{
+.daily-bonus-card {
   background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
 }
 .valorant-card {
@@ -83,6 +114,9 @@ export default {
 }
 .pubg-card {
   background-image: linear-gradient(to right, #ffde40 0%, #fee140 100%);
+}
+.default-card {
+  background-color: white;
 }
 .more-card {
   background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;

@@ -14,7 +14,7 @@
            <div class="row text-dark">
              <div class="col-4">
                  <div class="level-box">
-                   <router-link to="valorant/play">
+                   <router-link :to="{name: 'PlayerValorant', params: {id: this.level,}}">
                        <i class="fas fa-unlock text-lightgreen"></i>
                        level 1
                    </router-link>
@@ -90,6 +90,7 @@ export default {
   data() {
     return {
       selectLevel: false,
+      level: 1,
     }
   }
 }

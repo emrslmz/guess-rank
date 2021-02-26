@@ -28,7 +28,7 @@
 </template>
 
 
-<style scoped>        
+<style scoped>
 .vertical-line {
   border: 1px solid #6a6a6a;
   height: 250px;
