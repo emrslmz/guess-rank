@@ -9,7 +9,8 @@
           <div class="d-flex justify-content-center align-items-center col-12 text-white" v-else>
             <div class="text-center">
               <h3>{{ videoReadyTime }}</h3>
-              <h6>Video will start soon, wait a little</h6>
+              <h6>Video will start soon, wait a little {{levelVideoId}}
+              </h6>
             </div>
           </div>
         </div>
@@ -33,7 +34,7 @@
 export default {
   data() {
     return {
-      videoId: 'TvEksPZuIak',
+      videoId: '',
       playerVars: {
         autoplay: 1
       },

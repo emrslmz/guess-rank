@@ -12,46 +12,23 @@
            <h5>Choose Level</h5>
            <small>and start playing</small>
            <div class="row text-dark">
-             <div class="col-4">
+             <div class="col-4" v-for="(level, index) in valorantLevel" :key="index">
                  <div class="level-box">
-                   <router-link :to="{name: 'PlayerValorant', params: {id: this.level,}}">
-                       <i class="fas fa-unlock text-lightgreen"></i>
-                       level 1
+                   <router-link :to="{
+                       name: 'PlayerValorant',
+                       params: {
+                       id: level.levelId,
+                       levelNumber: level.levelNumber,
+                       levelName: level.levelName,
+                       levelVideoId: level.levelVideoId,
+                       levelDifficulty: level.levelDifficulty}}">
+                        <i class="fas fa-unlock text-lightgreen" v-if="level.levelDifficulty"></i>
+                        <i class="fas fa-lock text-red" v-else></i>
+                     {{ level.levelName }}
                    </router-link>
                  </div>
              </div>
-             <div class="col-4">
-               <div class="level-box">
-                 <router-link to="valorant/play">
-                   <i class="fas fa-unlock text-lightgreen"></i>
-                   level 2
-                 </router-link>
-               </div>
-             </div>
-             <div class="col-4">
-               <div class="level-box">
-                 <router-link to="valorant/play">
-                   <i class="fas fa-unlock text-lightgreen"></i>
-                   level 3
-                 </router-link>
-               </div>
-             </div>
-             <div class="col-4">
-               <div class="level-box">
-                 <router-link to="valorant/play">
-                   <i class="fas fa-unlock text-lightgreen"></i>
-                   level 4
-                 </router-link>
-               </div>
-             </div>
-             <div class="col-4">
-               <div class="level-box">
-                 <router-link to="valorant/play">
-                   <i class="fas fa-lock text-red"></i>
-                   level 5
-                 </router-link>
-               </div>
-             </div>
+
 
           </div>
          </div>
@@ -76,7 +53,7 @@
         <div class="col-4 d-flex justify-content-between align-items-center">
           <h1><i class="fas fa-bomb"></i></h1>
           <ul>
-            <li>Surprises await you in some videos!</li>
+            <li>Surprises await you in some videos! {{ getValorantLevel }}a</li>
           </ul>
         </div>
       </div>
@@ -85,15 +62,39 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'PlayValorants',
   data() {
     return {
       selectLevel: false,
-      level: 1,
+      valorantLevel: [
+        {
+          levelId: '#e32#2213',
+          levelNumber: 1,
+          levelName: 'Level 1',
+          levelLock: false, // false = lock(kilitli), true = unlock(açık)
+          levelDifficulty: 4,
+          levelVideoId: '',
+        },
+        {
+          levelId: '1e32#2213',
+          levelNumber: 2,
+          levelName: 'Level 2',
+          levelLock: true,
+          levelDifficulty: 2,
+          levelVideoId: 'sdadsadsadsadadsada',
+        },
+      ],
     }
-  }
-}
+  },
+  computed: {
+    ...mapGetters([
+        'getValorantLevel',
+    ])
+  },
+};
 </script>
 
 
