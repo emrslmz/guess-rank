@@ -16,9 +16,10 @@
                  <div class="level-box">
                    <router-link
                        :disabled="level.levelLock"
+                       crossorigin="anonymous"
                        :event="level.levelLock ? 'click' : ''"
                        :to="{
-                       name: 'PlayerValorant',
+                       name: `${level.levelLock === true ? 'PlayerValorant' : ''}`,
                        params: { id: level.levelId }}">
                         <i class="fas fa-unlock text-lightgreen" v-if="level.levelLock"></i>
                         <i class="fas fa-lock text-red" v-else></i>
