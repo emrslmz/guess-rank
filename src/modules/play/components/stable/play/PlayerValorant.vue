@@ -19,7 +19,7 @@
         <div class="d-flex text-white" v-if="!showRankSelection">
           <h6>You can choose soon.</h6>
         </div>
-        <div class="d-flex text-white" v-if="showRankSelection">
+          <div class="d-flex text-white" v-if="showRankSelection">
 
           <div v-for="(option, index) in getValorantVideo.videoOption" :key="index">
             <div class="rank-picture" :style="{ 'background-image': 'url(/assets/images/ranks/' + option.optionRank + ')' }" :title="option.optionName" :alt="option.optionName"></div>
@@ -70,7 +70,7 @@ export default {
       setInterval(() => {
         this.showRankSelection = true;
       }, 3000);
-    }
+    },
   },
   created() {
     this.countDownVideo();
@@ -110,7 +110,6 @@ export default {
   background-position: revert;
   /*background-attachment: fixed;*/
   background-repeat: no-repeat;
-  margin: 0 5px 0 5px;
   background-size: 50px;
   width: 50px;
   height: 50px;

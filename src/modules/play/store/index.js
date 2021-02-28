@@ -4,7 +4,7 @@ const state = {
             id: 1,
             levelName: 'Level 1',
             levelId: 'emres',
-            levelLock: false,  //false: lock true: unlock
+            levelLock: true,  //false: lock true: unlock
             showStatus: true,  //true: display
             videoName: 'ECluch 1v1',
             videoLink: 'TvEksPZuIak',
@@ -39,7 +39,7 @@ const state = {
             id: 2,
             levelName: 'Level 2',
             levelId: 'beratsolmaz',
-            levelLock: true,  //false: lock true: unlock
+            levelLock: false,  //false: lock true: unlock
             showStatus: true,  //true: display
             videoName: 'BCluch 1v1',
             videoLink: '-Hy9at7y8Eo',
