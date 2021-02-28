@@ -3,35 +3,72 @@ const state = {
         {
             id: 1,
             levelName: 'Level 1',
-            levelId: '%rtewtzfgdgsgfhs',
+            levelId: 'emresolmnaaz',
             levelLock: false,  //false: lock true: unlock
             showStatus: true,  //true: display
-            videoName: 'Cluch 1v1',
+            videoName: 'ECluch 1v1',
             videoLink: 'TvEksPZuIak',
-            videoTime:
-            videoOption: {
-                correctOption: 'valorank_bronz1',
-                wrongOptionFirst: 'valorank_demir3',
-                wrongOptionSecond: 'valorank_gumus1',
-                wrongOptionThird: '',
-                wrongOptionFourth: 'valorank_altin2',
-            }
+            videoOption: [
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Altın 2',
+                    optionRank: 'valorank_altin1.png',
+                    correctStatus: false,
+                },
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Valorant',
+                    optionRank: 'rank_valorant.png',
+                    correctStatus: false,
+                },
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Olumsuz 2',
+                    optionRank: 'valorank_olumsuz2.png',
+                    correctStatus: false,
+                },
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Platin 1',
+                    optionRank: 'valorank_platin1.png',
+                    correctStatus: true,
+                },
+            ],
         },
         {
             id: 2,
             levelName: 'Level 2',
-            levelId: '%rtewtzfgdgsgfhs',
+            levelId: 'beratsolmaz',
             levelLock: true,  //false: lock true: unlock
             showStatus: true,  //true: display
-            videoName: 'Cluch 1v1',
-            videoLink: 'TvEksPZuIak',
-            videoOption: {
-                correctOption: 'valorank_bronz1',
-                wrongOptionFirst: 'valorank_demir3',
-                wrongOptionSecond: 'valorank_gumus1',
-                wrongOptionThird: '',
-                wrongOptionFourth: 'valorank_altin2',
-            }
+            videoName: 'BCluch 1v1',
+            videoLink: '-Hy9at7y8Eo',
+            videoOption: [
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Altın 2',
+                    optionRank: 'valorank_altin1.png',
+                    correctStatus: true,
+                },
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Gumus 3',
+                    optionRank: 'valorank_gumus1.png',
+                    correctStatus: false,
+                },
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Bronz 1',
+                    optionRank: 'valorank_bronz1.png',
+                    correctStatus: false,
+                },
+                {
+                    optionId: 1,
+                    optionName: 'Valorant Platin 1',
+                    optionRank: 'valorank_platin1.png',
+                    correctStatus: false,
+                },
+            ],
         },
     ],
 };

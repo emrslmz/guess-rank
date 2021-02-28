@@ -4,7 +4,7 @@
       <div class=" d-flex justify-content-center">
         <div class="d-flex justify-content-center align-items-center col-12 player-valorant-card">
           <div class="youtube d-flex justify-content-center align-items-center col-12" v-if="showVideo">
-            <youtube width="300%" height="550px" :video-id="videoId" :player-vars="playerVars" @playing="playing"></youtube>
+            <youtube width="300%" height="550px" :video-id="getValorantVideo.videoLink" :player-vars="playerVars" @playing="playing"></youtube>
           </div>
           <div class="d-flex justify-content-center align-items-center col-12 text-white" v-else>
             <div class="text-center">
@@ -17,13 +17,13 @@
       </div>
       <div class="player-valorant-rank-card d-flex align-items-center justify-content-center">
         <div class="d-flex text-white" v-if="!showRankSelection">
-          <h6>You can choose soon. {{ getValorantVideo.id }}</h6>
+          <h6>You can choose soon.</h6>
         </div>
         <div class="d-flex text-white" v-if="showRankSelection">
-          <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_altin1.png');" title="valorant_iron1" alt="valorant_iron1"></div>
-          <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz2.png');" title="valorant_iron2" alt="valorant_iron2"></div>
-          <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_bronz3.png');" title="valorant_iron3" alt="valorant_iron3"></div>
 
+          <div v-for="(option, index) in getValorantVideo.videoOption" :key="index">
+            <div class="rank-picture" :style="{ 'background-image': 'url(/assets/images/ranks/' + option.optionRank + ')' }" :title="option.optionName" :alt="option.optionName"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@ export default {
         'getValorantLevel',
     ]),
     getValorantVideo() {
-      return this.getValorantLevel.find(a => a.id = this.$route.params.id);
+      return this.getValorantLevel.find(a => a.levelId === this.$route.params.id);
     }
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
     countDownSelection() {
       setInterval(() => {
         this.showRankSelection = true;
-      }, 30000);
+      }, 3000);
     }
   },
   created() {

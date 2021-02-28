@@ -14,7 +14,10 @@
            <div class="row text-dark">
              <div class="col-4" v-for="(level, index) in getValorantLevel" :key="index">
                  <div class="level-box">
-                   <router-link :to="{
+                   <router-link
+                       :disabled="level.levelLock"
+                       :event="level.levelLock ? 'click' : ''"
+                       :to="{
                        name: 'PlayerValorant',
                        params: { id: level.levelId }}">
                         <i class="fas fa-unlock text-lightgreen" v-if="level.levelLock"></i>
