@@ -3,10 +3,11 @@ export default [{
     meta: {
         title: 'Home',
     },
-    name: 'HomePageDashboard',
+    name: 'AdminPageDashboard',
     component: () => import('@/modules/admin/views/Admin.vue'),
     children: [{
         path: 'home',
+        name: 'AdminHome',
         meta: {
             title: 'Main',
         },

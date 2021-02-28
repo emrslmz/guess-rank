@@ -9,7 +9,7 @@
           <div class="d-flex justify-content-center align-items-center col-12 text-white" v-else>
             <div class="text-center">
               <h3>{{ videoReadyTime }}</h3>
-              <h6>Video will start soon, wait a little {{levelVideoId}}
+              <h6>Video will start soon, wait a little
               </h6>
             </div>
           </div>
@@ -17,7 +17,7 @@
       </div>
       <div class="player-valorant-rank-card d-flex align-items-center justify-content-center">
         <div class="d-flex text-white" v-if="!showRankSelection">
-          <h6>You can choose soon.</h6>
+          <h6>You can choose soon. {{ getValorantVideo.id }}</h6>
         </div>
         <div class="d-flex text-white" v-if="showRankSelection">
           <div class="rank-picture" style="background-image: url('/assets/images/ranks/valorank_altin1.png');" title="valorant_iron1" alt="valorant_iron1"></div>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -41,6 +43,14 @@ export default {
       videoReadyTime: 6,
       showVideo: false,
       showRankSelection: false,
+    }
+  },
+  computed: {
+    ...mapGetters([
+        'getValorantLevel',
+    ]),
+    getValorantVideo() {
+      return this.getValorantLevel.find(a => a.id = this.$route.params.id);
     }
   },
   methods: {
