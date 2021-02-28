@@ -1,7 +1,7 @@
 export default [{
-    path: '/login-register',
-    name: 'LoginRegister',
-    component: () => import('@/modules/login-register/views/LoginRegister.vue'),
+    path: '/profile',
+    name: 'UserProfile',
+    component: () => import('@/modules/main/profile/views/UserProfile.vue'),
     // children: [
     //     {
     //         path: 'sign-in-up',

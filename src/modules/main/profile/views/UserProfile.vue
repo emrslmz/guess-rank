@@ -7,7 +7,7 @@
 
 
 <script>
-import Profiles from '@/modules/profile/components/Profiles.vue';
+import Profiles from '@/modules/main/profile/components/Profiles.vue';
 
 export default {
   name: 'UserProfile',

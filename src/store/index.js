@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 
-import Play from '@/modules/play/store';
+import Play from '@/modules/main/play/store';
 
 Vue.use(Vuex);
 

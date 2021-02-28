@@ -73,7 +73,7 @@
                 </div>
               <div>
                 <div class="d-flex justify-content-start align-items-center">
-                  <div class="profile-picture ml-5 mx-4" style="background-image: url('/assets/images/img/images.jpg');"></div>
+                  <div class="profile-picture ml-5 mx-4" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
 
                   <div>
                     <label for="upload-picture">
@@ -189,15 +189,15 @@ export default {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.profile-picture {
-  background-position: center;
-  /*background-attachment: fixed;*/
-  background-repeat: no-repeat;
-  background-size: 80px;
-  width: 80px;
-  height: 80px;
-  border-radius: 150px;
-}
+  .profile-picture {
+    background-position: center;
+    /*background-attachment: fixed;*/
+    background-repeat: no-repeat;
+    background-size: 80px;
+    width: 80px;
+    height: 80px;
+    border-radius: 150px;
+  }
 
 .noti-card {
   background-color: white;

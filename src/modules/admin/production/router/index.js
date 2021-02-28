@@ -4,14 +4,14 @@ export default [{
         title: 'Home',
     },
     name: 'AdminPageDashboard',
-    component: () => import('@/modules/admin/views/Admin.vue'),
+    component: () => import('@/modules/admin/production/views/Admin.vue'),
     children: [{
         path: 'home',
         name: 'AdminHome',
         meta: {
             title: 'Main',
         },
-        component: () => import('@/modules/admin/components/AdminHome.vue'),
+        component: () => import('@/modules/admin/production/components/AdminHome.vue'),
     },
     ]
 }];

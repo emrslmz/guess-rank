@@ -49,7 +49,7 @@ export default {
     };
   },
   components: {
-    PlaySelectGame: () => import('@/modules/play/components/stable/PlaySelectGame.vue'),
+    PlaySelectGame: () => import('@/modules/main/play/components/stable/PlaySelectGame.vue'),
   }
 }
 </script>

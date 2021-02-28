@@ -1,5 +1,5 @@
-import Home from '@/modules/home/router';
-import Admin from '@/modules/admin/router';
+import Home from '@/modules/main/home/router';
+import Admin from '@/modules/admin/production/router';
 
 export default [{
     path: '/',

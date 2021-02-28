@@ -11,29 +11,43 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-xl-flex justify-content-between">
 
+          <div class="d-flex align-items-center mb-2">
             <router-link to="/category">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-play-circle"></i> Play</button>
               </div>
             </router-link>
+          </div>
 
-
-            <div class="w-100">
-              <router-link to="/login-register">
-                <div class="header-button mx-2 my-2">
-                  <button class="btn btn-sm"><i class="far fa-play-circle"></i> Register Login</button>
-                </div>
-              </router-link>
-            </div>
-
-            <router-link to="/profile">
+          <div class="d-flex align-items-center mb-2">
+            <router-link to="/category">
               <div class="header-button mx-2 my-2">
-                <button class="btn btn-sm"><i class="fas fa-user-circle"></i> Profile</button>
+                <button class="btn btn-sm"><i class="fas fa-shopping-cart"></i> Shop</button>
               </div>
             </router-link>
           </div>
 
+
+          <div class="d-flex align-items-center mb-2">
+            <router-link to="/login-register">
+              <div class="header-button mx-2 my-2">
+                <button class="btn btn-sm"><i class="far fa-play-circle"></i> Register Login</button>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="d-flex align-items-center mb-2">
+            <router-link to="/profile">
+              <div class="header-button mx-2 my-2">
+                <button class="btn btn-sm">Profile</button>
+              </div>
+            </router-link>
+            <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
+          </div>
+
+
         </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -52,7 +66,7 @@
 }
 
 .header-button button:hover {
-  background-color: #3c88df;
+  background-color: #48c965;
   color: white;
   border-radius: 10px;
   font-weight: bold;
@@ -60,11 +74,21 @@
 }
 
 .router-link-active button {
-  background-color: #3c88df;
+  background-color: #48c965;
   color: white;
   border-radius: 10px;
   font-weight: bold;
   transition: 0.4s;
+}
+
+.profile-picture {
+  background-position: center;
+  /*background-attachment: fixed;*/
+  background-repeat: no-repeat;
+  background-size: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 150px;
 }
 
 </style>

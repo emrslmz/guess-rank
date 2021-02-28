@@ -1,7 +1,7 @@
 export default [{
     path: '/category',
     name: 'Play',
-    component: () => import('@/modules/play/views/Play.vue'),
+    component: () => import('@/modules/main/play/views/Play.vue'),
     children: [
         {
             path: '/category/valorant',
@@ -9,7 +9,7 @@ export default [{
             meta: {
                 title: 'Play Valorant',
             },
-            component: () => import('@/modules/play/components/stable/selected/PlayValorant.vue'),
+            component: () => import('@/modules/main/play/components/stable/selected/PlayValorant.vue'),
         },
         {
             path: '/category/valorant/play/:id',
@@ -17,7 +17,7 @@ export default [{
             meta: {
                 title: 'Player Valorant',
             },
-            component: () => import('@/modules/play/components/stable/play/PlayerValorant.vue'),
+            component: () => import('@/modules/main/play/components/stable/play/PlayerValorant.vue'),
         },
     ]
 }];
