@@ -1,7 +1,7 @@
 export default [{
     path: '/profile',
     name: 'UserProfile',
-    component: () => import('@/modules/main/profile/views/UserProfile.vue'),
+    component: () => import('@/modules/main/profiles/profile/views/UserProfile.vue'),
     // children: [
     //     {
     //         path: 'sign-in-up',

@@ -102,7 +102,6 @@ export default {
 .select-game-card a {
   text-decoration: none;
 }
-
 .daily-bonus-card {
   background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
 }

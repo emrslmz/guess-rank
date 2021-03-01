@@ -9,7 +9,7 @@
 
       <div class="collapse navbar-collapse px-3" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto"></div>
-        <div class="d-xl-flex justify-content-between">
+        <div class="d-md-flex justify-content-between align-items-center">
 
           <div class="d-flex align-items-center mb-2">
             <router-link to="/category">
@@ -39,16 +39,17 @@
 
           <div class="d-flex align-items-center mb-2">
             <div class="dropdown header-button mx-2 my-2">
-              <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Profile
+              <button class="btn btn-sm dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile {{ getProfileRightCard}}
               </button>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
                 <router-link to="/profile">
-                  <button class="dropdown-item btn btn-sm"><i class="far fa-user-circle"></i> Profile</button>
+                  <span class="dropdown-item btn btn-sm"><i class="far fa-user-circle"></i> Profile</span>
                 </router-link>
-                <button class="dropdown-item btn btn-sm" type="button"><i class="fas fa-cog"></i> Setting</button>
-                <button class="dropdown-item btn btn-sm" type="button"><i class="fas fa-shopping-bag"></i> My basket</button>
-                <button class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</button>
+                <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-cog"></i> Setting</span>
+                <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-users"></i>  Reference</span>
+                <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-shopping-bag"></i> My basket</span>
+                <span class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</span>
               </div>
             </div>
             <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
@@ -59,16 +60,25 @@
           <div class="d-flex align-items-center mb-2">
             <div class="header-balance mx-1 my-2">
                Balance: 5000<i class="fas fa-lira-sign"></i>
+              <br>
+                <small>Buy <i class="fas fa-plus-circle"></i></small>
             </div>
           </div>
 
-
-          </div>
+        </div>
       </div>
     </nav>
   </div>
 </header>
 </template>
+
+<script>
+
+export default {
+ name: 'TheHeaderHome',
+
+};
+</script>
 
 
 <style scoped>
@@ -80,6 +90,7 @@
   font-weight: bold;
   transition: 0.4s;
   min-width: 100px;
+  text-decoration: none;
 }
 
 .header-button button:hover {
@@ -90,12 +101,61 @@
   transition: 0.4s;
 }
 
-.router-link-active button {
+.header-button span {
+  background-color: white;
+  color: #343A40;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+  min-width: 100px;
+  text-decoration: none;
+}
+
+.header-button a {
+  text-decoration: none;
+}
+
+.header-button span:hover {
   background-color: #48c965;
   color: white;
   border-radius: 10px;
   font-weight: bold;
   transition: 0.4s;
+  text-decoration: none;
+}
+
+.show button {
+  background-color: #48c965;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.show button:after {
+  background-color: #48c965;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.router-link-active span button {
+  background-color: #48c965;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+  text-decoration: none;
+}
+
+.router-link-active span {
+  background-color: #48c965;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+  text-decoration: none;
 }
 
 .profile-picture {
