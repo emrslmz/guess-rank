@@ -5,36 +5,49 @@
     <div class="d-flex row justify-content-between align-items-center">
 
       <div class="col-12 col-xl-5 mb-3">
-          <div class="profile-left">
+          <div class="profile-left p-2">
+           <div class="d-flex justify-content-start">
+             <div class="profile-button mr-1">
+               <button class="btn btn-sm" @click="rightCard = 2"><i class="fas fa-cog"></i> Settsings</button>
+             </div>
+             <div class="profile-button mr-1">
+               <button class="btn btn-sm" @click="rightCard = 3"><i class="fas fa-users"></i> Reference</button>
+             </div>
+           </div>
             <!--PROFILE-HEADER-->
-            <div class="d-flex justify-content-between align-items-end">
-              <div class="px-4 pt-3">
-                <div class="profile-picture" style="background-image: url('/assets/images/img/images.jpg');"></div>
+            <div class="d-flex justify-content-between align-items-center px-4 pt-3">
+              <div>
+                <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
               </div>
-               <div class="d-flex justify-content-around">
-                <div class="d-flex flex-column">
-                 <div>
-                   <small><strong>emrslmz</strong></small>
-                   <div class="d-flex justify-content-start align-items-center profile-rosette">
-                     <i class="fas fa-user-shield text-dark"></i>
-                     <i class="fas fa-pizza-slice text-danger"></i>
-                     <i class="fas fa-puzzle-piece text-lightgray"></i>
-                     <i class="fas fa-crosshairs text-info"></i>
-                   </div>
-                 </div>
-                 <div class="d-flex justify-content-start">
-                   <div class="profile-button mr-1">
-                     <button class="btn btn-sm" @click="rightCard = 2"><i class="fas fa-cog"></i> Settings</button>
-                   </div>
-                   <div class="profile-button mr-1">
-                     <button class="btn btn-sm" @click="rightCard = 3"><i class="fas fa-users"></i> Reference</button>
-                   </div>
-                 </div>
-                </div>
-                 <div class="profile-level pr-4">
-                  <h2>18</h2>
-                 </div>
-               </div>
+              <div class="d-flex flex-column">
+               <b>eustay</b>
+                <b>Balance: 5000<i class="fas fa-lira-sign"></i></b>
+              </div>
+              <div class="d-flex flex-column align-items-center">
+                <strong>19</strong>
+                <small style="font-size: 12px;">level</small>
+              </div>
+<!--               <div class="d-flex justify-content-around">-->
+<!--                <div class="d-flex flex-column">-->
+<!--                 <div>-->
+<!--                   <small><strong>emrslmz</strong></small>-->
+<!--&lt;!&ndash;                   <div class="d-flex justify-content-start align-items-center profile-rosette">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <i class="fas fa-user-shield text-dark"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <i class="fas fa-pizza-slice text-danger"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <i class="fas fa-puzzle-piece text-lightgray"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <i class="fas fa-crosshairs text-info"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                   </div>&ndash;&gt;-->
+<!--                 </div>-->
+
+<!--                 <div class="profile-level pr-4">-->
+<!--                  <h2>18</h2>-->
+<!--                 </div>-->
+<!--               </div>-->
+            </div>
+            <div class="mt-2" align="center">
+              <div class="progress" style="width: 300px">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><b>651/2000</b></div>
+              </div>
             </div>
             <hr>
             <!--/PROFILE-HEADER-->
@@ -189,15 +202,15 @@ export default {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-  .profile-picture {
-    background-position: center;
-    /*background-attachment: fixed;*/
-    background-repeat: no-repeat;
-    background-size: 80px;
-    width: 80px;
-    height: 80px;
-    border-radius: 150px;
-  }
+.profile-picture {
+  background-position: center;
+  /*background-attachment: fixed;*/
+  background-repeat: no-repeat;
+  background-size: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 150px;
+}
 
 .noti-card {
   background-color: white;

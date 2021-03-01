@@ -36,17 +36,34 @@
             </router-link>
           </div>
 
+
           <div class="d-flex align-items-center mb-2">
-            <router-link to="/profile">
-              <div class="header-button mx-2 my-2">
-                <button class="btn btn-sm">Profile</button>
+            <div class="dropdown header-button mx-2 my-2">
+              <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                <router-link to="/profile">
+                  <button class="dropdown-item btn btn-sm"><i class="far fa-user-circle"></i> Profile</button>
+                </router-link>
+                <button class="dropdown-item btn btn-sm" type="button"><i class="fas fa-cog"></i> Setting</button>
+                <button class="dropdown-item btn btn-sm" type="button"><i class="fas fa-shopping-bag"></i> My basket</button>
+                <button class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</button>
               </div>
-            </router-link>
+            </div>
             <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
+
           </div>
 
 
-        </div>
+          <div class="d-flex align-items-center mb-2">
+            <div class="header-balance mx-1 my-2">
+               Balance: 5000<i class="fas fa-lira-sign"></i>
+            </div>
+          </div>
+
+
+          </div>
       </div>
     </nav>
   </div>
@@ -89,6 +106,11 @@
   width: 50px;
   height: 50px;
   border-radius: 150px;
+}
+
+.header-balance  {
+  font-size: small;
+  font-weight: bold;
 }
 
 </style>
