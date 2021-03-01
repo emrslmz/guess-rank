@@ -5,13 +5,14 @@
     <div class="d-flex row justify-content-between align-items-center">
 
       <div class="col-12 col-xl-5 mb-3">
-          <div class="profile-left p-2">
+        {{getProfileRightCard}}
+        <div class="profile-left p-2">
            <div class="d-flex justify-content-start">
              <div class="profile-button mr-1">
-               <button class="btn btn-sm" @click="rightCard = 2"><i class="fas fa-cog"></i> Settsings</button>
+               <button class="btn btn-sm" @click="openSettingCardRightProfile"><i class="fas fa-cog"></i> Setting</button>
              </div>
              <div class="profile-button mr-1">
-               <button class="btn btn-sm" @click="rightCard = 3"><i class="fas fa-users"></i> Reference</button>
+               <button class="btn btn-sm" @click="openReferenceCardRightProfile"><i class="fas fa-users"></i> Reference</button>
              </div>
            </div>
             <!--PROFILE-HEADER-->
@@ -19,7 +20,7 @@
               <div>
                 <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
               </div>
-              <div class="d-flex flex-column">
+              <div class="d-flex flex-column pr-5 mr-5">
                <b>eustay</b>
                 <b>Balance: 5000<i class="fas fa-lira-sign"></i></b>
               </div>
@@ -27,22 +28,6 @@
                 <strong>19</strong>
                 <small style="font-size: 12px;">level</small>
               </div>
-<!--               <div class="d-flex justify-content-around">-->
-<!--                <div class="d-flex flex-column">-->
-<!--                 <div>-->
-<!--                   <small><strong>emrslmz</strong></small>-->
-<!--&lt;!&ndash;                   <div class="d-flex justify-content-start align-items-center profile-rosette">&ndash;&gt;-->
-<!--&lt;!&ndash;                     <i class="fas fa-user-shield text-dark"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                     <i class="fas fa-pizza-slice text-danger"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                     <i class="fas fa-puzzle-piece text-lightgray"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                     <i class="fas fa-crosshairs text-info"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                   </div>&ndash;&gt;-->
-<!--                 </div>-->
-
-<!--                 <div class="profile-level pr-4">-->
-<!--                  <h2>18</h2>-->
-<!--                 </div>-->
-<!--               </div>-->
             </div>
             <div class="mt-2" align="center">
               <div class="progress" style="width: 300px">
@@ -77,13 +62,13 @@
       <div class="col-12 col-xl-7 d-xl-flex justify-content-around mb-3">
 
           <div class="profile-right d-flex justify-content-center align-items-center">
-            <div class="right-card-clear" v-if="rightCard === 1">
+            <div class="right-card-clear" v-if="getProfileRightCard === 1">
               <small>You can use the buttons on the left side.</small>
             </div>
-            <div class="setting-card" v-else-if="rightCard === 2">
-                <div class="text-center py-2">
-                  <h3>Setting</h3>
-                </div>
+            <div class="setting-card" v-else-if="getProfileRightCard === 2">
+              <div class="text-center py-2">
+                <h3>Setting</h3>
+              </div>
               <div>
                 <div class="d-flex justify-content-start align-items-center">
                   <div class="profile-picture ml-5 mx-4" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
@@ -148,7 +133,7 @@
               </div>
             </div>
 
-            <div class="reference-card" v-else-if="rightCard === 3">
+            <div class="reference-card" v-else-if="getProfileRightCard === 3">
               <div class="text-center py-2">
                 <h3>References</h3>
                 <small>You can get free balances and gifts by inviting your friends!</small>
@@ -174,12 +159,25 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
   name: 'Profiles',
-  data() {
-    return {
-      rightCard: 1,
-    };
+  computed: {
+    ...mapGetters([
+        'getProfileRightCard',
+    ]),
+  },
+  methods: {
+    ...mapMutations([
+        'openSettingCardRightProfile',
+        'openReferenceCardRightProfile'
+    ]),
+    // openCard() {
+    //     this.$router.replace({
+    //     hash: 'setting'
+    //   });
+    // }
   },
 };
 </script>
