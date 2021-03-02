@@ -10,12 +10,10 @@
      <!--/CSGO-->
 
     <!--VALORANT-->
-       <div class="select-game-card valorant-card h-100 d-flex justify-content-between align-items-center text-white">
-           <div class="play-pictures" style="background-image: url('/assets/images/img/play-valorant-jett.png');"></div>
-<!--         <router-link to="/valorant">-->
-           <div class="text-opacity mr-4" @click="selectedGame(1)"><h2> Valorant</h2></div>
-<!--         </router-link>-->
-       </div>
+     <div class="select-game-card valorant-card h-100 d-flex justify-content-between align-items-center text-white">
+       <div class="play-pictures" style="background-image: url('/assets/images/img/play-valorant-jett.png');"></div>
+       <div class="text-opacity mr-4" @click="selectedGame(1)"><h2> Valorant</h2></div>
+     </div>
      <!--/VALORANT-->
      <!--CSGO-->
      <div class="select-game-card csgo-card h-100 d-flex justify-content-between align-items-center text-white">

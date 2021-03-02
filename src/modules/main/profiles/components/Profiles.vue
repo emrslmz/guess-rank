@@ -7,14 +7,14 @@
       <div class="col-12 col-xl-5 mb-3">
         {{getProfileRightCard}}
         <div class="profile-left p-2">
-           <div class="d-flex justify-content-start">
-             <div class="profile-button mr-1">
-               <button class="btn btn-sm" @click="openSettingCardRightProfile"><i class="fas fa-cog"></i> Setting</button>
-             </div>
-             <div class="profile-button mr-1">
-               <button class="btn btn-sm" @click="openReferenceCardRightProfile"><i class="fas fa-users"></i> Reference</button>
-             </div>
-           </div>
+<!--           <div class="d-flex justify-content-start">-->
+<!--             <div class="profile-button mr-1">-->
+<!--               <button class="btn btn-sm" ><i class="fas fa-cog"></i> Setting</button>-->
+<!--             </div>-->
+<!--             <div class="profile-button mr-1">-->
+<!--               <button class="btn btn-sm" ><i class="fas fa-users"></i> Reference</button>-->
+<!--             </div>-->
+<!--           </div>-->
             <!--PROFILE-HEADER-->
             <div class="d-flex justify-content-between align-items-center px-4 pt-3">
               <div>
@@ -65,73 +65,7 @@
             <div class="right-card-clear" v-if="getProfileRightCard === 1">
               <small>You can use the buttons on the left side.</small>
             </div>
-            <div class="setting-card" v-else-if="getProfileRightCard === 2">
-              <div class="text-center py-2">
-                <h3>Setting</h3>
-              </div>
-              <div>
-                <div class="d-flex justify-content-start align-items-center">
-                  <div class="profile-picture ml-5 mx-4" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
 
-                  <div>
-                    <label for="upload-picture">
-                      Change/upload your avatar
-                      <br>
-                      <input type="file" id="upload-picture" />
-                    </label>
-                  </div>
-
-                </div>
-                <div class="d-flex justify-content-center pt-2">
-
-                  <div class="d-flex justify-content-center align-items-center py-2 px-3">
-                    <div class="setting-icon d-flex align-items-center">
-                      <i class="far fa-id-card"></i>
-                    </div>
-                    <input class="setting-input" placeholder="Your Name" type="text" />
-                  </div>
-
-                  <div class="d-flex justify-content-center align-items-center py-2 px-3">
-                    <div class="setting-icon d-flex align-items-center">
-                      <i class="far fa-envelope"></i>
-                    </div>
-                    <input class="setting-input" placeholder="Your e-mail" type="email" />
-                  </div>
-
-                </div>
-
-               <div class="d-flex justify-content-center">
-
-                 <div class="d-flex justify-content-center align-items-center py-2 px-3">
-                   <div class="setting-icon d-flex align-items-center">
-                     <i class="far fa-user"></i>
-                   </div>
-                   <input class="setting-input" placeholder="Your Username" type="text" />
-                 </div>
-
-                 <div class="d-flex justify-content-center align-items-center py-2 px-3">
-                   <div class="setting-icon d-flex align-items-center">
-                     <i class="fas fa-key"></i>
-                   </div>
-                   <input class="setting-input" placeholder="Password" type="password" />
-                 </div>
-
-               </div>
-
-                <div class="d-flex justify-content-around">
-                 <div>
-                   <h6><i class="fas fa-globe-europe"></i> Country: Turkey</h6>
-                 </div>
-                  <div>
-                    <h6><i class="fas fa-birthday-cake"></i> Birthyear: 1963</h6>
-                  </div>
-                </div>
-                <div class="text-right save-button pt-5">
-                  <button class="btn btn-sm">Save</button>
-                </div>
-
-              </div>
-            </div>
 
             <div class="reference-card" v-else-if="getProfileRightCard === 3">
               <div class="text-center py-2">
@@ -159,20 +93,9 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
-
 export default {
   name: 'Profiles',
-  computed: {
-    ...mapGetters([
-        'getProfileRightCard',
-    ]),
-  },
   methods: {
-    ...mapMutations([
-        'openSettingCardRightProfile',
-        'openReferenceCardRightProfile'
-    ]),
     // openCard() {
     //     this.$router.replace({
     //     hash: 'setting'
@@ -241,38 +164,4 @@ export default {
   font-weight: bold;
   transition: 0.4s;
 }
-
-.setting-input {
-  height: 40px;
-  border-radius: 0 8px 8px 0;
-  border: none;
-  background-color: #e9e9e9;
-  outline:none
-}
-
-.setting-icon {
-  height: 40px;
-  background-color: #e9e9e9;
-  border: none;
-  width: 30px;
-  padding: 0 30px 0 10px;
-  border-radius: 8px 0 0 8px;
-}
-
-
-
-.save-button button {
-  border-radius: 10px;
-  background-color: #20D489;
-  color: white;
-  font-weight: bold;
-  min-width: 100px;
-}
-
-.save-button button:hover {
-  background-color: #28ffa7;
-  font-weight: bold;
-  color: white;
-}
-
 </style>

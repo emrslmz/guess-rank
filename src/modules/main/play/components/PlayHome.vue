@@ -5,7 +5,7 @@
     <div class="top-banner"></div>
      <div class="container d-flex justify-content-center">
        <div class="col-12 col-xl-4">
-         <play-select-game
+         <select-game
              @selectedGame="selectedGame=$event" />
        </div>
        <div class="col-12 col-xl-8 my-3 my-xl-auto ">
@@ -49,7 +49,7 @@ export default {
     };
   },
   components: {
-    PlaySelectGame: () => import('@/modules/main/play/components/stable/PlaySelectGame.vue'),
+    SelectGame: () => import('@/modules/main/play/components/stable/SelectGame.vue'),
   }
 }
 </script>

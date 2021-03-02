@@ -1,6 +1,7 @@
+
 export default [{
     path: '/category',
-    name: 'Play',
+    name: 'Category',
     component: () => import('@/modules/main/play/views/Play.vue'),
     children: [
         {
