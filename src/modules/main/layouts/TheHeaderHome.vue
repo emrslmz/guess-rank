@@ -20,7 +20,7 @@
           </div>
 
           <div class="d-flex align-items-center mb-2">
-            <router-link to="/category">
+            <router-link to="/cdsadategory">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="fas fa-shopping-cart"></i> Shop</button>
               </div>
@@ -40,13 +40,15 @@
           <div class="d-flex align-items-center mb-2">
             <div class="dropdown header-button mx-2 my-2">
               <button class="btn btn-sm dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Profile {{ getProfileRightCard}}
+                Profile
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-                <router-link to="/profile">
+                <router-link to="/profiles">
                   <span class="dropdown-item btn btn-sm"><i class="far fa-user-circle"></i> Profile</span>
                 </router-link>
-                <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-cog"></i> Setting</span>
+                <router-link to="/profile/setting">
+                  <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-cog"></i> Setting</span>
+                </router-link>
                 <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-users"></i>  Reference</span>
                 <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-shopping-bag"></i> My basket</span>
                 <span class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</span>

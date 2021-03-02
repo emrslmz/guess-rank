@@ -1,18 +1,16 @@
 <template>
   <div>
+    <quick-menu-profile />
    <router-view />
-    <profiles />
   </div>
 </template>
 
 
 <script>
-import Profiles from '@/modules/main/profiles/profile/components/Profiles.vue';
-
 export default {
   name: 'UserProfile',
   components: {
-    Profiles
+    QuickMenuProfile: () => import('@/modules/main/profiles/layouts/QuickMenuProfile.vue'),
   }
 }
 </script>

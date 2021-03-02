@@ -1,4 +1,4 @@
-import Profile from '@/modules/main/profiles/profile/router';
+import Profile from '@/modules/main/profiles/router';
 import Play from '@/modules/main/play/router';
 import LoginRegister from '@/modules/main/login-register/router/';
 

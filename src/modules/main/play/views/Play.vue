@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view />
-    <play-home v-if="$route.name === 'Play'" />
+    <play-home v-if="$route.name === 'Category'" />
   </div>
 </template>
 
@@ -9,9 +9,8 @@
 import PlayHome from '@/modules/main/play/components/PlayHome.vue';
 
 export default {
-  name: 'Play',
   components: {
-    PlayHome
-  }
-}
+    PlayHome,
+  },
+};
 </script>
