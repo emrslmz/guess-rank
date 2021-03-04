@@ -2,7 +2,6 @@
   <div class="body">
     <div class="container" v-if="this.$route.name !== 'AdminPage'">
       <the-header-admin />
-      <the-sidebar-admin />
     </div>
    <div>
      <router-view />
@@ -12,9 +11,9 @@
 
 <script>
 export default {
+  name: 'AdminPage',
   components: {
     TheHeaderAdmin: () => import('@/modules/admin/production/layouts/TheHeaderAdmin.vue'),
-    TheSidebarAdmin: () => import('@/modules/admin/production/layouts/TheSidebarAdmin.vue'),
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
   <div>
-    ana sayfa
+    <router-view />
   </div>
 </template>
