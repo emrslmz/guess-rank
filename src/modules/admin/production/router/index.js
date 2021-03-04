@@ -3,15 +3,15 @@ export default [{
     meta: {
         title: 'Home',
     },
-    name: 'AdminPageDashboard',
+    name: 'AdminPage',
     component: () => import('@/modules/admin/production/views/Admin.vue'),
     children: [{
-        path: 'home',
+        path: '/admin/home',
         name: 'AdminHome',
         meta: {
             title: 'Main',
         },
-        component: () => import('@/modules/admin/production/components/AdminHome.vue'),
-    },
+        component: () => import('@/modules/admin/production/components/main/AdminHome.vue'),
+        },
     ]
 }];
