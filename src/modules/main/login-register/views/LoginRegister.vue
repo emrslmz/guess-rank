@@ -16,13 +16,13 @@
                   <div class="login-icon d-flex align-items-center">
                     <i class="far fa-user"></i>
                   </div>
-                  <input class="login-input" placeholder="email" v-model="loginData.email" type="text" />
+                  <input class="login-input" placeholder="email" v-model="getLoginRegisterData.loginData.email" type="text" />
                 </div>
                 <div class="d-flex justify-content-center align-items-center py-2">
                   <div class="login-icon d-flex align-items-center">
                     <i class="fas fa-key"></i>
                   </div>
-                  <input class="login-input" placeholder="Password" v-model="loginData.password" type="text" />
+                  <input class="login-input" placeholder="Password" v-model="getLoginRegisterData.loginData.password" type="text" />
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <div class="d-xl-flex align-items-center">
@@ -34,7 +34,7 @@
                   </div>
                 </div>
                 <div class="text-center submit-contact-us-button">
-                  <button class="btn btn-sm" @click="login()">Login</button>
+                  <button class="btn btn-sm" @click="userLogin(getLoginRegisterData.loginData)">Login</button>
                 </div>
                 <div class="text-center">
                   <div><small>Don't have an account? <a href="#" @click="registerCard = true">Register</a></small></div>
@@ -55,14 +55,14 @@
                   <div class="register-icon d-flex align-items-center">
                     <i class="far fa-id-card"></i>
                   </div>
-                  <input class="register-input" placeholder="Your name, surname" v-model="registerData.name" type="text" />
+                  <input class="register-input" placeholder="Your name, surname" v-model="getLoginRegisterData.registerData.name" type="text" />
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center py-2">
                   <div class="register-icon d-flex align-items-center">
                     <i class="far fa-envelope"></i>
                   </div>
-                  <input class="register-input" placeholder="Your e-mail" v-model="registerData.email"  type="email" />
+                  <input class="register-input" placeholder="Your e-mail" v-model="getLoginRegisterData.registerData.email"  type="email" />
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center py-2">
@@ -315,7 +315,7 @@
                   <div class="register-icon d-flex align-items-center">
                     <i class="fas fa-key"></i>
                   </div>
-                  <input class="register-input" placeholder="Password"  v-model="registerData.password"  type="text" />
+                  <input class="register-input" placeholder="Password"  v-model="getLoginRegisterData.registerData.password"  type="text" />
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <div class="d-xl-flex align-items-center">
@@ -327,7 +327,7 @@
                   </div>
                 </div>
                 <div class="text-center submit-contact-us-button">
-                  <button class="btn btn-sm" @click="register()">Register</button>
+                  <button class="btn btn-sm" @click="userRegister(getLoginRegisterData.registerData)">Register</button>
                 </div>
                 <div class="text-center">
                   <div><small>I already <a href="#" @click="registerCard = false">have an account </a></small></div>
@@ -341,52 +341,30 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Start',
   data() {
     return {
       registerCard: false,
-      loginData: {
-        email: null,
-        password: null,
-      },
-      registerData: {
-        name: null,
-        email: null,
-        password: null,
-      },
     }
+  },
+  computed: {
+    ...mapGetters([
+        'getLoginRegisterData',
+    ]),
   },
   methods: {
-    register() {
-      axios
-      .post('https://guess-what-rank-api.herokuapp.com/api/register', {
-        name: this.registerData.name,
-        email: this.registerData.email,
-        password: this.registerData.password,
-        password_confirmation: this.registerData.password,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-    },
-    login() {
-      axios
-      .post('https://guess-what-rank-api.herokuapp.com/api/login', {
-        email: this.loginData.email,
-        password: this.loginData.password,
-      })
-      .then((response) => {
-        localStorage.setItem("access_token", response.data.result.data.access_token);
-        console.log(response)
-        console.log(localStorage.getItem('access_token'));
-        this.$router.push({name: 'Category'})
-      })
-    }
+    ...mapActions([
+        'userRegister',
+        'userLogin',
+    ]),
   },
-}
+  watch: {
+
+  },
+};
 </script>
 
 
