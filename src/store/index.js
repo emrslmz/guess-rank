@@ -5,6 +5,8 @@ import General from '@/store/dashboard/index';
 import Play from '@/modules/main/play/store';
 import LoginRegister from '@/modules/main/login-register/store/index';
 
+import AddedUsers from '@/modules/admin/users/store/added-user';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -12,5 +14,6 @@ export default new Vuex.Store({
         General,
         Play,
         LoginRegister,
+        AddedUsers
     },
 });
