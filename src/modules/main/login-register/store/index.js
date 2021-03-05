@@ -19,6 +19,9 @@ const state = {
 const getters = {
     getLoginRegisterData(state) {
         return state.loginRegister;
+    },
+    isLogged() {
+        return !!localStorage.getItem('access_token');
     }
 };
 const mutations = {

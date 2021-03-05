@@ -25,11 +25,15 @@
                 <i class="fas fa-user-cog"></i> Users
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-                <router-link to="/admin/items">
+                <router-link to="/admin/user/users">
                   <span class="dropdown-item btn btn-sm"><i class="fas fa-users"></i> All Users</span>
                 </router-link>
-                <span class="dropdown-item btn btn-sm"><i class="fas fa-user-plus"></i> Add Users</span>
-                <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-user-shield"></i> Admins</span>
+                <router-link to="/admin/user/add-user">
+                  <span class="dropdown-item btn btn-sm"><i class="fas fa-user-plus"></i> Add Users</span>
+                </router-link>
+                <router-link to="/admin/user/admins">
+                  <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-user-shield"></i> Admins</span>
+                </router-link>
               </div>
             </div>
           </div>
