@@ -14,11 +14,17 @@
 }
 
 
+
 .text-decoration {
     text-decoration: none;
 }
 .mouse-click {
     cursor: pointer;
+}
+
+.text-spacing5 {
+    letter-spacing: 5px;
+    font-weight: bold;
 }
 
 
@@ -33,21 +39,6 @@
     transition: 0.2s;
 }
 
-
-/*PROFILE, SETTING BUTTON*/
-.save-button button {
-    border-radius: 10px;
-    background-color: #20D489;
-    color: white;
-    font-weight: bold;
-    min-width: 100px;
-}
-
-.save-button button:hover {
-    background-color: #28ffa7;
-    font-weight: bold;
-    color: white;
-}
 
 
 

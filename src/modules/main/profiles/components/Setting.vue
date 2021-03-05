@@ -104,4 +104,21 @@
   height: 80px;
   border-radius: 150px;
 }
+
+
+/*PROFILE, SETTING BUTTON*/
+.save-button button {
+  border-radius: 10px;
+  background-color: #20D489;
+  color: white;
+  font-weight: bold;
+  min-width: 100px;
+}
+
+.save-button button:hover {
+  background-color: #28ffa7;
+  font-weight: bold;
+  color: white;
+}
+
 </style>
