@@ -60,7 +60,9 @@
       <tbody>
       <tr v-for="(user, index) in getUsersData.usersData.reverse()" :key="index">
         <th>{{ index+1 }}</th>
-        <td><div class="profile-picture-small" style="background-image: url('/assets/images/img/profile-picture.svg');"></div></td>
+        <td>
+          <div class="profile-picture-small" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
+        </td>
         <td>{{ user.name }}</td>
         <td>{{ user.created_at }}</td>
         <td>
@@ -84,7 +86,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Total Users:
+            Total Added Items:
           </div>
           <div class="modal-footer added-user-button">
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
