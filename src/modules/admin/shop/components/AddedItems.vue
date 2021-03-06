@@ -21,22 +21,22 @@
   </div>
 
   <div class="d-xl-flex">
-    <div class="col-12 col-xl-3">
-    <div class="d-flex flex-column text-right">
+    <div class="col-12 col-xl-3 mb-5">
+    <div class="d-flex flex-xl-column justify-content-center text-xl-right">
       <div class="item-category-button">
-        <button class="btn btn-sm mx-1">CS:GO <i class="fas fa-arrow-circle-right"></i></button>
+        <button class="btn btn-sm">CS:GO <i class="fas fa-arrow-circle-right"></i></button>
       </div>
       <div class="item-category-button">
-        <button class="btn btn-sm mx-1">Valorant <i class="fas fa-arrow-circle-right"></i></button>
+        <button class="btn btn-sm">Valorant <i class="fas fa-arrow-circle-right"></i></button>
       </div>
     </div>
     </div>
 
-    <div class="col-12 col-xl-9 row all-item-box" v-if="!showTable">
+    <div class="col-12 col-xl-9 row d-flex justify-content-center all-item-box" v-if="!showTable">
       <div class="col-12 col-xl-3 card-item">
         <small><strong>Field Tested | -0.1254</strong></small>
        <div class="d-flex justify-content-center">
-         <div class="profile-picture" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>
+         <div class="item-picture" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>
        </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
@@ -55,7 +55,7 @@
       <div class="col-12 col-md-6 col-xl-3 card-item">
         <small><strong>Factory New | -0.0024</strong></small>
         <div class="d-flex justify-content-center">
-          <div class="profile-picture" style="background-image: url('/assets/images/items/csgo/glock_poppy.png');"></div>
+          <div class="item-picture" style="background-image: url('/assets/images/items/csgo/glock_poppy.png');"></div>
         </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
@@ -74,7 +74,7 @@
       <div class="col-12 col-md-6 col-xl-3 card-item">
         <small><strong>Field Tested | -0.3054</strong></small>
         <div class="d-flex justify-content-center">
-          <div class="profile-picture" style="background-image: url('/assets/images/items/csgo/m4a4_magnesium.png');"></div>
+          <div class="item-picture" style="background-image: url('/assets/images/items/csgo/m4a4_magnesium.png');"></div>
         </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
@@ -93,7 +93,7 @@
       <div class="col-12 col-md-6 col-xl-3 card-item">
         <small><strong>Sticker</strong></small>
         <div class="d-flex justify-content-center">
-          <div class="profile-picture" style="background-image: url('/assets/images/items/csgo/sticker_france.png');"></div>
+          <div class="item-picture" style="background-image: url('/assets/images/items/csgo/sticker_france.png');"></div>
         </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
@@ -113,7 +113,7 @@
       <div class="col-12 col-md-6 col-xl-3 card-item">
         <small><strong><i class="fas fa-coins"></i></strong></small>
         <div class="d-flex justify-content-center">
-          <div class="profile-picture" style="background-image: url('/assets/images/items/valorant/valorant_vp.png');"></div>
+          <div class="item-picture" style="background-image: url('/assets/images/items/valorant/valorant_vp.png');"></div>
         </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
@@ -134,7 +134,7 @@
       <div class="col-12 col-md-6 col-xl-3 card-item">
         <small><strong><i class="fas fa-coins"></i></strong></small>
         <div class="d-flex justify-content-center">
-          <div class="profile-picture" style="background-image: url('/assets/images/items/valorant/valorant_vp.png');"></div>
+          <div class="item-picture" style="background-image: url('/assets/images/items/valorant/valorant_vp.png');"></div>
         </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
@@ -155,7 +155,7 @@
       <div class="col-12 col-md-6 col-xl-3 card-item">
         <small><strong><i class="fas fa-coins"></i></strong></small>
         <div class="d-flex justify-content-center">
-          <div class="profile-picture" style="background-image: url('/assets/images/items/valorant/valorant_vp.png');"></div>
+          <div class="item-picture" style="background-image: url('/assets/images/items/valorant/valorant_vp.png');"></div>
         </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
@@ -174,25 +174,31 @@
       <!--/ITEM HERE-->
     </div>
 
-   <div class="col-12 col-xl-9 row all-item-box"  v-else>
+   <div class="col-12 col-xl-9 row d-flex flex-row justify-content-center all-item-box"  v-else>
      <table class="table table-striped table-dark">
        <thead>
        <tr>
          <th><i class="fab fa-slack-hash"></i></th>
          <th>Views</th>
-         <th>Name</th>
-         <th>Price</th>
-         <th class="text-right pr-5">Edit-View-Delete</th>
+         <th>gun/game</th>
+         <th><i class="fas fa-palette"></i> Skin</th>
+         <th><i class="fas fa-bullseye"></i> Float</th>
+         <th> Price</th>
+         <th class="pr-5">Edit-View-Delete</th>
        </tr>
        </thead>
        <tbody>
        <tr>
-         <th>sdadsa</th>
-         <td><div class="profile-picture-small" style="background-image: url('/assets/images/img/profile-picture.svg');"></div></td>
-         <td>{321321</td>
-         <td>312312</td>
+         <th>1</th>
          <td>
-           <div class="look-profile text-right pr-5">
+        <div class="item-picture-small" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>
+         </td>
+         <td>Glock18</td>
+         <td>Poppy</td>
+         <td>factory name</td>
+         <td><strong><i class="fas fa-coins text-warning"></i>  21,65 <small>+12%</small></strong></td>
+         <td>
+           <div class="added-item-button pr-3">
              <button class="btn btn-sm">Edit</button>
            </div>
          </td>
@@ -226,6 +232,7 @@ export default {
   max-height: 260px;
   border-radius: 12px;
   border: 1px solid white;
+  padding-bottom: 10px;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
@@ -238,7 +245,7 @@ export default {
   overflow-y: scroll;
 }
 
-.profile-picture {
+.item-picture {
   background-position: center;
   /*background-attachment: fixed;*/
   background-repeat: no-repeat;
@@ -248,13 +255,23 @@ export default {
   transition: 0.5s;
 }
 
-.profile-picture:hover {
+.item-picture:hover {
   background-position: center;
   /*background-attachment: fixed;*/
   background-repeat: no-repeat;
   background-size: 130px;
   width: 130px;
   height: 110px;
+  transition: 0.5s;
+}
+
+.item-picture-small {
+  background-position: center;
+  /*background-attachment: fixed;*/
+  background-repeat: no-repeat;
+  background-size: 60px;
+  width: 60px;
+  height: 30px;
   transition: 0.5s;
 }
 
