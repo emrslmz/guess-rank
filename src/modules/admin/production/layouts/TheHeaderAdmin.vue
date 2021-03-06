@@ -13,7 +13,7 @@
           <div class="d-flex align-items-center mb-2">
             <router-link to="/admin/home">
               <div class="header-button mx-2 my-2">
-                <button class="btn btn-sm"><i class="far fa-play-circle"></i> Home</button>
+                <button class="btn btn-sm"><i class="fas fa-home"></i> Home</button>
               </div>
             </router-link>
           </div>
