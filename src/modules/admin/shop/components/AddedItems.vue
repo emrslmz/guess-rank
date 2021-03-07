@@ -9,7 +9,7 @@
           <button class="btn btn-sm mx-1" @click="showTable = !showTable">Table view</button>
         </div>
         <div class="added-item-button">
-          <button class="btn btn-sm mx-1" data-toggle="modal" data-target="#exampleModalCenter">General Status</button>
+          <button class="btn btn-sm mx-1" data-toggle="modal" data-target="#generalStatusAddedItems">General Status</button>
         </div>
         <div class="added-item-button">
           <router-link to="/admin/shop/items-add">
@@ -207,6 +207,27 @@
      </table>
    </div>
 <!--Out of stock!-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="generalStatusAddedItems" tabindex="-1" role="dialog" aria-labelledby="generalStatusAddedItems" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-columns"></i> General Status</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Total Added Items:
+          </div>
+          <div class="modal-footer added-item-button">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
 
   </div>
 </div>

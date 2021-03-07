@@ -8,7 +8,7 @@
         <button class="btn btn-sm mx-1" @click="showTable = !showTable">Table view</button>
       </div>
        <div class="added-user-button">
-         <button class="btn btn-sm mx-1" data-toggle="modal" data-target="#exampleModalCenter">General Status</button>
+         <button class="btn btn-sm mx-1" data-toggle="modal" data-target="#addedStatusUsers">General Status</button>
        </div>
         <div class="added-user-button">
          <router-link to="/admin/user/add-user">
@@ -76,7 +76,7 @@
   </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="addedStatusUsers" tabindex="-1" role="dialog" aria-labelledby="addedStatusUsers" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
