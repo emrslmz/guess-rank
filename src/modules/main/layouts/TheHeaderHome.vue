@@ -12,6 +12,14 @@
         <div class="d-md-flex justify-content-between align-items-center">
 
           <div class="d-flex align-items-center mb-2">
+            <router-link to="/start">
+              <div class="header-button mx-2 my-2">
+                <button class="btn btn-sm"><i class="fas fa-home"></i> Home</button>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="d-flex align-items-center mb-2">
             <router-link to="/category">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-play-circle"></i> Play</button>
