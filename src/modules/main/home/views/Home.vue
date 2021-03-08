@@ -32,8 +32,9 @@ export default {
   /* SUPERR */
 
 
-  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-  background-blend-mode: multiply,multiply;
+  /*background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);*/
+  /*background-blend-mode: multiply,multiply;*/
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 
   /*background-image: linear-gradient(to right, #868f96 0%, #596164 100%);*/
 }
