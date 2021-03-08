@@ -159,6 +159,16 @@ export default {
   text-decoration: none;
 }
 
+.router-link-active button {
+  background-color: #48c965;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+  text-decoration: none;
+}
+
+
 .router-link-active span {
   background-color: #48c965;
   color: white;
