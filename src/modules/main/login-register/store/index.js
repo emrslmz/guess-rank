@@ -16,7 +16,7 @@ const state = {
             email: null,
             password: null,
             password_confirmation: null,
-            country_id: null,
+            country_id: 1,
         },
         loginRegisterStatus: null,
     },
@@ -49,7 +49,7 @@ const actions = {
                 email: registerData.email,
                 password: registerData.password,
                 password_confirmation: registerData.password_confirmation,
-                country_id: 1,
+                country_id: registerData.country_id,
             })
             .then((response) => {
                 // this.errorMessage('Successdsadsadfully added!');

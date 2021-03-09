@@ -23,8 +23,8 @@
             <div class="d-flex justify-content-start align-items-center">
               <div class="profile-picture m-3" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
               <div class="d-flex flex-column">
-                <strong>{{ user.name }}</strong>
-                <strong>{{ user.email }}</strong>
+                <strong>{{ user.name }} {{ user.surname }}</strong>
+                <strong>{{ user.email }} | {{ user.country_id }}</strong>
                 <strong class="text-lightgreen" v-if="user.email_verified_at">Account approved <i class="far fa-check-circle"></i></strong>
                 <strong class="text-lightgreen" v-else>Account not approved <i class="far fa-times-circle"></i></strong>
                 <div class="d-flex justify-content-start align-items-center pt-2">
