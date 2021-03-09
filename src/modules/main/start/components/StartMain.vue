@@ -53,17 +53,6 @@
 }
 
 
-
-.news-carousel-pic {
-  background-position: revert;
-  background-repeat: no-repeat;
-  background-size: 600px;
-  transition: 0.5s;
-  width: 100%;
-  height: 300px;
-  border-radius: 20px;
-}
-
 .green-success-button button {
   border-radius: 10px;
   background-color: #20D489;
@@ -77,4 +66,5 @@
   font-weight: bold;
   color: white;
 }
+
 </style>
