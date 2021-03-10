@@ -36,7 +36,7 @@
           </div>
 
 
-          <div class="d-flex align-items-center mb-2" v-if="!!!getUserData.userData  && !isLogged">
+          <div class="d-flex align-items-center mb-2" v-if="!!!getUserData.userData">
             <router-link to="/login-register">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-hand-spock"></i> Sign in/up</button>
