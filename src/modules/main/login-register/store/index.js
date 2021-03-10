@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import router from '@/router';
 
 
@@ -70,6 +71,7 @@ const actions = {
                 // console.log(localStorage.getItem('access_token'));
 
                 router.push({path: '/category'});
+
                 commit('USER_LOGIN_STATUS', response.status);
             })
     }

@@ -11,20 +11,24 @@
 import TheHeaderHome from '@/modules/main/layouts/TheHeaderHome.vue';
 import TheFooterHome from '@/modules/main/layouts/TheFooterHome.vue';
 import HomePage from '@/modules/main/home/components/HomePage.vue';
-import axios from 'axios';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'MainApp',
+  computed: {
+    ...mapGetters([
+        'isLogged',
+        'getUserData',
+    ]),
+  },
+  methods: {
+    ...mapActions([
+        'userMe',
+    ])
+  },
   created() {
-    axios
-    .get('https://guess-what-rank-api.herokuapp.com/api/me', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-      }
-    }).catch((error) => {
-      this.$router.push('/login-register');
-      console.log(error);
-    })
+    this.userMe();
+
   },
   components: {
     TheHeaderHome,

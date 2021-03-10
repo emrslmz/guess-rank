@@ -5,7 +5,7 @@
     <div class="d-flex row justify-content-between align-items-center">
 
       <div class="col-12 col-xl-5 mb-3">
-        {{getProfileRightCard}}
+
         <div class="profile-left p-2">
 <!--           <div class="d-flex justify-content-start">-->
 <!--             <div class="profile-button mr-1">-->
@@ -62,12 +62,12 @@
       <div class="col-12 col-xl-7 d-xl-flex justify-content-around mb-3">
 
           <div class="profile-right d-flex justify-content-center align-items-center">
-            <div class="right-card-clear" v-if="getProfileRightCard === 1">
+            <div class="right-card-clear">
               <small>You can use the buttons on the left side.</small>
             </div>
 
 
-            <div class="reference-card" v-else-if="getProfileRightCard === 3">
+            <div class="reference-card">
               <div class="text-center py-2">
                 <h3>References</h3>
                 <small>You can get free balances and gifts by inviting your friends!</small>

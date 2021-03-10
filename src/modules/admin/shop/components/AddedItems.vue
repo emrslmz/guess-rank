@@ -234,14 +234,27 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'AddedItems',
   data() {
     return {
       showTable: '',
     }
-  }
-}
+  },
+  methods: {
+    getItems() {
+      axios
+          .get('https://guess-what-rank-api.herokuapp.com/api/items')
+          .then((response) => {
+            console.log(response)
+          })
+    }
+  },
+  created() {
+    this.getItems();
+  },
+};
 </script>
 
 
