@@ -1,158 +1,22 @@
 <template>
-  <div class="container pt-5" align="center">
-    <div class="setting-card col-6" >
-      <div class="text-center py-2">
-        <i class="fas fa-user-cog"></i>
-        <h3>Setting</h3>
-      </div>
-        <div class="d-xl-flex justify-content-center align-items-center">
-          <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
-
-          <div class="text-xl-left">
-            <label for="upload-picture">
-              Change/upload your avatar
-              <br>
-              <input type="file" id="upload-picture" />
-            </label>
-          </div>
-
-        </div>
-
-        <div class="d-xl-flex justify-content-between pt-4">
-
-
-          <div class="d-flex flex-column justify-content-center pb-3">
-            <div class="text-left px-2">
-              <small>Name</small>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="custom-input-icon">
-                <i class="far fa-user"></i>
-              </div>
-              <div>
-                <input class="custom-input" :value="getUserData.userData.name" placeholder="Your Name" type="text">
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex flex-column justify-content-center center pb-3">
-            <div class="text-left px-2">
-              <small>Surname</small>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="custom-input-icon">
-                <i class="far fa-user"></i>
-              </div>
-              <div>
-                <input class="custom-input" :value="getUserData.userData.surname" placeholder="Your Surname" type="text">
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-
-        <div class="d-xl-flex justify-content-between">
-
-          <div class="d-flex flex-column justify-content-center pb-4">
-            <div class="text-left px-2">
-              <small>Email</small>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="custom-input-icon">
-                <i class="fas fa-at"></i>
-              </div>
-              <div>
-                <input class="custom-input" :value="getUserData.userData.email" placeholder="Your e-mail" type="email">
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex flex-column justify-content-center pb-4">
-            <div class="text-left px-2">
-              <small>Username</small>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="custom-input-icon">
-                <i class="fas fa-user-tag"></i>
-              </div>
-              <div>
-                <input class="custom-input" :value="getUserData.userData.username" placeholder="Your Username" type="text">
-              </div>
-            </div>
-          </div>
-        </div>
-      <div class="d-flex justify-content-end align-items-end">
-        <div class="green-success-button">
-          <button class="btn btn-sm mx-2">Edit Social Media</button>
-          <button class="btn btn-sm mx-2">Edit Password</button>
+  <div class="container pt-5">
+    <div class="d-flex justify-content-around align-items-start">
+      <div class="setting-card-left">
+        <div class="list-group list-group-flush">
+          <h4 class="list-group-item text-center py-4">Settings {{ settingCard }}</h4>
+          <button class="btn" :class="settingCard === 1 ? 'button-active' : 'left-button'" @click="settingCard = 1"><i class="fas fa-user-cog"></i> General</button>
+          <button class="btn" :class="settingCard === 2 ? 'button-active' : 'left-button'"  @click="settingCard = 2"><i class="far fa-image"></i> Change/Upload Avatar</button>
+          <button class="btn" :class="settingCard === 3 ? 'button-active' : 'left-button'"  @click="settingCard = 3"><i class="fas fa-key"></i> Password</button>
+          <button class="btn" :class="settingCard === 4 ? 'button-active' : 'left-button'"  @click="settingCard = 4"><i class="fas fa-icons"></i> Social Setting</button>
         </div>
       </div>
-      <hr>
-      <div class="d-xl-flex flex-column justify-content-center" v-if="showChangePassword">
-
-        <div class="d-flex flex-column justify-content-center align-items-center">
-          <div>
-            <small>Your current password</small>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="custom-input-icon">
-              <i class="fas fa-key"></i>
-            </div>
-            <div>
-              <input class="custom-input" :value="getUserData.userData.password" placeholder="Your Username" type="text">
-            </div>
-          </div>
-        </div>
-
-        <div class="d-flex flex-column justify-content-center align-items-center">
-          <div>
-            <small>Your new password</small>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="custom-input-icon">
-              <i class="far fa-user"></i>
-            </div>
-            <div>
-              <input class="custom-input" :value="getUserData.userData.password" placeholder="New password" type="text">
-            </div>
-          </div>
-        </div>
-
-        <div class="d-flex flex-column justify-content-center align-items-center pb-4">
-          <div>
-            <small>Repeating your new password</small>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="custom-input-icon">
-              <i class="far fa-user"></i>
-            </div>
-            <div>
-              <input class="custom-input" :value="getUserData.userData.password" placeholder="New password confirm" type="text">
-            </div>
-          </div>
-        </div>
-
+      <div class="setting-card-right d-flex justify-content-center align-items-center col-8">
+          <general-setting v-if="settingCard === 1" />
+          <change-avatar v-if="settingCard === 2" />
+          <change-password v-if="settingCard === 3" />
       </div>
-
-        <div class="d-md-flex justify-content-around">
-          <div class="text-left">
-            <h6><i class="fas fa-globe-europe"></i> Country: {{ getUserData.userData.country_id }}</h6>
-            <h6><i class="fas fa-birthday-cake"></i> Birthyear: {{ getUserData.userData.birthday_at }}</h6>
-          </div>
-          <div class="text-left">
-            <h6><i class="fas fa-calendar-alt"></i> Registration time: {{ getUserData.userData.created_at }}</h6>
-            <h6><i class="fas fa-history"></i> Issue date: {{ getUserData.userData.created_at }}</h6>
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-center align-items-end">
-          <div class="green-success-button ">
-            <button class="btn w-50">Save</button>
-          </div>
-        </div>
-
     </div>
+
   </div>
 </template>
 
@@ -163,8 +27,13 @@ export default {
   name: 'ProfileSetting',
   data() {
     return {
-      showChangePassword: false,
+      settingCard: 1,
     };
+  },
+  components: {
+    GeneralSetting: () => import('@/modules/main/profiles/components/setting/GeneralSettingCard.vue'),
+    ChangeAvatar: () => import('@/modules/main/profiles/components/setting/ChangeAvatar.vue'),
+    ChangePassword: () => import('@/modules/main/profiles/components/setting/ChangePassword.vue'),
   },
   computed: {
     ...mapGetters([
@@ -175,24 +44,24 @@ export default {
 </script>
 
 <style scoped>
-.setting-card {
+.setting-card-left {
   width: auto;
-  min-width: 300px;
+  min-width: 200px;
+  min-height: 400px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.setting-card-right {
+  width: auto;
+  min-width: 200px;
   min-height: 600px;
   border-radius: 20px;
   background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.profile-picture {
-  background-position: center;
-  /*background-attachment: fixed;*/
-  background-repeat: no-repeat;
-  background-size: 80px;
-  width: 80px;
-  height: 80px;
-  border-radius: 150px;
-}
 
 .custom-input-icon {
   background-color: white;
@@ -219,6 +88,10 @@ export default {
   box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
+.large-input {
+  max-width: 400px;
+}
+
 .custom-input:focus {
   transition: 0.5s;
   box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 10px 0px, rgba(0, 0, 0, 0.05) 0px 1px 10px 0px;
@@ -238,5 +111,39 @@ export default {
   color: white;
 }
 
+.left-button:nth-of-type(2n) {
+  background-color: #ECECF6;
+}
 
+.left-button {
+  margin: 10px;
+  text-align: left;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0 , 0, 0, 0.05) 0px 1px 1px 0px;
+  transition: 0.5s;
+}
+
+.left-button:hover {
+  background-color: white;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 10px 0px, rgba(0, 0, 0, 0.05) 0px 1px 10px 0px;
+  transition: 0.5s;
+}
+
+.button-active {
+  margin: 10px;
+  text-align: left;
+  cursor: pointer;
+  background-color: #191919;
+  color: white;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  transition: 0.5s;
+}
+
+.button-active:hover {
+  background-color: #2b2b2b;
+  color: white;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 10px 0px, rgba(0, 0, 0, 0.05) 0px 1px 10px 0px;
+  transition: 0.5s;
+}
 </style>
