@@ -16,7 +16,7 @@
              <i class="far fa-user"></i>
            </div>
            <div>
-             <input class="custom-input" :value="getUserData.userData.name" placeholder="Your Name" type="text">
+             <input class="custom-input" v-model="getUserData.userData.name" placeholder="Your Name" type="text">
            </div>
          </div>
        </div>
@@ -30,7 +30,7 @@
              <i class="far fa-user"></i>
            </div>
            <div>
-             <input class="custom-input" :value="getUserData.userData.surname" placeholder="Your Surname" type="text">
+             <input class="custom-input" v-model="getUserData.userData.surname" placeholder="Your Surname" type="text">
            </div>
          </div>
        </div>
@@ -48,7 +48,7 @@
              <i class="fas fa-at"></i>
            </div>
            <div>
-             <input class="custom-input" :value="getUserData.userData.email" placeholder="Your e-mail" type="email">
+             <input class="custom-input" v-model="getUserData.userData.email" placeholder="Your e-mail" type="email">
            </div>
          </div>
        </div>
@@ -62,7 +62,7 @@
              <i class="fas fa-user-tag"></i>
            </div>
            <div>
-             <input class="custom-input" :value="getUserData.userData.username" placeholder="Your Username" type="text">
+             <input class="custom-input" v-model="getUserData.userData.username" placeholder="Your Username" type="text">
            </div>
          </div>
        </div>
@@ -70,7 +70,7 @@
    </div>
     <div class="d-flex justify-content-center">
       <div class="green-success-button">
-        <button class="btn w-50">Save</button>
+        <button class="btn w-50" @click="changeGeneralSetting(getUserData.userData)">Save</button>
       </div>
     </div>
   </div>
@@ -79,14 +79,41 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import axios from 'axios';
 
 export default {
   name: 'GeneralSettingCard',
+  // data() {
+  //   return {
+  //     generalData: {
+  //       name: null,
+  //       surname: null,
+  //       email: null,
+  //       username: null,
+  //     }
+  //   };
+  // },
   computed: {
     ...mapGetters([
       'getUserData',
     ]),
   },
+  methods: {
+    changeGeneralSetting() {
+      axios
+      .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
+        id: this.getUserData.userData.id,
+        name: this.getUserData.userData.name,
+        surname: this.getUserData.userData.surname,
+        email: this.getUserData.userData.email,
+        username: this.getUserData.userData.username,
+      })
+      .then((response) => {
+        console.log(response);
+
+      })
+    }
+  }
 };
 </script>
 
