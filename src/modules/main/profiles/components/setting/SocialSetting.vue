@@ -2,51 +2,31 @@
   <div>
     <div class="container">
       <div class="text-center">
-        <h3><i class="fas fa-key"></i> Change Your Password</h3>
-        <small>To reset your password, enter your old password and new password twice.</small>
+        <h3><i class="fas fa-cogs"></i> Social and Other</h3>
+        <small>Add or update social media accounts. You can also change other settings here.</small>
       </div>
 
-      <div class="d-flex flex-column justify-content-center align-items-center pt-5">
+      <div class="text-left">
+        <h6><i class="fas fa-globe-europe"></i> Country: {{ getUserData.userData.country_id }}</h6>
+        <h6><i class="fas fa-birthday-cake"></i> Birthyear: {{ getUserData.userData.birthday_at }}</h6>
+        <h6><i class="fas fa-calendar-alt"></i> Registration time: <small>{{ getUserData.userData.created_at }}</small></h6>
+        <h6><i class="fas fa-history"></i> Issue date: <small>{{ getUserData.userData.created_at }}</small></h6>
+      </div>
+
+      <div class="d-flex flex-column justify-content-center align-items-center pb-4">
         <div>
-          <small>Your current password</small>
+          <small>Add Steam profile</small>
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <div class="custom-input-icon">
-            <i class="fas fa-key"></i>
-          </div>
-          <div>
-            <input class="custom-input" :value="getUserData.userData.password" placeholder="Your Username" type="text">
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <div>
-          <small>Your new password</small>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="custom-input-icon">
-            <i class="fas fa-lock"></i>
-          </div>
-          <div>
-            <input class="custom-input" :value="getUserData.userData.password" placeholder="New password" type="text">
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex flex-column justify-content-center align-items-center pb-3">
-        <div>
-          <small>Repeating your new password</small>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="custom-input-icon">
-            <i class="fas fa-lock"></i>
+            <i class="fab fa-steam"></i>
           </div>
           <div>
             <input class="custom-input" :value="getUserData.userData.password" placeholder="New password confirm" type="text">
           </div>
         </div>
       </div>
+        <p>buraya steam sign in ve email doğrulama butonu gelecek</p>
 
       <div class="d-flex justify-content-center">
         <div class="green-success-button">
@@ -54,9 +34,8 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>  
 </template>
-
 
 
 <script>

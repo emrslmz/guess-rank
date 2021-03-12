@@ -12,7 +12,7 @@
                 <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
               </div>
               <div class="d-flex flex-column pr-5 mr-5">
-                <small style="font-size: 8px">{{ getUserData.userData.name }} {{ getUserData.userData.surname }}</small>
+                <small style="font-size: 12px">Welcome, {{ getUserData.userData.name }} {{ getUserData.userData.surname }}</small>
                <b>{{ getUserData.userData.username }}</b>
                 <b>Balance: 5000<i class="fas fa-lira-sign"></i></b>
               </div>
@@ -49,16 +49,10 @@
       <div class="col-12 col-xl-7 d-xl-flex justify-content-around mb-3">
 
           <div class="profile-right d-flex justify-content-center align-items-center">
-<!--            <div class="right-card-clear">-->
-<!--              <small>You can use the buttons on the left side.</small>-->
-<!--            </div>-->
-
-
             <div class="reference-card">
               <div class="text-center py-2">
                <div class="d-flex justify-content-center">
                  <h3>References </h3>
-                 <small> <span class="badge badge-warning">Soon</span></small>
                </div>
                 <small>You can get free balances and gifts by inviting your friends!</small>
               </div>
@@ -78,7 +72,7 @@
                 </div>
               </div>
               <div class="text-center green-success-button">
-                <button class="btn btn w-50">Login</button>
+                <button class="btn btn w-50">Create Code</button>
               </div>
             </div>
 
@@ -176,17 +170,16 @@ export default {
   box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 10px 0px, rgba(0, 0, 0, 0.05) 0px 1px 10px 0px;
 }
 
-
 .green-success-button button {
   border-radius: 10px;
-  background-color: #29bce2;
+  background-color: #20D489;
   color: white;
   font-weight: bold;
-  min-width: 100px;
+  min-width: 120px;
 }
 
 .green-success-button button:hover {
-  background-color: #42c8e9;
+  background-color: #28ffa7;
   font-weight: bold;
   color: white;
 }

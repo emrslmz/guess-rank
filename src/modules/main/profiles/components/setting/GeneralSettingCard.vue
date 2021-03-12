@@ -7,7 +7,7 @@
    <div class="d-flex flex-column justify-content-center align-items-center">
      <div class="d-xl-flex justify-content-around">
 
-       <div class="d-flex flex-column justify-content-center pb-3">
+       <div class="d-flex flex-column justify-content-center pb-3 px-2">
          <div class="text-left px-2">
            <small>Name</small>
          </div>
@@ -21,7 +21,7 @@
          </div>
        </div>
 
-       <div class="d-flex flex-column justify-content-center center pb-3">
+       <div class="d-flex flex-column justify-content-center center pb-3 px-2">
          <div class="text-left px-2">
            <small>Surname</small>
          </div>
@@ -39,7 +39,7 @@
      </div>
      <div class="d-xl-flex justify-content-around">
 
-       <div class="d-flex flex-column justify-content-center pb-3">
+       <div class="d-flex flex-column justify-content-center pb-4 px-2">
          <div class="text-left px-2">
            <small>Email</small>
          </div>
@@ -53,7 +53,7 @@
          </div>
        </div>
 
-       <div class="d-flex flex-column justify-content-center pb-3">
+       <div class="d-flex flex-column justify-content-center pb-4 px-2">
          <div class="text-left px-2">
            <small>Username</small>
          </div>

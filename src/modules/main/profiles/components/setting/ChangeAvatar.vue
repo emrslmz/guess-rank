@@ -14,7 +14,7 @@
         </label>
       </div>
     </div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center pt-4">
       <div class="green-success-button">
         <button class="btn w-50">Save</button>
       </div>
