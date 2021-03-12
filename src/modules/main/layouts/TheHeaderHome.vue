@@ -28,7 +28,7 @@
           </div>
 
           <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData  && isLogged">
-            <router-link to="/cdsadategory">
+            <router-link to="/shop">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="fas fa-shopping-cart"></i> Shop</button>
               </div>

@@ -9,13 +9,13 @@
             <small>We couldn't find the Page you are Looking for :(</small>
           </div>
         </div>
-        <div class="d-flex-justify-content-around pt-4">
-          <router-link to="/">
-            <button class="btn btn-success btn-sm mx-2">Main Page</button>
-          </router-link>
-          <router-link to="/contact-us">
-            <button class="btn btn-dark btn-sm mx-2">Contact Us</button>
-          </router-link>
+
+        <div class="d-flex justify-content-center">
+          <div class="green-success-button">
+            <router-link to="/">
+               <button class="btn btn-sm w-50">Main Page</button>
+            </router-link>
+          </div>
         </div>
       </div>
       <div class="load-area">
@@ -49,8 +49,19 @@
   font-size: 16px;
 }
 
-.btn {
+.green-success-button button {
+  margin-top: 30px;
   border-radius: 10px;
+  background-color: #20D489;
+  color: white;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.green-success-button button:hover {
+  background-color: #28ffa7;
+  font-weight: bold;
+  color: white;
 }
 
 .load-area i {

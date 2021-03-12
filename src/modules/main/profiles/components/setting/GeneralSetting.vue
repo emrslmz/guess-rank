@@ -70,7 +70,7 @@
    </div>
     <div class="d-flex justify-content-center">
       <div class="green-success-button">
-        <button class="btn w-50" @click="changeGeneralSetting(getUserData.userData)">Save</button>
+        <button class="btn w-50" @click="changeGeneralSetting">Save</button>
       </div>
     </div>
   </div>
@@ -102,7 +102,6 @@ export default {
     changeGeneralSetting() {
       axios
       .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
-        id: this.getUserData.userData.id,
         name: this.getUserData.userData.name,
         surname: this.getUserData.userData.surname,
         email: this.getUserData.userData.email,

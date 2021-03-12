@@ -32,7 +32,7 @@ export default {
     };
   },
   components: {
-    GeneralSetting: () => import('@/modules/main/profiles/components/setting/GeneralSettingCard.vue'),
+    GeneralSetting: () => import('@/modules/main/profiles/components/setting/GeneralSetting.vue'),
     ChangeAvatar: () => import('@/modules/main/profiles/components/setting/ChangeAvatar.vue'),
     ChangePassword: () => import('@/modules/main/profiles/components/setting/ChangePassword.vue'),
     SocialSetting: () => import('@/modules/main/profiles/components/setting/SocialSetting.vue'),
