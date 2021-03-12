@@ -1,6 +1,7 @@
 <template>
   <div class="body-home">
     <the-header-home v-if="$route.name !== 'HomePageDashboard' && 'LoginRegister'" />
+    <purchased v-if="$route.name !== 'HomePageDashboard' " />
     <router-view />
     <home-page v-if="$route.name === 'HomePageDashboard'"/>
     <the-footer-home v-if="$route.name !== 'HomePageDashboard'" />
@@ -8,9 +9,6 @@
 </template>
 
 <script>
-import TheHeaderHome from '@/modules/main/layouts/TheHeaderHome.vue';
-import TheFooterHome from '@/modules/main/layouts/TheFooterHome.vue';
-import HomePage from '@/modules/main/home/components/HomePage.vue';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -28,12 +26,12 @@ export default {
   },
   created() {
     this.userMe();
-
   },
   components: {
-    TheHeaderHome,
-    TheFooterHome,
-    HomePage
+    TheHeaderHome: () => import('@/modules/main/layouts/TheHeaderHome.vue'),
+    TheFooterHome: () => import('@/modules/main/layouts/TheFooterHome.vue'),
+    HomePage: () => import('@/modules/main/home/components/HomePage.vue'),
+    Purchased: () => import('@/modules/main/extras/purchased/views/Purchased.vue'),
   }
 }
 </script>
