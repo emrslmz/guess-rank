@@ -1,11 +1,14 @@
 <template>
+<div>
   <div class="body-home">
     <the-header-home v-if="$route.name !== 'HomePageDashboard' && 'LoginRegister'" />
-<!--    <purchased v-if="$route.name !== 'HomePageDashboard' " />-->
+    <!--    <purchased v-if="$route.name !== 'HomePageDashboard' " />-->
     <router-view />
     <home-page v-if="$route.name === 'HomePageDashboard'"/>
-    <the-footer-home v-if="$route.name !== 'HomePageDashboard'" />
   </div>
+  <the-footer-home v-if="$route.name !== 'HomePageDashboard'" />
+
+</div>
 </template>
 
 <script>

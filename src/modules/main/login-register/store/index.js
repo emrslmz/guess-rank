@@ -72,10 +72,10 @@ const actions = {
             .then((response) => {
                 localStorage.setItem("access_token", response.data.result.data.access_token);
                 // console.log(localStorage.getItem('access_token'));
-                showMessage('asa');
+                showMessage('Login successful. Welcome!');
 
 
-                router.push({path: '/category'});
+                router.push({ path: '/start' });
                 commit('USER_LOGIN_STATUS', response.status);
             })
     },

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import router from '@/router';
+import { showMessage } from "@/shared/utils/messages.utils";
 
 const state = {
     userDatas: {
@@ -36,14 +37,15 @@ const actions = {
                 state.userDatas.userDataStatus = response.data.code;
             })
             .catch((error) => {
-            router.push({ path: 'login-register' });
             console.log(error);
-        })
+                router.push({ path: '/login-register' });
+            })
     },
     logout({ commit }) {
         localStorage.removeItem('access_token');
         commit('USER_LOGOUT');
-        router.push({ path: 'login-register' });
+        router.push({ path: '/login-register' });
+        showMessage('The exit is successful. Redirecting...');
     }
     // logoutMe() {
     //         Authorization: `Bearer ${localStorage.removeItem('access_token')}`,

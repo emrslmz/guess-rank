@@ -5,11 +5,10 @@
        <h6> Guess Rank</h6>
       </div>
       <div class="d-flex flex-column">
-        Follow Us!
        <div class="d-flex justify-content-between footer-social">
-         <a href="#"><i class="fab fa-twitter-square"></i></a>
-         <a href="#"><i class="fab fa-instagram"></i></a>
-         <a href="#"><i class="fab fa-facebook-f"></i></a>
+         <a href="#"><i class="fab fa-twitter-square px-2"></i></a>
+         <a href="#"><i class="fab fa-instagram px-2"></i></a>
+         <a href="#"><i class="fab fa-facebook-f px-2"></i></a>
        </div>
       </div>
   </div>
@@ -23,7 +22,7 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 50px;
+  height: 23px;
 }
 .footer-social i {
   color: #d3d3d3;

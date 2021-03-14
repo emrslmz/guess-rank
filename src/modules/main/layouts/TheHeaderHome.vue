@@ -11,10 +11,10 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-md-flex justify-content-between align-items-center">
 
-          <div class="d-flex align-items-center mb-2">
+          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData && isLogged">
             <router-link to="/start">
               <div class="header-button mx-2 my-2">
-                <button class="btn btn-sm"><i class="fas fa-home"></i> Home</button>
+                <button class="btn btn-sm"><i class="fas fa-home"></i> Start</button>
               </div>
             </router-link>
           </div>
@@ -27,7 +27,7 @@
             </router-link>
           </div>
 
-          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData  && isLogged">
+          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData && isLogged">
             <router-link to="/shop">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="fas fa-shopping-cart"></i> Shop</button>
