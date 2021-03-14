@@ -1,7 +1,7 @@
 <template>
   <div class="body-home">
     <the-header-home v-if="$route.name !== 'HomePageDashboard' && 'LoginRegister'" />
-    <purchased v-if="$route.name !== 'HomePageDashboard' " />
+<!--    <purchased v-if="$route.name !== 'HomePageDashboard' " />-->
     <router-view />
     <home-page v-if="$route.name === 'HomePageDashboard'"/>
     <the-footer-home v-if="$route.name !== 'HomePageDashboard'" />
@@ -31,7 +31,7 @@ export default {
     TheHeaderHome: () => import('@/modules/main/layouts/TheHeaderHome.vue'),
     TheFooterHome: () => import('@/modules/main/layouts/TheFooterHome.vue'),
     HomePage: () => import('@/modules/main/home/components/HomePage.vue'),
-    Purchased: () => import('@/modules/main/extras/purchased/views/Purchased.vue'),
+    // Purchased: () => import('@/modules/main/extras/purchased/views/Purchased.vue'),
   }
 }
 </script>
