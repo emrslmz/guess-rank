@@ -101,16 +101,20 @@ export default {
   methods: {
     changeGeneralSetting() {
       axios
-      .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
-        name: this.getUserData.userData.name,
-        surname: this.getUserData.userData.surname,
-        email: this.getUserData.userData.email,
-        username: this.getUserData.userData.username,
-      })
-      .then((response) => {
-        console.log(response);
-
-      })
+        .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
+          name: this.getUserData.userData.name,
+          surname: this.getUserData.userData.surname,
+          email: this.getUserData.userData.email,
+          username: this.getUserData.userData.username,
+        }, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          this.showMessage('asdas');
+        })
     }
   }
 };

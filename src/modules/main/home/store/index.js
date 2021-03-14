@@ -11,6 +11,15 @@ const state = {
 const getters = {
     getUserData(state) {
         return state.userDatas;
+    },
+}
+
+const mutations = {
+    USER_LOGOUT(state) {
+        state.userDatas = {
+            userData: null,
+            userDataStatus: null,
+        }
     }
 }
 
@@ -27,10 +36,15 @@ const actions = {
                 state.userDatas.userDataStatus = response.data.code;
             })
             .catch((error) => {
-            router.push('/login-register');
+            router.push({ path: 'login-register' });
             console.log(error);
         })
     },
+    logout({ commit }) {
+        localStorage.removeItem('access_token');
+        commit('USER_LOGOUT');
+        router.push({ path: 'login-register' });
+    }
     // logoutMe() {
     //         Authorization: `Bearer ${localStorage.removeItem('access_token')}`,
     // }
@@ -39,5 +53,6 @@ const actions = {
 export default {
     state,
     getters,
+    mutations,
     actions
 }

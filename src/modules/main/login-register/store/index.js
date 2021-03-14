@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import router from '@/router';
+import { showMessage } from "@/shared/utils/messages.utils";
 
 
 const state = {
@@ -37,7 +38,8 @@ const mutations = {
     },
     USER_LOGIN_STATUS(state, userLoginStatus) {
         state.loginRegister.loginRegisterStatus = userLoginStatus;
-    }
+    },
+
 };
 
 const actions = {
@@ -53,7 +55,8 @@ const actions = {
                 country_id: 1,
             })
             .then((response) => {
-                // this.errorMessage('Successdsadsadfully added!');
+                // this.showMessage('Successdsadsadfully added!');
+                showMessage('asa');
 
                 const registerStatus = response.status;
                 commit('USER_REGISTER_STATUS', registerStatus);
@@ -69,12 +72,13 @@ const actions = {
             .then((response) => {
                 localStorage.setItem("access_token", response.data.result.data.access_token);
                 // console.log(localStorage.getItem('access_token'));
+                showMessage('asa');
+
 
                 router.push({path: '/category'});
-
                 commit('USER_LOGIN_STATUS', response.status);
             })
-    }
+    },
 };
 
 export default {

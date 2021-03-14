@@ -61,7 +61,7 @@
                 <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-users"></i>  Reference</span>
                 <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-shopping-bag"></i> My basket</span>
                 <span class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</span>
-                <span class="dropdown-item btn btn-sm text-danger" type="button"><i class="fas fa-sign-out-alt "></i> Logout</span>
+                <span class="dropdown-item btn btn-sm text-danger" type="button" @click="runLogout()"><i class="fas fa-sign-out-alt "></i> Logout</span>
               </div>
             </div>
             <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'TheHeaderHome',
@@ -93,6 +93,14 @@ export default {
         'getUserData',
         'isLogged',
     ]),
+  },
+  methods: {
+    ...mapActions([
+        'logout',
+    ]),
+    runLogout() {
+      this.logout();
+    }
   },
 };
 </script>
