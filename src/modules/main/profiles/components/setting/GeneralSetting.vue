@@ -70,7 +70,7 @@
    </div>
     <div class="d-flex justify-content-center">
       <div class="green-success-button">
-        <button class="btn w-50" @click="changeGeneralSetting">Save</button>
+        <button class="btn w-50" @click="changeGeneralSetting()">Save</button>
       </div>
     </div>
   </div>
@@ -79,20 +79,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import axios from 'axios';
+import axios from "axios";
+import {showMessage} from "@/shared/utils/messages.utils";
 
 export default {
   name: 'GeneralSettingCard',
-  // data() {
-  //   return {
-  //     generalData: {
-  //       name: null,
-  //       surname: null,
-  //       email: null,
-  //       username: null,
-  //     }
-  //   };
-  // },
   computed: {
     ...mapGetters([
       'getUserData',
@@ -101,22 +92,22 @@ export default {
   methods: {
     changeGeneralSetting() {
       axios
-        .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
-          name: this.getUserData.userData.name,
-          surname: this.getUserData.userData.surname,
-          email: this.getUserData.userData.email,
-          username: this.getUserData.userData.username,
-        }, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          },
-        })
-        .then((response) => {
-          console.log(response);
-          this.showMessage('asdas');
-        })
+          .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
+            name: this.getUserData.userData.name,
+            surname: this.getUserData.userData.surname,
+            email: this.getUserData.userData.email,
+            username: this.getUserData.userData.username,
+          }, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
+          })
+          .then((response) => {
+            console.log(response);
+            showMessage('Saved')
+          })
     }
-  }
+  },
 };
 </script>
 

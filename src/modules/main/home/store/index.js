@@ -4,7 +4,7 @@ import { showMessage } from "@/shared/utils/messages.utils";
 
 const state = {
     userDatas: {
-        userData: null,
+        userData: [],
         userDataStatus: null,
     }
 }
@@ -47,9 +47,6 @@ const actions = {
         router.push({ path: '/login-register' });
         showMessage('The exit is successful. Redirecting...');
     }
-    // logoutMe() {
-    //         Authorization: `Bearer ${localStorage.removeItem('access_token')}`,
-    // }
 }
 
 export default {

@@ -246,7 +246,11 @@ export default {
   methods: {
     getItems() {
       axios
-          .get('https://guess-what-rank-api.herokuapp.com/api/items')
+          .get('https://guess-what-rank-api.herokuapp.com/api/items', {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
+          })
           .then((response) => {
             console.log(response)
           })

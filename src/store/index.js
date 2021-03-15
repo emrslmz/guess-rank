@@ -5,7 +5,7 @@ import General from '@/store/dashboard/index';
 import Play from '@/modules/main/play/store';
 import LoginRegister from '@/modules/main/login-register/store/index';
 import UserMe from '@/modules/main/home/store/index';
-import UserNCard from '@/modules/main/profiles/store/userNotiCard/';
+import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 
 import AddedUsers from '@/modules/admin/users/store/added-user';
 
@@ -18,6 +18,6 @@ export default new Vuex.Store({
         LoginRegister,
         AddedUsers,
         UserMe,
-        UserNCard,
+        GeneralSetting,
     },
 });
