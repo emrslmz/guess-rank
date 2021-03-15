@@ -18,7 +18,7 @@ const getters = {
 const mutations = {
     USER_LOGOUT(state) {
         state.userDatas = {
-            userData: null,
+            userData: [],
             userDataStatus: null,
         }
     }
@@ -46,7 +46,7 @@ const actions = {
         commit('USER_LOGOUT');
         router.push({ path: '/login-register' });
         showMessage('The exit is successful. Redirecting...');
-    }
+    },
 }
 
 export default {
