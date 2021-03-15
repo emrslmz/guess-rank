@@ -1,21 +1,32 @@
 import axios from 'axios';
 
 const state = {
-getItems: [],
+    shopItems: [],
 }
 
 const getters = {
-
-}
-
-const mutations = {
-    GET_ITEMS_PUSH(state, data) {
-        state.getItems = data;
+    getShopItems(state) {
+        return state.shopItems;
     }
 }
 
-const actions = {
+const mutations = {
 
+}
+
+const actions = {
+    getItems() {
+        axios
+            .get('https://guess-what-rank-api.herokuapp.com/api/items', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            })
+            .then((response) => {
+               state.shopItems = response.data.result.data;
+               console.log(response.data.result.data);
+            })
+    }
 }
 
 export default {
