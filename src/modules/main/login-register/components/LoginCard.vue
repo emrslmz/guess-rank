@@ -4,6 +4,9 @@
       <div>
         <div class="text-center pt-2">
           <h4>Login</h4>
+          <small style="font-size: 9px; color: red" v-if="getLoginRegisterData.loginRegisterStatus === 500"><strong>Your e-mail address or password is incorrect</strong></small>
+          <small style="font-size: 9px; color: green" v-if="getLoginRegisterData.loginRegisterStatus === 200"><strong>Redirecting   <i class="fas fa-circle-notch fa-spin"></i></strong></small>
+
         </div>
         <div class="d-flex justify-content-center align-items-center pb-4">
           <div class="d-flex justify-content-center align-items-center">

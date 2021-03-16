@@ -36,8 +36,8 @@ const mutations = {
     USER_REGISTER_STATUS(state, registerStatus) {
         state.loginRegister.loginRegisterStatus = registerStatus;
     },
-    USER_LOGIN_STATUS(state, userLoginStatus) {
-        state.loginRegister.loginRegisterStatus = userLoginStatus;
+    USER_LOGIN_STATUS(state, status) {
+        state.loginRegister.loginRegisterStatus = status;
     },
 
 };
@@ -55,12 +55,14 @@ const actions = {
                 country_id: 1,
             })
             .then((response) => {
-                // this.showMessage('Successdsadsadfully added!');
-                showMessage('asa');
+                showMessage('Registration Successful!');
 
                 const registerStatus = response.status;
                 commit('USER_REGISTER_STATUS', registerStatus);
-
+            })
+            .catch(() => {
+                showMessage("Login information is incorrect");
+                commit('USER_REGISTER_STATUS', 422);
             })
     },
     userLogin({ commit }, loginData) {
@@ -73,10 +75,13 @@ const actions = {
                 localStorage.setItem("access_token", response.data.result.data.access_token);
                 // console.log(localStorage.getItem('access_token'));
                 showMessage('Login successful. Welcome!');
-
-
+                const status = response.status;
+                commit('USER_LOGIN_STATUS', status);
                 router.push({ path: '/start' });
-                commit('USER_LOGIN_STATUS', response.status);
+            })
+            .catch(() => {
+                showMessage("Login information is incorrect");
+                commit('USER_LOGIN_STATUS', 500);
             })
     },
 };

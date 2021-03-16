@@ -2,8 +2,10 @@
   <div>
     <div class="register-card py-3">
       <div class="text-center pt-2">
-        <h4>Register {{ getLoginRegisterData.loginRegisterStatus }}</h4>
-        <small>We would be <i>happy</i> to see you among us!</small>
+        <h4>Register</h4>
+        <small style="font-size: 9px; color: red" v-if="getLoginRegisterData.loginRegisterStatus === 422"><strong>There is already a registered user with the information you entered</strong></small>
+        <small v-else>We would be <i>happy</i> to see you among us!</small>
+
       </div>
 
       <div class="d-flex justify-content-center align-items-center p-3 ">
