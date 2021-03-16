@@ -70,7 +70,7 @@
    </div>
     <div class="d-flex justify-content-center">
       <div class="green-success-button">
-        <button class="btn w-50" @click="changeGeneralSetting()">Save</button>
+        <button class="btn w-50" @click="changeGeneralSetting(getUserData.userData)">Save</button>
       </div>
     </div>
   </div>

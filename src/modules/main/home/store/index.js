@@ -25,6 +25,7 @@ const mutations = {
 }
 
 const actions = {
+    //LOGGED USER DATA
     userMe() {
         axios
             .get('https://guess-what-rank-api.herokuapp.com/api/me', {
@@ -41,12 +42,31 @@ const actions = {
                 router.push({ path: '/login-register' });
             })
     },
+    //USER LOGOUT
     logout({ commit }) {
         localStorage.removeItem('access_token');
         commit('USER_LOGOUT');
         router.push({ path: '/login-register' });
         showMessage('The exit is successful. Redirecting...');
     },
+    //GENERAL SETTING CHANGE
+    changeGeneralSetting() {
+        axios
+            .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
+                name: state.userDatas.userData.name,
+                surname: state.userDatas.userData.surname,
+                email: state.userDatas.userData.email,
+                username: state.userDatas.userData.username,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            })
+            .then((response) => {
+                console.log(response);
+                showMessage("The changes were saved!")
+            })
+    }
 }
 
 export default {
