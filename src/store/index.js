@@ -9,6 +9,7 @@ import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 
 import AddedUsers from '@/modules/admin/users/store/added-user';
 import AddedItems from "@/modules/admin/shop/store/added-item";
+import ItemEdit from '@/modules/admin/shop/store/item-edit-delete';
 
 Vue.use(Vuex);
 
@@ -21,5 +22,6 @@ export default new Vuex.Store({
         UserMe,
         GeneralSetting,
         AddedItems,
+        ItemEdit,
     },
 });

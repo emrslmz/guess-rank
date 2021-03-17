@@ -17,5 +17,13 @@ export default [{
             },
             component: () => import('@/modules/admin/shop/components/AddItem.vue'),
         },
+        {
+            path: '/admin/shop/items/:id',
+            name: 'ItemsEdit',
+            meta: {
+                title: 'Add Items for Shop',
+            },
+            component: () => import('@/modules/admin/shop/components/stable/ItemEdit.vue'),
+        },
     ]
 }];

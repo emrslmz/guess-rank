@@ -1,21 +1,26 @@
 import axios from 'axios';
 
 const state = {
-    shopItems: [],
+    shopItem: {
+        itemData: [],
+        itemStatus: null,
+    },
 }
 
 const getters = {
     getShopItems(state) {
-        return state.shopItems;
+        return state.shopItem;
     }
 }
 
 const mutations = {
-
+    GET_ITEM_STATUS(state, status) {
+        state.shopItem.itemStatus = status;
+    }
 }
 
 const actions = {
-    getItems() {
+    getItems({ commit }) {
         axios
             .get('https://guess-what-rank-api.herokuapp.com/api/items', {
                 headers: {
@@ -23,8 +28,10 @@ const actions = {
                 },
             })
             .then((response) => {
-               state.shopItems = response.data.result.data;
-               console.log(response.data.result.data);
+               state.shopItem.itemData = response.data.result.data;
+               commit('GET_ITEM_STATUS', response.status);
+
+               console.log(response)
             })
     }
 }

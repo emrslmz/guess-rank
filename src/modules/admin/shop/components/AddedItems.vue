@@ -3,7 +3,6 @@
   <div class="container">
     <div class="text-center py-5">
       <h4 class="text-spacing5">Added Items</h4>
-        <p >{{ item }}</p>
       <small>All added items here</small>
       <div class="d-flex justify-content-center">
         <div class="added-item-button" :class="showTable ? 'added-item-button-active' : ''">
@@ -35,7 +34,7 @@
 
     <div class="col-12 col-xl-9 row d-flex justify-content-center all-item-box" v-if="!showTable">
       <!--ITEM HERE-->
-      <div class="col-12 col-md-6 col-xl-3 card-item" v-for="(item, index) in getShopItems" :key="index">
+      <div class="col-12 col-md-6 col-xl-3 card-item" v-for="(item, index) in getShopItems.itemData" :key="index">
         <div class="d-flex justify-content-between">
           <small><strong>Field Tested | {{ item.discount }}</strong></small>
          <small title="Item Hidden Status"><i class="fas fa-circle" :class="item.is_hidden ? 'text-success' : 'text-danger'"></i></small>
@@ -52,7 +51,9 @@
            <small v-if="item.is_available"><i class="fas fa-bolt text-lightgray"></i></small>
           </div>
           <div class="edit-button d-flex flex-column pt-3">
-            <button class="btn btn-sm">Edit</button>
+           <router-link :to="{ name: 'ItemsEdit', params: { id: item.item_id }} ">
+             <button class="btn btn-sm">Edit</button>
+           </router-link>
           </div>
         </div>
         <!--/Item Description-->
@@ -74,7 +75,7 @@
        </tr>
        </thead>
        <tbody>
-       <tr v-for="(item, index) in getShopItems" :key="index">
+       <tr v-for="(item, index) in getShopItems.itemData" :key="index">
          <th>{{ index+1 }}</th>
          <td>
         <div class="item-picture-small" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>
