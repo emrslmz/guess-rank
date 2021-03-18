@@ -3,29 +3,28 @@
     <div class="container">
       <div class="text-center pt-5">
         <h4 class="text-spacing5">Edit Item</h4>
-        <small>Edit or delete the selected item created_at: (...)
-          game: (...)
-          game_id: (...)
-          item_id: (...)
-          picture: (...)
-          random_key: (...)
-      </small>
-        <div class="green-success-button">
-            <button class="btn btn-sm bg-warning" data-toggle="modal" data-target="#generalStatusAddedItems">Other</button>
-        </div>
+        <small>Edit or delete the selected item.</small>
       </div>
     </div>
 <!--  <p v-for="(item, index) in getEditData" :key="index">{{ item.name }}</p>-->
     <div class="d-flex justify-content-center align-items-center">
-      <div class="d-flex justify-content-center align-items-center col-12 col-xl-6 setting-card-right">
+      <div class="d-flex justify-content-center align-items-center col-12 col-xl-6 edit-item-card">
         <div class="d-xl-flex flex-column justify-content-around">
-<!--          <i class="fas fa-ban"></i>-->
+         <div class="text-center">
+           <small><b>{{ getEditData.random_key}}</b></small>
+         </div>
 
-          <div class="py-3" align="center">
+          <div class="py-2" align="center">
             <div class="item-picture d-flex justify-content-center" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
-            <div class="file-input">
-              <label for="file">Upload File</label>
-              <input type="file" id="file" class="file">
+            <div class="d-flex flex-column pt-2">
+              <label for="upload-picture">
+                <small>Change/upload your avatar</small>
+                <br>
+                <input type="file" id="upload-picture" />
+              </label>
+              <div class="green-success-button">
+                <button class="btn btn-sm w-100">Upload</button>
+              </div>
             </div>
           </div>
 
@@ -72,45 +71,51 @@
             </div>
           </div>
 
-<!--          <div class="d-flex flex-column justify-content-center center pb-3 px-2">-->
-<!--            <div class="text-left px-2">-->
-<!--              <small>Item Hidden Status</small>-->
-<!--            </div>-->
-<!--            <div class="d-flex justify-content-between align-items-center">-->
-<!--              <label for="hiddenStatusInput1">Show-->
-<!--                <input v-model="getEditData.is_hidden" name="hiddenStatus" id="hiddenStatusInput1" :value="true"  placeholder="Item Price" type="radio">-->
-<!--              </label>-->
-<!--              <label for="hiddenStatusInput2">Not Show-->
-<!--                <input v-model="getEditData.is_hidden" name="hiddenStatus" id="hiddenStatusInput2" :value="false"  placeholder="Item Price" type="radio">-->
-<!--              </label>-->
-<!--            </div>-->
-<!--          </div>-->
-
-          <div class="d-flex flex-column justify-content-center center pb-3">
-            <div class="text-center">
-              <small>Item Hidden Status</small>
+          <div class="d-flex flex-column justify-content-center center pb-3 px-2">
+            <div class="text-left px-2">
+              <small>Game  <i class="fas fa-fingerprint"></i> {{ getEditData.game_id}}</small>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-              <span><i class="far fa-eye-slash"></i></span>
-              <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" v-model="getEditData.is_hidden" checked></div>
-              <span><i class="far fa-eye"></i></span>
+              <div class="custom-input-icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <select class="custom-input">
+                <option value="">Counter Strike</option>
+                <option value="">Valorant</option>
+                <option value="">PUBG</option>
+              </select>
             </div>
           </div>
 
-          <div class="d-flex flex-column justify-content-center center pb-3">
-            <div class="text-center">
-              <small>Stock status</small>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <span><i class="far fa-times-circle"></i></span>
-              <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" v-model="getEditData.is_available" checked></div>
-              <span><i class="far fa-check-circle"></i></span>
-            </div>
-          </div>
+         <div class="d-flex justify-content-between">
+           <div class="d-flex flex-column justify-content-center center pb-3">
+             <div class="text-center">
+               <small>Item Hidden Status</small>
+             </div>
+             <div class="d-flex justify-content-center align-items-center">
+               <span><i class="far fa-eye-slash"></i></span>
+               <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" v-model="getEditData.is_hidden"></div>
+               <span><i class="far fa-eye"></i></span>
+             </div>
+           </div>
+
+           <div class="d-flex flex-column justify-content-center center pb-3">
+             <div class="text-center">
+               <small>Stock status</small>
+             </div>
+             <div class="d-flex justify-content-center align-items-center">
+               <span><i class="far fa-times-circle"></i></span>
+               <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" v-model="getEditData.is_available"></div>
+               <span><i class="far fa-check-circle"></i></span>
+             </div>
+           </div>
+         </div>
+          
+          
 
           <div class="d-flex justify-content-center">
             <div class="green-success-button">
-              <button class="btn w-50" @click="changeGeneralSetting(getUserData.userData)">Save</button>
+              <button class="btn w-50" @click="changeItem(getEditData)">Save</button>
             </div>
           </div>
         </div>
@@ -133,7 +138,7 @@
           <div class="d-flex flex-column modal-body">
             <span><b><i class="fas fa-fingerprint"></i> Item Key: </b><i>{{ getEditData.random_key }}</i></span>
             <span><b><i class="far fa-clock"></i> The date the item was added: </b><i>{{ getEditData.created_at }}</i></span>
-            <span><b><i class="fas fa-highlighter"></i> The item was last edited on this date: </b><i v-if="getEditData.created_at !== getEditData.updated_at">{{ getEditData.updated_at }}</i> <small>It has never been edited before!</small></span>
+            <span><b><i class="fas fa-highlighter"></i> The item was last edited on this date: </b><i v-if="getEditData.created_at !== getEditData.updated_at">{{ getEditData.updated_at }}</i> <small v-else>It has never been edited before!</small></span>
           </div>
           <div class="modal-footer added-item-button">
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -158,6 +163,7 @@ export default {
   methods: {
       ...mapActions([
           'getEditItem',
+          'changeItem',
       ])
     },
   created() {
@@ -168,10 +174,11 @@ export default {
 
 
 <style scoped>
-.setting-card-right {
+.edit-item-card {
+  margin-bottom: 100px;
   width: auto;
   min-width: 200px;
-  min-height: 600px;
+  min-height: 700px;
   border-radius: 20px;
   background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -204,7 +211,6 @@ export default {
 }
 
 .green-success-button button {
-  margin-top: 30px;
   border-radius: 10px;
   background-color: #20D489;
   color: white;
@@ -227,31 +233,6 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 150px;
-}
-
-
-.file {
-  opacity: 0;
-  width: 0.1px;
-  height: 0.1px;
-  position: absolute;
-}
-
-.file-input label {
-  width: 200px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
-  justify-content: center;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.5s;
-}
-
-.file-input label:hover {
-  background-image: linear-gradient(120deg, #d6ff7b 0%, #a1f8ad 100%);
-  transition: 0.5s;
 }
 
 
