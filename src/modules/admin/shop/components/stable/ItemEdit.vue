@@ -1,19 +1,20 @@
 <template>
   <div>
     <div class="container">
-      <div class="text-center pt-5">
+      <div class="text-center pt-3">
         <h4 class="text-spacing5">Edit Item</h4>
         <small>Edit or delete the selected item.</small>
       </div>
     </div>
-<!--  <p v-for="(item, index) in getEditData" :key="index">{{ item.name }}</p>-->
+    <div class="green-success-button text-center my-3">
+      <button class="btn btn-sm" data-toggle="modal" data-target="#itemEditModal">General Status</button>
+    </div>
     <div class="d-flex justify-content-center align-items-center">
       <div class="d-flex justify-content-center align-items-center col-12 col-xl-6 edit-item-card">
         <div class="d-xl-flex flex-column justify-content-around">
-         <div class="text-center">
-           <small><b>{{ getEditData.random_key}}</b></small>
-         </div>
-
+           <div class="col-6 text-center">
+             <small><b>{{ getEditData.random_key}}</b></small>
+           </div>
           <div class="py-2" align="center">
             <div class="item-picture d-flex justify-content-center" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
             <div class="d-flex flex-column pt-2">
@@ -126,7 +127,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="generalStatusAddedItems" tabindex="-1" role="dialog" aria-labelledby="generalStatusAddedItems" aria-hidden="true">
+    <div class="modal fade" id="itemEditModal" tabindex="-1" role="dialog" aria-labelledby="generalStatusAddedItems" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -140,8 +141,8 @@
             <span><b><i class="far fa-clock"></i> The date the item was added: </b><i>{{ getEditData.created_at }}</i></span>
             <span><b><i class="fas fa-highlighter"></i> The item was last edited on this date: </b><i v-if="getEditData.created_at !== getEditData.updated_at">{{ getEditData.updated_at }}</i> <small v-else>It has never been edited before!</small></span>
           </div>
-          <div class="modal-footer added-item-button">
-            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <div class="modal-footer green-success-button">
+            <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
