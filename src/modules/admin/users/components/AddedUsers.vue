@@ -152,11 +152,6 @@ export default {
   border-radius: 150px;
 }
 
-.text-spacing5 {
-  letter-spacing: 5px;
-  font-weight: bold;
-}
-
 .look-profile button {
   border-radius: 10px;
   background-color: #20D489;

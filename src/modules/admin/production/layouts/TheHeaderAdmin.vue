@@ -45,22 +45,11 @@
 
           <!--SHOP SETTING-->
           <div class="d-flex align-items-center mb-2">
-            <div class="dropdown header-button mx-2 my-2">
-              <button class="btn btn-sm dropdown-toggle" type="button" id="shopDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-store"></i> Shop Setting
-              </button>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shopDropdown">
-                <router-link to="/admin/shop/items">
-                  <span class="dropdown-item btn btn-sm"><i class="fas fa-store"></i> Products</span>
-                </router-link>
-                <router-link to="/admin/shop/items-add">
-                  <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-plus-circle"></i> Add Item</span>
-                </router-link>
-                <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-users"></i>  Reference</span>
-                <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-shopping-bag"></i> My basket</span>
-                <span class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</span>
+            <router-link to="/admin/shop">
+              <div class="header-button mx-2 my-2">
+                <button class="btn btn-sm"><i class="fas fa-store"></i> Shop</button>
               </div>
-            </div>
+            </router-link>
           </div>
           <!--/SHOP SETTING-->
 
@@ -72,6 +61,10 @@
                 <i class="fas fa-expand"></i> Other Setting
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="otherDropdown">
+                <router-link to="/admin/other">
+                  <span class="dropdown-item btn btn-sm"><i class="fas fa-tachometer-alt"></i> Home</span>
+                </router-link>
+
                 <router-link to="/admin/other/game">
                   <span class="dropdown-item btn btn-sm"><i class="fas fa-gamepad"></i> Game Setting</span>
                 </router-link>
@@ -151,6 +144,15 @@
   border-radius: 10px;
   font-weight: bold;
   transition: 0.4s;
+}
+
+.router-link-active button {
+  background-color: #48c965;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.4s;
+  text-decoration: none;
 }
 
 .router-link-active span button {
