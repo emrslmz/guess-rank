@@ -10,6 +10,7 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-md-flex justify-content-between align-items-center">
 
+          <!--HOME BUTTON-->
           <div class="d-flex align-items-center mb-2">
             <router-link to="/admin/home">
               <div class="header-button mx-2 my-2">
@@ -17,8 +18,10 @@
               </div>
             </router-link>
           </div>
+          <!--HOME BUTTON-->
 
 
+          <!--USER SETTING-->
           <div class="d-flex align-items-center mb-2">
             <div class="dropdown header-button mx-2 my-2">
               <button class="btn btn-sm dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,14 +40,16 @@
               </div>
             </div>
           </div>
+          <!--/USER SETTING-->
 
 
+          <!--SHOP SETTING-->
           <div class="d-flex align-items-center mb-2">
             <div class="dropdown header-button mx-2 my-2">
-              <button class="btn btn-sm dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-sm dropdown-toggle" type="button" id="shopDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-store"></i> Shop Setting
               </button>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shopDropdown">
                 <router-link to="/admin/shop/items">
                   <span class="dropdown-item btn btn-sm"><i class="fas fa-store"></i> Products</span>
                 </router-link>
@@ -57,6 +62,23 @@
               </div>
             </div>
           </div>
+          <!--/SHOP SETTING-->
+
+
+          <!--/OTHER SETTING-->
+          <div class="d-flex align-items-center mb-2">
+            <div class="dropdown header-button mx-2 my-2">
+              <button class="btn btn-sm dropdown-toggle" type="button" id="otherDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-expand"></i> Other Setting
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="otherDropdown">
+                <router-link to="/admin/other/game">
+                  <span class="dropdown-item btn btn-sm"><i class="fas fa-gamepad"></i> Game Setting</span>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <!--/OTHER SETTING-->
 
 
           <div class="d-flex align-items-center mb-2">
