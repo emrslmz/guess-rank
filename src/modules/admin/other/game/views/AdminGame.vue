@@ -10,7 +10,7 @@
 export default {
   name: 'GameCategory',
   components: {
-    Home: () => import('@/modules/admin/other/game-category/components/Home.vue'),
+    Home: () => import('@/modules/admin/other/game/components/Home.vue'),
   },
 };
 </script>
