@@ -42,21 +42,24 @@ export default {
 <style scoped>
 .body-home {
   min-height: 120vh;
+  /*WHITE*/
   /*background-color: #d3d3d3;*/
-  /* SUPERR */
+  /*WHITE*/
+
+
+
+  /*GRAY*/
   /*background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;*/
   /*background-blend-mode: multiply,multiply;*/
-  /* SUPERR */
+  /*GRAY*/
 
-  /*background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);*/
+  /*LIGHT BLUE TOP WHITE*/
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  /*LIGHT BLUE TOP WHITE*/
 
-  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
-  background-blend-mode: multiply,multiply;
-
-  /*background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);*/
-  /*background-blend-mode: multiply,multiply;*/
-  /*background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);*/
-
+  /*GRAY*/
   /*background-image: linear-gradient(to right, #868f96 0%, #596164 100%);*/
+  /*GRAY*/
+
 }
 </style>
