@@ -1,4 +1,4 @@
-import GameCategory from '@/modules/admin/other/game-category/router/';
+import GameCategory from '@/modules/admin/other/game/router/';
 
 export default [{
     path: '/admin/other',

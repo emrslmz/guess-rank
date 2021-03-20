@@ -1,5 +1,5 @@
 <template>
   <div>
-    add game category bro
+    add game  bro
   </div>
 </template>

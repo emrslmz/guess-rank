@@ -130,32 +130,7 @@
   text-decoration: none;
 }
 
-.show button {
-  background-color: #48c965;
-  color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.4s;
-}
-
-.show button:after {
-  background-color: #48c965;
-  color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.4s;
-}
-
 .router-link-active button {
-  background-color: #48c965;
-  color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.4s;
-  text-decoration: none;
-}
-
-.router-link-active span button {
   background-color: #48c965;
   color: white;
   border-radius: 10px;

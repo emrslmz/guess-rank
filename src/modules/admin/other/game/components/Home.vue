@@ -2,15 +2,15 @@
   <div class="game-category-home flex-column">
 
     <div class="text-center py-3">
-      <h4 class="text-spacing5">Game's Categories</h4>
-      <small>Add/edit or delete game category.</small>
+      <h4 class="text-spacing5">Game</h4>
+      <small>Add/edit or delete game.</small>
     </div>
     <div>
       <router-link to="/admin/other/game/all">
         <button class="button-valorant">
           <span class="btn-valorant-inner">
             <span class="btn-valorant-slide"></span>
-            <span class="btn-valorant-content"><i class="fas fa-box"></i> Added Game Category</span>
+            <span class="btn-valorant-content"><i class="fas fa-box"></i> Added Game</span>
           </span>
         </button>
       </router-link>
@@ -22,7 +22,7 @@
         <button class="button-valorant btn-valorant-light">
           <span class="btn-valorant-inner">
             <span class="btn-valorant-slide"></span>
-            <span class="btn-valorant-content"><i class="fas fa-plus"></i> Add Game Category</span>
+            <span class="btn-valorant-content"><i class="fas fa-plus"></i> Add Game</span>
           </span>
         </button>
       </router-link>
@@ -43,9 +43,7 @@
 a {
   color: #191919;
 }
-a:hover {
-  color: #00F
-}
+
 
 /*CUSTOM VALORANT BUTTON*/
 .button-valorant {
@@ -63,7 +61,8 @@ a:hover {
   --button-text-color-hover: var(--button-background-color);
   --border-color: #7D8082;
   --button-background-color: #ece8e1;
-  --highlight-color: #ff4655;
+  --highlight-color: #48c965;
+  /*#ff4655*/
   --button-inner-border-color: transparent;
   --button-bits-color: var(--background-color);
   --button-bits-color-hover: var(--button-background-color);

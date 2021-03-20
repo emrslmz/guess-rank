@@ -1,21 +1,21 @@
 export default [{
     path: '/admin/other/game',
-    name: 'AdminGameCategory',
-    component: () => import('@/modules/admin/other/game-category/views/GameCategory.vue'),
+    name: 'AdminGame',
+    component: () => import('@/modules/admin/other/game/views/AdminGame.vue'),
     children: [
         {
             path: '/admin/other/game/all',
             meta: {
-                title: 'Added All Game Category'
+                title: 'Added All Game'
             },
-            component: () => import('@/modules/admin/other/game-category/components/AddedGameCategory.vue'),
+            component: () => import('@/modules/admin/other/game/components/AdminAddedGame.vue'),
         },
         {
             path: '/admin/other/game/add',
             meta: {
-                title: 'Add Game Category'
+                title: 'Add Game'
             },
-            component: () => import('@/modules/admin/other/game-category/components/AddGameCategory.vue'),
+            component: () => import('@/modules/admin/other/game/components/AdminAddGame.vue'),
         },
     ]
 }];
