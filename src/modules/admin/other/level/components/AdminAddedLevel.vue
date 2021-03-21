@@ -13,6 +13,17 @@
           <div class="d-flex justify-content-between align-items center px-2">
             <div class="d-flex flex-column justify-content-center center pb-3">
               <div class="text-center">
+                <small>All</small>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <div><input class="dark-mode-button mt-2 mx-3" name="filterGame" type="radio" checked /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items center px-2">
+            <div class="d-flex flex-column justify-content-center center pb-3">
+              <div class="text-center">
                 <small>Valorant</small>
               </div>
               <div class="d-flex justify-content-center align-items-center">
