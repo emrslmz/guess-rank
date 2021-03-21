@@ -11,11 +11,20 @@ export default [{
             component: () => import('@/modules/admin/other/game/components/AdminAddedGame.vue'),
         },
         {
+            path: '/admin/other/game/all/:id',
+            name: 'GamesEdit',
+            meta: {
+                title: 'Add Game'
+            },
+            component: () => import('@/modules/admin/other/game/components/AdminGameEditDelete.vue'),
+        },
+        {
             path: '/admin/other/game/add',
             meta: {
                 title: 'Add Game'
             },
             component: () => import('@/modules/admin/other/game/components/AdminAddGame.vue'),
         },
+
     ]
 }];

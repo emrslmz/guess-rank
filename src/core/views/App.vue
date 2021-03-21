@@ -21,3 +21,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.handy-notify span {
+  margin-left: 50px;
+}
+</style>
