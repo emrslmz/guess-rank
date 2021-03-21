@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center game-category">
+  <div class="d-flex justify-content-center align-items-center game-selected">
     <div class="container">
       <div class="text-center pt-5 mt-5">
         <h4 class="text-spacing5">Game's Categories</h4>
@@ -88,6 +88,10 @@ export default {
 </script>
 
 <style scoped>
+.game-selected {
+  min-height: 50vh;
+}
+
 .game-category-card {
   margin: 15px;
   width: 100%;

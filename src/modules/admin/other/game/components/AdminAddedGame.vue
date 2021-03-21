@@ -1,12 +1,12 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center game-category">
+  <div class="d-flex justify-content-center align-items-center game-added">
     <div class="container">
       <div class="text-center py-3">
-        <h4 class="text-spacing5">Game's Categories</h4>
-        <small>All Added Game Categories. Click card for edit/delete.</small>
+        <h4 class="text-spacing5">Added Games</h4>
+        <small>All Added Game. Click card for edit/delete.</small>
       </div>
       <div class="d-flex row flex-row justify-content-around" v-if="!!getGameInfo.gameStatus">
-        <div class="col-md-3 col-6 game-category-card d-flex justify-content-center align-items-center" v-for="(game, index) in getGameInfo.gameData" :key="index">
+        <div class="col-md-3 col-6 game-added-card d-flex justify-content-center align-items-center" v-for="(game, index) in getGameInfo.gameData" :key="index">
           <router-link :to="{ name: 'GamesEdit', params: { id: game.game_id }} ">
             <div class="p-5">
               <h4>{{ game.name }}</h4>
@@ -41,11 +41,11 @@ export default {
 </script>
 
 <style scoped>
-.game-category {
+.game-added {
   min-height: 50vh;
 }
 
-.game-category-card {
+.game-added-card {
   margin: 15px;
   width: 100%;
   min-height: 100px;
@@ -56,12 +56,12 @@ export default {
   text-decoration: none;
 }
 
-.game-category-card:hover {
+.game-added-card:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgb(219, 252, 31) 0px 8px 16px -8px;
 
 }
 
-.game-category-card a {
+.game-added-card a {
   text-decoration: none;
   color: #191919;
 }
