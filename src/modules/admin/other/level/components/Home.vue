@@ -2,15 +2,15 @@
   <div class="game-category-home flex-column">
 
     <div class="text-center py-3">
-      <h4 class="text-spacing5"><i class="fas fa-gamepad"></i> Game</h4>
-      <small>Add/edit or delete game.</small>
+      <h4 class="text-spacing5"><i class="fas fa-star-half-alt"></i> Levels</h4>
+      <small>Add/edit or delete level.</small>
     </div>
     <div>
-      <router-link to="/admin/other/game/all">
+      <router-link to="/admin/other/level/all">
         <button class="button-valorant">
           <span class="btn-valorant-inner">
             <span class="btn-valorant-slide"></span>
-            <span class="btn-valorant-content"><i class="fas fa-box"></i> Added Game</span>
+            <span class="btn-valorant-content"><i class="fas fa-box"></i> Added Level</span>
           </span>
         </button>
       </router-link>
@@ -18,11 +18,11 @@
 
 
     <div>
-      <router-link to="/admin/other/game/add">
+      <router-link to="/admin/other/level/add">
         <button class="button-valorant btn-valorant-light">
           <span class="btn-valorant-inner">
             <span class="btn-valorant-slide"></span>
-            <span class="btn-valorant-content"><i class="fas fa-plus"></i> Add Game</span>
+            <span class="btn-valorant-content"><i class="fas fa-plus"></i> Add Level</span>
           </span>
         </button>
       </router-link>

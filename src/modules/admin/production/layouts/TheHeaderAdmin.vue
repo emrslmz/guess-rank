@@ -61,12 +61,16 @@
                 <i class="fas fa-expand"></i> Other Setting
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="otherDropdown">
+
                 <router-link to="/admin/other">
                   <span class="dropdown-item btn btn-sm"><i class="fas fa-tachometer-alt"></i> Home</span>
                 </router-link>
-
+                <div style="height: 3px;"></div>
                 <router-link to="/admin/other/game">
                   <span class="dropdown-item btn btn-sm"><i class="fas fa-gamepad"></i> Game Setting</span>
+                </router-link>
+                <router-link to="/admin/other/level">
+                  <span class="dropdown-item btn btn-sm"><i class="fas fa-star-half-alt"></i> Level Setting</span>
                 </router-link>
               </div>
             </div>

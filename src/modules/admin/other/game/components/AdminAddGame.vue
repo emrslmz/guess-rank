@@ -3,7 +3,7 @@
     <div class="container">
       <div class="text-center pt-5">
         <h4 class="text-spacing5">Add Game</h4>
-        <small>All Added Game Categories. Click card for edit/delete.</small>
+        <small>All Added Game. Click card for edit/delete.</small>
       </div>
       <div class="d-flex row flex-row justify-content-around">
         <div class="col-md-8 col-12 game-add-card d-flex flex-column justify-content-center align-items-center p-5">

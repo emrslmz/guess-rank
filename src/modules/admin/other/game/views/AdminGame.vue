@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'Game',
+  name: 'AdminGameHome',
   components: {
     Home: () => import('@/modules/admin/other/game/components/Home.vue'),
   },

@@ -58,7 +58,6 @@ export default {
 
 .game-added-card:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgb(219, 252, 31) 0px 8px 16px -8px;
-
 }
 
 .game-added-card a {
