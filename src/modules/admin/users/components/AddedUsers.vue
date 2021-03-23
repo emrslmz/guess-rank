@@ -40,7 +40,9 @@
               </div>
             </div>
             <div class="d-flex flex-column look-profile py-3 text-center">
-              <button class="btn">Edit</button>
+              <router-link :to="{ name: 'AdminUserEdit' , params: {id: user.id }}">
+                <button class="btn w-100">Edit</button>
+              </router-link>
               <small>{{ user.created_at }}</small>
             </div>
           </div>

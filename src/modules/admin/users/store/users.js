@@ -34,7 +34,7 @@ const actions = {
                 commit('GETUSERDATASTATUS', getUsersDataStatus);
                 state.getUsersData.usersData = response.data.result.data;
             })
-    }
+    },
 }
 
 

@@ -11,6 +11,14 @@ export default [{
             component: () => import('@/modules/admin/users/components/AddedUsers.vue'),
         },
         {
+            path: '/admin/user/users/:id',
+            name: 'AdminUserEdit',
+            meta: {
+                title: 'Added Users',
+            },
+            component: () => import('@/modules/admin/users/components/AdminUserEdit.vue'),
+        },
+        {
             path: '/admin/user/add-user',
             meta: {
                 title: 'Add User',
