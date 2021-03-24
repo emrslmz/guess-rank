@@ -171,7 +171,7 @@
 
                         </div>
                         <div class="green-success-button">
-                          <button class="btn bg-danger btn-sm" data-toggle="modal" data-target="#deleteGame">Delete</button>
+                          <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true" @click="sendDeletes(getGameInfo.selectedGameData)">Delete</button>
                         </div>
                       </div>
                     </div>
@@ -205,9 +205,13 @@ export default {
     ...mapActions([
         'getSelectedGame',
         'patchEditGame',
+        'deleteGame',
     ]),
     sendChanges() {
       this.patchEditGame(this.getGameInfo.selectedGameData);
+    },
+    sendDeletes(gameDatas) {
+      this.deleteGame(gameDatas);
     }
   },
   created() {

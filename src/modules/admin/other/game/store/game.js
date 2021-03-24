@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {showMessage} from '@/shared/utils/messages.utils';
+import router from "@/router";
 
 const state = {
     gameInfo: {
@@ -62,6 +63,20 @@ const actions = {
                 console.log(response);
                 showMessage("The changes have been saved!")
             })
+    },
+    deleteGame(context, selectedDeleteData) {
+        axios
+            .delete(`https://guess-what-rank-api.herokuapp.com/api/games/${selectedDeleteData.game_id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            }, {
+                selectedDeleteData
+            })
+            .then((response) => {
+                console.log(response);
+                router.push({ path: '/admin/other/game/all' });
+        })
     }
 }
 
