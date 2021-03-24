@@ -8,7 +8,7 @@
      <router-view />
    </div>
     <div class="container" v-if="this.$route.name !== 'AdminPage'">
-      <the-footer-admin />
+<!--      <the-footer-admin />-->
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   name: 'AdminPage',
   components: {
     TheHeaderAdmin: () => import('@/modules/admin/production/layouts/TheHeaderAdmin.vue'),
-    TheFooterAdmin: () => import('@/modules/admin/production/layouts/TheFooterAdmin'),
+    // TheFooterAdmin: () => import('@/modules/admin/production/layouts/TheFooterAdmin'),
     AdminLoginPage: () => import('@/modules/admin/production/components/AdminLoginPage.vue'),
   },
 };

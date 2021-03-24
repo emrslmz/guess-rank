@@ -6,12 +6,15 @@
         <small>All Added Game. Click card for edit/delete.</small>
       </div>
       <div class="d-flex row flex-row justify-content-around" v-if="!!getGameInfo.gameStatus">
-        <div class="col-md-3 col-6 game-added-card d-flex justify-content-center align-items-center" v-for="(game, index) in getGameInfo.gameData" :key="index">
-          <router-link :to="{ name: 'GamesEdit', params: { id: game.game_id }} ">
-            <div class="p-5">
-              <h4>{{ game.game_name }}</h4>
-            </div>
-          </router-link>
+        <div class="col-md-4 col-6" v-for="(game, index) in getGameInfo.gameData" :key="index">
+          <div class="game-added-card d-flex justify-content-center align-items-center" :style="game.game_background_color">
+            <router-link :to="{ name: 'GamesEdit', params: { id: game.game_id }} ">
+              <div class="p-5">
+                <h4 :style="game.game_color">{{ game.game_name }}</h4>
+              </div>
+            </router-link>
+          </div>
+
         </div>
       </div>
       <div class="text-center" v-else><i style="font-size: 36px" class="fas fa-circle-notch fa-spin"></i></div>
@@ -53,7 +56,7 @@ export default {
 }
 
 .game-added-card:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgb(219, 252, 31) 0px 8px 16px -8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgb(235, 240, 205) 0px 8px 16px -8px;
 }
 
 .game-added-card a {

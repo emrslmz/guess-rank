@@ -35,7 +35,7 @@
                       <i class="fas fa-fingerprint"></i>
                     </div>
                     <div>
-                      <input class="custom-input" v-model="getGameInfo.selectedGameData.game_id"  placeholder="Game ID" type="number" />
+                      <input class="custom-input" v-model="getGameInfo.selectedGameData.game_id"  placeholder="Game ID" type="number" disabled="disabled" />
                     </div>
                   </div>
                 </div>
@@ -63,7 +63,7 @@
                       </div>
                       <div class="d-flex justify-content-center align-items-center">
                         <span><i class="far fa-eye-slash"></i></span>
-                        <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" /></div>
+                        <div><input class="dark-mode-button mt-2 mx-3" v-model="getGameInfo.selectedGameData.is_available" type="checkbox" /></div>
                         <span><i class="far fa-eye"></i></span>
                       </div>
                     </div>
@@ -76,7 +76,7 @@
                       </div>
                       <div class="d-flex justify-content-center align-items-center">
                         <span><i class="far fa-eye-slash"></i></span>
-                        <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" /></div>
+                        <div><input class="dark-mode-button mt-2 mx-3" v-model="getGameInfo.selectedGameData.is_hidden" type="checkbox" /></div>
                         <span><i class="far fa-eye"></i></span>
                       </div>
                     </div>
@@ -93,8 +93,8 @@
                     <small>Game Background Color</small>
                   </div>
                   <div class="d-flex justify-content-center align-items-center">
-                    <div class="custom-input-icon">
-                      <i class="fas fa-sliders-h"></i>
+                    <div class="custom-input-icon" :style="getGameInfo.selectedGameData.game_background_color">
+                      <i class="fas fa-sliders-h" :style="getGameInfo.selectedGameData.game_color"></i>
                     </div>
                     <div>
                       <input class="custom-input" v-model="getGameInfo.selectedGameData.game_background_color"   placeholder="Background Color" type="text" />
@@ -107,8 +107,8 @@
                     <small>Game Color</small>
                   </div>
                   <div class="d-flex justify-content-center align-items-center">
-                    <div class="custom-input-icon">
-                      <i class="fas fa-palette"></i>
+                    <div class="custom-input-icon" :style="getGameInfo.selectedGameData.game_background_color">
+                      <i class="fas fa-palette" :style="getGameInfo.selectedGameData.game_color"></i>
                     </div>
                     <div>
                       <input class="custom-input" v-model="getGameInfo.selectedGameData.game_color"  placeholder="Game Color" type="text" />
@@ -116,7 +116,7 @@
                   </div>
                 </div>
 
-                <div class="d-flex justify-content-between align-items-center py-3">
+                <div class="d-flex justify-content-between align-items-center py-3 ml-5">
                   <div class="game-logo-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
                   <div class="text-left">
                     <label class="d-flex flex-column" for="upload-picture">
@@ -138,18 +138,46 @@
                 <small v-else><i class="fas fa-history"></i> {{ getGameInfo.selectedGameData.updated_at }}</small>
               </div>
 
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between px-2">
                 <div class="d-flex justify-content-center">
                   <div class="green-success-button">
-                    <button class="btn btn-light-success btn-xl w-100">Save</button>
+                    <button class="btn btn-light-success btn-xl w-100" @click="sendChanges">Save</button>
                   </div>
                 </div>
 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center px-2">
                   <div class="green-success-button">
-                    <button class="btn bg-danger btn-xl w-100">Delete</button>
+                    <button class="btn bg-danger btn-xl w-100" data-toggle="modal" data-target="#deleteGame">Delete</button>
                   </div>
                 </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="deleteGame"  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title text-left" id="exampleModalLabel">Are you sure you want to delete the item named <i>{{ getGameInfo.selectedGameData.game_name }}</i> ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <label>This action cannot be undone.</label>
+                      </div>
+                      <div class="modal-footer">
+                        <div class="green-success-button">
+                          <button type="button" class="btn bg-primary btn-sm" data-dismiss="modal">Close</button>
+
+                        </div>
+                        <div class="green-success-button">
+                          <button class="btn bg-danger btn-sm" data-toggle="modal" data-target="#deleteGame">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal -->
               </div>
 
             </div>
@@ -175,8 +203,12 @@ export default {
   },
   methods: {
     ...mapActions([
-        'getSelectedGame'
+        'getSelectedGame',
+        'patchEditGame',
     ]),
+    sendChanges() {
+      this.patchEditGame(this.getGameInfo.selectedGameData);
+    }
   },
   created() {
     this.getSelectedGame(this.$route.params.id);
@@ -188,7 +220,7 @@ export default {
 
 .game-category-card {
   margin: 15px;
-  width: 80%;
+  width: 100%;
   min-height: 500px;
   border-radius: 20px;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
@@ -243,7 +275,6 @@ export default {
   background-size: 40px;
   width: 40px;
   height: 40px;
-  border-radius: 150px;
 }
 
 #upload-picture {
