@@ -176,7 +176,6 @@ export default {
 
 <style scoped>
 .edit-item-card {
-  margin-bottom: 100px;
   width: auto;
   min-width: 200px;
   min-height: 700px;

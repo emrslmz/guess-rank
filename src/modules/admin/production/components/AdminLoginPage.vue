@@ -53,10 +53,6 @@
 </template>
 
 <style scoped>
-.admin-login-page {
-  height: 90vh;
-}
-
 .login-card {
   width: 20%;
   min-height: 300px;

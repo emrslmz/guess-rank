@@ -156,9 +156,6 @@
 
 
 <style scoped>
-.game-add {
-  min-height: 50vh;
-}
 
 .game-add-card {
   margin: 15px;

@@ -9,7 +9,7 @@
         <div class="col-md-3 col-6 game-added-card d-flex justify-content-center align-items-center" v-for="(game, index) in getGameInfo.gameData" :key="index">
           <router-link :to="{ name: 'GamesEdit', params: { id: game.game_id }} ">
             <div class="p-5">
-              <h4>{{ game.name }}</h4>
+              <h4>{{ game.game_name }}</h4>
             </div>
           </router-link>
         </div>
@@ -41,10 +41,6 @@ export default {
 </script>
 
 <style scoped>
-.game-added {
-  min-height: 50vh;
-}
-
 .game-added-card {
   margin: 15px;
   width: 100%;

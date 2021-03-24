@@ -32,10 +32,6 @@
 
 
 <style scoped>
-.game-selected {
-  min-height: 50vh;
-}
-
 .game-category-card {
   margin: 15px;
   width: 100%;
