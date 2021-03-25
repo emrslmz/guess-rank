@@ -51,7 +51,7 @@
            <small v-if="item.is_available"><i class="fas fa-bolt text-lightgray"></i></small>
           </div>
           <div class="edit-button d-flex flex-column pt-3">
-           <router-link :to="{ name: 'ItemsEdit', params: { id: item.item_id }} ">
+           <router-link :to="{ name: 'ItemsEdit', params: { id: item.level_random }} ">
              <button class="btn btn-sm">Edit</button>
            </router-link>
           </div>

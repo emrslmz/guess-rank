@@ -58,7 +58,7 @@
         <!--/GAMES V-FOR ILE DONECEK-->
         <div class="d-flex justify-content-center align-items-center row">
           <div class="level-card-box mouse-click text-center" v-for="(level, index) in getLevelInfo.levelData" :key="index">
-            <router-link :to="{ name: 'LevelsEdit', params: { level_random: level.level_random_key, id: level.level_id }} ">
+            <router-link :to="{ name: 'LevelsEdit', params: { id: level.level_id }} ">
                <div>
                  <h2>{{ level.level_id }}</h2>
                  <b style="font-size: 5px">{{ level.level_random_key }}</b>
