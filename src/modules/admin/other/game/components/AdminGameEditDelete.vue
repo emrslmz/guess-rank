@@ -2,8 +2,8 @@
   <div class="d-flex justify-content-center align-items-center game-selected">
     <div class="container">
       <div class="text-center pt-5 mt-5">
-        <h4 class="text-spacing5">Game's Categories</h4>
-        <small>All Added Game Categories. Click """"" button for edit/delete.</small>
+        <h4 class="text-spacing5">Game</h4>
+        <small>All Added Game. Click the buttons to edit or delete.</small>
       </div>
         <div class="d-flex justify-content-center align-items-center">
           <div class="game-category-card d-flex flex-column justify-content-center align-items-center text-center">
@@ -141,7 +141,7 @@
               <div class="d-flex justify-content-between px-2">
                 <div class="d-flex justify-content-center">
                   <div class="green-success-button">
-                    <button class="btn btn-light-success btn-xl w-100" @click="sendChanges">Save</button>
+                    <button class="btn btn-light-success btn-xl w-100" @click="sendChangesGame">Save</button>
                   </div>
                 </div>
 
@@ -207,7 +207,7 @@ export default {
         'patchEditGame',
         'deleteGame',
     ]),
-    sendChanges() {
+    sendChangesGame() {
       this.patchEditGame(this.getGameInfo.selectedGameData);
     },
     sendDeletes(gameDatas) {

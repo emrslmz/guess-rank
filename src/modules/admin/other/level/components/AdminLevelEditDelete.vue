@@ -3,12 +3,11 @@
     <div class="container">
       <div class="text-center pt-5 mt-5">
         <h4 class="text-spacing5">Level: {{ getLevelInfo.selectedLevelData.level_id }}</h4>
-        <small>All Added Game Categories. Click """"" button for edit/delete.</small>
-        {{ getLevelInfo.selectedLevelData}}
+        <small>All Added Game Categories. Click the buttons to edit or delete.</small>
       </div>
       <div class="d-flex row flex-row justify-content-around">
         <div class="col-sm-6 col-12 game-category-card d-flex flex-column justify-content-center align-items-center">
-          <div>
+          <div class="pb-2">
             <small>{{ getLevelInfo.selectedLevelData.level_random_key }}</small>
           </div>
          <div class="d-flex justify-content-center align-items-start">
@@ -114,7 +113,7 @@
              <div class="create-update-date">
                <h5><i class="far fa-clock"></i> {{ getLevelInfo.selectedLevelData.created_at }}</h5>
                <h5 class="text-center" v-if="getLevelInfo.selectedLevelData.created_at === getLevelInfo.selectedLevelData.updated_at"><i class="far fa-calendar-times"></i> Change record not found!</h5>
-               <h5 v-else>{{ getLevelInfo.selectedLevelData.updated_at }}</h5>
+               <h5 v-else><i class="far fa-calendar-check"></i> {{ getLevelInfo.selectedLevelData.updated_at }}</h5>
              </div>
            </div>
            <!--/RIGHT-->
@@ -123,13 +122,13 @@
           <div class="d-flex">
             <div class="d-flex justify-content-center">
               <div class="green-success-button">
-                <button class="btn btn-light-success btn-xl w-100">Save</button>
+                <button class="btn btn-light-success btn-xl w-100" @click="sendChangesLevel">Save</button>
               </div>
             </div>
 
             <div class="d-flex justify-content-center px-2">
               <div class="green-success-button">
-                <button class="btn bg-danger btn-xl w-100" data-toggle="modal" data-target="#deleteGame">Delete</button>
+                <button class="btn bg-danger btn-xl w-100" data-toggle="modal" data-target="#deleteLevel">Delete</button>
               </div>
             </div>
           </div>
@@ -138,11 +137,11 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="deleteGame"  aria-hidden="true">
+        <div class="modal fade" id="deleteLevel"  aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-left" id="exampleModalLabel">Are you sure you want to delete the item named ?</h5>
+                <h5 class="modal-title text-left" id="exampleModalLabel">Are you sure you want to delete the item named <i>{{ getLevelInfo.selectedLevelData.level_name }}</i> ?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -172,17 +171,21 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'AdminLevelEditDelete',
+  computed: {
+    ...mapGetters([
+      'getLevelInfo',
+      'getGameInfo',
+    ])
+  },
   methods: {
     ...mapActions([
         'getSelectedLevel',
         'getGame',
-    ])
-  },
-  computed: {
-    ...mapGetters([
-        'getLevelInfo',
-        'getGameInfo',
-    ])
+        'patchEditLevel',
+    ]),
+    sendChangesLevel() {
+      this.patchEditLevel(this.getLevelInfo.selectedLevelData);
+    }
   },
   created() {
     this.getSelectedLevel(this.$route.params.id);
