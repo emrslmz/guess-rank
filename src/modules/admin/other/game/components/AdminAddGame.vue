@@ -18,7 +18,7 @@
                   <i class="fas fa-gamepad"></i>
                 </div>
                 <div>
-                  <input class="custom-input"  placeholder="Game names" type="text" />
+                  <input class="custom-input" v-model="getGameInfo.addGameData.game_name"  placeholder="Game names" type="text" />
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@
                   <i class="fas fa-fingerprint"></i>
                 </div>
                 <div>
-                  <input class="custom-input"  placeholder="Game ID" type="number" />
+                  <input class="custom-input" v-model="getGameInfo.addGameData.game_id"  placeholder="Game ID" type="number" />
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
                 <i class="fas fa-text-height"></i>
               </div>
               <div>
-                <textarea cols="60" class="custom-textarea"  placeholder="Game Description"></textarea>
+                <textarea cols="60" class="custom-textarea" v-model="getGameInfo.addGameData.game_description" placeholder="Game Description"></textarea>
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@
                   <i class="fas fa-sliders-h"></i>
                 </div>
                 <div>
-                  <input class="custom-input"  placeholder="Background Color" type="text" />
+                  <input class="custom-input" v-model="getGameInfo.addGameData.game_background_color"  placeholder="Background Color" type="text" />
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@
                   <i class="fas fa-palette"></i>
                 </div>
                 <div>
-                  <input class="custom-input"  placeholder="Custom Color red, #FFF" type="text" />
+                  <input class="custom-input" v-model="getGameInfo.addGameData.game_color"  placeholder="Custom Color red, #FFF" type="text" />
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@
                </div>
                <div class="d-flex justify-content-center align-items-center">
                  <span><i class="far fa-eye-slash"></i></span>
-                 <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" /></div>
+                 <div><input class="dark-mode-button mt-2 mx-3" v-model="getGameInfo.addGameData.is_hidden" type="checkbox" /></div>
                  <span><i class="far fa-eye"></i></span>
                </div>
              </div>
@@ -135,7 +135,7 @@
                </div>
                <div class="d-flex justify-content-center align-items-center">
                  <span><i class="far fa-eye-slash"></i></span>
-                 <div><input class="dark-mode-button mt-2 mx-3" type="checkbox" /></div>
+                 <div><input class="dark-mode-button mt-2 mx-3" v-model="getGameInfo.addGameData.is_available" type="checkbox" /></div>
                  <span><i class="far fa-eye"></i></span>
                </div>
              </div>
@@ -144,7 +144,7 @@
 
           <div class="d-flex justify-content-center">
             <div class="green-success-button">
-              <button class="btn w-100 btn-sm">Add</button>
+              <button class="btn w-100 btn-sm" @click="sendAddGameData">Add</button>
             </div>
           </div>
 
@@ -153,6 +153,27 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  name: 'AdminAddGame',
+  computed: {
+    ...mapGetters([
+        'getGameInfo',
+    ])
+  },
+  methods: {
+    ...mapActions([
+        'postAddGame',
+    ]),
+    sendAddGameData() {
+      this.postAddGame(this.getGameInfo.addGameData);
+    }
+  }
+};
+</script>
 
 
 <style scoped>
