@@ -36,7 +36,6 @@ const actions = {
             .then((response) => {
                 state.gameInfo.gameData = response.data.result.data;
                 state.gameInfo.gameStatus = response.data.code;
-                showMessage('Games added');
             })
     },
     getSelectedGame(context, gameId) {
@@ -108,6 +107,7 @@ const actions = {
             })
             .then((response) => {
                 state.gameInfo.gameStatus = response.data.code;
+                showMessage("The transaction is successful!");
                 router.push({ path: '/admin/other/game/all' });
         })
     }
