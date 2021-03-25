@@ -4,9 +4,9 @@ import router from "@/router";
 
 const state = {
     gameInfo: {
+        gameStatus: null,
         gameData: [],
         selectedGameData: [],
-        gameStatus: null,
         addGameData: {
             game_name: null,
             game_id: null,

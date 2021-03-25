@@ -11,7 +11,7 @@ export default [{
             component: () => import('@/modules/admin/other/level/components/AdminAddedLevel.vue'),
         },
         {
-            path: '/admin/other/level/all/:id',
+            path: '/admin/other/level/all/:level_random',
             name: 'LevelsEdit',
             meta: {
                 title: 'Added All Level'

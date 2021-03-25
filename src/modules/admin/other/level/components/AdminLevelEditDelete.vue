@@ -4,6 +4,7 @@
       <div class="text-center pt-5 mt-5">
         <h4 class="text-spacing5">Game's Categories</h4>
         <small>All Added Game Categories. Click """"" button for edit/delete.</small>
+        {{ getLevelInfo.selectedLevelData}}
       </div>
       <div class="d-flex row flex-row justify-content-around">
         <div class="col-sm-6 col-12 game-category-card d-flex justify-content-center align-items-center text-center">
@@ -28,6 +29,26 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+export default {
+  name: 'AdminLevelEditDelete',
+  methods: {
+    ...mapActions([
+        'getSelectedLevel',
+    ])
+  },
+  computed: {
+    ...mapGetters([
+        'getLevelInfo',
+    ])
+  },
+  created() {
+    this.getSelectedLevel(this.$route.params.id);
+  }
+};
+</script>
 
 
 

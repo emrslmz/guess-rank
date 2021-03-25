@@ -57,11 +57,11 @@
         </div>
         <!--/GAMES V-FOR ILE DONECEK-->
         <div class="d-flex justify-content-center align-items-center row">
-          <div class="level-card-box mouse-click text-center">
-            <router-link :to="{ name: 'LevelsEdit', params: {id: 'keyiyazzz'}} ">
+          <div class="level-card-box mouse-click text-center" v-for="(level, index) in getLevelInfo.levelData" :key="index">
+            <router-link :to="{ name: 'LevelsEdit', params: { level_random: level.level_random_key, id: level.level_id }} ">
                <div>
-                 <h2>18</h2>
-                 <b style="font-size: 8px">k3j2k4k45l</b>
+                 <h2>{{ level.level_id }}</h2>
+                 <b style="font-size: 5px">{{ level.level_random_key }}</b>
                </div>
             </router-link>
           </div>
@@ -70,6 +70,27 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  name: 'AdminAddedLevel',
+  methods: {
+    ...mapActions([
+        'getLevel',
+    ]),
+  },
+  computed: {
+    ...mapGetters([
+        'getLevelInfo',
+    ]),
+  },
+  created() {
+    this.getLevel();
+  }
+};
+</script>
 
 <style scoped>
 .level-card-box {
