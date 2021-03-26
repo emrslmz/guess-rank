@@ -7,7 +7,11 @@ const state = {
         levelData: [],
         selectedLevelData: [],
         addLevelData: {
-
+            level_name: null,
+            level_description: null,
+            is_locked: false,
+            is_hidden: false,
+            game_id: 1,
         },
     },
 }
@@ -62,6 +66,42 @@ const actions = {
                 showMessage("The changes have been saved!")
             })
     },
+    postAddLevel(context, addLevelData) {
+        axios
+            .post('https://guess-what-rank-api.herokuapp.com/api/levels', {
+                level_name: addLevelData.level_name,
+                level_description: addLevelData.level_description,
+                is_locked: addLevelData.is_locked,
+                is_hidden: addLevelData.is_hidden,
+                game_id: addLevelData.game_id,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            })
+            .then((response) => {
+                state.levelInfo.levelStatus = response.data.code;
+                showMessage("The transaction is successful!");
+
+                state.levelInfo.addLevelData.is_hidden = false;
+                state.levelInfo.addLevelData.is_locked = false;
+                state.levelInfo.addLevelData.level_description = null;
+                state.levelInfo.addLevelData.level_name = null;
+                state.levelInfo.addLevelData.game_id = 1;
+
+            })
+    },
+    deleteLevel(context, deleteLevelData) {
+        axios
+            .delete(`https://guess-what-rank-api.herokuapp.com/api/levels/${selectedLevel.level_id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            })
+            .then((response) => {
+                console.log(response);
+            })
+    }
 
 }
 

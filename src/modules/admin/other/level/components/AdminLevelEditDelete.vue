@@ -5,6 +5,7 @@
         <h4 class="text-spacing5">Level: {{ getLevelInfo.selectedLevelData.level_id }}</h4>
         <small>All Added Game Categories. Click the buttons to edit or delete.</small>
       </div>
+
       <div class="d-flex row flex-row justify-content-around">
         <div class="col-sm-6 col-12 game-category-card d-flex flex-column justify-content-center align-items-center">
           <div class="pb-2">
@@ -12,26 +13,27 @@
           </div>
          <div class="d-flex justify-content-center align-items-start">
 
+
            <!--LEFT-->
            <div class="d-flex flex-column">
 
              <div class="d-flex flex-column justify-content-center center pb-3 px-2">
                <div class="text-left px-2">
-                 <small>Game Name</small>
+                 <small>Level Name</small>
                </div>
                <div class="d-flex justify-content-center align-items-center">
                  <div class="custom-input-icon">
                    <i class="far fa-hand-scissors"></i>
                  </div>
                  <div>
-                   <input class="custom-input" v-model="getLevelInfo.selectedLevelData.level_name"  placeholder="Game names" type="text">
+                   <input class="custom-input" v-model="getLevelInfo.selectedLevelData.level_name"  placeholder="Level name" type="text">
                  </div>
                </div>
              </div>
 
              <div class="d-flex flex-column justify-content-center center pb-3">
                <div class="text-left px-2">
-                 <small>Game Description</small>
+                 <small>Level Description</small>
                </div>
                <div class="d-flex justify-content-center align-items-center">
                  <div class="custom-input-icon">
@@ -82,7 +84,7 @@
 
              <div class="d-flex flex-column justify-content-center center pb-3 px-2">
                <div class="text-left px-2">
-                 <small>Level Name</small>
+                 <small>Level Number</small>
                </div>
                <div class="d-flex justify-content-center align-items-center">
                  <div class="custom-input-icon">
