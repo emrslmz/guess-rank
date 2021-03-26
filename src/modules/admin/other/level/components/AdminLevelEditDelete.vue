@@ -157,7 +157,7 @@
 
                 </div>
                 <div class="green-success-button">
-                  <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true">Delete</button>
+                  <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true" @click="sendDeleteLevel(getLevelInfo.selectedLevelData)">Delete</button>
                 </div>
               </div>
             </div>
@@ -184,10 +184,14 @@ export default {
         'getSelectedLevel',
         'getGame',
         'patchEditLevel',
+        'deleteLevel',
     ]),
     sendChangesLevel() {
       this.patchEditLevel(this.getLevelInfo.selectedLevelData);
-    }
+    },
+    sendDeleteLevel(deleteData) {
+      this.deleteLevel(deleteData);
+    },
   },
   created() {
     this.getSelectedLevel(this.$route.params.id);

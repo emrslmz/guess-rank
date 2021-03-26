@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {showMessage} from '@/shared/utils/messages.utils';
+import router from "@/router";
 
 const state = {
     levelInfo: {
@@ -93,13 +94,18 @@ const actions = {
     },
     deleteLevel(context, deleteLevelData) {
         axios
-            .delete(`https://guess-what-rank-api.herokuapp.com/api/levels/${selectedLevel.level_id}`, {
+            .delete(`https://guess-what-rank-api.herokuapp.com/api/levels/${deleteLevelData.level_id}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
+            }, {
+                deleteLevelData
             })
             .then((response) => {
                 console.log(response);
+                state.levelInfo.levelStatus = response.data.code;
+                showMessage("The transaction is successful!");
+                router.push({ path: '/admin/other/level/all' });
             })
     }
 
