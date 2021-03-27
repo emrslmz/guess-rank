@@ -8,7 +8,12 @@ const state = {
         shopData: [],
         selectedShopData: [],
         addShopData: {
-
+            name: null,
+            price: null,
+            discount: null,
+            is_available: false,
+            is_hidden: false,
+            game_id: null,
         },
     },
 };
@@ -78,6 +83,33 @@ const actions = {
                 state.shopInfo.shopStatus = response.data.code;
                 showMessage("The transaction is successful!");
                 router.push({ path: '/admin/shop/items' });
+            })
+    },
+    postAddItem(context, addItemData) {
+        axios
+            .post('https://guess-what-rank-api.herokuapp.com/api/items', {
+                name: addItemData.name,
+                price: addItemData.price,
+                discount: addItemData.discount,
+                is_available: addItemData.is_available,
+                is_hidden: addItemData.is_hidden,
+                game_id: addItemData.game_id,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            })
+            .then((response) => {
+                state.shopInfo.shopStatus = response.data.code;
+                showMessage("The transaction is successful!");
+
+                state.shopInfo.addShopData.name = null;
+                state.shopInfo.addShopData.price = null;
+                state.shopInfo.addShopData.discount = null;
+                state.shopInfo.addShopData.is_available = false;
+                state.shopInfo.addShopData.is_hidden = false;
+                state.shopInfo.addShopData.game_id = null;
+
             })
     }
 };

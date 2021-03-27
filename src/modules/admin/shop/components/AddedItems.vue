@@ -110,7 +110,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Total Added Items:456
+            Total Added Items: {{ getShopInfo.shopData.length }}
           </div>
           <div class="modal-footer added-item-button">
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
