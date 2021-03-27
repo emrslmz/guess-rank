@@ -23,7 +23,7 @@ export default [{
             meta: {
                 title: 'Add Items for Shop',
             },
-            component: () => import('@/modules/admin/shop/components/stable/ItemEdit.vue'),
+            component: () => import('@/modules/admin/shop/components/ItemEdit.vue'),
         },
     ]
 }];

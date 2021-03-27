@@ -17,13 +17,13 @@ const state = {
             game_color: null,
         },
     },
-}
+};
 
 const getters = {
     getGameInfo(state) {
         return state.gameInfo;
-    }
-}
+    },
+};
 
 const actions = {
     getGame() {

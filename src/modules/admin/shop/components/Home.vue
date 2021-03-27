@@ -1,5 +1,5 @@
 <template>
-  <div class="game-category-home flex-column">
+  <div class="shop-home flex-column">
     <div class="text-center py-3">
       <h4 class="text-spacing5">Shop Setting</h4>
       <small>Add/edit or delete product.</small>
@@ -31,7 +31,8 @@
 
 
 <style scoped>
-.game-category-home {
+.shop-home {
+  padding-top: 200px;
   display: flex;
   align-items: center;
   justify-content: center;

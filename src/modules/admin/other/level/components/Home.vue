@@ -1,5 +1,5 @@
 <template>
-  <div class="game-category-home flex-column">
+  <div class="level-home flex-column">
 
     <div class="text-center py-3">
       <h4 class="text-spacing5"><i class="fas fa-star-half-alt"></i> Levels</h4>
@@ -32,7 +32,8 @@
 
 
 <style scoped>
-.game-category-home {
+.level-home {
+  padding-top: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +61,7 @@ a {
   --button-text-color-hover: var(--button-background-color);
   --border-color: #7D8082;
   --button-background-color: #ece8e1;
-  --highlight-color: #48c965;
+  --highlight-color: #c9af48;
   /*#ff4655*/
   --button-inner-border-color: transparent;
   --button-bits-color: var(--background-color);

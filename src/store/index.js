@@ -8,8 +8,7 @@ import UserMe from '@/modules/main/home/store/index';
 import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 
 import AddedUsers from '@/modules/admin/users/store/users';
-import AddedItems from "@/modules/admin/shop/store/added-item";
-import ItemEdit from '@/modules/admin/shop/store/item-edit-delete';
+import Shop from "@/modules/admin/shop/store/shop";
 import Game from '@/modules/admin/other/game/store/game';
 import Level from '@/modules/admin/other/level/store/level'
 
@@ -23,8 +22,7 @@ export default new Vuex.Store({
         AddedUsers,
         UserMe,
         GeneralSetting,
-        AddedItems,
-        ItemEdit,
+        Shop,
         Game,
         Level,
     },

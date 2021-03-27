@@ -36,9 +36,9 @@ const actions = {
                 state.levelInfo.levelStatus = response.data.code;
             })
     },
-    getSelectedLevel(context, levelId) {
+    getSelectedLevel(context, levelKey) {
         axios
-            .get(`https://guess-what-rank-api.herokuapp.com/api/levels/${levelId}`, {
+            .get(`https://guess-what-rank-api.herokuapp.com/api/levels/key/${levelKey}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },

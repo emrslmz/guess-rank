@@ -91,7 +91,7 @@
                    <i class="fas fa-sort-numeric-up-alt"></i>
                  </div>
                  <div>
-                   <input class="custom-input" v-model="getLevelInfo.selectedLevelData.level_id"  placeholder="Level Number" type="number">
+                   <input class="custom-input" v-model="getLevelInfo.selectedLevelData.level_id"  placeholder="Level Number" type="number" disabled="disabled" />
                  </div>
                </div>
              </div>
@@ -194,7 +194,7 @@ export default {
     },
   },
   created() {
-    this.getSelectedLevel(this.$route.params.id);
+    this.getSelectedLevel(this.$route.params.key);
     this.getGame();
   }
 };

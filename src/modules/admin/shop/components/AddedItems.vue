@@ -34,10 +34,13 @@
 
     <div class="col-12 col-xl-9 row d-flex justify-content-center all-item-box" v-if="!showTable">
       <!--ITEM HERE-->
-      <div class="col-12 col-md-6 col-xl-3 card-item" v-for="(item, index) in getShopItems.itemData" :key="index">
+      <div class="col-12 col-md-6 col-xl-3 card-item" v-for="(item, index) in getShopInfo.shopData" :key="index">
         <div class="d-flex justify-content-between">
-          <small><strong>Field Tested | {{ item.discount }}</strong></small>
-         <small title="Item Hidden Status"><i class="fas fa-circle" :class="item.is_hidden ? 'text-success' : 'text-danger'"></i></small>
+          <small><strong>Field Tested | -0.45641</strong></small>
+         <small title="Item Hidden Status">
+           <i class="fas fa-circle text-success" v-if="item.is_hidden"></i>
+           <i class="fas fa-circle text-danger" v-else></i>
+         </small>
         </div>
        <div class="d-flex justify-content-center">
          <div class="item-picture" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>
@@ -47,12 +50,13 @@
           <small>ump45</small>
           <strong>{{ item.name }}</strong>
           <div class="d-flex justify-content-between">
-            <strong><i class="fas fa-coins text-warning"></i>  {{ item.price }}<small>+12%</small></strong>
-           <small v-if="item.is_available"><i class="fas fa-bolt text-lightgray"></i></small>
+            <strong><i class="fas fa-coins text-warning"></i> {{ item.price }}<small>+{{ item.discount }}%</small></strong>
+            <small v-if="item.is_available"><i class="fas fa-bolt text-secondary"></i></small>
+            <small v-else></small>
           </div>
           <div class="edit-button d-flex flex-column pt-3">
-           <router-link :to="{ name: 'ItemsEdit', params: { id: item.level_random }} ">
-             <button class="btn btn-sm">Edit</button>
+           <router-link :to="{ name: 'ItemsEdit', params: { id: item.item_id }} ">
+             <button class="btn btn-sm w-100">Edit</button>
            </router-link>
           </div>
         </div>
@@ -61,38 +65,38 @@
       <!--/ITEM HERE-->
     </div>
 
-   <div class="col-12 col-xl-9 row d-flex flex-row justify-content-center all-item-box"  v-else>
-     <table class="table table-striped table-dark">
-       <thead>
-       <tr>
-         <th><i class="fab fa-slack-hash"></i></th>
-         <th>Views</th>
-         <th>gun/game</th>
-         <th><i class="fas fa-palette"></i> Skin</th>
-         <th><i class="fas fa-bullseye"></i> Float</th>
-         <th> Price</th>
-         <th class="pr-5">Edit-View-Delete</th>
-       </tr>
-       </thead>
-       <tbody>
-       <tr v-for="(item, index) in getShopItems.itemData" :key="index">
-         <th>{{ index+1 }}</th>
-         <td>
-        <div class="item-picture-small" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>
-         </td>
-         <td>Glock18</td>
-         <td>{{ item.name }}</td>
-         <td>factory name</td>
-         <td><strong><i class="fas fa-coins text-warning"></i> {{ item.price }} <small>+12%</small></strong></td>
-         <td>
-           <div class="added-item-button pr-3">
-             <button class="btn btn-sm">Edit</button>
-           </div>
-         </td>
-       </tr>
-       </tbody>
-     </table>
-   </div>
+<!--   <div class="col-12 col-xl-9 row d-flex flex-row justify-content-center all-item-box"  v-else>-->
+<!--     <table class="table table-striped table-dark">-->
+<!--       <thead>-->
+<!--       <tr>-->
+<!--         <th><i class="fab fa-slack-hash"></i></th>-->
+<!--         <th>Views</th>-->
+<!--         <th>gun/game</th>-->
+<!--         <th><i class="fas fa-palette"></i> Skin</th>-->
+<!--         <th><i class="fas fa-bullseye"></i> Float</th>-->
+<!--         <th> Price</th>-->
+<!--         <th class="pr-5">Edit-View-Delete</th>-->
+<!--       </tr>-->
+<!--       </thead>-->
+<!--       <tbody>-->
+<!--       <tr v-for="(item, index) in getShopItems.itemData" :key="index">-->
+<!--         <th>{{ index+1 }}</th>-->
+<!--         <td>-->
+<!--        <div class="item-picture-small" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>-->
+<!--         </td>-->
+<!--         <td>Glock18</td>-->
+<!--         <td>{{ item.name }}</td>-->
+<!--         <td>factory name</td>-->
+<!--         <td><strong><i class="fas fa-coins text-warning"></i> {{ item.price }} <small>+12%</small></strong></td>-->
+<!--         <td>-->
+<!--           <div class="added-item-button pr-3">-->
+<!--             <button class="btn btn-sm">Edit</button>-->
+<!--           </div>-->
+<!--         </td>-->
+<!--       </tr>-->
+<!--       </tbody>-->
+<!--     </table>-->
+<!--   </div>-->
 <!--Out of stock!-->
 
     <!-- Modal -->
@@ -106,7 +110,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Total Added Items: {{ getShopItems.length }}
+            Total Added Items:456
           </div>
           <div class="modal-footer added-item-button">
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -132,16 +136,16 @@ export default {
   },
   computed: {
     ...mapGetters([
-        'getShopItems',
+        'getShopInfo',
     ])
   },
   methods: {
     ...mapActions([
-        'getItems',
+        'getShopItem',
     ])
   },
   created() {
-    this.getItems();
+    this.getShopItem();
   },
 };
 </script>
