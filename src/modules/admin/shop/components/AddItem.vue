@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container">
-      <div class="text-center pt-3">
+      <div class="text-center pt-5">
         <h4 class="text-spacing5">Add Item</h4>
         <small>Click the button below to add items to the market.</small>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center py-3">
           <div class="added-item-button">
             <router-link to="/admin/shop/items">
               <button class="btn btn-sm mx-1">Added Items</button>
@@ -13,9 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="green-success-button text-center my-3">
 
-    </div>
     <div class="d-flex justify-content-center align-items-center">
       <div class="d-flex justify-content-center align-items-center col-12 col-xl-6 edit-item-card">
         <div class="d-xl-flex flex-column justify-content-around">

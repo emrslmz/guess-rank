@@ -65,38 +65,40 @@
       <!--/ITEM HERE-->
     </div>
 
-<!--   <div class="col-12 col-xl-9 row d-flex flex-row justify-content-center all-item-box"  v-else>-->
-<!--     <table class="table table-striped table-dark">-->
-<!--       <thead>-->
-<!--       <tr>-->
-<!--         <th><i class="fab fa-slack-hash"></i></th>-->
-<!--         <th>Views</th>-->
-<!--         <th>gun/game</th>-->
-<!--         <th><i class="fas fa-palette"></i> Skin</th>-->
-<!--         <th><i class="fas fa-bullseye"></i> Float</th>-->
-<!--         <th> Price</th>-->
-<!--         <th class="pr-5">Edit-View-Delete</th>-->
-<!--       </tr>-->
-<!--       </thead>-->
-<!--       <tbody>-->
-<!--       <tr v-for="(item, index) in getShopItems.itemData" :key="index">-->
-<!--         <th>{{ index+1 }}</th>-->
-<!--         <td>-->
-<!--        <div class="item-picture-small" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>-->
-<!--         </td>-->
-<!--         <td>Glock18</td>-->
-<!--         <td>{{ item.name }}</td>-->
-<!--         <td>factory name</td>-->
-<!--         <td><strong><i class="fas fa-coins text-warning"></i> {{ item.price }} <small>+12%</small></strong></td>-->
-<!--         <td>-->
-<!--           <div class="added-item-button pr-3">-->
-<!--             <button class="btn btn-sm">Edit</button>-->
-<!--           </div>-->
-<!--         </td>-->
-<!--       </tr>-->
-<!--       </tbody>-->
-<!--     </table>-->
-<!--   </div>-->
+   <div class="col-12 col-xl-9 row d-flex flex-row justify-content-center all-item-box" v-else>
+     <table class="table table-striped table-dark">
+       <thead>
+         <tr class="text-left">
+           <th><i class="fab fa-slack-hash"></i></th>
+           <th>Views</th>
+           <th>gun/game</th>
+           <th>Skin</th>
+           <th>Float</th>
+           <th> Price</th>
+           <th>Edit-View-Delete</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr v-for="(item, index) in getShopInfo.shopData" :key="index">
+           <th>{{ index+1 }}</th>
+           <td>
+          <div class="item-picture-small" style="background-image: url('/assets/images/items/csgo/ump_primal_saber.png');"></div>
+           </td>
+           <td>Glock18</td>
+           <td>{{ item.name }}</td>
+           <td>factory name</td>
+           <td><strong><i class="fas fa-coins text-warning"></i> {{ item.price }} <small>-{{ item.discount }}%</small></strong></td>
+           <td>
+             <div class="added-item-button pr-3">
+               <router-link :to="{ name: 'ItemsEdit', params: { id: item.item_id }} ">
+                 <button class="btn btn-sm w-100">Edit</button>
+               </router-link>
+             </div>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
 <!--Out of stock!-->
 
     <!-- Modal -->
