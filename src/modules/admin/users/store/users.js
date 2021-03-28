@@ -3,8 +3,7 @@ import axios from 'axios';
 const state = {
     getUsersData: {
         usersData: [],
-        dataStatus: null,
-        totalData: null,
+        userStatus: null,
     },
 }
 
@@ -14,14 +13,8 @@ const getters = {
     }
 }
 
-const mutations = {
-    GETUSERDATASTATUS(state, getUsersDataStatus) {
-        state.getUsersData.dataStatus = getUsersDataStatus;
-    }
-}
-
 const actions = {
-    getUsers({ commit }) {
+    getUsers() {
         axios
             .get('https://guess-what-rank-api.herokuapp.com/api/users', {
                 headers: {
@@ -29,10 +22,8 @@ const actions = {
                 },
             })
             .then((response) => {
-                console.log(response)
-                const getUsersDataStatus = response;
-                commit('GETUSERDATASTATUS', getUsersDataStatus);
-                state.getUsersData.usersData = response.data.result.data;
+                state.getUsersData.usersData =  response.data.result.data;
+                state.getUsersData.userStatus = response.data.code;
             })
     },
 }
@@ -41,6 +32,5 @@ const actions = {
 export default {
     state,
     getters,
-    mutations,
     actions,
 }
