@@ -8,9 +8,10 @@ import UserMe from '@/modules/main/home/store/index';
 import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 
 import AddedUsers from '@/modules/admin/users/store/users';
-import Shop from "@/modules/admin/shop/store/shop";
+import Shop from '@/modules/admin/shop/store/shop';
 import Game from '@/modules/admin/other/game/store/game';
 import Level from '@/modules/admin/other/level/store/level'
+import Video from '@/modules/admin/other/video/store/video';
 
 Vue.use(Vuex);
 
@@ -25,5 +26,6 @@ export default new Vuex.Store({
         Shop,
         Game,
         Level,
+        Video,
     },
 });
