@@ -75,6 +75,9 @@
                 <router-link to="/admin/other/video">
                   <span class="dropdown-item btn btn-sm"><i class="fab fa-youtube"></i> Videos</span>
                 </router-link>
+                <router-link to="/admin/other/video-group">
+                  <span class="dropdown-item btn btn-sm"><i class="fas fa-th-list"></i> Video Group</span>
+                </router-link>
               </div>
             </div>
           </div>

@@ -52,7 +52,7 @@
                 </div>
                 <div>
                   <select class="custom-select" v-model="getVideoInfo.selectedVideoData.video_group_id">
-                    <option :value="game.game_id" v-for="(game, index) in getGameInfo.gameData" :key="index">{{ game.game_name }}</option>
+                    <option :value="group.video_group_id" v-for="(group, index) in getVideoGroupInfo.videoGroupData" :key="index">{{ group.video_group_id }}</option>
                   </select>
                 </div>
               </div>
@@ -75,15 +75,18 @@ export default {
   computed: {
     ...mapGetters([
         'getVideoInfo',
+        'getVideoGroupInfo',
     ]),
   },
   methods: {
     ...mapActions([
         'getselectedVideo',
+        'getVideoGroup',
     ]),
   },
   created() {
     this.getselectedVideo(this.$route.params.id);
+    this.getVideoGroup();
   },
 };
 </script>

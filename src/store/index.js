@@ -12,6 +12,7 @@ import Shop from '@/modules/admin/shop/store/shop';
 import Game from '@/modules/admin/other/game/store/game';
 import Level from '@/modules/admin/other/level/store/level'
 import Video from '@/modules/admin/other/video/store/video';
+import VideoGroup from '@/modules/admin/other/video-group/store/video-group';
 
 Vue.use(Vuex);
 
@@ -27,5 +28,6 @@ export default new Vuex.Store({
         Game,
         Level,
         Video,
+        VideoGroup,
     },
 });
