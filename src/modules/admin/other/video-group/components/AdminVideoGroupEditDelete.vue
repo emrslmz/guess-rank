@@ -6,6 +6,8 @@
         <small>Update or delete some information of the selected video group.</small>
       </div>
 
+      {{ getVideoGroupInfo.selectedVideoGroupData }}
+
       <div class="d-flex justify-content-center">
         <div class="col-sm-6 col-12 video-edit-card d-flex flex-column justify-content-center align-items-center">
           <div>
@@ -20,7 +22,10 @@
                       <li><b>{{ video.video_name }}</b></li>
                     </ul>
                   </div>
-                  <div class="green-success-button px-4">
+                <div class="px-4">
+                  <button class="btn bg-danger text-white btn-sm" @click="video.video_id = null">del</button>
+                </div>
+                  <div class="px-4">
                     <router-link :to="{ name: 'VideosEdit', params: { id: video.video_id }} ">
                       <button class="btn btn-sm bg-dark text-white"> <i class="far fa-eye"></i></button>
                     </router-link>
@@ -29,8 +34,8 @@
 
             </div>
           </div>
-          <div v-else>
-
+          <div class="py-4" v-else>
+            <b>No video matching this group found.</b>
           </div>
 
           <div>

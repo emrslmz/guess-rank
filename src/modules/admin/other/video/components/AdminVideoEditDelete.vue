@@ -6,6 +6,8 @@
         <small>Update or delete some information of the selected video.</small>
       </div>
 
+      {{ getVideoInfo.selectedVideoData }}
+
       <div class="d-flex justify-content-center">
         <div class="col-sm-6 col-12 video-edit-card d-flex flex-column justify-content-center align-items-center">
 
@@ -42,13 +44,26 @@
           </div>
           <div class="d-flex justify-content-between align-items-center">
 
+            <div class="d-flex justify-content-between align-items center pb-3 px-md-2">
+              <div class="d-flex flex-column justify-content-center center">
+                <div class="text-center">
+                  <small>Video group ownership status</small>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+<!--                  <span><i class="far fa-eye-slash"></i></span>-->
+                  <div><input class="dark-mode-button mt-2 mx-3" value="null" v-model="getVideoInfo.selectedVideoData.video_group_id" type="radio" /></div>
+<!--                  <span><i class="far fa-eye"></i></span>-->
+                </div>
+              </div>
+            </div>
+
             <div class="d-flex flex-column justify-content-center center pb-3 px-2">
               <div class="text-left px-2">
-                <small>Select Game</small>
+                <small>Video Group</small>
               </div>
-              <div class="d-flex justify-content-center align-items-center ">
+              <div class="d-flex justify-content-center align-items-center">
                 <div class="custom-input-icon">
-                  <i class="fas fa-gamepad"></i>
+                  <i class="fas fa-th-list"></i>
                 </div>
                 <div>
                   <select class="custom-select" v-model="getVideoInfo.selectedVideoData.video_group_id">
@@ -59,6 +74,67 @@
             </div>
 
           </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <div class="d-flex justify-content-between align-items center pb-3 px-md-2">
+              <div class="d-flex flex-column justify-content-center center">
+                <div class="text-center">
+                  <small>Video game ownership status</small>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <!--                  <span><i class="far fa-eye-slash"></i></span>-->
+                  <div><input class="dark-mode-button mt-2 mx-3" value="null" v-model="getVideoInfo.selectedVideoData.video_game_id" type="radio" /></div>
+                  <!--                  <span><i class="far fa-eye"></i></span>-->
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column justify-content-center center pb-3 px-2">
+              <div class="text-left px-2">
+                <small>Which game of video</small>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="custom-input-icon">
+                  <i class="fas fa-gamepad"></i>
+                </div>
+                <div>
+                  <select class="custom-select" v-model="getVideoInfo.selectedVideoData.video_game_id">
+                    <option :value="game.game_id" v-for="(game, index) in getGameInfo.gameData" :key="index">{{ game.game_name  }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+          <div class="d-flex green-success-button justify-content-center align-items center">
+              <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoEditModal"><i class="fas fa-info-circle"></i> General Status</button>
+            <button class="btn mx-2"><i class="fas fa-save"></i> Save</button>
+            <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteVideo"><i class="fas fa-trash"></i> Delete</button>
+          </div>
+
+
+          <delete-modal
+              id="deleteVideo"
+              aria-hidden="true"
+              :header-name="getVideoInfo.selectedVideoData.video_name"
+          ></delete-modal>
+
+
+          <info-modal
+              id="videoEditModal"
+              aria-hidden="true"
+              :object-id="getVideoInfo.selectedVideoData.video_id"
+              :creation-date="getVideoInfo.selectedVideoData.created_at"
+              :update-date="getVideoInfo.selectedVideoData.created_at"
+          ></info-modal>
 
         </div>
       </div>
@@ -72,21 +148,28 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AdminVideoEditDelete',
+  components: {
+    DeleteModal: () => import('@/modules/admin/production/layouts/modals/DeleteModal.vue'),
+    InfoModal: () => import('@/modules/admin/production/layouts/modals/InfoModal.vue'),
+  },
   computed: {
     ...mapGetters([
         'getVideoInfo',
         'getVideoGroupInfo',
+        'getGameInfo',
     ]),
   },
   methods: {
     ...mapActions([
         'getselectedVideo',
         'getVideoGroup',
+        'getGame',
     ]),
   },
   created() {
     this.getselectedVideo(this.$route.params.id);
     this.getVideoGroup();
+    this.getGame();
   },
 };
 </script>
@@ -143,14 +226,13 @@ export default {
 }
 
 .custom-select {
-  padding: 0 60px 0 60px;
   border-radius: 0 12px 12px 0;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 100%;
+  width: 120px;
   border: none;
   outline: none;
   transition: 0.5s;

@@ -123,14 +123,14 @@
           <div class="d-flex justify-content-center">
             <div class="green-success-button d-flex justify-content-center">
               <router-link to="/admin/shop/items">
-                <button class="btn btn-sm bg-warning mx-2"><i class="fas fa-undo-alt"></i> Back</button>
+                <button class="btn bg-warning mx-2"><i class="fas fa-undo-alt"></i> Back</button>
               </router-link>
              <div>
-               <button class="btn btn-sm bg-primary mx-2" data-toggle="modal" data-target="#itemEditModal"><i class="fas fa-info-circle"></i> General Status</button>
+               <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#itemEditModal"><i class="fas fa-info-circle"></i> General Status</button>
              </div>
               <div>
-                <button class="btn mx-2" @click="sendChangesItem">Save</button>
-                <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteItem">Delete</button>
+                <button class="btn mx-2" @click="sendChangesItem"><i class="fas fa-save"></i> Save</button>
+                <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i> Delete</button>
               </div>
             </div>
           </div>
@@ -152,10 +152,9 @@
               <div class="modal-footer">
                 <div class="green-success-button">
                   <button type="button" class="btn bg-primary btn-sm" data-dismiss="modal">Close</button>
-
                 </div>
                 <div class="green-success-button">
-                  <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true" @click="sendDeleteItem(getShopInfo.selectedShopData)">Delete</button>
+                  <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true" @click="sendDeleteItem(getShopInfo.selectedShopData)"><i class="fas fa-trash"></i> Delete</button>
                 </div>
               </div>
             </div>
