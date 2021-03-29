@@ -61,7 +61,7 @@ a {
   --button-text-color-hover: var(--button-background-color);
   --border-color: #7D8082;
   --button-background-color: #ece8e1;
-  --highlight-color: #6448c9;
+  --highlight-color: #9b86e6;
   /*#ff4655*/
   --button-inner-border-color: transparent;
   --button-bits-color: var(--background-color);
