@@ -108,8 +108,7 @@ const actions = {
                 router.push({ path: '/admin/other/level/all' });
             })
     }
-
-}
+};
 
 
 export default {

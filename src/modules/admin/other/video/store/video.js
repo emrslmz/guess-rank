@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {showMessage} from "@/shared/utils/messages.utils";
+import router from "@/router";
 
 const state = {
   videoInfo: {
@@ -7,7 +8,10 @@ const state = {
     videoData: [],
     selectedVideoData: [],
     addVideoData: {
-
+        video_name: null,
+        video_url: null,
+        video_group_id: null,
+        video_game_id: null,
     },
   },
 };
@@ -58,6 +62,30 @@ const actions = {
           .then((response) => {
               state.videoInfo.videoStatus = response.data.code;
               showMessage("The changes have been saved!");
+          })
+    },
+    // postAddVideo(context, addVideoData) {
+    //   axios
+    //       .post('https://guess-what-rank-api.herokuapp.com/api/videos', {
+    //           video_name: addVideoData,
+    //           video_url: null,
+    //           video_group_id: null,
+    //           video_game_id: null,
+    //       })
+    // },
+    deleteVideo(context, deleteVideoData) {
+      axios
+          .delete(`https://guess-what-rank-api.herokuapp.com/api/videos/${deleteVideoData.video_id}`, {
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+              },
+          }, {
+              deleteVideoData
+          })
+          .then((response) => {
+              state.videoInfo.videoStatus = response.data.code;
+              showMessage("The transaction is successful!");
+              router.push({ path: '/admin/other/video/all' });
           })
     },
 };

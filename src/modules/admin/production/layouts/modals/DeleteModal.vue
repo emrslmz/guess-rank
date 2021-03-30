@@ -17,7 +17,7 @@
 
           </div>
           <div class="green-success-button">
-            <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true"><i class="fas fa-trash"></i> Delete</button>
+            <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true" @click="DeleteFunction"><i class="fas fa-trash"></i> Delete</button>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
 <script>
 export default {
   name: 'DeleteModal',
-  props: [ 'HeaderName', ],
+  props: [ 'HeaderName', 'DeleteFunction'],
 };
 </script>
 

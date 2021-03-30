@@ -133,6 +133,7 @@
           <delete-modal
               id="deleteVideo"
               aria-hidden="true"
+              :delete-function="deleteSendData"
               :header-name="getVideoInfo.selectedVideoData.video_name"
           ></delete-modal>
 
@@ -165,9 +166,13 @@ export default {
         'getVideoGroup',
         'getGame',
         'patchEditVideo',
+        'deleteVideo',
     ]),
     sendChangesVideo() {
       this.patchEditVideo(this.getVideoInfo.selectedVideoData);
+    },
+    deleteSendData() {
+      this.deleteVideo(this.getVideoInfo.selectedVideoData);
     },
   },
   created() {
