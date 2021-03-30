@@ -53,13 +53,6 @@
               :update-date="getVideoGroupInfo.selectedVideoGroupData.created_at"
           ></info-modal>
 
-
-          <delete-modal
-              id="deleteVideo"
-              aria-hidden="true"
-              :header-name="getVideoInfo.selectedVideoData.video_name"
-          ></delete-modal>
-
         </div>
       </div>
     </div>
@@ -72,7 +65,6 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'AdminVideoEditDelete',
   components: {
-    DeleteModal: () => import('@/modules/admin/production/layouts/modals/DeleteModal.vue'),
     InfoModal: () => import('@/modules/admin/production/layouts/modals/InfoModal.vue'),
   },
   computed: {

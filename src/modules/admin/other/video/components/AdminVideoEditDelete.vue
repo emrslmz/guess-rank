@@ -6,8 +6,6 @@
         <small>Update or delete some information of the selected video.</small>
       </div>
 
-      {{ getVideoInfo.selectedVideoData }}
-
       <div class="d-flex justify-content-center">
         <div class="col-sm-6 col-12 video-edit-card d-flex flex-column justify-content-center align-items-center">
 
@@ -115,10 +113,21 @@
 
 
 
-          <div class="d-flex green-success-button justify-content-center align-items center">
-            <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoEditModal"><i class="fas fa-info-circle"></i> General Status</button>
-            <button class="btn mx-2" @click="sendChangesVideo"><i class="fas fa-save"></i> Save</button>
-            <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteVideo"><i class="fas fa-trash"></i> Delete</button>
+          <div class="d-flex justify-content-between green-success-button">
+            <div>
+              <router-link to="/admin/other/video/all">
+                <button class="btn bg-warning mx-2"><i class="fas fa-undo-alt"></i> Back</button>
+              </router-link>
+            </div>
+            <div>
+              <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoEditModal"><i class="fas fa-info-circle"></i> </button>
+            </div>
+            <div>
+              <button class="btn mx-2" @click="sendChangesVideo"><i class="fas fa-save"></i> Save</button>
+            </div>
+            <div>
+              <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteVideo"><i class="fas fa-trash"></i> Delete</button>
+            </div>
           </div>
 
 

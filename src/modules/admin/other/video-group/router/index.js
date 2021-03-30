@@ -18,7 +18,7 @@ export default [{
             component: () => import('@/modules/admin/other/video-group/components/AdminAddVideo.vue'),
         },
         {
-            path: '/admin/other/video-group/add/:id',
+            path: '/admin/other/video-group/all/:id',
             name: 'VideoGroupEdit',
             meta: {
                 title: 'Edit Video Groups'

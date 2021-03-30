@@ -64,15 +64,27 @@ const actions = {
               showMessage("The changes have been saved!");
           })
     },
-    // postAddVideo(context, addVideoData) {
-    //   axios
-    //       .post('https://guess-what-rank-api.herokuapp.com/api/videos', {
-    //           video_name: addVideoData,
-    //           video_url: null,
-    //           video_group_id: null,
-    //           video_game_id: null,
-    //       })
-    // },
+    postAddVideo(context, addVideoData) {
+      axios
+          .post('https://guess-what-rank-api.herokuapp.com/api/videos', {
+              video_name: addVideoData.video_name,
+              video_url: addVideoData.video_url,
+              video_group_id: addVideoData.video_group_id,
+              video_game_id: addVideoData.video_game_id,
+          }, {
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+              },
+          })
+          .then((response) => {
+              state.videoInfo.videoStatus = response.data.code;
+              showMessage("The transaction is successful!");
+
+              Object.keys(state.videoInfo.addVideoData).forEach((key) => {
+                  state.videoInfo.addVideoData[key] = null;
+              });
+          })
+    },
     deleteVideo(context, deleteVideoData) {
       axios
           .delete(`https://guess-what-rank-api.herokuapp.com/api/videos/${deleteVideoData.video_id}`, {
