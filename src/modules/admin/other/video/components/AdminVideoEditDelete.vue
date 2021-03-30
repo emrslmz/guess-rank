@@ -42,22 +42,24 @@
             </div>
 
           </div>
-          <div class="d-flex justify-content-between align-items-center">
 
-            <div class="d-flex justify-content-between align-items center pb-3 px-md-2">
+
+          <div class="d-flex justify-content-between align-items-center py-2">
+
+            <div class="d-flex justify-content-between align-items center px-4">
               <div class="d-flex flex-column justify-content-center center">
                 <div class="text-center">
-                  <small>Video group ownership status</small>
+                  <small>Not in any video group</small>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
-<!--                  <span><i class="far fa-eye-slash"></i></span>-->
-                  <div><input class="dark-mode-button mt-2 mx-3" value="null" v-model="getVideoInfo.selectedVideoData.video_group_id" type="radio" /></div>
-<!--                  <span><i class="far fa-eye"></i></span>-->
+                  <div>
+                    <input class="dark-mode-button mt-2 mx-3" :value="null" v-model="getVideoInfo.selectedVideoData.video_group_id" type="radio" />
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="d-flex flex-column justify-content-center center pb-3 px-2">
+            <div class="d-flex flex-column justify-content-center center">
               <div class="text-left px-2">
                 <small>Video Group</small>
               </div>
@@ -68,6 +70,8 @@
                 <div>
                   <select class="custom-select" v-model="getVideoInfo.selectedVideoData.video_group_id">
                     <option :value="group.video_group_id" v-for="(group, index) in getVideoGroupInfo.videoGroupData" :key="index">{{ group.video_group_id }}</option>
+                    <option value="null" disabled>None</option>
+
                   </select>
                 </div>
               </div>
@@ -75,22 +79,22 @@
 
           </div>
 
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center py-3">
 
-            <div class="d-flex justify-content-between align-items center pb-3 px-md-2">
+            <div class="d-flex justify-content-between align-items center px-5">
               <div class="d-flex flex-column justify-content-center center">
                 <div class="text-center">
-                  <small>Video game ownership status</small>
+                  <small>Have no game</small>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <!--                  <span><i class="far fa-eye-slash"></i></span>-->
-                  <div><input class="dark-mode-button mt-2 mx-3" value="null" v-model="getVideoInfo.selectedVideoData.video_game_id" type="radio" /></div>
+                  <div><input class="dark-mode-button mt-2 mx-3" :value="null" v-model="getVideoInfo.selectedVideoData.video_game_id" type="radio" /></div>
                   <!--                  <span><i class="far fa-eye"></i></span>-->
                 </div>
               </div>
             </div>
 
-            <div class="d-flex flex-column justify-content-center center pb-3 px-2">
+            <div class="d-flex flex-column justify-content-center center">
               <div class="text-left px-2">
                 <small>Which game of video</small>
               </div>
@@ -101,6 +105,7 @@
                 <div>
                   <select class="custom-select" v-model="getVideoInfo.selectedVideoData.video_game_id">
                     <option :value="game.game_id" v-for="(game, index) in getGameInfo.gameData" :key="index">{{ game.game_name  }}</option>
+                    <option value="null" disabled>None</option>
                   </select>
                 </div>
               </div>
@@ -110,22 +115,11 @@
 
 
 
-
-
-
-
           <div class="d-flex green-success-button justify-content-center align-items center">
-              <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoEditModal"><i class="fas fa-info-circle"></i> General Status</button>
-            <button class="btn mx-2"><i class="fas fa-save"></i> Save</button>
+            <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoEditModal"><i class="fas fa-info-circle"></i> General Status</button>
+            <button class="btn mx-2" @click="sendChangesVideo"><i class="fas fa-save"></i> Save</button>
             <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteVideo"><i class="fas fa-trash"></i> Delete</button>
           </div>
-
-
-          <delete-modal
-              id="deleteVideo"
-              aria-hidden="true"
-              :header-name="getVideoInfo.selectedVideoData.video_name"
-          ></delete-modal>
 
 
           <info-modal
@@ -136,9 +130,15 @@
               :update-date="getVideoInfo.selectedVideoData.created_at"
           ></info-modal>
 
+          <delete-modal
+              id="deleteVideo"
+              aria-hidden="true"
+              :header-name="getVideoInfo.selectedVideoData.video_name"
+          ></delete-modal>
+
+
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -164,7 +164,11 @@ export default {
         'getselectedVideo',
         'getVideoGroup',
         'getGame',
+        'patchEditVideo',
     ]),
+    sendChangesVideo() {
+      this.patchEditVideo(this.getVideoInfo.selectedVideoData);
+    },
   },
   created() {
     this.getselectedVideo(this.$route.params.id);

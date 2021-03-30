@@ -64,7 +64,7 @@ const actions = {
             })
             .then((response) => {
                 state.levelInfo.levelStatus = response.data.code;
-                showMessage("The changes have been saved!")
+                showMessage("The changes have been saved!");
             })
     },
     postAddLevel(context, addLevelData) {
