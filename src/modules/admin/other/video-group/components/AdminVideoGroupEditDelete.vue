@@ -6,52 +6,61 @@
         <small>Update or delete some information of the selected video group.</small>
       </div>
 
-      {{ getVideoGroupInfo.selectedVideoGroupData }}
-
       <div class="d-flex justify-content-center">
-        <div class="col-sm-6 col-12 video-edit-card py-4">
+        <div class="d-flex flex-column justify-content-center align-items-center col-xl-6 col-12 video-edit-card py-4">
            <div>
              <h5 class="text-center">Videos in this group</h5>
            </div>
 
-
             <div v-for="(video, index) in getVideoGroupInfo.selectedVideoGroupData.videos" :key="index">
-              <div class="d-flex justify-content-around align-items-center col-12 py-3">
-
-                <div class="video-group-video-card d-flex justify-content-start align-items-center px-3 mx-2">
+              <div class="d-md-flex justify-content-around align-items-center col-12 py-3">
+                <div class="video-group-video-card col-12 d-flex justify-content-start align-items-center">
                   <ul>
                     <li><b>Video Name: </b>{{ video.video_name }}</li>
                     <li><b>Video Id: </b>{{video.video_id}}</li>
                   </ul>
                 </div>
-                  <div class="green-success-button mx-2">
-                    <router-link :to="{ name: 'VideosEdit', params: { id: video.video_id }} ">
-                      <button class="btn btn-sm"> See <i class="far fa-eye"></i></button>
-                    </router-link>
-                  </div>
+                <div class="green-success-button py-3 px-2">
+                  <router-link :to="{ name: 'VideosEdit', params: { id: video.video_id }} ">
+                    <button class="btn btn-sm w-100"> See <i class="far fa-eye"></i></button>
+                  </router-link>
+                </div>
               </div>
             </div>
 
-          <div>
-            <div class="green-success-button d-flex justify-content-center py-4">
+
+          <div class="d-flex justify-content-between green-success-button">
+            <div>
               <router-link to="/admin/other/video-group/all">
                 <button class="btn bg-warning mx-2"><i class="fas fa-undo-alt"></i> Back</button>
               </router-link>
-              <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoEditModal"><i class="fas fa-info-circle"></i> General Status</button>
-              <router-link to="/admin/other/video/all">
-                <button class="btn bg-info mx-2"><i class="fas fa-th"></i> All Videos</button>
-              </router-link>
+            </div>
+            <div>
+              <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoGroupEditModal"><i class="fas fa-info-circle"></i> </button>
+            </div>
+            <div>
+              <button class="btn mx-2" ><i class="fas fa-save"></i> Save</button>
+            </div>
+            <div>
+              <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteVideoGroup"><i class="fas fa-trash"></i> Delete</button>
             </div>
           </div>
 
 
           <info-modal
-              id="videoEditModal"
+              id="videoGroupEditModal"
               aria-hidden="true"
               :object-id="getVideoGroupInfo.selectedVideoGroupData.video_group_id"
               :creation-date="getVideoGroupInfo.selectedVideoGroupData.created_at"
               :update-date="getVideoGroupInfo.selectedVideoGroupData.created_at"
           ></info-modal>
+
+          <delete-modal
+              id="deleteVideoGroup"
+              aria-hidden="true"
+              :delete-function="deleteSendData"
+              :header-name="getVideoGroupInfo.selectedVideoGroupData.video_group_id"
+          ></delete-modal>
 
         </div>
       </div>
@@ -65,6 +74,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'AdminVideoEditDelete',
   components: {
+    DeleteModal: () => import('@/modules/admin/production/layouts/modals/DeleteModal.vue'),
     InfoModal: () => import('@/modules/admin/production/layouts/modals/InfoModal.vue'),
   },
   computed: {
@@ -75,7 +85,11 @@ export default {
   methods: {
     ...mapActions([
       'getSelectedVideoGroup',
+      'deleteVideoGroup'
     ]),
+    deleteSendData() {
+      this.deleteVideoGroup(this.getVideoGroupInfo.selectedVideoGroupData);
+    },
   },
   created() {
     this.getSelectedVideoGroup(this.$route.params.id);
@@ -95,12 +109,11 @@ export default {
   text-decoration: none;
 }
 
-.video-group-video-card{
+.video-group-video-card {
   width: 100%;
   min-height: 100px;
   border-radius: 20px;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   color: #191919;
   text-decoration: none;
 }

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="text-center pt-5 mt-5">
         <h4 class="text-spacing5">Add Video</h4>
-        <small>Update or delete some information of the selected video.</small>
+        <small>Fill in the appropriate blanks to add.</small>
       </div>
 
       <div class="d-flex justify-content-center">
@@ -112,7 +112,7 @@
           </div>
 
           <div class="d-flex green-success-button justify-content-center align-items center">
-            <button class="btn mx-2" @click="sendVideoData"><i class="fas fa-save"></i> Add</button>
+            <button class="btn mx-2" @click="sendVideoData"><i class="fas fa-plus"></i> Add</button>
           </div>
 
         </div>
