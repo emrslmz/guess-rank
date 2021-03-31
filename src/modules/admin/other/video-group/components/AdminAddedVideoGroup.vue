@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-center py-3">
           <div class="top-button">
             <router-link to="/admin/other/video-group/add">
-              <button class="btn btn-sm mx-1">Add Item</button>
+              <button class="btn btn-sm mx-1">Add Video Group</button>
             </router-link>
           </div>
         </div>

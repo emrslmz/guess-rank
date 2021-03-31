@@ -16,7 +16,7 @@
           <div class="py-3">
             <div v-for="(video, index) in getVideoInfo.videoData" :key="index">
               <label class="checkbox-input">
-                <input class="mx-2" type="checkbox" :value="video" v-model="getVideoGroupInfo.addVideoGroupData.videos" />
+                <input class="mx-2" type="checkbox" :value="video.video_id" v-model="getVideoGroupInfo.addVideoGroupData.videos" />
                 <span class="checkmark"></span>
                 {{ video.video_name }} <small> <i>{{ video.video_id }}</i></small>
               </label>
