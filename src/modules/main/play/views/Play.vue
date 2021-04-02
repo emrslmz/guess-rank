@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PlayHome from '@/modules/main/play/components/PlayHome.vue';
+import PlayHome from '@/modules/main/play/components/test/PlayHome.vue';
 
 export default {
   components: {

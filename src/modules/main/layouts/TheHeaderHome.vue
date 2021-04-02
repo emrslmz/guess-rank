@@ -20,7 +20,7 @@
           </div>
 
           <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData && isLogged">
-            <router-link to="/category">
+            <router-link to="/play">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-play-circle"></i> Play</button>
               </div>

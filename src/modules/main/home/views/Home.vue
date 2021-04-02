@@ -51,7 +51,7 @@ export default {
   /*ORANGE*/
 
   /*GREEN*/
-  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  /*background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);*/
   /*GREEN*/
 
 
@@ -61,7 +61,7 @@ export default {
   /*GRAY*/
 
   /*LIGHT BLUE TOP WHITE*/
-  /*background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);*/
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
   /*LIGHT BLUE TOP WHITE*/
 
   /*GRAY*/
