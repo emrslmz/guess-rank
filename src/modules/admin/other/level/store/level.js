@@ -12,7 +12,8 @@ const state = {
             level_description: null,
             is_locked: false,
             is_hidden: false,
-            game_id: 1,
+            game_id: null,
+            level_video_group_id: null,
         },
     },
 }
@@ -57,6 +58,7 @@ const actions = {
                 is_locked: selectedLevel.is_locked,
                 is_hidden: selectedLevel.is_hidden,
                 game_id: selectedLevel.game_id,
+                level_video_group_id: selectedLevel.level_video_group_id,
             }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -75,6 +77,7 @@ const actions = {
                 is_locked: addLevelData.is_locked,
                 is_hidden: addLevelData.is_hidden,
                 game_id: addLevelData.game_id,
+                level_video_group_id: addLevelData.level_video_group_id,
             }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -88,7 +91,9 @@ const actions = {
                 state.levelInfo.addLevelData.is_locked = false;
                 state.levelInfo.addLevelData.level_description = null;
                 state.levelInfo.addLevelData.level_name = null;
-                state.levelInfo.addLevelData.game_id = 1;
+                state.levelInfo.addLevelData.game_id = null;
+                state.levelInfo.addLevelData.level_video_group_id = null;
+
 
             })
     },

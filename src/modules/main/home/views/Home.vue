@@ -47,11 +47,11 @@ export default {
   /*WHITE*/
 
   /*ORANGE*/
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  /*background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);*/
   /*ORANGE*/
 
   /*GREEN*/
-  /*background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);*/
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
   /*GREEN*/
 
 

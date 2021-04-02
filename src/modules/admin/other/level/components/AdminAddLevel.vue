@@ -40,6 +40,7 @@
                   <div>
                     <select class="custom-select" v-model="getLevelInfo.addLevelData.game_id">
                       <option :value="game.game_id" v-for="(game, index) in getGameInfo.gameData" :key="index">{{ game.game_name }}</option>
+                      <option value="null" disabled>Select anyone</option>
                     </select>
                   </div>
                 </div>
@@ -61,7 +62,24 @@
                   <i class="fas fa-text-height"></i>
                 </div>
                 <div>
-                  <textarea cols="50" class="custom-textarea" v-model="getLevelInfo.addLevelData.level_description"  placeholder="Level Description"></textarea>
+                  <textarea cols="25" class="custom-textarea" v-model="getLevelInfo.addLevelData.level_description"  placeholder="Level Description"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column justify-content-center center pb-3 px-2">
+              <div class="text-left px-2">
+                <small>Video Group</small>
+              </div>
+              <div class="d-flex justify-content-center align-items-center ">
+                <div class="custom-input-icon">
+                  <i class="fas fa-th-list"></i>
+                </div>
+                <div>
+                  <select class="custom-select" v-model="getLevelInfo.addLevelData.level_video_group_id">
+                    <option :value="group.video_group_id" v-for="(group, index) in getVideoGroupInfo.videoGroupData" :key="index">{{ group.video_group_id }}</option>
+                    <option value="null" disabled>Select anyone</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -121,12 +139,14 @@ export default {
     ...mapGetters([
       'getLevelInfo',
       'getGameInfo',
+      'getVideoGroupInfo',
     ])
   },
   methods: {
     ...mapActions([
       'getGame',
       'postAddLevel',
+      'getVideoGroup',
     ]),
     sendLevelData() {
       this.postAddLevel(this.getLevelInfo.addLevelData);
@@ -134,6 +154,7 @@ export default {
   },
   created() {
     this.getGame();
+    this.getVideoGroup();
   },
 };
 </script>
@@ -190,14 +211,13 @@ export default {
 }
 
 .custom-select {
-  padding: 0 60px 0 60px;
   border-radius: 0 12px 12px 0;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 100%;
+  width: 160px;
   border: none;
   outline: none;
   transition: 0.5s;
