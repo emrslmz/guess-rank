@@ -1,7 +1,7 @@
 import Profile from '@/modules/main/profiles/router';
-import Play from '@/modules/main/play/router';
 import LoginRegister from '@/modules/main/login-register/router/';
 import Start from '@/modules/main/start/router/';
+import Play from '@/modules/main/play/home/router/';
 import Shop from '@/modules/main/shop/router/';
 import Games from '@/modules/main/extras/games/router/'
 
