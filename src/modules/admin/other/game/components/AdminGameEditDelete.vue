@@ -150,39 +150,17 @@
                     <button class="btn bg-danger btn-xl w-100" data-toggle="modal" data-target="#deleteGame">Delete</button>
                   </div>
                 </div>
-
-
                 <!-- Modal -->
-                <div class="modal fade" id="deleteGame"  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title text-left" id="exampleModalLabel">Are you sure you want to delete the item named <i>{{ getGameInfo.selectedGameData.game_name }}</i> ?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <label>This action cannot be undone.</label>
-                      </div>
-                      <div class="modal-footer">
-                        <div class="green-success-button">
-                          <button type="button" class="btn bg-primary btn-sm" data-dismiss="modal">Close</button>
-
-                        </div>
-                        <div class="green-success-button">
-                          <button class="btn bg-danger btn-sm" data-dismiss="modal" aria-label="Close" aria-hidden="true" @click="sendDeletes(getGameInfo.selectedGameData)">Delete</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <delete-modal
+                    id="deleteGame"
+                    aria-hidden="true"
+                    :delete-function="sendDeletes"
+                    :header-name="getGameInfo.selectedGameData.game_name"
+                ></delete-modal>
                 <!-- Modal -->
+
               </div>
-
             </div>
-            <!-- /END -->
-
           </div>
         </div>
 
@@ -196,6 +174,9 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AdminGamesEditDelete',
+  components: {
+    DeleteModal: () => import('@/modules/admin/production/layouts/modals/DeleteModal.vue'),
+  },
   computed: {
     ...mapGetters([
         'getGameInfo',
@@ -210,9 +191,9 @@ export default {
     sendChangesGame() {
       this.patchEditGame(this.getGameInfo.selectedGameData);
     },
-    sendDeletes(gameDatas) {
-      this.deleteGame(gameDatas);
-    }
+    sendDeletes() {
+      this.deleteGame(this.getGameInfo.selectedGameData);
+    },
   },
   created() {
     this.getSelectedGame(this.$route.params.id);

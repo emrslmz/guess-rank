@@ -1,6 +1,7 @@
 <template>
   <div>
-    <game-home />
+    <game-home v-if="this.$route.name === 'Games'" />
+    <router-view />
   </div>
 </template>
 

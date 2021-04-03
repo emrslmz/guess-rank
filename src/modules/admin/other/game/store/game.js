@@ -46,7 +46,7 @@ const actions = {
                 },
             })
             .then((response) => {
-                console.log(response.data.code);
+                // console.log(response.data.code);
                 state.gameInfo.gameStatus = response.data.code;
                 state.gameInfo.selectedGameData = response.data.result.data;
             })
