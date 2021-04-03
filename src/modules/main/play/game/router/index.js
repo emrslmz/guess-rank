@@ -11,5 +11,13 @@ export default [{
             },
             component: () => import('@/modules/main/play/game/components/SelectLevel.vue'),
         },
+        {
+            path: '/play/game/:id/level#:key',
+            name: 'SelectVideo',
+            meta: {
+                title: 'SelectVideoPage',
+            },
+            component: () => import('@/modules/main/play/game/components/SelectVideo.vue'),
+        },
     ]
 }];

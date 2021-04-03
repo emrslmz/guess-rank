@@ -59,7 +59,7 @@
         <div class="d-flex justify-content-center align-items-center row">
           <div class="level-card-box mouse-click text-center" v-for="(level, index) in getLevelInfo.levelData" :key="index">
             <router-link :to="{ name: 'LevelsEdit', params: { key: level.level_random_key }} ">
-               <div>
+               <div class="d-flex flex-column">
                  <h2>{{ level.level_id }}</h2>
                  <b style="font-size: 5px">{{ level.level_random_key }}</b>
                </div>
