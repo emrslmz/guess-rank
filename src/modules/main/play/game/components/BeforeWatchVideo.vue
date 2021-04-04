@@ -3,15 +3,16 @@
     <div class="text-center d-flex flex-column">
       <h2>{{ getVideoInfo.selectedVideoData.video_name }}</h2>
       <small class="text-spacing5">Click on the "I'm ready" button below to watch the video named {{ getVideoInfo.selectedVideoData.video_name }} you selected.</small>
+
     </div>
 <!--    {{ getVideoInfo.selectedVideoData }}-->
 
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-6" v-if="readyStatus === false">
+        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-12 col-sm-10 col-md-6" v-if="getPlayGame.readyStatus === false">
 
           <!-- READY BUTTON-->
           <div>
-            <button class="button-valorant btn-valorant-light" @click="readyStatus = true">
+            <button class="button-valorant btn-valorant-light" @click="readyButton">
               <span class="btn-valorant-inner">
                 <span class="btn-valorant-slide"></span>
                 <span class="btn-valorant-content"><i class="fas fa-play"></i> Ready</span>
@@ -25,8 +26,16 @@
             <b>Select one of the options that appear in the bottom panel after a certain time of the video.</b>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-6" v-else>
-          <watch-video />
+        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-12 col-sm-6" v-else>
+          <watch-video  />
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card-bottom col-12 col-sm-6">
+            <div v-if="getPlayGame.watchVideo.showOption === true">
+              şıklar gözüktğ acik
+            </div>
+            <div v-else>
+              şıklar gözükmüyorr kapali
+            </div>
         </div>
     </div>
   </div>
@@ -38,23 +47,24 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AfterWatchVideo',
-  data() {
-    return {
-      readyStatus: false,
-    };
-  },
   components: {
     WatchVideo: () => import('@/modules/main/play/game/components/WatchVideo.vue'),
   },
   computed: {
     ...mapGetters([
         'getVideoInfo',
+        'getPlayGame',
     ]),
   },
   methods: {
     ...mapActions([
         'getselectedVideo',
+        'countdownVideo',
     ]),
+    readyButton() {
+      this.getPlayGame.readyStatus = true
+      this.countdownVideo();
+    },
   },
   created() {
     this.getselectedVideo(this.$route.params.id);
@@ -78,6 +88,17 @@ export default {
 
 a {
   color: #191919;
+}
+
+.watch-video-card-bottom {
+  margin: 15px 0 15px 0;
+  width: 100%;
+  min-height: 100px;
+  border-radius: 20px;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  color: #191919;
+  text-decoration: none;
 }
 
 /*CUSTOM VALORANT BUTTON*/

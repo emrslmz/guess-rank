@@ -1,70 +1,73 @@
 <template>
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <div v-if="showVideo === false">
-      <h5>{{ videoAfterStartTime }}</h5>
+    <div v-if="getPlayGame.watchVideo.showVideo === false">
+      <h5>{{ getPlayGame.watchVideo.videoAfterStartTime }}</h5>
     </div>
-    <div v-else>
-      <youtube width="960" height="480" video-id="jKSUc5Tbx5s" :player-vars="playerVars" @playing="countdownOption"></youtube>
+    <div class="container responsive-class" v-else>
+
+      <youtube width="100%" height="90%" class="responsive-iframe" video-id="jKSUc5Tbx5s"  :player-vars="getPlayGame.watchVideo.playerVars" @playing="playingVideo"></youtube>
+<!--      jKSUc5Tbx5s-->
     </div>
-    <div class="d-flex py-4" v-if="showOption === true">
-      <h6>option1</h6>
-      <h6>option2</h6>
-      <h6>option3</h6>
-      <h6>option4</h6>
-    </div>
-    <div class="py-4" v-else></div>
   </div>
 </template>
 
 
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'WatchVideo',
   data() {
     return {
-      videoAfterStartTime: 1,
-      showVideo: false,
-      showOptionTime: 10,
-      showOption: false,
-      playerVars: {
-        autoplay: 1
-      }
+      isWorking: false,
     };
   },
+  computed: {
+    ...mapGetters([
+        'getVideoInfo',
+        'getPlayGame',
+    ]),
+  },
   methods: {
-    countdownVideo() {
-      setInterval(() => {
-        if (this.videoAfterStartTime > 0) {
-          this.videoAfterStartTime--;
-        } else {
-          this.showVideo = true;
-        }
-      },1000);
-    },
-    countdownOption() {
-      setInterval(() => {
-        if (this.showOptionTime > 0) {
-          this.showOptionTime--;
-        } else {
-          this.showOption = true;
-        }
-      },1000);
+    ...mapActions([
+      'getselectedVideo',
+      'countdownOption',
+    ]),
+    playingVideo() {
+      this.countdownOption();
     },
   },
   created() {
-    this.countdownVideo();
+    this.getselectedVideo(this.$route.params.id);
   },
 };
 </script>
 
 
 <style scoped>
+.responsive-class {
+  position: absolute;
+  pointer-events: none;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+.responsive-iframe {
+  position: absolute;
+}
 
 </style>
 
 
 
+<!--<iframe class="responsive-iframe" width="960" height="480" src="https://www.youtube-nocookie.com/embed/jKSUc5Tbx5s?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
+<!--      <youtube class="responsive-iframe" width="960" height="480" video-id="jKSUc5Tbx5s" :player-vars="playerVars" @playing="countdownOption"></youtube>-->
 
 
-<!-- <iframe width="960" height="480" src="https://www.youtube-nocookie.com/embed/jKSUc5Tbx5s?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
