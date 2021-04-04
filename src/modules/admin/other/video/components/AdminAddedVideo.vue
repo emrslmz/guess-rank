@@ -23,6 +23,7 @@
             <th scope="col"><i class="far fa-file-video"></i> Video Name</th>
             <th scope="col"><i class="fas fa-link"></i> Video URL</th>
             <th scope="col"><i class="fas fa-th-large"></i> Video Group</th>
+            <th scope="col"><i class="fas fa-gamepad"></i> Video Game</th>
             <th scope="col"><i class="fas fa-pen-square"></i> Edit/Delete</th>
           </tr>
         </thead>
@@ -33,6 +34,8 @@
             <th>{{ video.video_name }}</th>
             <th>{{ video.video_url }}</th>
             <th v-if="video.video_group_id !== null">{{ video.video_group_id }}</th>
+            <th v-else><i title="Not affiliated with any group" class="fas fa-ban"></i></th>
+            <th v-if="video.video_game_id !== null"><i>{{ video.video_game_id }}</i> <small>{{ video.video_game.game_name }}</small></th>
             <th v-else><i title="Not affiliated with any group" class="fas fa-ban"></i></th>
             <th class="d-flex justify-content-center">
               <div class="green-success-button">

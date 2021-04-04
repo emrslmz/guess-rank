@@ -12,12 +12,20 @@ export default [{
             component: () => import('@/modules/main/play/game/components/SelectLevel.vue'),
         },
         {
-            path: '/play/game/:id/level#:key',
+            path: '/play/game/:id/level/:key',
             name: 'SelectVideo',
             meta: {
                 title: 'SelectVideoPage',
             },
             component: () => import('@/modules/main/play/game/components/SelectVideo.vue'),
+        },
+        {
+            path: '/play/game/:id/level/:key/:id',
+            name: 'WatchVideo',
+            meta: {
+                title: 'WatchVideoPage',
+            },
+            component: () => import('@/modules/main/play/game/components/WatchVideo.vue'),
         },
     ]
 }];

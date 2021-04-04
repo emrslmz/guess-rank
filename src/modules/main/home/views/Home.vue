@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 .body-home {
-  min-height: 120vh;
+  min-height: 100vh;
   /*WHITE*/
   /*background-color: #d3d3d3;*/
   /*WHITE*/
