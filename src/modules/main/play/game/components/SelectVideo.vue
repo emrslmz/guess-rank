@@ -7,7 +7,7 @@
 
     <div class="d-sm-flex row justify-content-center">
       <div class="video-group-card col-md-4 col-xl-2 mx-sm-2 my-2 d-flex flex-column justify-content-center align-items-center" v-for="(video, index) in getLevelInfo.selectedLevelData.video_group.videos" :key="index">
-        <router-link :to="{ name: 'WatchVideo', params: { id: video.video_id }}">
+        <router-link :to="{ name: 'AfterWatchVideo', params: { id: video.video_id }}">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <h5>{{video.video_name}}</h5>
             <small><i class="fas fa-play"></i></small>

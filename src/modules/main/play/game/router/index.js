@@ -21,11 +21,11 @@ export default [{
         },
         {
             path: '/play/game/:id/level/:key/:id',
-            name: 'WatchVideo',
+            name: 'AfterWatchVideo',
             meta: {
                 title: 'WatchVideoPage',
             },
-            component: () => import('@/modules/main/play/game/components/WatchVideo.vue'),
+            component: () => import('@/modules/main/play/game/components/BeforeWatchVideo.vue'),
         },
     ]
 }];
