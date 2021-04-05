@@ -44,6 +44,7 @@
             </router-link>
           </div>
 
+          <div class="custom-vertical-hr"></div>
 
           <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData  && isLogged">
             <div class="dropdown header-button mx-2 my-2">
@@ -193,6 +194,13 @@ export default {
   text-decoration: none;
 }
 
+.custom-vertical-hr {
+  border-left: 1px solid #cbcaca;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+  height: 20px
+}
 .profile-picture {
   background-position: center;
   /*background-attachment: fixed;*/

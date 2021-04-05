@@ -5,24 +5,17 @@
     </div>
     <div class="container responsive-class" v-else>
 
-      <youtube width="100%" height="90%" class="responsive-iframe" video-id="jKSUc5Tbx5s"  :player-vars="getPlayGame.watchVideo.playerVars" @playing="playingVideo"></youtube>
+      <youtube width="100%" height="90%" class="responsive-iframe" :video-id="getVideoInfo.selectedVideoData.video_url"  :player-vars="getPlayGame.watchVideo.playerVars" @playing="playingVideo"></youtube>
 <!--      jKSUc5Tbx5s-->
     </div>
   </div>
 </template>
-
-
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'WatchVideo',
-  data() {
-    return {
-      isWorking: false,
-    };
-  },
   computed: {
     ...mapGetters([
         'getVideoInfo',

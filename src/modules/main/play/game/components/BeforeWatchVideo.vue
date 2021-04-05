@@ -31,10 +31,10 @@
         </div>
         <div class="d-flex flex-column justify-content-center align-items-center watch-video-card-bottom col-12 col-sm-6">
             <div v-if="getPlayGame.watchVideo.showOption === true">
-              şıklar gözüktğ acik
+              <video-option />
             </div>
             <div v-else>
-              şıklar gözükmüyorr kapali
+              <small><i>After a few seconds, the options will appear. <i class="fas fa-circle-notch fa-spin" v-if="getPlayGame.readyStatus === true"></i></i></small>
             </div>
         </div>
     </div>
@@ -49,6 +49,7 @@ export default {
   name: 'AfterWatchVideo',
   components: {
     WatchVideo: () => import('@/modules/main/play/game/components/WatchVideo.vue'),
+    VideoOption: () => import('@/modules/main/play/game/components/VideoOption.vue'),
   },
   computed: {
     ...mapGetters([

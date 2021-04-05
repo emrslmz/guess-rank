@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="text-center" v-for="(video, index) in getVideoInfo.videoData.reverse()" :key="index">
+          <tr class="text-center" v-for="(video, index) in getVideoInfo.videoData" :key="index">
             <th><i class="fas fa-circle"></i></th>
             <th>{{ video.video_id }}</th>
             <th>{{ video.video_name }}</th>

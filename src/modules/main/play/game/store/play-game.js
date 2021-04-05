@@ -6,8 +6,8 @@ const state = {
             showVideo: false,
             showOptionTime: 5,
             showOption: false,
-            isWorking: false,
-            playerVars: {
+            isWorking: false, //WatchVideo'ya eklenecek
+            playerVars: {  //ok
                 autoplay: 1,
                 controls: 0,
             },
