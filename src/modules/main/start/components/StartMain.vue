@@ -1,21 +1,30 @@
 <template>
   <div class="container">
-    <div class="d-xl-flex justify-content-between align-items-start5">
+    <div class="start-main d-xl-flex align-items-center">
 
-        <div class="col-12 col-xl-4 mt-5">
+        <div class="col-12 col-xl-4">
+
           <div class="sign-card d-flex align-items-center justify-content-center">
             <router-link to="/login-register">
               <div class="text-center">
                 <h6> Sign up now and start earning</h6>
+                <i style="position: absolute; left: 25px; margin-top: -25px; font-size: 60px; opacity: 0.1" class="fas fa-user-plus"></i>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="sign-card d-flex align-items-center justify-content-center">
+            <router-link to="/login-register">
+              <div class="text-center">
+                <h6> How Do I Get Started?</h6>
+                <i style="position: absolute; left: 25px; margin-top: -25px; font-size: 60px; opacity: 0.1" class="far fa-question-circle"></i>
               </div>
             </router-link>
           </div>
         </div>
-      <div class="col-12 col-xl-8 mt-5">
-        <div class="news-card d-flex align-items-center justify-content-center">
-          <div>
 
-          </div>
+      <div class="col-12 col-xl-8">
+        <div class="news-card d-flex align-items-center justify-content-center">
         </div>
       </div>
     </div>
@@ -23,7 +32,13 @@
 </template>
 
 <style scoped>
+
+.start-main {
+  height: 70vh;
+}
+
 .sign-card {
+  margin: 10px 0 10px 0;
   width: 100%;
   min-height: 100px;
   border-radius: 20px;
@@ -44,6 +59,7 @@
 }
 
 .news-card {
+  margin: 10px 0 10px 0;
   width: 100%;
   min-height: 300px;
   border-radius: 20px;
@@ -51,7 +67,6 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   transition: 0.9s;
 }
-
 
 .green-success-button button {
   border-radius: 10px;
