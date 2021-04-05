@@ -1,6 +1,7 @@
 <template>
   <div class="body">
     <div class="container" v-if="this.$route.name !== 'AdminPage'">
+      <the-side-bar-admin />
       <the-header-admin />
     </div>
    <div>
@@ -20,6 +21,7 @@ export default {
     TheHeaderAdmin: () => import('@/modules/admin/production/layouts/TheHeaderAdmin.vue'),
     // TheFooterAdmin: () => import('@/modules/admin/production/layouts/TheFooterAdmin'),
     AdminLoginPage: () => import('@/modules/admin/production/components/AdminLoginPage.vue'),
+    TheSideBarAdmin: () => import('@/modules/admin/production/layouts/TheSideBarAdmin.vue'),
   },
 };
 </script>

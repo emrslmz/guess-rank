@@ -31,11 +31,6 @@
 
           <div class="d-flex justify-content-between green-success-button">
             <div>
-              <router-link to="/admin/other/video-group/all">
-                <button class="btn bg-warning mx-2"><i class="fas fa-undo-alt"></i> Back</button>
-              </router-link>
-            </div>
-            <div>
               <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoGroupEditModal"><i class="fas fa-info-circle"></i> </button>
             </div>
             <div>

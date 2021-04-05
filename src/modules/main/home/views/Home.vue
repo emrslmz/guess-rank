@@ -32,10 +32,10 @@ export default {
     this.userMe();
   },
   components: {
-    TheHeaderHome: () => import('@/modules/main/layouts/TheHeaderHome.vue'),
-    TheFooterHome: () => import('@/modules/main/layouts/TheFooterHome.vue'),
+    TheHeaderHome: () => import('@/modules/main/home/layouts/TheHeaderHome.vue'),
+    TheFooterHome: () => import('@/modules/main/home/layouts/TheFooterHome.vue'),
     HomePage: () => import('@/modules/main/home/components/HomePage.vue'),
-    TheSideBar: () => import('@/modules/main/layouts/TheSideBar.vue'),
+    TheSideBar: () => import('@/modules/main/home/layouts/TheSideBar.vue'),
     // Purchased: () => import('@/modules/main/extras/purchased/views/Purchased.vue'),
   }
 }

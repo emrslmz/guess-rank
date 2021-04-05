@@ -10,8 +10,6 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-md-flex justify-content-between align-items-center">
 
-          <go-back />
-
           <!--HOME BUTTON-->
           <div class="d-flex align-items-center mb-2">
             <router-link to="/admin/home">
@@ -87,27 +85,18 @@
 
 
           <div class="d-flex align-items-center mb-2">
-            <router-link to="/login-register">
+            <router-link to="/start">
               <div class="header-button mx-2 my-2">
-                <button class="btn btn-sm"><i class="far fa-play-circle"></i> Register Login</button>
+                <button class="btn bg-dark btn-sm text-white"><i class="fas fa-home"></i> Start</button>
               </div>
             </router-link>
-          </div>
 
+          </div>
         </div>
       </div>
     </nav>
   </div>
 </template>
-
-
-<script>
-export default {
-  components: {
-    GoBack: () => import('@/modules/admin/production/layouts/buttons/GoBack.vue'),
-  },
-};
-</script>
 
 <style scoped>
 .header-button button {

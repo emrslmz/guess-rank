@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
 .game-home-top {
- padding-top: 100px;
+ padding-top: 200px;
 }
 
 .select-game-card {

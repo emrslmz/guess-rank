@@ -122,9 +122,6 @@
 
           <div class="d-flex justify-content-center">
             <div class="green-success-button d-flex justify-content-center">
-              <router-link to="/admin/shop/items">
-                <button class="btn bg-warning mx-2"><i class="fas fa-undo-alt"></i> Back</button>
-              </router-link>
              <div>
                <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#itemEditModal"><i class="fas fa-info-circle"></i> General Status</button>
              </div>

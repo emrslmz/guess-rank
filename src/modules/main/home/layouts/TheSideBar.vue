@@ -49,6 +49,7 @@ export default {
   height: 300px;
   position: absolute;
   left: 0;
+  z-index: +1;
 }
 
 .sidebar-button a {
