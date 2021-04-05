@@ -22,6 +22,10 @@
     cursor: pointer;
 }
 
+.mouse-disabled {
+    cursor: no-drop
+}
+
 .text-spacing5 {
     letter-spacing: 5px;
     font-weight: bold;
