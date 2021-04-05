@@ -4,12 +4,18 @@
       <div class="sidebar-button" title="Previous Page">
         <i class="fas fa-undo-alt" @click="goBack"></i>
       </div>
-      <div class="sidebar-button top-border" title="Home Page">
+      <div class="sidebar-button" title="Home Page">
        <router-link to="/start">
          <i class="fas fa-home"></i>
        </router-link>
       </div>
-<!--      <div class="sidebar-button top-border" title="Next Page">-->
+
+      <div class="sidebar-button" title="My Basket">
+        <router-link to="/shop">
+          <i class="fas fa-shopping-basket"></i>
+        </router-link>
+      </div>
+      <!--      <div class="sidebar-button top-" title="Next Page">-->
 <!--        <i class="fas fa-undo-alt fa-flip-horizontal" @click="goNext"></i>-->
 <!--      </div>-->
     </div>
@@ -21,12 +27,12 @@ export default {
   name: 'SideBar',
   methods: {
     goBack() {
-      return this.$router.go(-1);
+        return this.$router.go(-1);
+      }
     },
     // goNext() {
     //   this.$router.go(1);
     // },
-  },
 };
 </script>
 

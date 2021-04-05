@@ -47,11 +47,11 @@
        </div>
         <!--Item Description-->
         <div class="d-flex flex-column item-description">
-          <small>ump45</small>
-          <strong>{{ item.name }}</strong>
+          <small>{{ item.name }}</small> <!-- Gun Name-->
+          <strong>Poppy</strong> <!-- Skin Name or Key, game, valorant name-->
           <div class="d-flex justify-content-between">
             <strong><i class="fas fa-coins text-warning"></i> {{ item.price }}<small>+{{ item.discount }}%</small></strong>
-            <small v-if="item.is_available"><i class="fas fa-bolt text-secondary"></i></small>
+            <small v-if="item.is_available"><i class="fas fa-bolt text-lightgray"></i></small>
             <small v-else></small>
           </div>
           <div class="edit-button d-flex flex-column pt-3">

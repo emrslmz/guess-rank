@@ -3,7 +3,7 @@
   <div class="body-home">
     <the-header-home v-if="$route.name !== 'HomePageDashboard' && 'LoginRegister'" />
     <!--    <purchased v-if="$route.name !== 'HomePageDashboard' " />-->
-    <the-side-bar />
+    <the-side-bar v-if="$route.name !== 'HomePageDashboard' && 'LoginRegister'" />
     <router-view />
     <home-page v-if="$route.name === 'HomePageDashboard'"/>
   </div>
