@@ -3,6 +3,7 @@
   <div class="body-home">
     <the-header-home v-if="$route.name !== 'HomePageDashboard' && 'LoginRegister'" />
     <!--    <purchased v-if="$route.name !== 'HomePageDashboard' " />-->
+    <the-side-bar />
     <router-view />
     <home-page v-if="$route.name === 'HomePageDashboard'"/>
   </div>
@@ -34,6 +35,7 @@ export default {
     TheHeaderHome: () => import('@/modules/main/layouts/TheHeaderHome.vue'),
     TheFooterHome: () => import('@/modules/main/layouts/TheFooterHome.vue'),
     HomePage: () => import('@/modules/main/home/components/HomePage.vue'),
+    TheSideBar: () => import('@/modules/main/layouts/TheSideBar.vue'),
     // Purchased: () => import('@/modules/main/extras/purchased/views/Purchased.vue'),
   }
 }

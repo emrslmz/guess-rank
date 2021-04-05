@@ -12,14 +12,7 @@
 
     <div class="d-xl-flex">
       <div class="col-12 col-xl-3 mb-5">
-        <div class="d-flex flex-xl-column justify-content-center text-xl-right">
-          <div class="item-category-button">
-            <button class="btn btn-sm">CS:GO <i class="fas fa-arrow-circle-right"></i></button>
-          </div>
-          <div class="item-category-button">
-            <button class="btn btn-sm">Valorant <i class="fas fa-arrow-circle-right"></i></button>
-          </div>
-        </div>
+
       </div>
 
       <div class="col-12 col-xl-9 row d-flex justify-content-center all-item-box">
@@ -166,27 +159,6 @@
 
       <!--Out of stock!-->
 
-      <!-- Modal -->
-      <div class="modal fade" id="generalStatusAddedItems" tabindex="-1" role="dialog" aria-labelledby="generalStatusAddedItems" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-columns"></i> General Status</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Total Added Items:
-            </div>
-            <div class="modal-footer added-item-button">
-              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Modal -->
-
     </div>
   </div>
 </template>
@@ -291,24 +263,24 @@ export default {
 }
 
 
-.item-category-button button {
-  margin-top: 20px;
-  background-color: white;
-  color: #343A40;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.4s;
-  min-width: 200px;
-  text-decoration: none;
-}
+/*.item-category-button button {*/
+/*  margin-top: 20px;*/
+/*  background-color: white;*/
+/*  color: #343A40;*/
+/*  border-radius: 10px;*/
+/*  font-weight: bold;*/
+/*  transition: 0.4s;*/
+/*  min-width: 200px;*/
+/*  text-decoration: none;*/
+/*}*/
 
-.item-category-button button:hover {
-  background-image: linear-gradient(-225deg, #fa4454 0%, #dc3d4b 52%, #dc3d4b 100%);
-  color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.4s;
-}
+/*.item-category-button button:hover {*/
+/*  background-image: linear-gradient(-225deg, #fa4454 0%, #dc3d4b 52%, #dc3d4b 100%);*/
+/*  color: white;*/
+/*  border-radius: 10px;*/
+/*  font-weight: bold;*/
+/*  transition: 0.4s;*/
+/*}*/
 
 
 

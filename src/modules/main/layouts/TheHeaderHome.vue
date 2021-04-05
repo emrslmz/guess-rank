@@ -1,6 +1,6 @@
 <template>
 <header>
-  <div>
+  <div class="top-bar">
     <nav class="navbar navbar-expand-lg navbar-light">
       <h5 class="pl-5">Guess Rank</h5>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,6 +108,13 @@ export default {
 
 
 <style scoped>
+
+.top-bar {
+  border-top: 5px solid #20d489;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+}
 
 .header-button button {
   background-color: white;
