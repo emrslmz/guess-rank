@@ -48,6 +48,12 @@
         </router-link>
       </div>
 
+      <div class="sidebar-button-small" title="Video Option Settings">
+        <router-link to="/admin/other/option">
+          <i class="fas fa-circle"></i>
+        </router-link>
+      </div>
+
     </div>
   </div>
 </template>

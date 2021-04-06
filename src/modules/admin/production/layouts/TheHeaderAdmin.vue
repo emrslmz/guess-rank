@@ -78,6 +78,9 @@
                 <router-link to="/admin/other/video-group">
                   <span class="dropdown-item btn btn-sm"><i class="fas fa-th-list"></i> Video Group</span>
                 </router-link>
+                <router-link to="/admin/other/option">
+                  <span class="dropdown-item btn btn-sm"><i class="fas fa-circle"></i> Video Options</span>
+                </router-link>
               </div>
             </div>
           </div>

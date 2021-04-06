@@ -1,7 +1,7 @@
 import AdminHome from '@/modules/admin/main/router/';
 import AdminShop from '@/modules/admin/shop/router/';
 import AdminUser from '@/modules/admin/users/router/';
-import AdminOther from '@/modules/admin/other/router/';
+import AdminOther from '@/modules/admin/other/main/router/';
 
 export default [{
     path: '/admin',

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="text-center pt-5 mt-5">
         <h4 class="text-spacing5">Add Level</h4>
-        <small>Click on the add button below to add the item.</small>
+        <small>Click on the add button below to add the level.</small>
       </div>
 
       <div class="d-flex row flex-row justify-content-around">
