@@ -9,7 +9,7 @@
 export default {
   name: 'Games',
   components: {
-    GameHome: () => import('@/modules/main/play/game/components/GameHome.vue'),
+    GameHome: () => import('@/modules/main/play/game/components/SelectGame.vue'),
   }
 };
 </script>
