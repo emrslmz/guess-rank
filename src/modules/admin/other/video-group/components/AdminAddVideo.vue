@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center align-items-center">
     <div class="container">
       <div class="text-center pt-5 mt-5">
-        <h4 class="text-spacing5">Add Video Group</h4>
+        <h4 class="text-spacing5">Add Video Group</h4>c
         <small>Fill in the appropriate blanks to add.</small>
       </div>
 

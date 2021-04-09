@@ -1,4 +1,4 @@
-v<template>
+<template>
   <div class="d-flex flex-column justify-content-center align-items-center">
     <div class="container">
       <div class="text-center pt-5">
@@ -12,8 +12,8 @@ v<template>
             </router-link>
           </div>
         </div>
-
       </div>
+
       <div class="d-flex row justify-content-center align-items-center">
         <div class="col-3" >
             <div class="option-group-card flex-column">
@@ -26,6 +26,7 @@ v<template>
             </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>

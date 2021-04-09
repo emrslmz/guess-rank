@@ -11,7 +11,7 @@
         <div class="navbar-nav mr-auto"></div>
         <div class="d-md-flex justify-content-between align-items-center">
 
-          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData && isLogged">
+          <div class="d-flex align-items-center mb-2">
             <router-link to="/start">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="fas fa-home"></i> Start</button>
@@ -44,7 +44,7 @@
             </router-link>
           </div>
 
-          <div class="custom-vertical-hr"></div>
+          <div class="custom-vertical-hr" v-if="!!getUserData.userData  && isLogged"></div>
 
           <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData  && isLogged">
             <div class="dropdown header-button mx-2 my-2">

@@ -25,6 +25,7 @@
 
       <div class="col-12 col-xl-8">
         <div class="news-card d-flex align-items-center justify-content-center">
+          hem giriş yapmamış hem giriş yapmışlar görebilir
         </div>
       </div>
     </div>
