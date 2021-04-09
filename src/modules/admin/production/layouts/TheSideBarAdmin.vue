@@ -24,35 +24,41 @@
         </router-link>
       </div>
 
-      <div class="sidebar-button-small" title="Games Settings">
-        <router-link to="/admin/other/game">
-          <i class="fas fa-gamepad"></i>
-        </router-link>
-      </div>
+<!--      <div class="sidebar-button-small" title="Games Settings">-->
+<!--        <router-link to="/admin/other/game">-->
+<!--          <i class="fas fa-gamepad"></i>-->
+<!--        </router-link>-->
+<!--      </div>-->
 
-      <div class="sidebar-button-small" title="Levels Settings">
-        <router-link to="/admin/other/level">
-          <i class="fas fa-star-half-alt"></i>
-        </router-link>
-      </div>
+<!--      <div class="sidebar-button-small" title="Levels Settings">-->
+<!--        <router-link to="/admin/other/level">-->
+<!--          <i class="fas fa-star-half-alt"></i>-->
+<!--        </router-link>-->
+<!--      </div>-->
 
-      <div class="sidebar-button-small" title="Videos Settings">
-        <router-link to="/admin/other/video">
-          <i class="fab fa-youtube"></i>
-        </router-link>
-      </div>
+<!--      <div class="sidebar-button-small" title="Videos Settings">-->
+<!--        <router-link to="/admin/other/video">-->
+<!--          <i class="fab fa-youtube"></i>-->
+<!--        </router-link>-->
+<!--      </div>-->
 
-      <div class="sidebar-button-small" title="Video Group Settings">
-        <router-link to="/admin/other/video-group">
-          <i class="fas fa-th-list"></i>
-        </router-link>
-      </div>
+<!--      <div class="sidebar-button-small" title="Video Group Settings">-->
+<!--        <router-link to="/admin/other/video-group">-->
+<!--          <i class="fas fa-th-list"></i>-->
+<!--        </router-link>-->
+<!--      </div>-->
 
-      <div class="sidebar-button-small" title="Video Option Settings">
-        <router-link to="/admin/other/option">
-          <i class="fas fa-circle"></i>
-        </router-link>
-      </div>
+<!--      <div class="sidebar-button-small" title="Video Option Settings">-->
+<!--        <router-link to="/admin/other/option">-->
+<!--          <i class="fas fa-circle"></i>-->
+<!--        </router-link>-->
+<!--      </div>-->
+
+<!--      <div class="sidebar-button-small" title="Option Group Setting">-->
+<!--        <router-link to="/admin/other/option-group">-->
+<!--          <i class="fas fa-square"></i>-->
+<!--        </router-link>-->
+<!--      </div>-->
 
     </div>
   </div>
