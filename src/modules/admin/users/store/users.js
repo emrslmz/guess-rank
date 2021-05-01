@@ -1,4 +1,6 @@
 import axios from 'axios';
+import request from '@/services/request/request_api';
+import auth from '@/services/authorization/auth';
 
 const state = {
     getUsersData: {
@@ -16,11 +18,7 @@ const getters = {
 const actions = {
     getUsers() {
         axios
-            .get('https://guess-what-rank-api.herokuapp.com/api/users', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`
-                },
-            })
+            .get(`${request.users}`, auth)
             .then((response) => {
                 state.getUsersData.usersData =  response.data.result.data;
                 state.getUsersData.userStatus = response.data.code;
