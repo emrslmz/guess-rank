@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {showMessage} from '@/shared/utils/messages.utils';
-import router from "@/router";
+import router from '@/router';
+import request from '@/services/request/request_api';
+import auth from '@/services/authorization/auth';
 
 const state = {
     levelInfo: {
@@ -27,11 +29,7 @@ const getters = {
 const actions = {
     getLevel() {
         axios
-            .get('https://guess-what-rank-api.herokuapp.com/api/levels', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            .get(`${request.level_url}`, auth)
             .then((response) => {
                 state.levelInfo.levelData = response.data.result.data;
                 state.levelInfo.levelStatus = response.data.code;
@@ -39,11 +37,7 @@ const actions = {
     },
     getSelectedLevel(context, levelKey) {
         axios
-            .get(`https://guess-what-rank-api.herokuapp.com/api/levels/key/${levelKey}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            .get(`${request.level_url}/key/${levelKey}`, auth)
             .then((response) => {
                 // console.log(response.data.code);
                 state.levelInfo.levelStatus = response.data.code;
@@ -52,18 +46,14 @@ const actions = {
     },
     patchEditLevel(context, selectedLevel) {
         axios
-            .patch(`https://guess-what-rank-api.herokuapp.com/api/levels/${selectedLevel.level_id}`, {
+            .patch(`${request.level_url}/${selectedLevel.level_id}`, {
                 level_name: selectedLevel.level_name,
                 level_description: selectedLevel.level_description,
                 is_locked: selectedLevel.is_locked,
                 is_hidden: selectedLevel.is_hidden,
                 game_id: selectedLevel.game_id,
                 level_video_group_id: selectedLevel.level_video_group_id,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            }, auth)
             .then((response) => {
                 state.levelInfo.levelStatus = response.data.code;
                 showMessage("The changes have been saved!");
@@ -71,18 +61,14 @@ const actions = {
     },
     postAddLevel(context, addLevelData) {
         axios
-            .post('https://guess-what-rank-api.herokuapp.com/api/levels', {
+            .post(`${request.level_url}`, {
                 level_name: addLevelData.level_name,
                 level_description: addLevelData.level_description,
                 is_locked: addLevelData.is_locked,
                 is_hidden: addLevelData.is_hidden,
                 game_id: addLevelData.game_id,
                 level_video_group_id: addLevelData.level_video_group_id,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            }, auth)
             .then((response) => {
                 state.levelInfo.levelStatus = response.data.code;
                 showMessage("The transaction is successful!");
@@ -99,22 +85,16 @@ const actions = {
     },
     deleteLevel(context, deleteLevelData) {
         axios
-            .delete(`https://guess-what-rank-api.herokuapp.com/api/levels/${deleteLevelData.level_id}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            }, {
+            .delete(`${request.level_url}/${deleteLevelData.level_id}`, auth, {
                 deleteLevelData
             })
             .then((response) => {
-                console.log(response);
                 state.levelInfo.levelStatus = response.data.code;
                 showMessage("The transaction is successful!");
                 router.push({ path: '/admin/other/level/all' });
             })
     }
 };
-
 
 export default {
     state,
