@@ -1,4 +1,4 @@
-import base from '@/request/base';
+import base from '@/services/request/dashboard/base';
 
 export default {
     shop_url: `${base.base_url}/items`,  //https://guess-what-rank-api.herokuapp.com/api/  +  items

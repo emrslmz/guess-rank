@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {showMessage} from '@/shared/utils/messages.utils';
 import router from '@/router';
-import request from '@/request/dashboard/request_api';
-
+import request from '@/services/request/request_api';
+import auth from '@/services/authorization/auth';
 
 const state = {
     gameInfo: {
@@ -30,11 +30,7 @@ const getters = {
 const actions = {
     getGame() {
         axios
-            .get(`${request.game_url}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            .get(`${request.game_url}`, auth )
             .then((response) => {
                 state.gameInfo.gameData = response.data.result.data;
                 state.gameInfo.gameStatus = response.data.code;
@@ -42,11 +38,7 @@ const actions = {
     },
     getSelectedGame(context, gameId) {
         axios
-            .get(`${request.game_url}/${gameId}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            .get(`${request.game_url}/${gameId}`, auth)
             .then((response) => {
                 // console.log(response.data.code);
                 state.gameInfo.gameStatus = response.data.code;
@@ -57,17 +49,12 @@ const actions = {
         axios
             .post('https://guess-what-rank-api.herokuapp.com/api/games', {
                 game_name: addGameData.game_name,
-                game_id: addGameData.game_id,
                 game_description: addGameData.game_description,
                 is_available: addGameData.is_available,
                 is_hidden: addGameData.is_hidden,
                 game_background_color: addGameData.game_background_color,
                 game_color: addGameData.game_color,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            }, auth)
             .then((response) => {
                 state.gameInfo.gameStatus = response.data.code;
                 showMessage("The transaction is successful!");
@@ -79,7 +66,7 @@ const actions = {
     },
     patchEditGame(context, selectedData) {
         axios
-            .patch(`https://guess-what-rank-api.herokuapp.com/api/games/${selectedData.game_id}`, {
+            .patch(`${request.game_url}/${selectedData.game_id}`, {
                 // game_id: selectedData.game_id,
                 game_name: selectedData.game_name,
                 game_description: selectedData.game_description,
@@ -88,11 +75,7 @@ const actions = {
                 game_background_color: selectedData.game_background_color,
                 game_color: selectedData.game_color,
 
-            }, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            }, auth)
             .then((response) => {
                 state.gameInfo.gameStatus = response.data.code;
                 showMessage("The changes have been saved!")
@@ -100,11 +83,7 @@ const actions = {
     },
     deleteGame(context, selectedDeleteData) {
         axios
-            .delete(`https://guess-what-rank-api.herokuapp.com/api/games/${selectedDeleteData.game_id}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            }, {
+            .delete(`${request.game_url}/${selectedDeleteData.game_id}`, auth, {
                 selectedDeleteData
             })
             .then((response) => {
@@ -114,7 +93,6 @@ const actions = {
         })
     }
 }
-
 
 export default {
     state,

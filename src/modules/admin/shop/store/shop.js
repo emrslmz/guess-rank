@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {showMessage} from '@/shared/utils/messages.utils';
+import { showMessage } from '@/shared/utils/messages.utils';
 import router from '@/router';
-import request from '@/request/dashboard/request_api';
+import request from '@/services/request/request_api';
 
 
 const state = {
