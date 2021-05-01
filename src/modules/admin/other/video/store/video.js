@@ -1,6 +1,8 @@
 import axios from 'axios';
-import {showMessage} from "@/shared/utils/messages.utils";
-import router from "@/router";
+import {showMessage} from '@/shared/utils/messages.utils';
+import router from '@/router';
+import request from '@/services/request/request_api';
+import auth from '@/services/authorization/auth';
 
 const state = {
   videoInfo: {
@@ -25,11 +27,7 @@ const getters = {
 const actions = {
   getVideo() {
     axios
-        .get('https://guess-what-rank-api.herokuapp.com/api/videos', {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          },
-        })
+        .get(`${request.video_url}`, auth)
         .then((response) => {
           state.videoInfo.videoData = response.data.result.data;
           state.videoInfo.videoStatus = response.data.code;
@@ -37,11 +35,7 @@ const actions = {
     },
   getselectedVideo(context, videoId) {
     axios
-        .get(`https://guess-what-rank-api.herokuapp.com/api/videos/${videoId}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          },
-        })
+        .get(`${request.video_url}/${videoId}`, auth)
         .then((response) => {
           state.videoInfo.selectedVideoData = response.data.result.data;
           state.videoInfo.videoStatus = response.data.code;
@@ -49,16 +43,12 @@ const actions = {
     },
     patchEditVideo(context, selectedVideo) {
       axios
-          .patch(`https://guess-what-rank-api.herokuapp.com/api/videos/${selectedVideo.video_id}`, {
+          .patch(`${request.video_url}/${selectedVideo.video_id}`, {
               video_name: selectedVideo.video_name,
               video_url: selectedVideo.video_url,
               video_group_id: selectedVideo.video_group_id,
               video_game_id: selectedVideo.video_game_id,
-          }, {
-              headers: {
-                  Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-              },
-          })
+          }, auth)
           .then((response) => {
               state.videoInfo.videoStatus = response.data.code;
               showMessage("The changes have been saved!");
@@ -66,16 +56,12 @@ const actions = {
     },
     postAddVideo(context, addVideoData) {
       axios
-          .post('https://guess-what-rank-api.herokuapp.com/api/videos', {
+          .post(`${request.video_url}`, {
               video_name: addVideoData.video_name,
               video_url: addVideoData.video_url,
               video_group_id: addVideoData.video_group_id,
               video_game_id: addVideoData.video_game_id,
-          }, {
-              headers: {
-                  Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-              },
-          })
+          }, auth)
           .then((response) => {
               state.videoInfo.videoStatus = response.data.code;
               showMessage("The transaction is successful!");
@@ -87,11 +73,7 @@ const actions = {
     },
     deleteVideo(context, deleteVideoData) {
       axios
-          .delete(`https://guess-what-rank-api.herokuapp.com/api/videos/${deleteVideoData.video_id}`, {
-              headers: {
-                  Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-              },
-          }, {
+          .delete(`${request.video_url}/${deleteVideoData.video_id}`, auth, {
               deleteVideoData
           })
           .then((response) => {
