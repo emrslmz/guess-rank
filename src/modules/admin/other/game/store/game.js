@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {showMessage} from '@/shared/utils/messages.utils';
-import router from "@/router";
+import router from '@/router';
+import request from '@/request/dashboard/request_api';
+
 
 const state = {
     gameInfo: {
@@ -28,7 +30,7 @@ const getters = {
 const actions = {
     getGame() {
         axios
-            .get('https://guess-what-rank-api.herokuapp.com/api/games', {
+            .get(`${request.game_url}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
@@ -40,7 +42,7 @@ const actions = {
     },
     getSelectedGame(context, gameId) {
         axios
-            .get(`https://guess-what-rank-api.herokuapp.com/api/games/${gameId}`, {
+            .get(`${request.game_url}/${gameId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },

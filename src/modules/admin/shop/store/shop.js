@@ -1,6 +1,8 @@
 import axios from 'axios';
-import {showMessage} from "@/shared/utils/messages.utils";
-import router from "@/router";
+import {showMessage} from '@/shared/utils/messages.utils';
+import router from '@/router';
+import request from '@/request/dashboard/request_api';
+
 
 const state = {
     shopInfo: {
@@ -27,7 +29,7 @@ const getters = {
 const actions = {
     getShopItem() {
         axios
-            .get('https://guess-what-rank-api.herokuapp.com/api/items', {
+            .get(`${request.shop_url}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
@@ -39,7 +41,7 @@ const actions = {
     },
     getSelectedItem(context, itemId) {
         axios
-            .get(`https://guess-what-rank-api.herokuapp.com/api/items/${itemId}`, {
+            .get(`${request.shop_url}/${itemId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
@@ -52,7 +54,7 @@ const actions = {
     },
     patchEditItem(context, selectedItem) {
         axios
-            .patch(`https://guess-what-rank-api.herokuapp.com/api/items/${selectedItem.item_id}`, {
+            .patch(`${request.shop_url}/${selectedItem.item_id}`, {
                 name: selectedItem.name,
                 discount: selectedItem.discount,
                 price: selectedItem.price,
@@ -71,7 +73,7 @@ const actions = {
     },
     deleteItem(context, deleteItemData) {
         axios
-            .delete(`https://guess-what-rank-api.herokuapp.com/api/items/${deleteItemData.item_id}`, {
+            .delete(`${request.shop_url}/${deleteItemData.item_id}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
@@ -87,7 +89,7 @@ const actions = {
     },
     postAddItem(context, addItemData) {
         axios
-            .post('https://guess-what-rank-api.herokuapp.com/api/items', {
+            .post(`${request.shop_url}`, {
                 name: addItemData.name,
                 price: addItemData.price,
                 discount: addItemData.discount,
