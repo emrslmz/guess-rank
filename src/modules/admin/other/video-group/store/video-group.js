@@ -1,6 +1,8 @@
 import axios from 'axios';
-import {showMessage} from "@/shared/utils/messages.utils";
-import router from "@/router";
+import {showMessage} from '@/shared/utils/messages.utils';
+import router from '@/router';
+import request from '@/services/request/request_api';
+import auth from '@/services/authorization/auth';
 
 const state = {
     videoGroupInfo: {
@@ -22,11 +24,7 @@ const getters = {
 const actions = {
     getVideoGroup() {
         axios
-            .get('https://guess-what-rank-api.herokuapp.com/api/video_groups', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            .get(`${request.video_group_url}`, auth)
             .then((response) => {
                 state.videoGroupInfo.videoGroupData = response.data.result.data;
                 state.videoGroupInfo.videoGroupStatus = response.data.code;
@@ -34,11 +32,7 @@ const actions = {
     },
     getSelectedVideoGroup(context, videoGroupId) {
         axios
-            .get(`https://guess-what-rank-api.herokuapp.com/api/video_groups/${videoGroupId}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            .get(`${request.video_group_url}/${videoGroupId}`, auth)
             .then((response) => {
                 state.videoGroupInfo.selectedVideoGroupData = response.data.result.data;
                 state.videoGroupInfo.videoGroupStatus = response.data.code;
@@ -46,13 +40,9 @@ const actions = {
     },
     postAddVideoGroup(context, addVideoGroupData) {
         axios
-            .post('https://guess-what-rank-api.herokuapp.com/api/video_groups', {
+            .post(`${request.video_group_url}`, {
                 videos: addVideoGroupData.videos,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            }, auth)
             .then((response) => {
                 state.videoGroupInfo.videoGroupStatus = response.data.code;
                 showMessage("The transaction is successful!");
@@ -64,11 +54,7 @@ const actions = {
     },
     deleteVideoGroup(context, deleteVideoGroupData) {
       axios
-          .delete(`https://guess-what-rank-api.herokuapp.com/api/video_groups/${deleteVideoGroupData.video_group_id}`, {
-              headers: {
-                  Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-              },
-          }, {
+          .delete(`${request.video_group_url}/${deleteVideoGroupData.video_group_id}`, auth, {
               deleteVideoGroupData
           })
           .then((response) => {
