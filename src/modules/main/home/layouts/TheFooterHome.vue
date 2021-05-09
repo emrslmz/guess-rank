@@ -1,6 +1,6 @@
 <template>
 <footer>
-  <div class="d-flex justify-content-between align-items-center px-3 text-lightgray">
+  <div class="d-flex justify-content-between align-items-center px-3 text-lightgray footer">
       <div>
        <h6> Guess Rank</h6>
       </div>
@@ -16,13 +16,13 @@
 </template>
 
 <style scoped>
-footer {
+.footer {
   background-color: #191919;
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 23px;
+  height: 50px;
 }
 .footer-social i {
   color: #d3d3d3;

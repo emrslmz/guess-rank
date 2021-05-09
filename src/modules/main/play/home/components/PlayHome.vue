@@ -31,8 +31,9 @@
         <h1><i class="fas fa-hat-wizard"></i></h1>
         <h4 class="custom-right-text">Watch and win</h4>
 
-
-        <button class="btn btn-sm glow-on-hover"><b>Watch the tutorial video!</b></button>
+        <a target="_blank" href="https://www.youtube.com/watch?v=9xFYT1aleXA">
+        <button class="btn btn-sm glow-on-hover"><b>Watch the tutorial video!</b> <small><i class="fas fa-external-link-alt"></i></small></button>
+        </a>
 
 
       </div>
@@ -105,7 +106,7 @@ a {
   z-index: -1;
   filter: blur(5px);
   height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
+  animation: infinite glowing 20s linear;
   opacity: 0;
   transition: opacity .3s ease-in-out;
   border-radius: 10px;
