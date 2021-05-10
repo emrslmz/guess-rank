@@ -8,4 +8,5 @@ export default {
     level_url: `${base.base_url}/levels`,
     video_url: `${base.base_url}/videos`,
     video_group_url: `${base.base_url}/video_groups`,
+
 };

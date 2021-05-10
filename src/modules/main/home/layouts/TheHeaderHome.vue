@@ -60,7 +60,9 @@
                 </router-link>
                 <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-users"></i>  Reference</span>
                 <span class="dropdown-item btn btn-sm" type="button"><i class="fas fa-shopping-bag"></i> My basket</span>
-                <span class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</span>
+                <router-link to="/buy">
+                  <span class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</span>
+                </router-link>
                 <span class="dropdown-item btn btn-sm text-danger" type="button" @click="runLogout()"><i class="fas fa-sign-out-alt "></i> Logout</span>
               </div>
             </div>
@@ -72,7 +74,9 @@
             <div class="header-balance mx-1 my-2">
                Balance: 5000<i class="fas fa-lira-sign"></i>
               <br>
-                <small>Buy <i class="fas fa-plus-circle"></i></small>
+              <router-link to="/buy">
+                <small class="text-white">Buy <i class="fas fa-plus-circle"></i></small>
+              </router-link>
             </div>
           </div>
 
