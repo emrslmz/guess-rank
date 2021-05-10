@@ -8,7 +8,7 @@ export default [{
     //         meta: {
     //             title: 'StartPage',
     //         },
-    //         component: () => import('@/modules/home/components/LoginRegister.vue'),
+    //         component: () => import('@/modules/main/components/LoginRegister.vue'),
     //     },
     // ]
 }];

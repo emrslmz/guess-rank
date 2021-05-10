@@ -84,6 +84,9 @@
                 <router-link to="/admin/other/option-group">
                   <span class="dropdown-item btn btn-sm"><i class="fas fa-square"></i> Options Group</span>
                 </router-link>
+                <router-link to="/admin/other/movement">
+                  <span class="dropdown-item btn btn-sm text-success"><i class="fas fa-sign"></i> Movements</span>
+                </router-link>
               </div>
             </div>
           </div>
@@ -116,7 +119,7 @@
 }
 
 .header-button button:hover {
-  background-color: #48c965;
+  background-color: #4882c9;
   color: white;
   border-radius: 10px;
   font-weight: bold;

@@ -4,11 +4,12 @@ import Videos from '@/modules/admin/other/video/router/';
 import VideoGroups from '@/modules/admin/other/video-group/router/';
 import Options from '@/modules/admin/other/options/router/';
 import OptionGroups from '@/modules/admin/other/option-group/router/';
+import Movements from '@/modules/admin/other/movement/main/router/';
 
 export default [{
     path: '/admin/other',
     name: 'AdminOther',
     component: () => import('@/modules/admin/other/main/views/AdminOther.vue'),
-    children: [...Games, ...Levels, ...Videos, ...VideoGroups, ...Options, ...OptionGroups],
+    children: [...Games, ...Levels, ...Videos, ...VideoGroups, ...Options, ...OptionGroups, ...Movements],
 }];
 
