@@ -9,4 +9,5 @@ export default {
     video_url: `${base.base_url}/videos`,
     video_group_url: `${base.base_url}/video_groups`,
 
+    get_user_level: `${base.base_url}/user_levels`,
 };

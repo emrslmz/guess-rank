@@ -1,25 +1,25 @@
 <template>
     <div>
       <div class="text-center">
-        <h2>oyun adi</h2>
-        <small class="text-spacing5">Select a level to watch videos of the oyun ADİİ game.</small>
+        <h2>{{ getGameInfo.selectedGameData.game_name }}</h2>
+        <small class="text-spacing5">Select a level to watch videos of the {{ getGameInfo.selectedGameData.game_name }} game.</small>
       </div>
 
      <div class="d-flex flex-column justify-content-center align-items-center">
 
        <div class="d-flex flex-column justify-content-center align-items-center game-level-area-top col-10 col-xl-6">
          <div class="d-flex justify-content-center align-items-center row">
-           <div class="level-card-box mouse-click text-center">
-<!--             <router-link>-->
+           <div class="level-card-box mouse-click text-center" v-for="(level, index) in focusLevel" :class="level.is_locked === false ? 'level-card-locked' : 'level-card-unlocked'"  :key="index">
+             <router-link :to="level.is_locked === true ? { name: 'SelectVideo', params: { key: level.level_random_key }} : {}">
                <div>
-                 <h2 class="d-flex flex-column" >
-                 45 gibi
-<!--                   <small style="font-size: 16px" v-if="level.is_locked === false"><i class="fas fa-lock"></i></small>-->
-<!--                   <small style="font-size: 16px" v-else><i class="fas fa-lock-open"></i></small>-->
-                   <i style="font-size: 12px">level name </i>
+                 <h2 class="d-flex flex-column" :title="level.is_locked === true ? level.level_random_key : 'Locked'">
+                   {{ level.level_id }}
+                   <small style="font-size: 16px" v-if="level.is_locked === false"><i class="fas fa-lock"></i></small>
+                   <small style="font-size: 16px" v-else><i class="fas fa-lock-open"></i></small>
+                   <i style="font-size: 12px">{{ level.level_name }} </i>
                  </h2>
                </div>
-<!--             </router-link>-->
+             </router-link>
            </div>
          </div>
        </div>
@@ -40,20 +40,29 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'SelectLevel',
+  computed: {
+    ...mapGetters([
+      'getGameInfo',
+      'getLevelInfo',
+    ]),
+    focusLevel() {
+      return this.getLevelInfo.levelData.filter(l => l.game_id === this.getGameInfo.selectedGameData.game_id && l.is_hidden === true);
+    },
+  },
   methods: {
     ...mapActions([
-        'getLevel',
-        'createLevel',
-    ])
+      'getSelectedGame',
+      'getLevel',
+    ]),
   },
   created() {
-    // this.getLevel();
-    this.createLevel();
-  }
+    this.getSelectedGame(this.$route.params.id);
+    this.getLevel();
+  },
 };
 </script>
 
