@@ -4,31 +4,37 @@ import auth from '@/services/authorization/auth';
 
 const state = {
     getUserLevel: {
-        levelData: [],
+        levelData: {},
         levelDataStatus: null,
     }
 };
 
+const getters = {
+    getUserLevelData() {
+        return state.getUserLevel;
+    }
+
+};
 
 const actions = {
-    getLevel() {
+    getLevel( commit , gameId) {
         axios
-            .get(`${request.get_user_level}`, auth)
+            .get(`${request.get_user_level}/${gameId}`, auth)
             .then((response) => {
-                console.log(response);
+
+                state.getUserLevel.levelData = response.data.result.data.level;
+                state.getUserLevel.levelDataStatus = response.data.code;
+
+                console.log(state.getUserLevel.levelData);
+
             })
     },
-    createLevel() {
-        axios
-            .post(`${request.get_user_level}`, auth)
-            .then((response) => {
-                console.log(response);
-            })
-    }
+
 };
 
 
 export default {
     state,
+    getters,
     actions,
 };

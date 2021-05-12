@@ -32,6 +32,10 @@
     text-transform: uppercase;
 }
 
+.text-uppercase {
+    text-transform: uppercase;
+}
+
 .text-opacity {
     opacity: 0.8;
     transition: 0.2s;
