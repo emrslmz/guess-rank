@@ -11,7 +11,7 @@
       <div class="select-game-card col-4 d-flex justify-content-between align-items-center text-white" :style="game.game_background_color" v-for="(game, index) in focusGame" :key="index" >
         <div class="play-pictures" style="background-image: url('/assets/images/img/play-csgo-ct.png');"></div>
 
-       <router-link  :to="{ name: 'SelectLevel', params: { id: game.game_id }} ">
+       <router-link :to="{ name: 'SelectLevel', params: { id: game.game_id }} ">
          <div class="text-opacity mr-4"><h2 :style="game.game_color"> {{ game.game_name }}</h2></div>
        </router-link>
       </div>

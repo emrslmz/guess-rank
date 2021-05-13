@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="text-center d-flex flex-column">
-      <h2>{{ getVideoInfo.selectedVideoData.video_name }}</h2>
-      <small class="text-spacing5">Click on the "I'm ready" button below to watch the video named {{ getVideoInfo.selectedVideoData.video_name }} you selected.</small>
+      <h2>{{ getUserSelectedVideoData.video_name }}</h2>
+      <small class="text-spacing5">Click on the "I'm ready" button below to watch the video named {{ getUserSelectedVideoData.video_name }} you selected.</small>
 
     </div>
 <!--    {{ getVideoInfo.selectedVideoData }}-->
 
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-12 col-sm-10 col-md-6" v-if="getPlayGame.readyStatus === false">
+        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-12 col-sm-10 col-md-6">
 
           <!-- READY BUTTON-->
           <div>
-            <button class="button-valorant btn-valorant-light" @click="readyButton">
+            <button class="button-valorant btn-valorant-light">
               <span class="btn-valorant-inner">
                 <span class="btn-valorant-slide"></span>
                 <span class="btn-valorant-content"><i class="fas fa-play"></i> Ready</span>
@@ -26,15 +26,15 @@
             <b>Select one of the options that appear in the bottom panel after a certain time of the video.</b>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-12 col-sm-6" v-else>
+        <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-12 col-sm-6">
           <watch-video  />
         </div>
         <div class="d-flex flex-column justify-content-center align-items-center watch-video-card-bottom col-12 col-sm-6">
-            <div v-if="getPlayGame.watchVideo.showOption === true">
+            <div>
               <video-option />
             </div>
-            <div v-else>
-              <small><i>After a few seconds, the options will appear. <i class="fas fa-circle-notch fa-spin" v-if="getPlayGame.readyStatus === true"></i></i></small>
+            <div>
+              <small><i>After a few seconds, the options will appear. <i class="fas fa-circle-notch fa-spin" ></i></i></small>
             </div>
         </div>
     </div>
@@ -43,33 +43,31 @@
 
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import {mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'AfterWatchVideo',
+  name: 'BeforeWatchVideo',
   components: {
     WatchVideo: () => import('@/modules/main/play/game/components/WatchVideo.vue'),
     VideoOption: () => import('@/modules/main/play/game/components/VideoOption.vue'),
   },
   computed: {
     ...mapGetters([
-        'getVideoInfo',
-        'getPlayGame',
-    ]),
+        'getUserSelectedVideoData',
+    ])
   },
   methods: {
     ...mapActions([
-        'getselectedVideo',
-        'countdownVideo',
+        'getUserSelectedVideo',
     ]),
-    readyButton() {
-      this.getPlayGame.readyStatus = true
-      this.countdownVideo();
-    },
+    // readyButton() {
+    //   this.getPlayGame.readyStatus = true
+    //   this.countdownVideo();
+    // },
   },
   created() {
-    this.getselectedVideo(this.$route.params.id);
-  }
+    this.getUserSelectedVideo(this.$route.params.key);
+  },
 };
 </script>
 

@@ -43,7 +43,6 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'SelectLevel',
   computed: {
     ...mapGetters([
       'getGameInfo',

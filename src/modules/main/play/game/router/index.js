@@ -9,19 +9,11 @@ export default [{
             meta: {
                 title: 'SelectLevelPage',
             },
-            component: () => import('@/modules/main/play/game/components/SelectLevel.vue'),
-        },
-        {
-            path: '/play/game/:id/level/:key',
-            name: 'SelectVideo',
-            meta: {
-                title: 'SelectVideoPage',
-            },
             component: () => import('@/modules/main/play/game/components/SelectVideo.vue'),
         },
         {
-            path: '/play/game/:id/level/:key/:id',
-            name: 'AfterWatchVideo',
+            path: '/play/game/:id/video/:key',
+            name: 'BeforeWatchVideo',
             meta: {
                 title: 'WatchVideoPage',
             },
