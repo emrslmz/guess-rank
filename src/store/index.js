@@ -5,7 +5,6 @@ import General from '@/store/dashboard/index';
 import LoginRegister from '@/modules/main/login-register/store/index';
 import UserMe from '@/modules/main/home/store/index';
 import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
-import PlayGame from '@/modules/main/play/game/store/play-game';
 import UserLevel from '@/modules/main/play/game/store/level'
 import UserSelectVideo from '@/modules/main/play/game/store/video';
 
@@ -30,7 +29,6 @@ export default new Vuex.Store({
         Level,
         Video,
         VideoGroup,
-        PlayGame,
         UserLevel,
         UserSelectVideo,
     },

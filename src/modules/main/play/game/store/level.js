@@ -13,13 +13,12 @@ const getters = {
     getUserLevelData() {
         return state.getUserLevel;
     }
-
 };
 
 const actions = {
     getLevel( commit , gameId) {
         axios
-            .get(`${request.get_user_level}/${gameId}`, auth)
+            .get(`${request.game_url}/${gameId}/user_levels/me`, auth)
             .then((response) => {
 
                 state.getUserLevel.levelData = response.data.result.data.level;

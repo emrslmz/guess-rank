@@ -13,8 +13,6 @@
           <div class="row d-flex justify-content-center align-items-center">
             <div class="col-3 d-flex flex-column justify-content-between video-group-card" v-for="(video, index) in levelData.video_group.videos" :key="index">
 
-
-
                 <div class="py-2">
                   <span class="badge badge-success w-100">Available!</span>
                 </div>
@@ -47,6 +45,12 @@
             <button class="btn btn-light btn-sm my-2" @click="goBack"> <i class="fas fa-undo-alt"></i>Back</button>
           </div>
         </div>
+      </div>
+    </div>
+    <div v-else>
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <small><b>Loading...</b></small>
       </div>
     </div>
 

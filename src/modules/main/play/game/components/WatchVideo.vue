@@ -1,14 +1,11 @@
 <template>
+<div>
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <div v-if="getPlayGame.watchVideo.showVideo === false">
-      <h5>{{ getPlayGame.watchVideo.videoAfterStartTime }}</h5>
-    </div>
-    <div class="container responsive-class" v-else>
-
-      <youtube width="100%" height="90%" class="responsive-iframe" :video-id="getVideoInfo.selectedVideoData.video_url"  :player-vars="getPlayGame.watchVideo.playerVars" @playing="playingVideo"></youtube>
-<!--      jKSUc5Tbx5s-->
+    <div class="container responsive-class">
+      <youtube width="100%" height="90%" class="responsive-iframe" :video-id="video.video_url"  :player-vars="this.playerVars"></youtube>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -16,23 +13,28 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'WatchVideo',
+  data() {
+    return {
+      playerVars: {  //autoplay
+        autoplay: 1,
+      },
+    };
+  },
   computed: {
     ...mapGetters([
-        'getVideoInfo',
-        'getPlayGame',
+        'getUserSelectedVideoData',
     ]),
+    video() {
+      return this.getUserSelectedVideoData;
+    }
   },
   methods: {
     ...mapActions([
-      'getselectedVideo',
-      'countdownOption',
+      'getUserSelectedVideo',
     ]),
-    playingVideo() {
-      this.countdownOption();
-    },
   },
   created() {
-    this.getselectedVideo(this.$route.params.id);
+    this.getUserSelectedVideo(this.$route.params.key);
   },
 };
 </script>
