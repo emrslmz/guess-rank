@@ -7,6 +7,7 @@ import UserMe from '@/modules/main/home/store/index';
 import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 import UserLevel from '@/modules/main/play/game/store/level'
 import UserSelectVideo from '@/modules/main/play/game/store/video';
+import UserSelectedVideoOption from '@/modules/main/play/game/store/option';
 
 import AddedUsers from '@/modules/admin/users/store/users';
 import Shop from '@/modules/admin/shop/store/shop';
@@ -31,5 +32,6 @@ export default new Vuex.Store({
         VideoGroup,
         UserLevel,
         UserSelectVideo,
+        UserSelectedVideoOption,
     },
 });
