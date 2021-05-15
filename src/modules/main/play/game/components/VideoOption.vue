@@ -1,13 +1,65 @@
 <template>
   <div>
-    <div>
-      <i>Şıklar burada listelencek</i>
-    </div>
-    <div class="d-flex justify-content-center green-success-button">
-      <button class="btn  btn-sm 2"><i class="fas fa-check"></i> Point and finish.</button>
+
+   <div v-if="this.ready === true">
+     <div class="d-flex justify-content-between align-items-center option" v-if="showOption === true">
+       <div class="d-flex flex-column justify-content-center align-items-center px-3" v-for="(option, index) in getVideoOptionData" :key="index">
+         <h5 class="fas fa-apple-alt"></h5>
+         <small>{{ option.option_name }}</small>
+       </div>
+       <div class="d-flex flex-column justify-content-center align-items-center px-3">
+         <h5 style="font-size: small" class="fas fa-dot-circle text-danger" title="Pass"></h5>
+         <h5 style="font-size: small" class="far fa-flag" title="Report"></h5>
+       </div>
+     </div>
+
+     <div v-else>
+       <p> {{ this.showOptionTime }} </p>
+     </div>
+
+   </div>
+
+    <div v-else>
+      <i>Stylishs will appear when everything is ready.</i>
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  props: ['ready'],
+  data() {
+    return {
+      showOptionTime: 5,
+      showOption: false
+    };
+  },
+  name: 'VideoOptionCard',
+  computed: {
+    ...mapGetters([
+        'getVideoOptionData',
+    ])
+  },
+  methods: {
+    ...mapActions([
+        'getVideoOption',
+    ]),
+  },
+  created() {
+    this.getVideoOption(this.$route.params.key);
+
+      setInterval(() => {
+        if (this.showOptionTime > 0 && this.ready === true) {
+          this.showOptionTime--;
+        } else {
+          this.showOption = true;
+        }
+      }, 1000);
+  }
+};
+</script>
 
 
 <style scoped>
@@ -24,4 +76,16 @@
   font-weight: bold;
   color: white;
 }
+.option h5 {
+  opacity: 0.8;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.option h5:hover {
+  font-size: 24px;
+  opacity: 1;
+  transition: 0.2s;
+}
+
 </style>

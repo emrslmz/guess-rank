@@ -5,7 +5,6 @@ import auth from '@/services/authorization/auth';
 const state = {
     getUserLevel: {
         levelData: {},
-        levelDataStatus: null,
     }
 };
 
@@ -20,15 +19,9 @@ const actions = {
         axios
             .get(`${request.game_url}/${gameId}/user_levels/me`, auth)
             .then((response) => {
-
                 state.getUserLevel.levelData = response.data.result.data.level;
-                state.getUserLevel.levelDataStatus = response.data.code;
-
-                console.log(state.getUserLevel.levelData);
-
             })
     },
-
 };
 
 

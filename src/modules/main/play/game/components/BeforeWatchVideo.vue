@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="before-watch-video">
     <div class="text-center d-flex flex-column">
       <h2>{{ getUserSelectedVideoData.video_name }}</h2>
       <small class="text-spacing5">Click on the "ready" button below to watch the video named {{ getUserSelectedVideoData.video_name }} you selected.</small>
@@ -27,15 +27,12 @@
         </div>
 
         <div class="d-flex flex-column justify-content-center align-items-center watch-video-card col-12 col-sm-6" v-else>
-          <watch-video  />
+          <watch-video />
         </div>
 
         <div class="d-flex flex-column justify-content-center align-items-center watch-video-card-bottom col-12 col-sm-6">
             <div>
-              <video-option />
-            </div>
-            <div>
-              <small><i>After a few seconds, the options will appear. <i class="fas fa-circle-notch fa-spin" ></i></i></small>
+              <video-option :ready="ready" />
             </div>
         </div>
 
@@ -79,6 +76,10 @@ export default {
 
 
 <style scoped>
+.before-watch-video {
+  height: 120vh;
+}
+
 .watch-video-card {
   margin: 15px 0 15px 0;
   width: 100%;

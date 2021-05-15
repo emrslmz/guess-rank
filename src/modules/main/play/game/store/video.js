@@ -18,8 +18,6 @@ const actions = {
             .get(`${request.video_url}/${videoId}`, auth)
             .then((response) => {
                 state.selectedUserVideoData = response.data.result.data;
-
-                console.log(response);
             })
     },
 };
