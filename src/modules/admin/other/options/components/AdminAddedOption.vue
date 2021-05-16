@@ -73,7 +73,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="text-center" v-for="(option, index) in getAdminOptionData" :key="index">
+            <tr class="text-center" v-for="(option, index) in getAdminOptionData.optionsData" :key="index">
               <th><i class="fas fa-circle"></i></th>
               <th>{{ option.video_option_id }}</th>
               <th>{{ option.option_name }}</th>
