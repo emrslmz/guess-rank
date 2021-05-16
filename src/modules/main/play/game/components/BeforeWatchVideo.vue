@@ -2,7 +2,8 @@
   <div class="before-watch-video">
     <div class="text-center d-flex flex-column">
       <h2>{{ getUserSelectedVideoData.video_name }}</h2>
-      <small class="text-spacing5">Click on the "ready" button below to watch the video named {{ getUserSelectedVideoData.video_name }} you selected.</small>
+      <small class="text-spacing5" v-if="this.ready === false">Click on the "ready" button below to watch the video named {{ getUserSelectedVideoData.video_name }} you selected.</small>
+      <small class="text-spacing5" v-else>Stylish will appear soon. Mark one when you are available.</small>
 
     </div>
 

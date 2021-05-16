@@ -2,7 +2,7 @@
   <div>
 
    <div v-if="this.ready === true">
-     <div class="d-flex justify-content-between align-items-center option" v-if="showOption === true">
+     <div class="d-flex justify-content-between align-items-center option" v-if="this.showOption === true">
        <div class="d-flex flex-column justify-content-center align-items-center px-3" v-for="(option, index) in getVideoOptionData" :key="index">
          <h5 class="fas fa-apple-alt"></h5>
          <small>{{ option.option_name }}</small>
@@ -20,7 +20,7 @@
    </div>
 
     <div v-else>
-      <i>Stylishs will appear when everything is ready.</i>
+      <i>Stylishs will appear when everything is ready. </i>
     </div>
   </div>
 </template>
@@ -51,7 +51,7 @@ export default {
     this.getVideoOption(this.$route.params.key);
 
       setInterval(() => {
-        if (this.showOptionTime > 0 && this.ready === true) {
+        if (this.showOptionTime > 0) {
           this.showOptionTime--;
         } else {
           this.showOption = true;
