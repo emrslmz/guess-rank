@@ -27,7 +27,7 @@ const getters = {
 const actions = {
   getVideo() {
     axios
-        .get(`${request.video_url}`, auth)
+        .get(`${request.video_url}?all=1`, auth)
         .then((response) => {
           state.videoInfo.videoData = response.data.result.data;
           state.videoInfo.videoStatus = response.data.code;
@@ -35,7 +35,7 @@ const actions = {
     },
   getselectedVideo(context, videoId) {
     axios
-        .get(`${request.video_url}/${videoId}`, auth)
+        .get(`${request.video_url}/${videoId}?all=1`, auth)
         .then((response) => {
           state.videoInfo.selectedVideoData = response.data.result.data;
           state.videoInfo.videoStatus = response.data.code;

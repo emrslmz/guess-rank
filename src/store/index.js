@@ -15,6 +15,7 @@ import Game from '@/modules/admin/other/game/store/game';
 import Level from '@/modules/admin/other/level/store/level'
 import Video from '@/modules/admin/other/video/store/video';
 import VideoGroup from '@/modules/admin/other/video-group/store/video-group';
+import Option from '@/modules/admin/other/options/store/option';
 
 Vue.use(Vuex);
 
@@ -33,5 +34,6 @@ export default new Vuex.Store({
         UserLevel,
         UserSelectVideo,
         UserSelectedVideoOption,
+        Option,
     },
 });

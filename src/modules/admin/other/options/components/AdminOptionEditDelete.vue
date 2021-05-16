@@ -8,3 +8,19 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+
+export default {
+  name: 'OptionEdit',
+  methods: {
+    ...mapActions([
+        'getSelectedAdminOption',
+    ])
+  },
+  created() {
+    this.getSelectedAdminOption(this.$route.params.id);
+  },
+};
+</script>

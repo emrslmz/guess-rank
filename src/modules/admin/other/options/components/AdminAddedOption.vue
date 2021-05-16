@@ -57,20 +57,93 @@
         </div>
         <!--/GAMES V-FOR ILE DONECEK-->
 
-        <div class="d-flex justify-content-center align-items-center row">
-          <div class="option-card-box mouse-click text-center">
-              <div class="d-flex flex-column">
-                <div class="option-picture" style="background-image: url('/assets/images/ranks/valorank_olumsuz3.png');"></div>
-                <b style="font-size: 8px">Elmas 1</b>
-              </div>
-          </div>
+
+
+        <div class="d-flex justify-content-center container all-item-box">
+          <table class="table table-dark">
+            <thead>
+            <tr class="text-center">
+              <th><i class="fab fa-slack-hash"></i></th>
+              <th scope="col"><i class="fas fa-fingerprint"></i> Option ID</th>
+              <th scope="col"><i class="far fa-file-video"></i> Option Name</th>
+              <th scope="col"><i class="fas fa-gamepad"></i> Option Game</th>
+              <th scope="col"><i class="fab fa-youtube"></i> Video Name</th>
+              <th scope="col"><i class="far fa-image"></i> Option Picture</th>
+              <th scope="col"><i class="fas fa-pen-square"></i> Edit/Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-center" v-for="(option, index) in getAdminOptionData" :key="index">
+              <th><i class="fas fa-circle"></i></th>
+              <th>{{ option.video_option_id }}</th>
+              <th>{{ option.option_name }}</th>
+              <th>{{ option.game.game_name }}</th>
+              <th v-if="option.video === null"><i title="not connected by video" class="fas fa-ban"></i></th>
+              <th v-else>{{ option.video.video_name }}</th>
+              <th v-if="option.option_image">var</th>
+              <th v-else><i title="no preview / no added" class="fas fa-ban"></i></th>
+              <th class="d-flex justify-content-center">
+                <div class="green-success-button">
+                  <router-link :to="{ name: 'OptionEdit', params: { id: option.video_option_id }} ">
+                    <button class="btn btn-sm">Edit/delete</button>
+                  </router-link>
+                </div>
+              </th>
+            </tr>
+            </tbody>
+          </table>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--        <div class="d-flex justify-content-center align-items-center row">-->
+<!--          <div class="option-card-box mouse-click text-center">-->
+<!--              <div class="d-flex flex-column">-->
+<!--                <div class="option-picture" style="background-image: url('/assets/images/ranks/valorank_olumsuz3.png');"></div>-->
+<!--                <b style="font-size: 8px">Elmas 1</b>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
 
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  name: 'AdminAddedOption',
+  computed: {
+    ...mapGetters([
+        'getAdminOptionData',
+    ])
+  },
+  methods: {
+    ...mapActions([
+        'getAdminOption',
+    ])
+  },
+  created() {
+    this.getAdminOption();
+  },
+};
+</script>
 
 
 <style scoped>
@@ -107,6 +180,48 @@
 .option-picture:hover {
   background-size: 60px;
   transition: 0.5s;
+}
+
+
+
+.all-item-box::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.all-item-box::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.all-item-box::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+.table {
+  border-radius: 0 0 20px 20px;
+}
+
+.all-item-box {
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.green-success-button button {
+  border-radius: 10px;
+  background-color: #20D489;
+  color: white;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.green-success-button button:hover {
+  background-color: #28ffa7;
+  font-weight: bold;
+  color: white;
 }
 
 /****************************************/
