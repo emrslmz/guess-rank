@@ -1,21 +1,26 @@
 import axios from 'axios';
 import request_api from '@/services/request/request_api';
 import auth from '@/services/authorization/auth';
-import {showMessage} from "@/shared/utils/messages.utils";
-import router from "@/router";
+import { showMessage } from '@/shared/utils/messages.utils';
+import router from '@/router';
 
 const state = {
   adminOptionData: {
       optionsData: [],
       selectedOptionData: {},
       optionStatus: null,
+      optionAdd: {
+          option_name: null,
+          game_id: null,
+          video_id: null,
+      }
   },
 };
 
 const getters = {
     getAdminOptionData(state) {
         return state.adminOptionData;
-    }
+    },
 };
 
 const actions = {
@@ -59,7 +64,23 @@ const actions = {
                 showMessage("The transaction is successful!");
                 router.push({ path: '/admin/other/option/all' });
             })
-    }
+    },
+    addOption(context, optionData) {
+        axios
+            .post(`${request_api.video_option_url}`, {
+                option_name: optionData.option_name,
+                game_id: optionData.game_id,
+                video_id: optionData.video_id,
+            }, auth)
+            .then((response) => {
+                state.adminOptionData.optionStatus = response.data.code;
+                showMessage("The transaction is successful!");
+
+                Object.keys(state.adminOptionData.optionAdd).forEach((key) => {
+                    state.adminOptionData.optionAdd[key] = null;
+                });
+            })
+    },
 };
 
 

@@ -11,7 +11,7 @@ export default [{
             component: () => import('@/modules/admin/other/options/components/AdminAddedOption.vue'),
         },
         {
-            path: '/admin/other/option/:id',
+            path: '/admin/other/option/edit/:id',
             name: 'OptionEdit',
             meta: {
                 title: 'Added All Option'

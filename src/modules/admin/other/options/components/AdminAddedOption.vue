@@ -67,7 +67,7 @@
               <th scope="col"><i class="fas fa-fingerprint"></i> Option ID</th>
               <th scope="col"><i class="far fa-file-video"></i> Option Name</th>
               <th scope="col"><i class="fas fa-gamepad"></i> Option Game</th>
-              <th scope="col"><i class="fab fa-youtube"></i> Video Name</th>
+              <th scope="col"><i class="fab fa-youtube"></i> Video</th>
               <th scope="col"><i class="far fa-image"></i> Option Picture</th>
               <th scope="col"><i class="fas fa-pen-square"></i> Edit/Delete</th>
             </tr>
@@ -76,9 +76,15 @@
             <tr class="text-center" v-for="(option, index) in getAdminOptionData.optionsData" :key="index">
               <th><i class="fas fa-circle"></i></th>
               <th>{{ option.video_option_id }}</th>
-              <th v-if="option.game">{{ option.game.game_name }}</th>
-              <th v-else><i title="no preview / no added" class="fas fa-ban"></i></th>
-              <th>{{ option.option_game_id }}</th>
+
+              <th>{{ option.option_name }}</th>
+
+              <th>
+                <span v-if="option.game">{{ option.game.game_name }}</span>
+                <span v-else><i title="no preview / no added" class="fas fa-ban"></i></span>
+              </th>
+
+
               <th v-if="option.video === null"><i title="not connected by video" class="fas fa-ban"></i></th>
               <th v-else>{{ option.video.video_name }}</th>
               <th v-if="option.option_image">var</th>
