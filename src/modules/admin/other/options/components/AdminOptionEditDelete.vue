@@ -45,7 +45,7 @@
 
             <div class="d-flex flex-column justify-content-center center">
               <div class="text-left px-2">
-                <small>Which game of game</small>
+                <small>Which game</small>
               </div>
               <div class="d-flex justify-content-center align-items-center">
                 <div class="custom-input-icon">
@@ -78,7 +78,7 @@
 
             <div class="d-flex flex-column justify-content-center center">
               <div class="text-left px-2">
-                <small>Which game of video</small>
+                <small>Which video</small>
               </div>
               <div class="d-flex justify-content-center align-items-center">
                 <div class="custom-input-icon">
@@ -104,7 +104,7 @@
               <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#optionEditModal"><i class="fas fa-info-circle"></i> </button>
             </div>
             <div>
-              <button class="btn mx-2" ><i class="fas fa-save"></i> Save</button>
+              <button class="btn mx-2" @click="sendChangesOption"><i class="fas fa-save"></i> Save</button>
             </div>
             <div>
               <button class="btn bg-danger mx-2" data-toggle="modal" data-target="#deleteOption"><i class="fas fa-trash"></i> Delete</button>
@@ -155,10 +155,14 @@ export default {
         'getGame',
         'getVideo',
         'deleteOption',
+        'patchSelectedAdminOption',
     ]),
     deleteSendData() {
       this.deleteOption(this.getAdminOptionData.selectedOptionData);
     },
+    sendChangesOption() {
+      this.patchSelectedAdminOption(this.getAdminOptionData.selectedOptionData);
+    }
   },
   created() {
     this.getSelectedAdminOption(this.$route.params.id);

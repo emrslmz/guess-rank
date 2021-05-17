@@ -76,8 +76,9 @@
             <tr class="text-center" v-for="(option, index) in getAdminOptionData.optionsData" :key="index">
               <th><i class="fas fa-circle"></i></th>
               <th>{{ option.video_option_id }}</th>
-              <th>{{ option.option_name }}</th>
-              <th>{{ option.game.game_name }}</th>
+              <th v-if="option.game">{{ option.game.game_name }}</th>
+              <th v-else><i title="no preview / no added" class="fas fa-ban"></i></th>
+              <th>{{ option.option_game_id }}</th>
               <th v-if="option.video === null"><i title="not connected by video" class="fas fa-ban"></i></th>
               <th v-else>{{ option.video.video_name }}</th>
               <th v-if="option.option_image">var</th>
@@ -93,20 +94,6 @@
             </tbody>
           </table>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--        <div class="d-flex justify-content-center align-items-center row">-->
