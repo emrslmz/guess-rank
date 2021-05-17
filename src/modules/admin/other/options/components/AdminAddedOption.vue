@@ -76,15 +76,11 @@
             <tr class="text-center" v-for="(option, index) in getAdminOptionData.optionsData" :key="index">
               <th><i class="fas fa-circle"></i></th>
               <th>{{ option.video_option_id }}</th>
-
               <th>{{ option.option_name }}</th>
-
               <th>
                 <span v-if="option.game">{{ option.game.game_name }}</span>
                 <span v-else><i title="no preview / no added" class="fas fa-ban"></i></span>
               </th>
-
-
               <th v-if="option.video === null"><i title="not connected by video" class="fas fa-ban"></i></th>
               <th v-else>{{ option.video.video_name }}</th>
               <th v-if="option.option_image">var</th>

@@ -16,6 +16,7 @@ import Level from '@/modules/admin/other/level/store/level'
 import Video from '@/modules/admin/other/video/store/video';
 import VideoGroup from '@/modules/admin/other/video-group/store/video-group';
 import Option from '@/modules/admin/other/options/store/option';
+import UserVideoView from '@/modules/admin/other/movement/video-viewing/store/viewing';
 
 Vue.use(Vuex);
 
@@ -35,5 +36,6 @@ export default new Vuex.Store({
         UserSelectVideo,
         UserSelectedVideoOption,
         Option,
+        UserVideoView,
     },
 });

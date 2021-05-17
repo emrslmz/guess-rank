@@ -18,7 +18,7 @@ export default [{
             component: () => import('@/modules/admin/other/video/components/AdminAddVideo.vue'),
         },
         {
-            path: '/admin/other/video/add/:id',
+            path: '/admin/other/video/edit/:id',
             name: 'VideosEdit',
             meta: {
                 title: 'Add Video'
