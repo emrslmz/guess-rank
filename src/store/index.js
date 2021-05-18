@@ -8,6 +8,7 @@ import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 import UserLevel from '@/modules/main/play/game/store/level'
 import UserSelectVideo from '@/modules/main/play/game/store/video';
 import UserSelectedVideoOption from '@/modules/main/play/game/store/option';
+import UserVideoView from '@/modules/main/play/game/store/video-views';
 
 import AddedUsers from '@/modules/admin/users/store/users';
 import Shop from '@/modules/admin/shop/store/shop';
@@ -16,7 +17,8 @@ import Level from '@/modules/admin/other/level/store/level'
 import Video from '@/modules/admin/other/video/store/video';
 import VideoGroup from '@/modules/admin/other/video-group/store/video-group';
 import Option from '@/modules/admin/other/options/store/option';
-import UserVideoView from '@/modules/admin/other/movement/video-viewing/store/viewing';
+import AdminVideoView from '@/modules/admin/other/movement/video-viewing/store/viewing';
+
 
 Vue.use(Vuex);
 
@@ -36,6 +38,7 @@ export default new Vuex.Store({
         UserSelectVideo,
         UserSelectedVideoOption,
         Option,
+        AdminVideoView,
         UserVideoView,
     },
 });

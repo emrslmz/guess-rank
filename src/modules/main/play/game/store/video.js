@@ -1,6 +1,6 @@
-import axios from "axios";
-import request from "@/services/request/request_api";
-import auth from "@/services/authorization/auth";
+import axios from 'axios';
+import request from '@/services/request/request_api';
+import auth from '@/services/authorization/auth';
 
 const state = {
     selectedUserVideoData: [],

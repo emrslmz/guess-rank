@@ -40,12 +40,13 @@
           <th scope="col"><i class="far fa-user"></i> User</th>
           <th scope="col"><i class="fas fa-star-half-alt"></i> Video Level</th>
           <th scope="col"><i class="far fa-file-video"></i> Video Name</th>
-          <th></th>
+          <th scope="col"><i class="fas fa-clock"></i></th>
         </tr>
         </thead>
         <tbody>
         <tr class="text-center" v-if="getUserVideoViewData.viewingsData.length === 0">
           <th><i class="fas fa-circle"></i></th>
+          <th><i title="no preview / no added" class="fas fa-ban"></i></th>
           <th><i title="no preview / no added" class="fas fa-ban"></i></th>
           <th><i title="no preview / no added" class="fas fa-ban"></i></th>
           <th><i title="no preview / no added" class="fas fa-ban"></i></th>
@@ -82,7 +83,11 @@
                 :video-data="view.video"
             ></video-info-modal>
           </th>
-          <th></th>
+          <th class="text-left">
+            <small><i class="fas fa-calendar-alt"></i> {{ view.created_at.slice(0,10) }}</small>
+            <br>
+            <small><i class="far fa-clock"></i> {{ view.created_at.slice(11,19) }}</small>
+          </th>
         </tr>
         </tbody>
       </table>

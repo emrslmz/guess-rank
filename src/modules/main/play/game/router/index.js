@@ -1,6 +1,6 @@
 export default [{
     path: '/play/game',
-    name: 'Games',
+    name: 'GamesHome',
     component: () => import('@/modules/main/play/game/views/Game.vue'),
     children: [
         {

@@ -2,7 +2,7 @@
 <div>
   <div class="d-flex flex-column justify-content-center align-items-center">
     <div class="container responsive-class">
-      <youtube width="100%" height="90%" class="responsive-iframe" :video-id="video.video_url"  :player-vars="this.playerVars"></youtube>
+      <youtube width="100%" height="90%" class="responsive-iframe" :video-id="video.video_url" :player-vars="this.playerVars"></youtube>
     </div>
   </div>
 </div>
@@ -15,14 +15,15 @@ export default {
   name: 'WatchVideo',
   data() {
     return {
-      playerVars: {  //autoplay
+          playerVars: {  //autoplay
         autoplay: 1,
       },
     };
   },
   computed: {
     ...mapGetters([
-        'getUserSelectedVideoData',
+      'getUserLevelData',
+      'getUserSelectedVideoData',
     ]),
     video() {
       return this.getUserSelectedVideoData;
@@ -30,11 +31,15 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getUserSelectedVideo',
+        'getLevel',
+        'getUserSelectedVideo',
+        'getPostUserView',
     ]),
   },
-  created() {
+  async created() {
     this.getUserSelectedVideo(this.$route.params.key);
+    await this.getLevel(this.$route.params.id);
+    this.getPostUserView({videoId: this.$route.params.key, levelId: this.getUserLevelData.levelData.level_id});
   },
 };
 </script>
