@@ -11,5 +11,6 @@ export default {
 
 
     video_option_url: `${base.base_url}/video_options`,
+    video_option: `${base.base_url}/options`
 
 };

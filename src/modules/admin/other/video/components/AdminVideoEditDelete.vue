@@ -135,7 +135,7 @@
                 </div>
                 <div>
                   <select class="custom-select" v-model="getVideoInfo.selectedVideoData.answer_option_id">
-                    <option :value="option.video_option_id" v-for="(option, index) in getAdminOptionData.optionsData" :key="index">{{ option.option_name  }}</option>
+                    <option :value="option.video_option_id" v-for="(option, index) in options" :key="index">{{ option.option_name  }}</option>
                     <option value="null" disabled>None</option>
                   </select>
                 </div>
@@ -194,6 +194,12 @@ export default {
         'getGameInfo',
         'getAdminOptionData',
     ]),
+    options() {
+      if (this.getAdminOptionData.optionsData) {
+        return this.getAdminOptionData.optionsData.filter((option) => option.game_id === this.getVideoInfo.selectedVideoData.video_game_id);
+      }
+      return [];
+    },
   },
   methods: {
     ...mapActions([
@@ -210,17 +216,12 @@ export default {
     deleteSendData() {
       this.deleteVideo(this.getVideoInfo.selectedVideoData);
     },
-    // getOnlyGameOption() {
-    //   const only = this.getAdminOptionData.optionsData.filter(a => a.game_id === this.getVideoInfo.videoData.video_game_id);
-    //   console.log(only);
-    // },
   },
  async created() {
-      this.getselectedVideo(this.$route.params.id);
-      await this.getVideoGroup();
-      await this.getGame();
-      await this.getAdminOption();
-       // this.getOnlyGameOption();
+    this.getselectedVideo(this.$route.params.id);
+    await this.getVideoGroup();
+    await this.getGame();
+    await this.getAdminOption();
   },
 };
 </script>

@@ -9,6 +9,7 @@ import UserLevel from '@/modules/main/play/game/store/level'
 import UserSelectVideo from '@/modules/main/play/game/store/video';
 import UserSelectedVideoOption from '@/modules/main/play/game/store/option';
 import UserVideoView from '@/modules/main/play/game/store/video-views';
+import UserVideoAnswer from '@/modules/main/play/game/store/answer';
 
 import AddedUsers from '@/modules/admin/users/store/users';
 import Shop from '@/modules/admin/shop/store/shop';
@@ -40,5 +41,6 @@ export default new Vuex.Store({
         Option,
         AdminVideoView,
         UserVideoView,
+        UserVideoAnswer,
     },
 });

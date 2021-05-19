@@ -4,7 +4,7 @@
    <div v-if="this.ready === true">
      <div class="d-flex justify-content-between align-items-center option" v-if="this.showOption === true">
        <div class="d-flex flex-column justify-content-center align-items-center px-3" v-for="(option, index) in getVideoOptionData" :key="index">
-         <h5 class="fas fa-apple-alt"></h5>
+         <h5 class="fas fa-apple-alt" @click="answerOption(option.video_option_id)"></h5>
          <small>{{ option.option_name }}</small>
        </div>
        <div class="d-flex flex-column justify-content-center align-items-center px-3">
@@ -45,7 +45,11 @@ export default {
   methods: {
     ...mapActions([
         'getVideoOption',
+        'postUserAnswer',
     ]),
+    async answerOption(optionId) {
+     await this.postUserAnswer({optionId: optionId, videoId: this.$route.params.key})
+    },
   },
   created() {
     this.getVideoOption(this.$route.params.key);

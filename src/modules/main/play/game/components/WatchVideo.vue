@@ -15,8 +15,8 @@ export default {
   name: 'WatchVideo',
   data() {
     return {
-          playerVars: {  //autoplay
-        autoplay: 1,
+        playerVars: {  //autoplay
+          autoplay: 1,
       },
     };
   },
@@ -35,6 +35,7 @@ export default {
         'getUserSelectedVideo',
         'getPostUserView',
     ]),
+
   },
   async created() {
     this.getUserSelectedVideo(this.$route.params.key);
