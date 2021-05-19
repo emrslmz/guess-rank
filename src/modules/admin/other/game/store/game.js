@@ -28,8 +28,8 @@ const getters = {
 };
 
 const actions = {
-    getGame() {
-        axios
+    async getGame() {
+       await axios
             .get(`${request.game_url}`, auth )
             .then((response) => {
                 state.gameInfo.gameData = response.data.result.data;

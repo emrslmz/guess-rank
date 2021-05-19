@@ -22,8 +22,8 @@ const getters = {
 };
 
 const actions = {
-    getVideoGroup() {
-        axios
+    async getVideoGroup() {
+       await axios
             .get(`${request.video_group_url}`, auth)
             .then((response) => {
                 state.videoGroupInfo.videoGroupData = response.data.result.data;

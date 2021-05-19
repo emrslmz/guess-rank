@@ -42,7 +42,7 @@
           </div>
 
 
-          <div class="d-flex justify-content-between align-items-center py-2">
+          <div class="d-flex justify-content-between align-items-center py-3">
 
             <div class="d-flex justify-content-between align-items center px-4">
               <div class="d-flex flex-column justify-content-center center">
@@ -110,6 +110,39 @@
             </div>
           </div>
 
+          <div class="d-flex justify-content-between align-items-center py-3">
+
+            <div class="d-flex justify-content-between align-items center px-5">
+              <div class="d-flex flex-column justify-content-center center">
+                <div class="text-center">
+                  <small>Haven't correct</small>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <!--                  <span><i class="far fa-eye-slash"></i></span>-->
+                  <div><input class="dark-mode-button mt-2 mx-3" :value="null" v-model="getVideoInfo.selectedVideoData.answer_option_id" type="radio" /></div>
+                  <!--                  <span><i class="far fa-eye"></i></span>-->
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column justify-content-center center">
+              <div class="text-left px-2">
+                <small>Which option</small>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="custom-input-icon">
+                  <i class="fas fa-circle"></i>
+                </div>
+                <div>
+                  <select class="custom-select" v-model="getVideoInfo.selectedVideoData.answer_option_id">
+                    <option :value="option.video_option_id" v-for="(option, index) in getAdminOptionData.optionsData" :key="index">{{ option.option_name  }}</option>
+                    <option value="null" disabled>None</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="d-flex justify-content-between green-success-button">
             <div>
               <button class="btn bg-primary mx-2" data-toggle="modal" data-target="#videoEditModal"><i class="fas fa-info-circle"></i> </button>
@@ -159,6 +192,7 @@ export default {
         'getVideoInfo',
         'getVideoGroupInfo',
         'getGameInfo',
+        'getAdminOptionData',
     ]),
   },
   methods: {
@@ -168,6 +202,7 @@ export default {
         'getGame',
         'patchEditVideo',
         'deleteVideo',
+        'getAdminOption',
     ]),
     sendChangesVideo() {
       this.patchEditVideo(this.getVideoInfo.selectedVideoData);
@@ -175,11 +210,17 @@ export default {
     deleteSendData() {
       this.deleteVideo(this.getVideoInfo.selectedVideoData);
     },
+    // getOnlyGameOption() {
+    //   const only = this.getAdminOptionData.optionsData.filter(a => a.game_id === this.getVideoInfo.videoData.video_game_id);
+    //   console.log(only);
+    // },
   },
-  created() {
-    this.getselectedVideo(this.$route.params.id);
-    this.getVideoGroup();
-    this.getGame();
+ async created() {
+      this.getselectedVideo(this.$route.params.id);
+      await this.getVideoGroup();
+      await this.getGame();
+      await this.getAdminOption();
+       // this.getOnlyGameOption();
   },
 };
 </script>

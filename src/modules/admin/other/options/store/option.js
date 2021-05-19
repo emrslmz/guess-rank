@@ -24,8 +24,8 @@ const getters = {
 };
 
 const actions = {
-    getAdminOption() {
-        axios
+    async getAdminOption() {
+       await axios
             .get(`${request_api.video_option_url}`, auth)
             .then((response) => {
                 state.adminOptionData.optionStatus = response.data.code;

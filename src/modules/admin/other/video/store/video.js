@@ -14,6 +14,7 @@ const state = {
         video_url: null,
         video_group_id: null,
         video_game_id: null,
+        answer_option_id: null,
     },
   },
 };
@@ -48,6 +49,7 @@ const actions = {
               video_url: selectedVideo.video_url,
               video_group_id: selectedVideo.video_group_id,
               video_game_id: selectedVideo.video_game_id,
+              answer_option_id: selectedVideo.answer_option_id,
           }, auth)
           .then((response) => {
               state.videoInfo.videoStatus = response.data.code;
