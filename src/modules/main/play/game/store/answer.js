@@ -4,6 +4,7 @@ import auth from '@/services/authorization/auth';
 
 const state ={
     userAnswers: {
+
     }
 };
 

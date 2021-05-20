@@ -1,18 +1,19 @@
 <template>
   <div>
 
-   <div v-if="this.ready === true">
+    <div v-if="this.ready === true">
      <div class="d-flex justify-content-between align-items-center option" v-if="this.showOption === true">
        <div class="d-flex flex-column justify-content-center align-items-center px-3" v-for="(option, index) in getVideoOptionData" :key="index">
-         <h5 class="fas fa-apple-alt" @click="answerOption(option.video_option_id)"></h5>
+         <h5 class="fas fa-apple-alt" :class="optionAnswer.optionShake === true ? 'shake colorfasted' : ''" @click="answerOption(option.video_option_id, index)" disabled="disabled"></h5>
          <small>{{ option.option_name }}</small>
        </div>
        <div class="d-flex flex-column justify-content-center align-items-center px-3">
-         <h5 style="font-size: small" class="fas fa-dot-circle text-danger" title="Pass"></h5>
+         <h5 style="font-size: small" class="fas fa-hands-helping text-success" title="Pass"></h5>
          <h5 style="font-size: small" class="far fa-flag" title="Report"></h5>
        </div>
      </div>
-
+<!--     -->
+<!--     answerOption(option.video_option_id)-->
      <div v-else>
        <p> {{ this.showOptionTime }} </p>
      </div>
@@ -32,8 +33,12 @@ export default {
   props: ['ready'],
   data() {
     return {
-      showOptionTime: 5,
-      showOption: false
+      showOptionTime: 3,
+      showOption: false,
+      optionAnswer: {
+        optionShake: false,
+        optionDisable: true, //false disable true active
+      }
     };
   },
   name: 'VideoOptionCard',
@@ -47,8 +52,19 @@ export default {
         'getVideoOption',
         'postUserAnswer',
     ]),
-    async answerOption(optionId) {
-     await this.postUserAnswer({optionId: optionId, videoId: this.$route.params.key})
+    async answerOption(optionId, index) {
+      if (this.optionAnswer.optionDisable === true) {
+        this.optionAnswer.optionShake = true;
+        this.optionAnswer.optionDisable = false;
+
+        await this.postUserAnswer({optionId: optionId, videoId: this.$route.params.key});
+
+        setTimeout(() => {
+          this.getVideoOptionData.splice(index, 1);
+          this.optionAnswer.optionShake = false;
+          this.optionAnswer.optionDisable = true;
+        }, 3000);
+      }
     },
   },
   created() {
@@ -92,4 +108,41 @@ export default {
   transition: 0.2s;
 }
 
+
+
+.shake {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+  transition: 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.colorfasted {
+  color: white;
+  animation: falseAnswer 2s infinite alternate;
+}
+
+
+@keyframes falseAnswer{
+  0% { color: green; }
+  50% { color: red; }
+  100% { color: black; }
+
+}
 </style>
