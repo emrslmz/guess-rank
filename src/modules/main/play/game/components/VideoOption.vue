@@ -27,6 +27,7 @@
 </template>
 
 <script>
+
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -77,6 +78,7 @@ export default {
           this.showOption = true;
         }
       }, 1000);
+
   }
 };
 </script>
