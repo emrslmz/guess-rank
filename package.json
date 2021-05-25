@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "canvas-confetti": "^1.4.0",
     "core-js": "^3.6.5",
     "handy-notification": "^1.2.8",
     "smoothly-request": "^1.0.7",
