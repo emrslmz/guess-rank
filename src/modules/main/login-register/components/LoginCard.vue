@@ -4,8 +4,8 @@
       <div>
         <div class="text-center pt-2">
           <h4>Login</h4>
-          <small style="font-size: 9px; color: red" v-if="getLoginRegisterData.loginRegisterStatus === 500"><strong>Your e-mail address or password is incorrect</strong></small>
-          <small style="font-size: 9px; color: green" v-if="getLoginRegisterData.loginRegisterStatus === 200"><strong>Redirecting   <i class="fas fa-circle-notch fa-spin"></i></strong></small>
+          <small style="font-size: 9px; color: red" v-if="false"><strong>Your e-mail address or password is incorrect</strong></small>
+          <small style="font-size: 9px; color: green" v-if="false"><strong>Redirecting   <i class="fas fa-circle-notch fa-spin"></i></strong></small>
 
         </div>
         <div class="d-flex justify-content-center align-items-center pb-4">
@@ -14,7 +14,7 @@
               <i class="fas fa-at"></i>
             </div>
             <div>
-              <input class="custom-input" v-model="getLoginRegisterData.loginData.email" placeholder="E-mail" type="text">
+              <input class="custom-input" v-model="user.email" placeholder="E-mail" type="text">
             </div>
           </div>
         </div>
@@ -25,16 +25,16 @@
               <i class="fas fa-key"></i>
             </div>
             <div>
-              <input class="custom-input" v-model="getLoginRegisterData.loginData.password" placeholder="Password" type="password" required>
+              <input class="custom-input" v-model="user.password" placeholder="Password" type="password" required>
             </div>
           </div>
         </div>
 
         <div class="text-center green-success-button">
-          <button class="btn btn w-50" @click="userLogin(getLoginRegisterData.loginData)">Login</button>
+          <button class="btn btn w-50" @click="login(user)">Login</button>
         </div>
         <div class="text-center">
-          <small>I do not have an. <b><a class="text-primary mouse-click" @click="getLoginRegisterData.loginRegisterCard = true">Register</a></b></small>
+          <small>I do not have an. <b><a class="text-primary mouse-click" @click="goRegister()">Register</a></b></small>
         </div>
       </div>
 
@@ -43,19 +43,23 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'LoginCard',
-  computed: {
-    ...mapGetters([
-        'getLoginRegisterData'
-    ])
+  data() {
+    return {
+      user: {
+        email: null,
+        password: null,
+      },
+    };
   },
   methods: {
-    ...mapActions([
-        'userLogin',
-    ]),
+    ...mapActions('LoginRegister', ['login']),
+    goRegister() {
+      this.$emit('goRegister');
+    },
   },
 };
 </script>

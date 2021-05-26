@@ -13,23 +13,15 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'MainApp',
-  computed: {
-    ...mapGetters([
-        'isLogged',
-        'getUserData',
-    ]),
-  },
   methods: {
-    ...mapActions([
-        'userMe',
-    ])
+    ...mapActions('Users', ['fetchMe']),
   },
   created() {
-    this.userMe();
+    this.fetchMe();
   },
   components: {
     TheHeaderHome: () => import('@/modules/main/home/layouts/TheHeaderHome.vue'),

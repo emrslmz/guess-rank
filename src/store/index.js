@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 import General from '@/store/dashboard/index';
 import LoginRegister from '@/modules/main/login-register/store/index';
-import UserMe from '@/modules/main/home/store/index';
+import Users from '@/modules/main/home/store/index';
 import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 import UserLevel from '@/modules/main/play/game/store/level'
 import UserSelectVideo from '@/modules/main/play/game/store/video';
@@ -24,11 +24,12 @@ import AdminVideoView from '@/modules/admin/other/movement/video-viewing/store/v
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    namespace: true,
     modules: {
         General,
         LoginRegister,
         AddedUsers,
-        UserMe,
+        Users,
         GeneralSetting,
         Shop,
         Game,

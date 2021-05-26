@@ -28,9 +28,6 @@ const getters = {
     getLoginRegisterData(state) {
         return state.loginRegister;
     },
-    isLogged() {
-        return !!localStorage.getItem('access_token');
-    }
 };
 const mutations = {
     USER_REGISTER_STATUS(state, registerStatus) {
@@ -65,31 +62,27 @@ const actions = {
                 commit('USER_REGISTER_STATUS', 422);
             })
     },
-    userLogin({ commit }, loginData) {
-        axios
+    login({ dispatch }, loginData) {
+         axios
             .post('https://guess-what-rank-api.herokuapp.com/api/login', {
                 email: loginData.email,
                 password: loginData.password,
             })
             .then((response) => {
                 localStorage.setItem("access_token", response.data.result.data.access_token);
-                // console.log(localStorage.getItem('access_token'));
                 showMessage('Login successful. Welcome!');
-                const status = response.status;
-                commit('USER_LOGIN_STATUS', status);
-                router.push({ path: '/start' });
-                location.reload();
-
+                dispatch('Users/setUserData', response.data.result.data.user, { root: true});
+                router.push({path: '/start'});
             })
             .catch(() => {
                 showMessage("Login information is incorrect");
-                commit('USER_LOGIN_STATUS', 500);
             })
     },
 };
 
 export default {
     state,
+    namespaced: true,
     getters,
     mutations,
     actions,

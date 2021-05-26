@@ -19,7 +19,7 @@
             </router-link>
           </div>
 
-          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData && isLogged">
+          <div class="d-flex align-items-center mb-2" v-if="me">
             <router-link to="/play">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-play-circle"></i> Play</button>
@@ -27,7 +27,7 @@
             </router-link>
           </div>
 
-          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData && isLogged">
+          <div class="d-flex align-items-center mb-2" v-if="me">
             <router-link to="/shop">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="fas fa-shopping-cart"></i> Shop</button>
@@ -36,7 +36,7 @@
           </div>
 
 
-          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData && !isLogged">
+          <div class="d-flex align-items-center mb-2" v-if="!me">
             <router-link to="/login-register">
               <div class="header-button mx-2 my-2">
                 <button class="btn btn-sm"><i class="far fa-hand-spock"></i> Sign in/up</button>
@@ -44,9 +44,9 @@
             </router-link>
           </div>
 
-          <div class="custom-vertical-hr" v-if="!!getUserData.userData  && isLogged"></div>
+          <div class="custom-vertical-hr" v-if="me"></div>
 
-          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData  && isLogged">
+          <div class="d-flex align-items-center mb-2" v-if="me">
             <div class="dropdown header-button mx-2 my-2">
               <button class="btn btn-sm dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Profile
@@ -63,14 +63,14 @@
                 <router-link to="/buy">
                   <span class="dropdown-item btn btn-sm" type="button"><i class="far fa-gem"></i> Buy extra</span>
                 </router-link>
-                <span class="dropdown-item btn btn-sm text-danger" type="button" @click="runLogout()"><i class="fas fa-sign-out-alt "></i> Logout</span>
+                <span class="dropdown-item btn btn-sm text-danger" type="button" @click="logout()"><i class="fas fa-sign-out-alt "></i> Logout</span>
               </div>
             </div>
             <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
 
           </div>
 
-          <div class="d-flex align-items-center mb-2" v-if="!!getUserData.userData  && isLogged">
+          <div class="d-flex align-items-center mb-2" v-if="me">
             <div class="header-balance mx-1 my-2">
                Balance: 5000<i class="fas fa-lira-sign"></i>
               <br>
@@ -88,23 +88,15 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'TheHeaderHome',
   computed: {
-    ...mapGetters([
-        'getUserData',
-        'isLogged',
-    ]),
+    ...mapState('Users', ['me']),
   },
   methods: {
-    ...mapActions([
-        'logout',
-    ]),
-    runLogout() {
-      this.logout();
-    }
+    ...mapActions('Users', ['logout']),
   },
 };
 </script>

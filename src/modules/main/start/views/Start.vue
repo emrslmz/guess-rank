@@ -10,5 +10,6 @@ export default {
   components: {
     StartMain: () => import('@/modules/main/start/components/StartMain.vue'),
   },
+
 };
 </script>

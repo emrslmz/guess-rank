@@ -3,11 +3,8 @@ import router from '@/router';
 import { showMessage } from "@/shared/utils/messages.utils";
 
 const state = {
-    userDatas: {
-        userData: [],
-        userDataStatus: null,
-        unauthorized: null,
-    }
+    me: null,
+    authError: null,
 }
 
 const getters = {
@@ -18,16 +15,21 @@ const getters = {
 
 const mutations = {
     USER_LOGOUT(state) {
-        state.userDatas = {
-            userData: [],
-            userDataStatus: null,
-        }
-    }
+        state.me = null;
+        state.authError = null;
+    },
+    SET_USER_DATA(state, data) {
+        state.me = data;
+    },
 }
 
 const actions = {
     //LOGGED USER DATA
-    userMe() {
+    setUserData({ commit }, data) {
+        commit('SET_USER_DATA', data);
+    },
+
+    fetchMe({ dispatch }) {
         axios
             .get('https://guess-what-rank-api.herokuapp.com/api/me', {
                 headers: {
@@ -35,22 +37,18 @@ const actions = {
                 }
             })
             .then((response) => {
-                state.userDatas.userData = response.data.result.data;
-                state.userDatas.userDataStatus = response.data.code;
-
+                dispatch('setUserData', response.data.result.data)
             })
-            .catch(e => {
-                // router.push({ path: '/login-register' });
-                state.userDatas.unauthorized = e;
-            })
+            .catch(() => {
+                return false;
+            });
     },
     //USER LOGOUT
     logout({ commit }) {
         localStorage.removeItem('access_token');
         commit('USER_LOGOUT');
-        router.push({ path: '/login-register' });
+        router.push({path: '/login-register'});
         showMessage('The exit is successful. Redirecting...');
-        location.reload();
     },
     //GENERAL SETTING CHANGE
     changeGeneralSetting() {
@@ -65,14 +63,14 @@ const actions = {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
             })
-            .then((response) => {
-                state.userDatas.userDataStatus = response.data.code;
+            .then(() => {
                 showMessage("The changes were saved!")
             })
     }
 }
 
 export default {
+    namespaced: true,
     state,
     getters,
     mutations,

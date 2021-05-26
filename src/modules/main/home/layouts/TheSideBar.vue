@@ -10,7 +10,7 @@
        </router-link>
       </div>
 
-      <div class="sidebar-button" title="My Basket" v-if="!!getUserData.userData && isLogged">
+      <div class="sidebar-button" title="My Basket" v-if="me">
         <router-link to="/shop">
           <i class="fas fa-shopping-basket"></i>
         </router-link>
@@ -23,15 +23,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: 'SideBar',
   computed: {
-    ...mapGetters([
-      'getUserData',
-      'isLogged',
-    ]),
+    ...mapState('Users', ['me']),
   },
   methods: {
     goBack() {

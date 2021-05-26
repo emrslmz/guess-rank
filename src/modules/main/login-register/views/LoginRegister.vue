@@ -6,12 +6,8 @@
           <div class="home-picture-login" style="background-image: url('/assets/images/img/home-picture-login.png');"></div>
         </div>
         <div class="col-12 col-xl-5">
-
-
-          <login-card v-if="!getLoginRegisterData.loginRegisterCard"  />
-
-
-          <register-card v-else />
+          <login-card v-if="type === 1" @goRegister="type = 2" />
+          <register-card v-else-if="type === 2" @goLogin="type = 1" />
 
         </div>
       </div>
@@ -19,18 +15,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'Start',
+  data() {
+    return {
+      type: 1
+    };
+  },
   components: {
     LoginCard: () => import('@/modules/main/login-register/components/LoginCard.vue'),
     RegisterCard: () => import('@/modules/main/login-register/components/RegisterCard.vue'),
-  },
-  computed: {
-    ...mapGetters([
-        'getLoginRegisterData',
-    ]),
   },
 };
 </script>

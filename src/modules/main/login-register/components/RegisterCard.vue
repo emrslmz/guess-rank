@@ -3,7 +3,7 @@
     <div class="register-card py-3">
       <div class="text-center pt-2">
         <h4>Register</h4>
-        <small style="font-size: 9px; color: red" v-if="getLoginRegisterData.loginRegisterStatus === 422"><strong>There is already a registered user with the information you entered</strong></small>
+        <small style="font-size: 9px; color: red" v-if="false"><strong>There is already a registered user with the information you entered</strong></small>
         <small v-else>We would be <i>happy</i> to see you among us!</small>
 
       </div>
@@ -14,7 +14,7 @@
             <i class="far fa-user-circle"></i>
           </div>
           <div>
-            <input class="custom-input" v-model="getLoginRegisterData.registerData.name" placeholder="Name" type="text">
+            <input class="custom-input" v-model="user.name" placeholder="Name" type="text">
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
             <i class="fas fa-feather"></i>
           </div>
           <div>
-            <input class="custom-input" v-model="getLoginRegisterData.registerData.surname" placeholder="Surname" type="text">
+            <input class="custom-input" v-model="user.surname" placeholder="Surname" type="text">
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
             <i class="far fa-user"></i>
           </div>
           <div>
-            <input class="custom-input" v-model="getLoginRegisterData.registerData.username" placeholder="Username" type="text">
+            <input class="custom-input" v-model="user.username" placeholder="Username" type="text">
           </div>
         </div>
       </div>
@@ -48,38 +48,38 @@
             <i class="fas fa-at"></i>
           </div>
           <div>
-            <input class="custom-input" v-model="getLoginRegisterData.registerData.email" placeholder="E-mail" type="email">
+            <input class="custom-input" v-model="user.email" placeholder="E-mail" type="email">
           </div>
         </div>
       </div>
 
       <div class="d-flex justify-content-center align-items-center pb-4">
-        <div class="d-flex justify-content-center align-items-center" :class="getLoginRegisterData.registerData.password_confirmation === getLoginRegisterData.registerData.password ? 'confirm-password' : ''">
+        <div class="d-flex justify-content-center align-items-center" :class="user.password_confirmation === user.password ? 'confirm-password' : ''">
           <div class="custom-input-icon">
             <i class="fas fa-key"></i>
           </div>
           <div>
-            <input class="custom-input" v-model="getLoginRegisterData.registerData.password" placeholder="Password" type="password" />
+            <input class="custom-input" v-model="user.password" placeholder="Password" type="password" />
           </div>
         </div>
       </div>
 
       <div class="d-flex justify-content-center align-items-center pb-4">
-        <div class="d-flex justify-content-center align-items-center" :class="getLoginRegisterData.registerData.password_confirmation === getLoginRegisterData.registerData.password ? 'confirm-password' : ''">
+        <div class="d-flex justify-content-center align-items-center" :class="user.password_confirmation === user.password ? 'confirm-password' : ''">
           <div class="custom-input-icon">
             <i class="fas fa-key"></i>
           </div>
           <div>
-            <input class="custom-input" v-model="getLoginRegisterData.registerData.password_confirmation" placeholder="Password-confirm" type="password" />
+            <input class="custom-input" v-model="user.password_confirmation" placeholder="Password-confirm" type="password" />
           </div>
         </div>
       </div>
 
       <div class="text-center green-success-button">
-        <button class="btn btn w-50" @click="userRegister(getLoginRegisterData.registerData)">Register</button>
+        <button class="btn btn w-50" @click="userRegister(user)">Register</button>
       </div>
       <div class="text-center">
-        <small>I have an account. <b><a class="text-primary mouse-click" @click="getLoginRegisterData.loginRegisterCard = false">login</a></b></small>
+        <small>I have an account. <b><a class="text-primary mouse-click" @click="goLogin()">login</a></b></small>
       </div>
 
     </div>
@@ -88,19 +88,32 @@
 
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: 'RegisterCard',
+  data() {
+    return {
+      user: {
+        name: null,
+        surname: null,
+        username: null,
+        email: null,
+        password: null,
+        password_confirmation: null,
+        country_id: null,
+      }
+    };
+  },
   computed: {
-    ...mapGetters([
-      'getLoginRegisterData'
-    ]),
   },
   methods: {
     ...mapActions([
         'userRegister',
     ]),
+    goLogin() {
+      this.$emit('goLogin');
+    }
   },
 };
 </script>
