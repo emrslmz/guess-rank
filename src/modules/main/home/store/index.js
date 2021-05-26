@@ -6,6 +6,7 @@ const state = {
     userDatas: {
         userData: [],
         userDataStatus: null,
+        unauthorized: null,
     }
 }
 
@@ -36,10 +37,11 @@ const actions = {
             .then((response) => {
                 state.userDatas.userData = response.data.result.data;
                 state.userDatas.userDataStatus = response.data.code;
+
             })
-            .catch((error) => {
-            console.log(error);
-                router.push({ path: '/login-register' });
+            .catch(e => {
+                // router.push({ path: '/login-register' });
+                state.userDatas.unauthorized = e;
             })
     },
     //USER LOGOUT
@@ -48,6 +50,7 @@ const actions = {
         commit('USER_LOGOUT');
         router.push({ path: '/login-register' });
         showMessage('The exit is successful. Redirecting...');
+        location.reload();
     },
     //GENERAL SETTING CHANGE
     changeGeneralSetting() {
@@ -63,7 +66,7 @@ const actions = {
                 },
             })
             .then((response) => {
-                console.log(response);
+                state.userDatas.userDataStatus = response.data.code;
                 showMessage("The changes were saved!")
             })
     }

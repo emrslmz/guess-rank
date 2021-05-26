@@ -12,7 +12,7 @@ export default [{
         },
         {
             path: '/admin/other/game/all/:id',
-            name: 'GamesEdit',
+            name: 'AdminGamesEdit',
             meta: {
                 title: 'Add Game'
             },

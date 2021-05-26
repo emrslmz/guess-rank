@@ -1,13 +1,13 @@
 <template>
   <div>
-    <game-home v-if="this.$route.name === 'Games'" />
+    <game-home v-if="this.$route.name === 'Gamess'" />
     <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Games',
+  name: 'Gamess',
   components: {
     GameHome: () => import('@/modules/main/play/game/components/SelectGame.vue'),
   }

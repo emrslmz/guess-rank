@@ -78,6 +78,8 @@ const actions = {
                 const status = response.status;
                 commit('USER_LOGIN_STATUS', status);
                 router.push({ path: '/start' });
+                location.reload();
+
             })
             .catch(() => {
                 showMessage("Login information is incorrect");

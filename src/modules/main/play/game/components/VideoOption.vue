@@ -4,7 +4,7 @@
     <div v-if="this.ready === true">
      <div class="d-flex justify-content-between align-items-center option" v-if="this.showOption === true">
        <div class="d-flex flex-column justify-content-center align-items-center px-3" v-for="(option, index) in getVideoOptionData" :key="index">
-         <h5 class="fas fa-egg" :class="optionAnswer.optionShake === true ? 'shake colorfasted' : ''" @click="answerOption(option.video_option_id, index)" disabled="disabled"></h5>
+         <h5 class="fas fa-egg" :class="optionAnswer.optionShake === true ? 'shake ' : 'colorfasted'" @click="answerOption(option.video_option_id, index)" disabled="disabled"></h5>
          <small>{{ option.option_name }}</small>
        </div>
        <div class="d-flex flex-column justify-content-center align-items-center px-3">
@@ -141,8 +141,7 @@ export default {
 
 @keyframes falseAnswer{
   0% { color: green; }
-  50% { color: red; }
-  100% { color: black; }
+  100% { color: red; }
 
 }
 </style>
