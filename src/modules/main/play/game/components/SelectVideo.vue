@@ -11,23 +11,34 @@
 
         <div class="container">
           <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-3 d-flex flex-column justify-content-between video-group-card" v-for="(video, index) in levelData.video_group.videos" :key="index">
+            <div class="col-3 d-flex flex-column justify-content-between" v-for="(video, index) in levelData.video_group.videos" :class="video.is_completed === true ? 'video-group-card-completed cursor-none' : 'video-group-card'" :key="index">
 
                 <div class="py-2">
-                  <span class="badge badge-success w-100">Available!</span>
+                  <span class="badge badge-success w-100" v-if="video.is_completed === true && video.is_answered === true">Marked True</span>
+                  <span class="badge badge-danger w-100" v-else-if="video.is_completed === false && video.is_answered === true">Marked False</span>
+                  <span class="badge badge-primary w-100" v-else>Available!</span>
                 </div>
 
-                <router-link :to="{ name: 'BeforeWatchVideo', params: { id: levelData.game_id, key: video.video_id }}">
-                  <div class="d-flex flex-column justify-content-center align-items-center my-5 select-video">
+              <div v-if="video.is_completed === false">
+                <router-link :to="{ name: 'BeforeWatchVideo', params: { id: levelData.game_id, key: video.video_id }}" >
+                  <div class="d-flex flex-column justify-content-center align-items-center my-5" :class="video.is_completed === true ? '' : 'select-video cursor-avaible'">
                     <h5>{{video.video_name}}</h5>
                     <small><i class="fas fa-play"></i></small>
                   </div>
                 </router-link>
+              </div>
 
-              <div class="py-4">
-                  <small class="text-center">You have not watched this video. <i class="far fa-thumbs-down"></i></small>
-                  <br>
-                  <small class="text-center">You watched this video! <i class="far fa-thumbs-up"></i></small>
+
+              <div  v-else>
+                <div class="d-flex flex-column justify-content-center align-items-center my-5" :class="video.is_completed === true ? '' : 'select-video cursor-avaible'">
+                  <h5>{{video.video_name}}</h5>
+                  <small><i class="fas fa-check-circle"></i></small>
+                </div>
+              </div>
+
+              <div class="py-4 text-center">
+                  <small class="text-center" v-if="video.is_viewed  === false">You have not watched this video. <i class="far fa-eye-slash"></i></small>
+                  <small class="text-center" v-else>You watched this video! <i class="far fa-eye"></i></small>
                 </div>
 
 
@@ -118,22 +129,14 @@ export default {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   color: #191919;
   transition: 0.5s;
+  margin: 5px 10px 10px 10px;
+
 
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
 }
 
-.video-group-card {
-  margin: 5px 10px 10px 10px;
-}
-
-
-a {
-  text-decoration: none;
-  color: #191919;
-  transition: 0.5s;
-}
 
 .video-group-card:hover {
   border-radius: 25px;
@@ -142,9 +145,38 @@ a {
   transition: 0.5s;
 }
 
+.video-group-card-completed {
+  width: 100%;
+  min-height: 400px;
+  border-radius: 20px;
+  background-color: #cfd1d2;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  color: #191919;
+  transition: 0.5s;
+  margin: 5px 10px 10px 10px;
+
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: #191919;
+  transition: 0.5s;
+}
+
 .select-video {
   opacity: 0.8;
   transition: 0.5s;
+}
+
+.cursor-none {
+  cursor: not-allowed;
+}
+
+.cursor-avaible {
   cursor: pointer;
 }
 

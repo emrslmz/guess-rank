@@ -44,6 +44,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { showMessage } from '@/shared/utils/messages.utils';
 
 export default {
   name: 'BeforeWatchVideo',
@@ -59,18 +60,31 @@ export default {
   computed: {
     ...mapGetters([
         'getUserSelectedVideoData',
-    ])
+        'getUserLevelData',
+    ]),
+    videoCompleted() {
+      return this.getUserLevelData.levelData.video_group.videos.find(a => a.video_id === this.getUserSelectedVideoData.video_id);
+    }
   },
   methods: {
     ...mapActions([
         'getUserSelectedVideo',
+        'getLevel',
     ]),
     changeReady() {
       this.ready = true;
-    }
+    },
+
   },
-  created() {
+  async created() {
     this.getUserSelectedVideo(this.$route.params.key);
+    await this.getLevel(this.$route.params.id);
+
+
+    if (this.videoCompleted.is_completed === true) {
+      this.$router.push({ name: 'SelectLevel' });
+      showMessage("You have already watched the video you want to go to. If you continue, you may be blocked.");
+    },
   },
 };
 </script>

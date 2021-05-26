@@ -19,6 +19,7 @@ const actions = {
         const response = await axios
         .get(`${request.game_url}/${gameId}/user_levels/me`, auth);
         state.getUserLevel.levelData = response.data.result.data.level;
+        console.log(response.data.result.data);
     },
 };
 
