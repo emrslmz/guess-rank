@@ -29,7 +29,7 @@
               </div>
 
 
-              <div  v-else>
+              <div v-else>
                 <div class="d-flex flex-column justify-content-center align-items-center my-5" :class="video.is_completed === true ? '' : 'select-video cursor-avaible'">
                   <h5>{{video.video_name}}</h5>
                   <small><i class="fas fa-check-circle"></i></small>

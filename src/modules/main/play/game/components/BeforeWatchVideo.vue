@@ -82,9 +82,9 @@ export default {
 
 
     if (this.videoCompleted.is_completed === true) {
-      this.$router.push({ name: 'SelectLevel' });
+      await this.$router.push({name: 'SelectLevel'});
       showMessage("You have already watched the video you want to go to. If you continue, you may be blocked.");
-    },
+    }
   },
 };
 </script>
