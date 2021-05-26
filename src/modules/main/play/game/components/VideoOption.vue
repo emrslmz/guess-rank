@@ -11,15 +11,15 @@
          <h5 style="font-size: small" class="fas fa-hands-helping text-success" title="Pass"></h5>
          <h5 style="font-size: small" class="far fa-flag" title="Report"></h5>
        </div>
+       {{ getUserAnswer.is_correct }}
+
      </div>
-<!--     -->
-<!--     answerOption(option.video_option_id)-->
+
      <div v-else>
        <p> {{ this.showOptionTime }} </p>
      </div>
 
    </div>
-
     <div v-else>
       <i>Stylishs will appear when everything is ready. </i>
     </div>
@@ -28,6 +28,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { showMessage } from '@/shared/utils/messages.utils';
 
 export default {
   props: ['ready'],
@@ -45,6 +46,7 @@ export default {
   computed: {
     ...mapGetters([
         'getVideoOptionData',
+        'getUserAnswer',
     ])
   },
   methods: {
@@ -52,18 +54,26 @@ export default {
         'getVideoOption',
         'postUserAnswer',
     ]),
+    answerCorrectly() {
+      if (this.getUserAnswer.is_correct === false) {
+          alert("ewqewq");
+
+      }
+    },
     async answerOption(optionId, index) {
       if (this.optionAnswer.optionDisable === true) {
         this.optionAnswer.optionShake = true;
         this.optionAnswer.optionDisable = false;
 
-        await this.postUserAnswer({optionId: optionId, videoId: this.$route.params.key});
 
-        setTimeout(() => {
+       await setTimeout(() => {
+          this.postUserAnswer({optionId: optionId, videoId: this.$route.params.key});
           this.getVideoOptionData.splice(index, 1);
           this.optionAnswer.optionShake = false;
           this.optionAnswer.optionDisable = true;
+          this.answerCorrectly();
         }, 3000);
+        showMessage("2222222");
       }
     },
   },
