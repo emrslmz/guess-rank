@@ -4,7 +4,7 @@
       <h3><i class="fas fa-user-cog"></i> General Setting</h3>
       <small>You can change your name, surname, e-mail address or username. Please make sure it doesn't break the rules!</small>
     </div>
-   <div class="d-flex flex-column justify-content-center align-items-center">
+   <div class="d-flex flex-column justify-content-center align-items-center" v-if="me">
      <div class="d-xl-flex justify-content-around">
 
        <div class="d-flex flex-column justify-content-center pb-3 px-2">
@@ -68,6 +68,9 @@
        </div>
      </div>
    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center" v-else>
+        <vue-element-loading :active="true" spinner="mini-spinner" duration="1.5" />
+    </div>
     <div class="d-flex justify-content-center">
       <div class="green-success-button">
         <button class="btn w-50" @click="generalSettings(me)">Save</button>

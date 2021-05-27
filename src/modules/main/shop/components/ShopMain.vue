@@ -14,7 +14,7 @@
       <div class="col-12 col-xl-3 mb-5">
 
       </div>
-      <div class="col-12 col-xl-9 row  all-item-box">
+      <div class="col-12 col-xl-9 row  all-item-box" v-if="getShopInfo.shopData">
         <!--ITEM HERE-->
         <div class="col-12 col-md-6 col-xl-3 card-item" v-for="(item, index) in getShopInfo.shopData" :key="index" >
           <small><strong>Factory New | -0.0024</strong></small>
@@ -43,6 +43,9 @@
         </div>
         <!--/ITEM HERE-->
 
+      </div>
+      <div class="col-12 col-xl-9 row  all-item-box" v-else>
+        <vue-element-loading :active="true" spinner="mini-spinner" duration="1.5" />
       </div>
 
     </div>

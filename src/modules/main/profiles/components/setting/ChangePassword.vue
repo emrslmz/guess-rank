@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" v-if="me">
       <div class="text-center">
         <h3><i class="fas fa-key"></i> Change Your Password</h3>
         <small>To reset your password, enter your old password and new password twice.</small>
@@ -15,7 +15,7 @@
             <i class="fas fa-key"></i>
           </div>
           <div>
-            <input class="custom-input" :value="getUserData.userData.password" placeholder="Your Username" type="text">
+            <input class="custom-input" :value="me.password" placeholder="Your Username" type="text">
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
             <i class="fas fa-lock"></i>
           </div>
           <div>
-            <input class="custom-input" :value="getUserData.userData.password" placeholder="New password" type="text">
+            <input class="custom-input" :value="me.password" placeholder="New password" type="text">
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
             <i class="fas fa-lock"></i>
           </div>
           <div>
-            <input class="custom-input" :value="getUserData.userData.password" placeholder="New password confirm" type="text">
+            <input class="custom-input" :value="me.password" placeholder="New password confirm" type="text">
           </div>
         </div>
       </div>
@@ -53,6 +53,9 @@
           <button class="btn w-50">Update</button>
         </div>
       </div>
+    </div>
+    <div class="container" v-else>
+      <vue-element-loading :active="true" spinner="mini-spinner" duration="1.5" />
     </div>
   </div>
 </template>

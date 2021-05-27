@@ -1,6 +1,6 @@
 <template>
 <div>
-    <vue-element-loading :active="this.show" spinner="spinner" duration="1.0" />
+    <vue-element-loading :active="this.show" spinner="spinner" />
   <router-view />
 
   <div class='handy-notify'>

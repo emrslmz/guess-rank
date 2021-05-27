@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" v-if="me">
       <div class="text-center">
         <h3><i class="fas fa-cogs"></i> Social and Other</h3>
         <small>Add or update social media accounts. You can also change other settings here.</small>
       </div>
 
       <div class="text-left">
-        <h6><i class="fas fa-globe-europe"></i> Country: {{ getUserData.userData.country_id }}</h6>
-        <h6><i class="fas fa-birthday-cake"></i> Birthyear: {{ getUserData.userData.birthday_at }}</h6>
-        <h6><i class="fas fa-calendar-alt"></i> Registration time: <small>{{ getUserData.userData.created_at }}</small></h6>
-        <h6><i class="fas fa-history"></i> Issue date: <small>{{ getUserData.userData.created_at }}</small></h6>
+        <h6><i class="fas fa-globe-europe"></i> Country: {{ me.country_id }}</h6>
+        <h6><i class="fas fa-birthday-cake"></i> Birthyear: {{ me.birthday_at }}</h6>
+        <h6><i class="fas fa-calendar-alt"></i> Registration time: <small>{{ me.created_at }}</small></h6>
+        <h6><i class="fas fa-history"></i> Issue date: <small>{{ me.updated_at }}</small></h6>
       </div>
 
       <div class="d-flex flex-column justify-content-center align-items-center pb-4">
@@ -22,7 +22,7 @@
             <i class="fab fa-steam"></i>
           </div>
           <div>
-            <input class="custom-input" :value="getUserData.userData.password" placeholder="New password confirm" type="text">
+            <input class="custom-input" :value="me.steam" placeholder="Steam link." type="text">
           </div>
         </div>
       </div>
@@ -34,20 +34,16 @@
         </div>
       </div>
     </div>
-  </div>  
+    <div class="container" v-else>
+      <vue-element-loading :active="true" spinner="mini-spinner" duration="1.5" />
+    </div>
+  </div>
 </template>
 
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'ChangeAvatar',
-  computed: {
-    ...mapGetters([
-      'getUserData',
-    ]),
-  },
 };
 </script>
 

@@ -1,13 +1,13 @@
 <template>
 <div>
-  <div class="container">
+  <div class="container" v-if="me">
   <div style="padding-top: 100px"></div>
     <div class="d-flex row justify-content-between align-items-center">
 
       <div class="col-12 col-xl-5 mb-3">
 
         <div class="profile-left p-2">
-            <div class="d-flex justify-content-between align-items-center px-4 pt-3" v-if="me">
+            <div class="d-flex justify-content-between align-items-center px-4 pt-3">
               <div>
                 <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
               </div>
