@@ -16,7 +16,7 @@
              <i class="far fa-user"></i>
            </div>
            <div>
-             <input class="custom-input" v-model="getUserData.userData.name" placeholder="Your Name" type="text">
+             <input class="custom-input" v-model="me.name" placeholder="Your Name" type="text">
            </div>
          </div>
        </div>
@@ -30,7 +30,7 @@
              <i class="far fa-user"></i>
            </div>
            <div>
-             <input class="custom-input" v-model="getUserData.userData.surname" placeholder="Your Surname" type="text">
+             <input class="custom-input" v-model="me.surname" placeholder="Your Surname" type="text">
            </div>
          </div>
        </div>
@@ -48,7 +48,7 @@
              <i class="fas fa-at"></i>
            </div>
            <div>
-             <input class="custom-input" v-model="getUserData.userData.email" placeholder="Your e-mail" type="email">
+             <input class="custom-input" v-model="me.email" placeholder="Your e-mail" type="email">
            </div>
          </div>
        </div>
@@ -62,7 +62,7 @@
              <i class="fas fa-user-tag"></i>
            </div>
            <div>
-             <input class="custom-input" v-model="getUserData.userData.username" placeholder="Your Username" type="text">
+             <input class="custom-input" v-model="me.username" placeholder="Your Username" type="text">
            </div>
          </div>
        </div>
@@ -70,7 +70,7 @@
    </div>
     <div class="d-flex justify-content-center">
       <div class="green-success-button">
-        <button class="btn w-50" @click="changeGeneralSetting(getUserData.userData)">Save</button>
+        <button class="btn w-50" @click="generalSettings(me)">Save</button>
       </div>
     </div>
   </div>
@@ -78,19 +78,25 @@
 
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'GeneralSettingCard',
-  computed: {
-    ...mapGetters([
-      'getUserData',
-    ]),
+  data() {
+    return {
+      user: {
+        name: null,
+        surname: null,
+        email: null,
+        username: null,
+      }
+    };
   },
   methods: {
-    ...mapActions([
-        'changeGeneralSetting'
-    ])
+    ...mapActions('Users', ['generalSetting']),
+    generalSettings(data) {
+      this.generalSetting(data);
+    }
   }
 };
 </script>

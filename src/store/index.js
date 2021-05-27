@@ -24,7 +24,7 @@ import AdminVideoView from '@/modules/admin/other/movement/video-viewing/store/v
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    namespace: true,
+    namespaced: true,
     modules: {
         General,
         LoginRegister,

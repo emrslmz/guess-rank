@@ -7,13 +7,13 @@
       <div class="col-12 col-xl-5 mb-3">
 
         <div class="profile-left p-2">
-            <div class="d-flex justify-content-between align-items-center px-4 pt-3">
+            <div class="d-flex justify-content-between align-items-center px-4 pt-3" v-if="me">
               <div>
                 <div class="profile-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
               </div>
               <div class="d-flex flex-column pr-5 mr-5">
-                <small style="font-size: 12px">Welcome, {{ getUserData.userData.name }} {{ getUserData.userData.surname }}</small>
-               <b>{{ getUserData.userData.username }}</b>
+                <small style="font-size: 12px">Welcome, {{ me.name }} {{ me.surname }}</small>
+               <b>{{ me.username }}</b>
                 <b>Balance: 5000<i class="fas fa-lira-sign"></i></b>
               </div>
               <div class="d-flex flex-column align-items-center">
@@ -86,18 +86,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
   name: 'Profiles',
-  computed: {
-    ...mapGetters([
-        'getUserData',
-    ]),
-  },
-  methods: {
-
-  },
 };
 </script>
 

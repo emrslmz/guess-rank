@@ -1,6 +1,6 @@
 import axios from 'axios';
 import router from '@/router';
-import { showMessage } from "@/shared/utils/messages.utils";
+import { showMessage } from '@/shared/utils/messages.utils';
 
 const state = {
     me: null,
@@ -8,9 +8,7 @@ const state = {
 }
 
 const getters = {
-    getUserData(state) {
-        return state.userDatas;
-    },
+
 }
 
 const mutations = {
@@ -25,12 +23,12 @@ const mutations = {
 
 const actions = {
     //LOGGED USER DATA
-    setUserData({ commit }, data) {
-        commit('SET_USER_DATA', data);
+     setUserData({ commit }, data) {
+         commit('SET_USER_DATA', data);
     },
 
     fetchMe({ dispatch }) {
-        axios
+       axios
             .get('https://guess-what-rank-api.herokuapp.com/api/me', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -51,13 +49,13 @@ const actions = {
         showMessage('The exit is successful. Redirecting...');
     },
     //GENERAL SETTING CHANGE
-    changeGeneralSetting() {
+    generalSetting(context, userData) {
         axios
             .patch('https://guess-what-rank-api.herokuapp.com/api/me', {
-                name: state.userDatas.userData.name,
-                surname: state.userDatas.userData.surname,
-                email: state.userDatas.userData.email,
-                username: state.userDatas.userData.username,
+                name: userData.name,
+                surname: userData.surname,
+                email: userData.email,
+                username: userData.username,
             }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,

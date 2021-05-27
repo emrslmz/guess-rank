@@ -4,17 +4,17 @@
       <div class="setting-card-left mt-4">
         <div class="list-group list-group-flush">
           <h4 class="list-group-item text-center py-4">Settings</h4>
-          <button class="btn" :class="settingCard === 1 ? 'button-active' : 'left-button'" @click="settingCard = 1"><i class="fas fa-user-cog"></i> General</button>
-          <button class="btn" :class="settingCard === 2 ? 'button-active' : 'left-button'"  @click="settingCard = 2"><i class="far fa-image"></i> Change/Upload Avatar</button>
-          <button class="btn" :class="settingCard === 3 ? 'button-active' : 'left-button'"  @click="settingCard = 3"><i class="fas fa-key"></i> Password</button>
-          <button class="btn" :class="settingCard === 4 ? 'button-active' : 'left-button'"  @click="settingCard = 4"><i class="fas fa-icons"></i> Social and Other Setting</button>
+          <button class="btn" :class="setting === 1 ? 'button-active' : 'left-button'" @click="setting = 1"><i class="fas fa-user-cog"></i> General</button>
+          <button class="btn" :class="setting === 2 ? 'button-active' : 'left-button'"  @click="setting = 2"><i class="far fa-image"></i> Change/Upload Avatar</button>
+          <button class="btn" :class="setting === 3 ? 'button-active' : 'left-button'"  @click="setting = 3"><i class="fas fa-key"></i> Password</button>
+          <button class="btn" :class="setting === 4 ? 'button-active' : 'left-button'"  @click="setting = 4"><i class="fas fa-icons"></i> Social and Other Setting</button>
         </div>
       </div>
       <div class="setting-card-right d-flex justify-content-center align-items-center col-12 col-xl-8 mt-4">
-          <general-setting v-if="settingCard === 1" />
-          <change-avatar v-if="settingCard === 2" />
-          <change-password v-if="settingCard === 3" />
-          <social-setting v-if="settingCard === 4" />
+          <general-setting v-if="setting === 1" />
+          <change-avatar v-if="setting === 2" />
+          <change-password v-if="setting === 3" />
+          <social-setting v-if="setting === 4" />
       </div>
     </div>
 
@@ -22,13 +22,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'ProfileSetting',
   data() {
     return {
-      settingCard: 1,
+      setting: 1,
     };
   },
   components: {
@@ -36,11 +34,6 @@ export default {
     ChangeAvatar: () => import('@/modules/main/profiles/components/setting/ChangeAvatar.vue'),
     ChangePassword: () => import('@/modules/main/profiles/components/setting/ChangePassword.vue'),
     SocialSetting: () => import('@/modules/main/profiles/components/setting/SocialSetting.vue'),
-  },
-  computed: {
-    ...mapGetters([
-       'getUserData',
-    ]),
   },
 }
 </script>

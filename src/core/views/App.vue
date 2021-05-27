@@ -1,23 +1,31 @@
 <template>
 <div>
+    <vue-element-loading :active="this.show" spinner="spinner" duration="1.0" />
   <router-view />
 
   <div class='handy-notify'>
     <span></span>
   </div>
-
 </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
+  data() {
+    return {
+      show: true,
+    };
+  },
   name: 'App',
-  computed: {
-    ...mapGetters([
-        'isLogged',
-    ]),
+  methods: {
+    loader() {
+      setTimeout(() => {
+        this.show = false;
+      }, 150);
+    }
+  },
+  created() {
+    this.loader();
   },
 };
 </script>
