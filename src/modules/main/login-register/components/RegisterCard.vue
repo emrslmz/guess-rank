@@ -76,7 +76,7 @@
       </div>
 
       <div class="text-center green-success-button">
-        <button class="btn btn w-50" @click="userRegister(user)">Register</button>
+        <button class="btn btn w-50" @click="register(user)">Register</button>
       </div>
       <div class="text-center">
         <small>I have an account. <b><a class="text-primary mouse-click" @click="goLogin()">login</a></b></small>
@@ -108,9 +108,7 @@ export default {
   computed: {
   },
   methods: {
-    ...mapActions([
-        'userRegister',
-    ]),
+    ...mapActions('LoginRegister', ['register']),
     goLogin() {
       this.$emit('goLogin');
     }

@@ -38,6 +38,7 @@ export default {
 
   },
   async created() {
+    // this.$confetti.start();
     this.getUserSelectedVideo(this.$route.params.key);
     await this.getLevel(this.$route.params.id);
     this.getPostUserView({videoId: this.$route.params.key, levelId: this.getUserLevelData.levelData.level_id});

@@ -4,14 +4,36 @@
     <div v-if="this.ready === true">
      <div class="d-flex justify-content-between align-items-center option" v-if="this.showOption === true">
        <div class="d-flex flex-column justify-content-center align-items-center px-3" v-for="(option, index) in getVideoOptionData" :key="index">
-         <h5 class="fas fa-egg" :class="optionAnswer.optionShake === true ? 'shake ' : 'colorfasted'" @click="answerOption(option.video_option_id, index)" disabled="disabled"></h5>
+         <h5 class="fas fa-egg" :class="optionAnswer.optionShake === true ? 'shake ' : ''" @click="answerOption(option.video_option_id, index)" disabled="disabled"></h5>
          <small>{{ option.option_name }}</small>
        </div>
        <div class="d-flex flex-column justify-content-center align-items-center px-3">
          <h5 style="font-size: small" class="fas fa-hands-helping text-success" title="Pass"></h5>
          <h5 style="font-size: small" class="far fa-flag" title="Report"></h5>
+
        </div>
-       {{ getUserAnswer.is_correct }}
+
+
+
+       <div class="modal fade" :class="this.modalShow === true ? 'show' : ''" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               ...
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Save changes</button>
+             </div>
+           </div>
+         </div>
+       </div>
 
      </div>
 
@@ -28,7 +50,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { showMessage } from '@/shared/utils/messages.utils';
 
 export default {
   props: ['ready'],
@@ -39,7 +60,8 @@ export default {
       optionAnswer: {
         optionShake: false,
         optionDisable: true, //false disable true active
-      }
+      },
+      modalShow: false,
     };
   },
   name: 'VideoOptionCard',
@@ -54,26 +76,27 @@ export default {
         'getVideoOption',
         'postUserAnswer',
     ]),
-    answerCorrectly() {
-      if (this.getUserAnswer.is_correct === false) {
-          alert("ewqewq");
-
-      }
-    },
     async answerOption(optionId, index) {
       if (this.optionAnswer.optionDisable === true) {
         this.optionAnswer.optionShake = true;
         this.optionAnswer.optionDisable = false;
 
+        this.modalShow = true;
 
-       await setTimeout(() => {
-          this.postUserAnswer({optionId: optionId, videoId: this.$route.params.key});
+        await this.postUserAnswer({optionId: optionId, videoId: this.$route.params.key});
+
+        setTimeout(() => {
           this.getVideoOptionData.splice(index, 1);
           this.optionAnswer.optionShake = false;
           this.optionAnswer.optionDisable = true;
-          this.answerCorrectly();
+
+          if (this.getUserAnswer && this.getUserAnswer.is_correct === false) {
+            this.$confetti.start();
+            setTimeout(() => {
+              this.$confetti.stop();
+            }, 4000)
+          }
         }, 3000);
-        showMessage("2222222");
       }
     },
   },

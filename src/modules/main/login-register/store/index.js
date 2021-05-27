@@ -40,7 +40,7 @@ const mutations = {
 };
 
 const actions = {
-    userRegister({ commit }, registerData) {
+    register({ commit }, registerData) {
         axios
             .post('https://guess-what-rank-api.herokuapp.com/api/register', {
                 name: registerData.name,
