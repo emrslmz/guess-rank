@@ -7,10 +7,6 @@ const state = {
     authError: null,
 }
 
-const getters = {
-
-}
-
 const mutations = {
     USER_LOGOUT(state) {
         state.me = null;
@@ -70,7 +66,6 @@ const actions = {
 export default {
     namespaced: true,
     state,
-    getters,
     mutations,
     actions
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {showMessage} from '@/shared/utils/messages.utils';
+import { showMessage } from '@/shared/utils/messages.utils';
 import router from '@/router';
 import request from '@/services/request/request_api';
 import auth from '@/services/authorization/auth';
@@ -9,14 +9,6 @@ const state = {
         levelStatus: null,
         levelData: [],
         selectedLevelData: [],
-        addLevelData: {
-            level_name: null,
-            level_description: null,
-            is_locked: false,
-            is_hidden: false,
-            game_id: null,
-            level_video_group_id: null,
-        },
     },
 }
 
@@ -24,27 +16,38 @@ const getters = {
     getLevelInfo(state) {
         return state.levelInfo;
     }
-}
+};
+
+const mutations = {
+    GET_ADMIN_LEVEL(state, data) {
+        state.levelInfo.levelData = data.result.data;
+    },
+    GET_ADMIN_LEVEL_STATUS(state, code) {
+        state.levelInfo.levelStatus = code;
+    },
+    GET_SELECTED_LEVEL(state, data) {
+        state.levelInfo.selectedLevelData = data.result.data;
+    },
+};
 
 const actions = {
-    getLevel() {
+    getLevelAdmin({ commit }) {
         axios
             .get(`${request.level_url}`, auth)
             .then((response) => {
-                state.levelInfo.levelData = response.data.result.data;
-                state.levelInfo.levelStatus = response.data.code;
+                commit('GET_ADMIN_LEVEL', response.data);
+                commit('GET_ADMIN_LEVEL_STATUS', response.data.code);
             })
     },
-    getSelectedLevel(context, levelKey) {
+    getSelectedLevel({ commit }, levelKey) {
         axios
             .get(`${request.level_url}/key/${levelKey}`, auth)
             .then((response) => {
-                // console.log(response.data.code);
-                state.levelInfo.levelStatus = response.data.code;
-                state.levelInfo.selectedLevelData = response.data.result.data;
+                commit('GET_SELECTED_LEVEL', response.data);
+                commit('GET_ADMIN_LEVEL_STATUS', response.data.code);
             })
     },
-    patchEditLevel(context, selectedLevel) {
+    patchEditLevel({ commit }, selectedLevel) {
         axios
             .patch(`${request.level_url}/${selectedLevel.level_id}`, {
                 level_name: selectedLevel.level_name,
@@ -55,11 +58,11 @@ const actions = {
                 level_video_group_id: selectedLevel.level_video_group_id,
             }, auth)
             .then((response) => {
-                state.levelInfo.levelStatus = response.data.code;
+                commit('GET_ADMIN_LEVEL_STATUS', response.data.code);
                 showMessage("The changes have been saved!");
             })
     },
-    postAddLevel(context, addLevelData) {
+    addLevelAdmin({ commit }, addLevelData) {
         axios
             .post(`${request.level_url}`, {
                 level_name: addLevelData.level_name,
@@ -70,26 +73,17 @@ const actions = {
                 level_video_group_id: addLevelData.level_video_group_id,
             }, auth)
             .then((response) => {
-                state.levelInfo.levelStatus = response.data.code;
+                commit('GET_ADMIN_LEVEL_STATUS', response.data.code);
                 showMessage("The transaction is successful!");
-
-                state.levelInfo.addLevelData.is_hidden = false;
-                state.levelInfo.addLevelData.is_locked = false;
-                state.levelInfo.addLevelData.level_description = null;
-                state.levelInfo.addLevelData.level_name = null;
-                state.levelInfo.addLevelData.game_id = null;
-                state.levelInfo.addLevelData.level_video_group_id = null;
-
-
             })
     },
-    deleteLevel(context, deleteLevelData) {
+    deleteLevel({ commit }, deleteLevelData) {
         axios
             .delete(`${request.level_url}/${deleteLevelData.level_id}`, auth, {
                 deleteLevelData
             })
             .then((response) => {
-                state.levelInfo.levelStatus = response.data.code;
+                commit('GET_ADMIN_LEVEL_STATUS', response.data.code);
                 showMessage("The transaction is successful!");
                 router.push({ path: '/admin/other/level/all' });
             })
@@ -99,5 +93,6 @@ const actions = {
 export default {
     state,
     getters,
+    mutations,
     actions,
 }

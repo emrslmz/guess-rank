@@ -76,18 +76,19 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AdminAddedLevel',
-  methods: {
-    ...mapActions([
-        'getLevel',
-    ]),
-  },
   computed: {
     ...mapGetters([
-        'getLevelInfo',
+      'getLevelInfo',
     ]),
   },
+  methods: {
+    ...mapActions([
+        'getLevelAdmin',
+    ]),
+  },
+
   created() {
-    this.getLevel();
+    this.getLevelAdmin();
   }
 };
 </script>

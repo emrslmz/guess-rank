@@ -24,7 +24,7 @@
                     <i class="far fa-hand-scissors"></i>
                   </div>
                   <div>
-                    <input class="custom-input" v-model="getLevelInfo.addLevelData.level_name" placeholder="Leve name" type="text" />
+                    <input class="custom-input" v-model="level.level_name" placeholder="Leve name" type="text" />
                   </div>
                 </div>
               </div>
@@ -38,7 +38,7 @@
                     <i class="fas fa-gamepad"></i>
                   </div>
                   <div>
-                    <select class="custom-select" v-model="getLevelInfo.addLevelData.game_id">
+                    <select class="custom-select" v-model="level.game_id">
                       <option :value="game.game_id" v-for="(game, index) in getGameInfo.gameData" :key="index">{{ game.game_name }}</option>
                       <option value="null" disabled>Select anyone</option>
                     </select>
@@ -62,7 +62,7 @@
                   <i class="fas fa-text-height"></i>
                 </div>
                 <div>
-                  <textarea cols="25" class="custom-textarea" v-model="getLevelInfo.addLevelData.level_description"  placeholder="Level Description"></textarea>
+                  <textarea cols="25" class="custom-textarea" v-model="level.level_description"  placeholder="Level Description"></textarea>
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@
                   <i class="fas fa-th-list"></i>
                 </div>
                 <div>
-                  <select class="custom-select" v-model="getLevelInfo.addLevelData.level_video_group_id">
+                  <select class="custom-select" v-model="level.level_video_group_id">
                     <option :value="group.video_group_id" v-for="(group, index) in getVideoGroupInfo.videoGroupData" :key="index">{{ group.video_group_id }}</option>
                     <option value="null" disabled>Select anyone</option>
                   </select>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <span><i class="fas fa-lock"></i></span>
-                  <div><input class="dark-mode-button mt-2 mx-3" v-model="getLevelInfo.addLevelData.is_locked" type="checkbox" /></div>
+                  <div><input class="dark-mode-button mt-2 mx-3" v-model="level.is_locked" type="checkbox" /></div>
                   <span><i class="fas fa-lock-open"></i></span>
                 </div>
               </div>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <span><i class="far fa-eye-slash"></i></span>
-                  <div><input class="dark-mode-button mt-2 mx-3" v-model="getLevelInfo.addLevelData.is_hidden" type="checkbox" /></div>
+                  <div><input class="dark-mode-button mt-2 mx-3" v-model="level.is_hidden" type="checkbox" /></div>
                   <span><i class="far fa-eye"></i></span>
                 </div>
               </div>
@@ -119,7 +119,7 @@
           <div class="d-flex">
             <div class="d-flex justify-content-center">
               <div class="green-success-button">
-                <button class="btn btn-light-success btn-xl w-100" @click="sendLevelData">Add</button>
+                <button class="btn btn-light-success btn-xl w-100" @click="addLevelAdmin(level)">Add</button>
               </div>
             </div>
           </div>
@@ -135,9 +135,20 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'AdminLevelEditDelete',
+  data() {
+    return {
+      level: {
+        level_name: null,
+        level_description: null,
+        is_locked: null,
+        is_hidden: null,
+        game_id: null,
+        level_video_group_id: null,
+      }
+    };
+  },
   computed: {
     ...mapGetters([
-      'getLevelInfo',
       'getGameInfo',
       'getVideoGroupInfo',
     ])
@@ -145,12 +156,9 @@ export default {
   methods: {
     ...mapActions([
       'getGame',
-      'postAddLevel',
+      'addLevelAdmin',
       'getVideoGroup',
     ]),
-    sendLevelData() {
-      this.postAddLevel(this.getLevelInfo.addLevelData);
-    },
   },
   created() {
     this.getGame();
