@@ -6,18 +6,8 @@ import auth from '@/services/authorization/auth';
 
 const state = {
     gameInfo: {
-        gameStatus: null,
         gameData: [],
         selectedGameData: [],
-        addGameData: {
-            game_name: null,
-            game_id: null,
-            game_description: null,
-            is_available: null,
-            is_hidden: null,
-            game_background_color: null,
-            game_color: null,
-        },
     },
 };
 
@@ -27,57 +17,55 @@ const getters = {
     },
 };
 
+const mutations = {
+    GET_GAME(state, data) {
+        state.gameInfo.gameData = data;
+    },
+    GET_SELECTED_GAME(state, data) {
+        state.gameInfo.selectedGameData = data;
+    }
+};
+
 const actions = {
-    async getGame() {
+    async getGame({ commit }) {
        await axios
             .get(`${request.game_url}`, auth )
             .then((response) => {
-                state.gameInfo.gameData = response.data.result.data;
-                state.gameInfo.gameStatus = response.data.code;
+                commit('GET_GAME', response.data.result.data);
             })
     },
-    getSelectedGame(context, gameId) {
+    getSelectedGame({ commit }, gameId) {
         axios
             .get(`${request.game_url}/${gameId}`, auth)
             .then((response) => {
-                // console.log(response.data.code);
-                state.gameInfo.gameStatus = response.data.code;
-                state.gameInfo.selectedGameData = response.data.result.data;
+                commit('GET_SELECTED_GAME', response.data.result.data);
             })
     },
-    postAddGame(context, addGameData) {
+    addGame(context, gameData) {
         axios
             .post('https://guess-what-rank-api.herokuapp.com/api/games', {
-                game_name: addGameData.game_name,
-                game_description: addGameData.game_description,
-                is_available: addGameData.is_available,
-                is_hidden: addGameData.is_hidden,
-                game_background_color: addGameData.game_background_color,
-                game_color: addGameData.game_color,
+                game_name: gameData.game_name,
+                game_description: gameData.game_description,
+                is_available: gameData.is_available,
+                is_hidden: gameData.is_hidden,
+                game_background_color: gameData.game_background_color,
+                game_color: gameData.game_color,
             }, auth)
-            .then((response) => {
-                state.gameInfo.gameStatus = response.data.code;
+            .then(() => {
                 showMessage("The transaction is successful!");
-
-                Object.keys(state.gameInfo.addGameData).forEach((key) => {
-                    state.gameInfo.addGameData[key] = null;
-                });
             })
     },
     patchEditGame(context, selectedData) {
         axios
             .patch(`${request.game_url}/${selectedData.game_id}`, {
-                // game_id: selectedData.game_id,
                 game_name: selectedData.game_name,
                 game_description: selectedData.game_description,
                 is_available: selectedData.is_available,
                 is_hidden: selectedData.is_hidden,
                 game_background_color: selectedData.game_background_color,
                 game_color: selectedData.game_color,
-
             }, auth)
-            .then((response) => {
-                state.gameInfo.gameStatus = response.data.code;
+            .then(() => {
                 showMessage("The changes have been saved!")
             })
     },
@@ -86,8 +74,7 @@ const actions = {
             .delete(`${request.game_url}/${selectedDeleteData.game_id}`, auth, {
                 selectedDeleteData
             })
-            .then((response) => {
-                state.gameInfo.gameStatus = response.data.code;
+            .then(() => {
                 showMessage("The transaction is successful!");
                 router.push({ path: '/admin/other/game/all' });
         })
@@ -97,5 +84,6 @@ const actions = {
 export default {
     state,
     getters,
+    mutations,
     actions,
 }

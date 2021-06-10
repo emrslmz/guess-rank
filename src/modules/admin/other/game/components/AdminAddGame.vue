@@ -9,6 +9,18 @@
         <div class="col-md-8 col-12 game-add-card d-flex flex-column justify-content-center align-items-center p-5">
 
           <div class="d-flex justify-content-between align-items-center">
+
+            <div class="d-xl-flex justify-content-center align-items-center py-3">
+              <div class="game-logo-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
+              <div class="text-xl-left">
+                <label for="upload-picture">
+                  Game Logo
+                  <br>
+                  <input type="file" id="upload-picture" />
+                </label>
+              </div>
+            </div>
+
             <div class="d-flex flex-column justify-content-center center pb-3 px-2">
               <div class="text-center px-2">
                 <small>Game Name</small>
@@ -18,21 +30,7 @@
                   <i class="fas fa-gamepad"></i>
                 </div>
                 <div>
-                  <input class="custom-input" v-model="getGameInfo.addGameData.game_name"  placeholder="Game names" type="text" />
-                </div>
-              </div>
-            </div>
-
-            <div class="d-flex flex-column justify-content-center center pb-3 px-2">
-              <div class="text-center px-2">
-                <small>Game ID</small>
-              </div>
-              <div class="d-flex justify-content-center align-items-center ">
-                <div class="custom-input-icon">
-                  <i class="fas fa-fingerprint"></i>
-                </div>
-                <div>
-                  <input class="custom-input" v-model="getGameInfo.addGameData.game_id"  placeholder="Game ID" type="number" />
+                  <input class="custom-input col-12" v-model="game.game_name"  placeholder="Game names" type="text" />
                 </div>
               </div>
             </div>
@@ -47,39 +45,15 @@
                 <i class="fas fa-text-height"></i>
               </div>
               <div>
-                <textarea cols="60" class="custom-textarea" v-model="getGameInfo.addGameData.game_description" placeholder="Game Description"></textarea>
+                <textarea cols="60" class="custom-textarea" v-model="game.game_description" placeholder="Game Description"></textarea>
               </div>
             </div>
           </div>
 
        <div class="d-flex justify-content-around align-items center">
 
-         <div class="d-xl-flex justify-content-center align-items-center py-3">
-           <div class="game-logo-picture" style="background-image: url('/assets/images/img/profile-picture.svg');"></div>
-           <div class="text-xl-left">
-             <label for="upload-picture">
-                Game Logo
-               <br>
-               <input type="file" id="upload-picture" />
-             </label>
-           </div>
-         </div>
 
-         <div class="d-flex flex-column justify-content-center center pb-3">
-           <div class="text-left px-2">
-             <small>Level </small>
-           </div>
-           <div class="d-flex justify-content-center align-items-center">
-             <div class="custom-input-icon">
-               <i class="fas fa-expand-alt"></i>
-             </div>
-             <select class="custom-input">
-               <option value="">Counter Strike</option>
-               <option value="">Valorant</option>
-               <option value="">PUBG</option>
-             </select>
-           </div>
-         </div>
+
        </div>
 
           <hr style="width: 400px">
@@ -94,7 +68,7 @@
                   <i class="fas fa-sliders-h"></i>
                 </div>
                 <div>
-                  <input class="custom-input" v-model="getGameInfo.addGameData.game_background_color"  placeholder="Background Color" type="text" />
+                  <input class="custom-input" v-model="game.game_background_color"  placeholder="Background Color" type="text" />
                 </div>
               </div>
             </div>
@@ -108,7 +82,7 @@
                   <i class="fas fa-palette"></i>
                 </div>
                 <div>
-                  <input class="custom-input" v-model="getGameInfo.addGameData.game_color"  placeholder="Custom Color red, #FFF" type="text" />
+                  <input class="custom-input" v-model="game.game_color"  placeholder="Custom Color red, #FFF" type="text" />
                 </div>
               </div>
             </div>
@@ -122,7 +96,7 @@
                </div>
                <div class="d-flex justify-content-center align-items-center">
                  <span><i class="far fa-eye-slash"></i></span>
-                 <div><input class="dark-mode-button mt-2 mx-3" v-model="getGameInfo.addGameData.is_hidden" type="checkbox" /></div>
+                 <div><input class="dark-mode-button mt-2 mx-3" v-model="game.is_hidden" type="checkbox" /></div>
                  <span><i class="far fa-eye"></i></span>
                </div>
              </div>
@@ -135,7 +109,7 @@
                </div>
                <div class="d-flex justify-content-center align-items-center">
                  <span><i class="far fa-eye-slash"></i></span>
-                 <div><input class="dark-mode-button mt-2 mx-3" v-model="getGameInfo.addGameData.is_available" type="checkbox" /></div>
+                 <div><input class="dark-mode-button mt-2 mx-3" v-model="game.is_available" type="checkbox" /></div>
                  <span><i class="far fa-eye"></i></span>
                </div>
              </div>
@@ -144,7 +118,7 @@
 
           <div class="d-flex justify-content-center">
             <div class="green-success-button">
-              <button class="btn w-100 btn-sm" @click="sendAddGameData">Add</button>
+              <button class="btn w-100 btn-sm" @click="addGame(game)">Add</button>
             </div>
           </div>
 
@@ -155,22 +129,27 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'AdminAddGame',
-  computed: {
-    ...mapGetters([
-        'getGameInfo',
-    ])
+  data() {
+    return {
+      game: {
+        game_name: null,
+        game_description: null,
+        is_available: false,
+        is_hidden: false,
+        game_background_color: null,
+        game_color: null,
+      }
+    };
   },
   methods: {
     ...mapActions([
-        'postAddGame',
+        'addGame',
     ]),
-    sendAddGameData() {
-      this.postAddGame(this.getGameInfo.addGameData);
-    }
+
   }
 };
 </script>

@@ -4,7 +4,6 @@ import Vuex from 'vuex';
 import General from '@/store/dashboard/index';
 import LoginRegister from '@/modules/main/login-register/store/index';
 import Users from '@/modules/main/home/store/index';
-import GeneralSetting from '@/modules/main/profiles/store/generalSetting';
 import UserLevel from '@/modules/main/play/game/store/level'
 import UserSelectVideo from '@/modules/main/play/game/store/video';
 import UserSelectedVideoOption from '@/modules/main/play/game/store/option';
@@ -30,7 +29,6 @@ export default new Vuex.Store({
         LoginRegister,
         AddedUsers,
         Users,
-        GeneralSetting,
         Shop,
         Game,
         Level,

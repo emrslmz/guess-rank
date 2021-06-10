@@ -13,21 +13,27 @@ const getters = {
     getUsersData(state) {
         return state.getUsersData;
     }
-}
+};
+
+const mutations = {
+    GET_USER_DATA(state, data) {
+        state.getUsersData.usersData = data.result.data;
+        state.getUsersData.userStatus = data.code;
+    }
+};
 
 const actions = {
-    getUsers() {
+    getUsers({commit}) {
         axios
             .get(`${request.users}`, auth)
             .then((response) => {
-                state.getUsersData.usersData =  response.data.result.data;
-                state.getUsersData.userStatus = response.data.code;
+                commit('GET_USER_DATA',  response.data);
             })
     },
 }
 
-
 export default {
+    mutations,
     state,
     getters,
     actions,

@@ -5,10 +5,10 @@
         <h4 class="text-spacing5">Added Games</h4>
         <small>All Added Game. Click card for edit/delete.</small>
       </div>
-      <div class="d-flex row flex-row justify-content-around" v-if="!!getGameInfo.gameStatus">
+      <div class="d-flex row flex-row justify-content-around">
         <div class="col-md-4 col-6" v-for="(game, index) in getGameInfo.gameData" :key="index">
           <div class="game-added-card d-flex justify-content-center align-items-center" :style="game.game_background_color">
-            <router-link :to="{ name: 'GamesEdit', params: { id: game.game_id }} ">
+            <router-link :to="{ name: 'AdminGamesEdit', params: { id: game.game_id }} ">
               <div class="p-5">
                 <h4 :style="game.game_color">{{ game.game_name }}</h4>
               </div>
@@ -17,7 +17,6 @@
 
         </div>
       </div>
-      <div class="text-center" v-else><i style="font-size: 36px" class="fas fa-circle-notch fa-spin"></i></div>
     </div>
   </div>
 </template>

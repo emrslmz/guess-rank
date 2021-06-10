@@ -105,8 +105,6 @@ export default {
       }
     };
   },
-  computed: {
-  },
   methods: {
     ...mapActions('LoginRegister', ['register']),
     goLogin() {
