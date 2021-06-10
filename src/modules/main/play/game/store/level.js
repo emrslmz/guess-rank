@@ -14,11 +14,17 @@ const getters = {
     }
 };
 
+const mutations = {
+    GET_USER_LEVEL(state, level) {
+        state.getUserLevel.levelData = level;
+    }
+};
+
 const actions = {
-    async getLevel( commit , gameId) {
+    async getLevel({ commit } , gameId) {
         const response = await axios
         .get(`${request.game_url}/${gameId}/user_levels/me`, auth);
-        state.getUserLevel.levelData = response.data.result.data.level;
+        commit('GET_USER_LEVEL', response.data.result.data.level);
     },
 };
 
@@ -26,5 +32,6 @@ const actions = {
 export default {
     state,
     getters,
+    mutations,
     actions,
 };

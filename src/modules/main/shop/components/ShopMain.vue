@@ -92,7 +92,7 @@ export default {
 
 .all-item-box {
   width: 100%;
-  height: 600px;
+  height: 700px;
   overflow-y: scroll;
 }
 

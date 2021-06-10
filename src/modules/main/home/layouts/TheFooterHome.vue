@@ -19,7 +19,6 @@
 .footer {
   background-color: #191919;
   width: 100%;
-  position: fixed;
   bottom: 0;
   left: 0;
   height: 50px;
