@@ -20,7 +20,7 @@
                   <i class="fas fa-circle"></i>
                 </div>
                 <div>
-                  <input class="custom-input" v-model="getAdminOptionData.optionAdd.option_name"  placeholder="Option name" type="text">
+                  <input class="custom-input" v-model="option.option_name"  placeholder="Option name" type="text">
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <div>
-                    <input class="dark-mode-button mt-2 mx-3" :value="null" v-model="getAdminOptionData.optionAdd.game_id"  type="radio" />
+                    <input class="dark-mode-button mt-2 mx-3" :value="null" v-model="option.game_id"  type="radio" />
                   </div>
                 </div>
               </div>
@@ -52,7 +52,7 @@
                   <i class="fas fa-gamepad"></i>
                 </div>
                 <div>
-                  <select class="custom-select" v-model="getAdminOptionData.optionAdd.game_id">
+                  <select class="custom-select" v-model="option.game_id">
                     <option :value="game.game_id" v-for="(game, index) in getGameInfo.gameData" :key="index">{{ game.game_name  }}</option>
                     <option value="null" disabled>None</option>
                   </select>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <div>
-                    <input class="dark-mode-button mt-2 mx-3" :value="null" v-model="getAdminOptionData.optionAdd.video_id" type="radio" />
+                    <input class="dark-mode-button mt-2 mx-3" :value="null" v-model="option.video_id" type="radio" />
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@
                   <i class="fab fa-youtube"></i>
                 </div>
                 <div>
-                  <select class="custom-select" v-model="getAdminOptionData.optionAdd.video_id">
+                  <select class="custom-select" v-model="option.video_id">
                     <option :value="video.video_id" v-for="(video, index) in getVideoInfo.videoData" :key="index">{{ video.video_name  }}</option>
                     <option value="null" disabled>None</option>
                   </select>
@@ -99,7 +99,7 @@
 
           <div class="d-flex justify-content-between green-success-button">
             <div>
-              <button class="btn mx-2" @click="addSendData"><i class="fas fa-save"></i> Add</button>
+              <button class="btn mx-2" @click="addOption(option)"><i class="fas fa-save"></i> Add</button>
             </div>
           </div>
 
@@ -115,6 +115,15 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'OptionAdd',
+  data() {
+    return {
+      option: {
+        option_name: null,
+        game_id: null,
+        video_id: null,
+      }
+    };
+  },
   computed: {
     ...mapGetters([
       'getAdminOptionData',
@@ -130,9 +139,6 @@ export default {
       'deleteOption',
       'patchSelectedAdminOption',
     ]),
-    addSendData() {
-      this.addOption(this.getAdminOptionData.optionAdd);
-    },
   },
   created() {
     this.getGame();

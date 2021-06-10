@@ -9,11 +9,6 @@ const state = {
       optionsData: [],
       selectedOptionData: {},
       optionStatus: null,
-      optionAdd: {
-          option_name: null,
-          game_id: null,
-          video_id: null,
-      }
   },
 };
 
@@ -23,25 +18,36 @@ const getters = {
     },
 };
 
+const mutations = {
+    GET_ADMIN_OPTION(state, data) {
+        state.adminOptionData.optionsData = data;
+    },
+    GET_ADMIN_OPTION_STATUS(state, data) {
+        state.adminOptionData.optionStatus = data;
+    },
+    GET_SELECTED_OPTION(state, data) {
+        state.adminOptionData.selectedOptionData = data;
+    }
+};
+
 const actions = {
-    async getAdminOption() {
+    async getAdminOption({ commit }) {
        await axios
             .get(`${request_api.video_option_url}`, auth)
             .then((response) => {
-                state.adminOptionData.optionStatus = response.data.code;
-                state.adminOptionData.optionsData = response.data.result.data;
-                console.log(response.data.result.data);
+                commit('GET_ADMIN_OPTION', response.data.result.data);
+                commit('GET_ADMIN_OPTION_STATUS', response.data.code);
             })
     },
-    getSelectedAdminOption(context, optionId) {
+    getSelectedAdminOption({ commit }, optionId) {
         axios
             .get(`${request_api.video_option_url}/${optionId}`, auth)
             .then((response) => {
-                state.adminOptionData.selectedOptionData = response.data.result.data;
-                state.adminOptionData.optionStatus = response.data.code;
+                commit('GET_SELECTED_OPTION', response.data.result.data);
+                commit('GET_ADMIN_OPTION_STATUS', response.data.code);
             })
     },
-    patchSelectedAdminOption(context, optionData) {
+    patchSelectedAdminOption({ commit }, optionData) {
       axios
           .patch(`${request_api.video_option_url}/${optionData.video_option_id}`, {
               option_name: optionData.option_name,
@@ -50,22 +56,22 @@ const actions = {
 
           }, auth)
           .then((response) => {
-              state.adminOptionData.optionStatus = response.data.code;
+              commit('GET_ADMIN_OPTION_STATUS', response.data.code);
               showMessage("The changes have been saved!");
           })
     },
-    deleteOption(context, optionData) {
+    deleteOption({ commit }, optionData) {
         axios
             .delete(`${request_api.video_option_url}/${optionData.video_option_id}`, auth, {
                 optionData
             })
             .then((response) => {
-                state.adminOptionData.optionStatus = response.data.code;
+                commit('GET_ADMIN_OPTION_STATUS', response.data.code);
                 showMessage("The transaction is successful!");
                 router.push({ path: '/admin/other/option/all' });
             })
     },
-    addOption(context, optionData) {
+    addOption({ commit }, optionData) {
         axios
             .post(`${request_api.video_option_url}`, {
                 option_name: optionData.option_name,
@@ -73,11 +79,11 @@ const actions = {
                 video_id: optionData.video_id,
             }, auth)
             .then((response) => {
-                state.adminOptionData.optionStatus = response.data.code;
+                commit('GET_ADMIN_OPTION_STATUS', response.data.code);
                 showMessage("The transaction is successful!");
 
-                Object.keys(state.adminOptionData.optionAdd).forEach((key) => {
-                    state.adminOptionData.optionAdd[key] = null;
+                Object.keys(optionData).forEach((key) => {
+                    optionData[key] = null;
                 });
             })
     },
@@ -87,5 +93,6 @@ const actions = {
 export default {
     state,
     getters,
+    mutations,
     actions,
 };
