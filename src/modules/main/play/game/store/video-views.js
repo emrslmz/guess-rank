@@ -1,7 +1,7 @@
 import axios from 'axios';
 import request_api from '@/services/request/request_api';
 import auth from '@/services/authorization/auth';
-import {showMessage} from "@/shared/utils/messages.utils";
+import {showMessage} from '@/shared/utils/messages.utils';
 
 const state = {
     addUserVideoView: {

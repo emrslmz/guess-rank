@@ -12,12 +12,19 @@ const getters = {
     },
 };
 
+const mutations = {
+  GET_VIDEO_OPTION(state, data) {
+      state.videoOption = data;
+  }
+};
+
 const actions = {
-    getVideoOption(context, videoId) {
+    getVideoOption({ commit }, videoId) {
         axios
             .get(`${request_api.video_url}/${videoId}/options`, auth)
             .then((response) => {
-                state.videoOption = response.data.result.data;
+
+                commit('GET_VIDEO_OPTION', response.data.result.data);
             })
     }
 };
@@ -25,5 +32,6 @@ const actions = {
 export default {
     state,
     getters,
+    mutations,
     actions,
 };
