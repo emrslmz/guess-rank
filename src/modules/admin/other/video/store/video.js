@@ -9,13 +9,6 @@ const state = {
     videoStatus: null,
     videoData: [],
     selectedVideoData: [],
-    addVideoData: {
-        video_name: null,
-        video_url: null,
-        video_group_id: null,
-        video_game_id: null,
-        answer_option_id: null,
-    },
   },
 };
 
@@ -25,24 +18,37 @@ const getters = {
   },
 };
 
+const mutations = {
+    GET_VIDEO_STATUS(state, data) {
+        state.videoInfo.videoStatus = data;
+    },
+    GET_ADMIN_VIDEO(state, data) {
+      state.videoInfo.videoData = data;
+    },
+    GET_ADMIN_SELECTED_VIDEO(state, data) {
+        state.videoInfo.selectedVideoData = data;
+    }
+};
+
 const actions = {
-  getVideo() {
+  getVideo({ commit }) {
     axios
         .get(`${request.video_url}?all=1`, auth)
         .then((response) => {
-          state.videoInfo.videoData = response.data.result.data;
-          state.videoInfo.videoStatus = response.data.code;
+            commit('GET_VIDEO_STATUS', response.data.code);
+            commit('GET_ADMIN_VIDEO', response.data.result.data);
         })
     },
-  getselectedVideo(context, videoId) {
+  getselectedVideo({ commit }, videoId) {
     axios
         .get(`${request.video_url}/${videoId}?all=1`, auth)
         .then((response) => {
-          state.videoInfo.selectedVideoData = response.data.result.data;
-          state.videoInfo.videoStatus = response.data.code;
+            commit('GET_ADMIN_SELECTED_VIDEO', response.data.result.data)
+            commit('GET_VIDEO_STATUS', response.data.code);
+
         })
     },
-    patchEditVideo(context, selectedVideo) {
+    patchEditVideo({ commit }, selectedVideo) {
       axios
           .patch(`${request.video_url}/${selectedVideo.video_id}`, {
               video_name: selectedVideo.video_name,
@@ -52,24 +58,26 @@ const actions = {
               answer_option_id: selectedVideo.answer_option_id,
           }, auth)
           .then((response) => {
-              state.videoInfo.videoStatus = response.data.code;
+              commit('GET_VIDEO_STATUS', response.data.code);
               showMessage("The changes have been saved!");
           })
     },
-    postAddVideo(context, addVideoData) {
+    postAddVideo({ commit }, addVideoData) {
       axios
           .post(`${request.video_url}`, {
               video_name: addVideoData.video_name,
               video_url: addVideoData.video_url,
               video_group_id: addVideoData.video_group_id,
               video_game_id: addVideoData.video_game_id,
+              answer_option_id: addVideoData.answer_option_id,
+
           }, auth)
           .then((response) => {
-              state.videoInfo.videoStatus = response.data.code;
+              commit('GET_VIDEO_STATUS', response.data.code);
               showMessage("The transaction is successful!");
 
-              Object.keys(state.videoInfo.addVideoData).forEach((key) => {
-                  state.videoInfo.addVideoData[key] = null;
+              Object.keys(addVideoData).forEach((key) => {
+                  addVideoData[key] = null;
               });
           })
     },
@@ -89,5 +97,6 @@ const actions = {
 export default {
   state,
   getters,
+  mutations,
   actions,
 };

@@ -20,7 +20,7 @@
                   <i class="far fa-file-video"></i>
                 </div>
                 <div>
-                  <input class="custom-input" v-model="getVideoInfo.addVideoData.video_name"  placeholder="Video name" type="text">
+                  <input class="custom-input" v-model="video.video_name"  placeholder="Video name" type="text">
                 </div>
               </div>
             </div>
@@ -34,7 +34,7 @@
                   <i class="fas fa-link"></i>
                 </div>
                 <div>
-                  <input class="custom-input" v-model="getVideoInfo.addVideoData.video_url"  placeholder="Video URL" type="text">
+                  <input class="custom-input" v-model="video.video_url"  placeholder="Video URL" type="text">
                 </div>
               </div>
             </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <div>
-                    <input class="dark-mode-button mt-2 mx-3" :value="null" v-model="getVideoInfo.addVideoData.video_group_id" type="radio" />
+                    <input class="dark-mode-button mt-2 mx-3" :value="null" v-model="video.video_group_id" type="radio" />
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                   <i class="fas fa-th-list"></i>
                 </div>
                 <div>
-                  <select class="custom-select" v-model="getVideoInfo.addVideoData.video_group_id">
+                  <select class="custom-select" v-model="video.video_group_id">
                     <option :value="group.video_group_id" v-for="(group, index) in getVideoGroupInfo.videoGroupData" :key="index">{{ group.video_group_id }}</option>
                     <option value="null" disabled>None</option>
 
@@ -86,7 +86,7 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                   <!--                  <span><i class="far fa-eye-slash"></i></span>-->
-                  <div><input class="dark-mode-button mt-2 mx-3" :value="null" v-model="getVideoInfo.addVideoData.video_game_id" type="radio" /></div>
+                  <div><input class="dark-mode-button mt-2 mx-3" :value="null" v-model="video.video_game_id" type="radio" /></div>
                   <!--                  <span><i class="far fa-eye"></i></span>-->
                 </div>
               </div>
@@ -101,7 +101,7 @@
                   <i class="fas fa-gamepad"></i>
                 </div>
                 <div>
-                  <select class="custom-select" v-model="getVideoInfo.addVideoData.video_game_id">
+                  <select class="custom-select" v-model="video.video_game_id">
                     <option :value="game.game_id" v-for="(game, index) in getGameInfo.gameData" :key="index">{{ game.game_name  }}</option>
                     <option value="null" disabled>None</option>
                   </select>
@@ -111,8 +111,46 @@
 
           </div>
 
+
+
+          <div class="d-flex justify-content-between align-items-center py-3">
+
+            <div class="d-flex justify-content-between align-items center px-5">
+              <div class="d-flex flex-column justify-content-center center">
+                <div class="text-center">
+                  <small>Which Option?</small>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <!--                  <span><i class="far fa-eye-slash"></i></span>-->
+                  <div><input class="dark-mode-button mt-2 mx-3" :value="null" v-model="video.answer_option_id" type="radio" /></div>
+                  <!--                  <span><i class="far fa-eye"></i></span>-->
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column justify-content-center center">
+              <div class="text-left px-2">
+                <small>Which game of video</small>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="custom-input-icon">
+                  <i class="fas fa-gamepad"></i>
+                </div>
+                <div>
+                  <select class="custom-select" v-model="video.answer_option_id">
+                    <option :value="option.video_option_id" v-for="(option, index) in getAdminOptionData.optionsData" :key="index">{{ option.option_name  }}</option>
+                    <option value="null" disabled>None</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
           <div class="d-flex green-success-button justify-content-center align-items center">
-            <button class="btn mx-2" @click="sendVideoData"><i class="fas fa-plus"></i> Add</button>
+            <button class="btn mx-2" @click="postAddVideo(video)"><i class="fas fa-plus"></i> Add</button>
           </div>
 
         </div>
@@ -126,11 +164,23 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AdminVideoEditDelete',
+  data() {
+    return {
+      video: {
+        video_name: null,
+        video_url: null,
+        video_group_id: null,
+        video_game_id: null,
+        answer_option_id: null,
+      },
+    };
+  },
   computed: {
     ...mapGetters([
       'getVideoInfo',
       'getVideoGroupInfo',
       'getGameInfo',
+      'getAdminOptionData',
     ]),
   },
   methods: {
@@ -138,14 +188,13 @@ export default {
       'getVideoGroup',
       'getGame',
       'postAddVideo',
+      'getAdminOption',
     ]),
-    sendVideoData() {
-      this.postAddVideo(this.getVideoInfo.addVideoData);
-    }
   },
   created() {
     this.getVideoGroup();
     this.getGame();
+    this.getAdminOption();
   },
 };
 </script>
