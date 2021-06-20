@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="levelData && levelData.game">
+    <div v-if="levelData && levelData.game" class="select-video-top">
 
       <div v-if="levelData.video_group">
         <div class="text-center">
@@ -108,7 +108,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 .game-level-area-bottom {
   margin: 0 15px 0 15px;
