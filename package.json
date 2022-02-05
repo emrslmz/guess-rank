@@ -1,0 +1,30 @@
+{
+  "name": "guess-rank",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --port=8081",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@tailwindcss/forms": "^0.4.0",
+    "api-core-service": "^1.0.6",
+    "cssnano": "^5.0.16",
+    "tailwindcss": "^3.0.18",
+    "tailwindcss-multi-theme": "^1.0.4",
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "autoprefixer": "^10.4.2",
+    "color": "^4.2.0",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.18",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue-tsc": "^0.29.8"
+  }
+}
