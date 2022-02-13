@@ -3,7 +3,10 @@
     <div class="py-48 bg-indigo-600">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:text-center">
-          <h2 class="text-base font-semibold tracking-wide uppercase text-white">Guess Rank</h2>
+          <h2 class="text-base font-semibold tracking-wide uppercase text-white flex justify-center">
+      <!-- <img width="300" src="../../../assets/img/logo/guess_rank.png" alt="sas" />-->
+            Guess Rank
+          </h2>
           <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-indigo-50 sm:text-4xl">
             A better way to send money
           </p>

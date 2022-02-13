@@ -1,12 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 
-import './index.css'
-import './assets/vendor/@fortawesome/fontawesome-free/css/all.min.css';
+import '@/index.css'
+import '@/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css';
+
+import router from '@/router';
+import store from '@/store';
 
 
 const appInstance = createApp(App);
 
 appInstance.use(router);
+appInstance.use(store);
 appInstance.mount('#app');

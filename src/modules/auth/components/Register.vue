@@ -19,23 +19,23 @@
             <div class="px-4 py-5 bg-white sm:p-6">
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="first-name" class="block text-sm font-medium text-gray-700">Ad</label>
-                  <input type="text" name="first-name" id="first-name" autocomplete="given-name" v-model="user.first_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <label for="name" class="block text-sm font-medium text-gray-700">Ad</label>
+                  <input type="text" name="name" id="name" placeholder="Jack" v-model="model.name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="last-name" class="block text-sm font-medium text-gray-700">Soyad</label>
-                  <input type="text" name="last-name" id="last-name" autocomplete="last-name" v-model="user.last_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <label for="surname" class="block text-sm font-medium text-gray-700">Soyad</label>
+                  <input type="text" name="surname" id="surname" placeholder="Jackss" v-model="model.surname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
 
                 <div class="col-span-6">
-                  <label for="email-address" class="block text-sm font-medium text-gray-700">Kullanıcı adı</label>
-                  <input type="text" name="username" id="username" autocomplete="username" v-model="user.username" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <label for="username" class="block text-sm font-medium text-gray-700">Kullanıcı adı</label>
+                  <input type="text" name="username" id="username" placeholder="jacki" v-model="model.username" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
 
                 <div class="col-span-6">
-                  <label for="email-address" class="block text-sm font-medium text-gray-700">Email</label>
-                  <input type="text" name="email-address" id="email-address" autocomplete="email" v-model="user.email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input type="text" name="email" id="email" placeholder="jackdawson57@gmail.com" v-model="model.email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
 
                 <div class="col-span-6">
@@ -47,21 +47,7 @@
                   <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                     <i class="fas fa-lock"></i>
                   </span>
-                    <input type="password" name="password" id="password" v-model="user.password" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="******">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-span-6">
-                  <div class="col-span-3 sm:col-span-2">
-                    <label for="password-repeat" class="block text-sm font-medium text-gray-700">
-                      Şifre Tekrarı
-                    </label>
-                    <div class="mt-1 flex rounded-md shadow-sm">
-                  <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                    <i class="fas fa-lock"></i>
-                  </span>
-                    <input type="password" name="password-repeat" id="password-repeat" v-model="user.password_confirmation" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="******">
+                    <input type="password" name="password" id="password" v-model="model.password" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="******">
                     </div>
                   </div>
                 </div>
@@ -86,13 +72,12 @@
                         <p class="text-gray-500">Kullanıcı sözleşmesini okudum ve kabul ediyorum.</p>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
               <div>
-                <button type="submit" class="group relative w-full flex justify-center mt-6 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="signUp()">
-                  Kayıt ol
-                </button>
+                <gr-button class="group relative w-full flex justify-center mt-6 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" :executable-function="onRegister"> Kayıt ol </gr-button>
               </div>
             </div>
           </div>
@@ -103,28 +88,47 @@
 </template>
 
 <script>
+import Errors from '@/core/components/errors/Errors.vue';
+import GrButton from '@/components/default/GrButton.vue';
 import { mapActions } from 'vuex';
 
 export default {
   name: 'Register',
+  components: { Errors, GrButton },
+
   data() {
     return {
-      user: {
-        first_name: '',
-        last_name: '',
+      phase: 1,
+      model: {
+        name: '',
+        surname: '',
         username: '',
         email: '',
         password: '',
-        password_confirmation: '',
-        country_id: 1,
-      }
+      },
+      errors: {},
     };
   },
+
   methods: {
     ...mapActions('Auth', ['register']),
-    signUp() {
-      this.register(this.user);
+
+    async onRegister() {
+      this.errors = {};
+        try {
+          await this.register({
+            name: this.model.name,
+            surname: this.model.surname,
+            username: this.model.username,
+            email: this.model.email,
+            password: this.model.password,
+            password_confirmation: this.model.password
+          });
+        } catch (e) {
+          this.errors = e;
+        }
     },
+
   },
 };
 </script>
