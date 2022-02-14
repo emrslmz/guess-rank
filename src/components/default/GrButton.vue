@@ -8,7 +8,7 @@
 // eslint-disable
 
 export default {
-  name: 'SbButton',
+  name: 'GrButton',
   props: {
     tag: {
       type: String,

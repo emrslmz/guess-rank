@@ -24,7 +24,7 @@
           <i class="fa-solid fa-store p-2 bg-gray-200 rounded-full"></i>
         </span>
 
-        <div class="w-10 relative float-right mr-3 cursor-pointer hover:text-gray-700 dropdown">
+        <div class="w-10 relative float-right mr-3 cursor-pointer hover:text-gray-700 dropdown z-10">
           <span class="rounded-md shadow-sm">
             <button type="button" aria-haspopup="true" aria-expanded="true" aria-controls="profile">
                <i class="w-8 fas fa-user p-2 bg-gray-200 rounded-full"></i>
