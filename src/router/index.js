@@ -6,18 +6,18 @@ import PublicChildren from './public/index';
 
 const routes = [
   {
-    path: '/',
-    component: () => import('../modules/app/Index.vue'),
+    path: '/app',
+    component: () => import('@/modules/app/Index.vue'),
     children: AppChildren,
   },
   {
-    path: '/',
-    component: () => import('../modules/auth/Index.vue'),
+    path: '/auth',
+    component: () => import('@/modules/auth/Index.vue'),
     children: AuthChildren,
   },
   {
-    path: '',
-    component: () => import('../modules/public/Index.vue'),
+    path: '/',
+    component: () => import('@/modules/public/Index.vue'),
     children: PublicChildren,
   },
 ];

@@ -1,15 +1,26 @@
 <template>
   <div>
-    <router-view />a
+    <div class="bg-gray-200">
+      <div class="min-h-screen">
+        <the-header />
+        <router-view />
+      </div>
+      <div class=" bottom-0 w-full">
+        <the-footer />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import TheHeader from '@/modules/app/base/layouts/TheHeader.vue';
+import TheFooter from '@/modules/app/base/layouts/TheFooter.vue';
 import config from '@/core/config';
 import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'AppIndex',
+  components: { TheHeader, TheFooter },
 
   methods: {
     ...mapActions('Auth', ['fetchMe', 'logout']),

@@ -1,5 +1,5 @@
 export default [{
-    path: 'auth',
+    path: '',
     name: 'Auth',
     component: () => import('../views/Auth.vue'),
     children: [
