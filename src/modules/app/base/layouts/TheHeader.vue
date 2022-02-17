@@ -20,11 +20,13 @@
           <i class="fas fa-search p-2 bg-gray-200 rounded-full">
           </i>
         </span>
-        <span class="px-1 cursor-pointer hover:text-gray-700">
-          <i class="fa-solid fa-store p-2 bg-gray-200 rounded-full"></i>
-        </span>
+        <router-link :to="{ name: 'Market'}">
+          <span class="px-1 cursor-pointer hover:text-gray-700">
+            <i class="fa-solid fa-store p-2 bg-gray-200 rounded-full"></i>
+          </span>
+        </router-link>
 
-        <div class="w-10 relative float-right mr-3 cursor-pointer hover:text-gray-700 dropdown z-10">
+        <div class="w-10 relative float-right mr-3 hover:text-gray-700 dropdown z-10">
           <span class="rounded-md shadow-sm">
             <button type="button" aria-haspopup="true" aria-expanded="true" aria-controls="profile">
                <i class="w-8 fas fa-user p-2 bg-gray-200 rounded-full"></i>
@@ -33,22 +35,24 @@
             </span>
           <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
             <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="profile" id="profile" role="menu">
-              <div class="px-4 py-3">
-                <p class="text-sm leading-5">Hoş geldin,</p>
-                <p class="text-sm font-medium leading-5 text-gray-900 truncate">shorproduction@gmail.com</p>
-              </div>
+              <router-link :to="{ name: 'Profile'}">
+                <div class="px-4 py-3 cursor-pointer">
+                  <p class="text-sm leading-5">Hoş geldin,</p>
+                  <p class="text-sm font-medium leading-5 text-gray-900 truncate">shorproduction@gmail.com</p>
+                </div>
+              </router-link>
               <div class="py-1">
-                <router-link :to="{ name: 'Profile' }" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left">
+                <router-link :to="{ name: 'Profile' }" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left cursor-pointer">
                   Hesap ayarları
                 </router-link>
-                <router-link :to="{ name: 'Profile' }" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left">
+                <router-link :to="{ name: 'Profile' }" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left cursor-pointer">
                   Destek
                 </router-link>
                 <router-link :to="{ name: 'Profile' }" class="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 cursor-not-allowed opacity-50">
                   Geçmiş
                 </router-link>
               <div class="py-1">
-                <span class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left">
+                <span class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left cursor-pointer">
                 Çıkış yap
                 </span>
               </div>
