@@ -33,10 +33,10 @@ export const register = async ({ dispatch }, payload) => {
 
 export const fetchMe = async ({ commit }) => {
     if (localStorage.getItem(config.VITE_TOKEN_NAME)) {
-        const { data } = await new AuthServices().fetchMe();
+        const data = await new AuthServices().fetchMe();
 
         await commit('SET_USER_DATA', {
-            ...data,
+            ...data.result.data,
         });
     }
 };

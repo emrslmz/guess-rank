@@ -1,8 +1,15 @@
 <template>
   <div class="relative w-full">
-    <label class="block text-blueGray-600 text-xs font-bold mb-2" :for="vmId"> {{ label }} </label>
-    <input v-bind="$attrs" :id="vmId" v-model="model" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none disabled:bg-gray-200 disabled:opacity-50 focus:ring w-full ease-linear transition-all duration-150" />
-    <errors v-if="isError" :name="name" :errors="fieldErrors"/>
+    <label :for="vmId" class="block text-sm font-medium text-gray-700">
+      {{ label }}
+    </label>
+    <div class="mt-1 flex rounded-md shadow-sm">
+      <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm" v-if="icon">
+        <i :class="icon"></i>
+      </span>
+      <input type="email" v-bind="$attrs" :id="vmId" v-model="model" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300 disabled:bg-gray-100 disabled:cursor-not-allowed" :class="icon ? 'rounded-none rounded-r-md' : 'rounded-md'">
+      <errors v-if="isError" :name="name" :errors="fieldErrors"/>
+    </div>
   </div>
 </template>
 
@@ -43,6 +50,12 @@ export default {
       required: false,
       type: Object,
       default: () => {},
+    },
+
+    icon: {
+      required: false,
+      type: String,
+      default: '',
     }
   },
   emits: ['input', 'update:modelValue'],

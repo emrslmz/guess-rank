@@ -21,62 +21,49 @@
         <section class="w-full">
           <div class="w-full mx-auto bg-blueGray-50">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6">
-              <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+              <div class="flex-auto px-4 lg:px-10 py-10 pt-0" v-if="me">
                 <form>
                   <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                     Temel bilgiler
                   </h6>
                   <div class="flex flex-wrap">
                     <div class="w-full lg:w-6/12 px-4 mb-3">
-                      <gr-input v-model="first_name" label="Adın" :errors="errors" name="first_name" :disabled="true"/>
+                      <gr-input v-model="me.name" label="Adın" :errors="errors" name="first_name" />
                     </div>
                     <div class="w-full lg:w-6/12 px-4 mb-3">
-                      <gr-input v-model="last_name" label="Soyadın" :errors="errors" name="last_name" :disabled="true"/>
+                      <gr-input v-model="me.surname" label="Soyadın" :errors="errors" name="last_name" />
                     </div>
-                    <div class="w-full lg:w-6/12 px-4">
-                      <gr-input v-model="email" label="E-posta adresin" :errors="errors" name="email" :disabled="true"/>
+                    <div class="w-full lg:w-12/12 px-4 mb-3">
+                      <gr-input v-model="me.email" label="E-posta adresin" :errors="errors" name="email" />
                     </div>
-                    <div class="w-full lg:w-6/12 px-4">
+                    <div class="w-full lg:w-6/12 px-4 mb-3">
+                      <gr-input v-model="me.username" label="Kullanıcı adın" :errors="errors" name="username" />
                     </div>
                   </div>
 
-                  <hr class="mt-6 border-b-1 border-blueGray-300">
+            <!-- <hr class="mt-6 border-b-1 border-blueGray-300">-->
 
-                  <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    Sosyal medya
-                  </h6>
+              <!--<h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                   Sosyal medya
+                 </h6>
                   <div class="flex flex-wrap">
-                    <div class="w-full lg:w-6/12 px-4 mb-3">
-                      <gr-input v-model="model.linkedin_username" label="Linkedin kullanıcı adın" :errors="errors" name="linkedin_username"/>
-                    </div>
-                    <div class="w-full lg:w-6/12 px-4 mb-3">
-                      <gr-input v-model="model.twitter_username" label="Twitter kullanıcı adın" :errors="errors" name="twitter_username"/>
-                    </div>
-                    <div class="w-full lg:w-6/12 px-4">
-                      <gr-input v-model="model.instagram_username" label="Instagram kullanıcı adın" :errors="errors" name="instagram_username"/>
-                    </div>
-                    <div class="w-full lg:w-6/12 px-4">
-                    </div>
-                  </div>
+                   <div class="w-full lg:w-6/12 px-4 mb-3">
+                     <gr-input v-model="model.linkedin_username" label="Linkedin kullanıcı adın" :errors="errors" name="linkedin_username"/>
+                   </div>
+                   <div class="w-full lg:w-6/12 px-4 mb-3">
+                     <gr-input v-model="model.twitter_username" label="Twitter kullanıcı adın" :errors="errors" name="twitter_username"/>
+                   </div>
+                   <div class="w-full lg:w-6/12 px-4">
+                     <gr-input icon="fas fa-lock" v-model="model.instagram_username" label="Instagram kullanıcı adın" :errors="errors" name="instagram_username"/>
+                   </div>
+                   <div class="w-full lg:w-6/12 px-4">
+                   </div>
+                 </div>-->
 
-                  <hr class="mt-6 border-b-1 border-blueGray-300">
-
-                  <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    Hakkında
-                  </h6>
-                  <div class="flex flex-wrap">
-                    <div class="w-full lg:w-12/12 px-4">
-                      <div class="relative w-full mb-3">
-                        <!--                    <sb-textarea v-model="model.bio" label="Biyografin" name="bio" :errors="errors"/>-->
-                      </div>
-                    </div>
-                  </div>
                   <div class="flex flex-wrap">
                     <div class="w-full lg:w-12/12 px-4">
                       <div class="flex justify-end">
-                        <gr-button variant="done" :executable-function="save">
-                          Kaydet
-                        </gr-button>
+                        <gr-button variant="done" class="group relative flex justify-center mt-6 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" :executable-function="onUpdate"> Kaydet </gr-button>
                       </div>
                     </div>
                   </div>
@@ -85,9 +72,6 @@
             </div>
           </div>
         </section>
-
-
-
       </div>
     </div>
   </div>
@@ -96,6 +80,7 @@
 <script>
 import GrButton from '@/components/default/GrButton.vue';
 import GrInput from '@/components/default/GrInput.vue';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Profile',
@@ -103,17 +88,26 @@ export default {
 
   data() {
     return {
-      first_name: '',
-      last_name: '',
-      email: '',
-      model: {
-        bio: '',
-        linkedin_username: '',
-        twitter_username: '',
-        instagram_username: '',
-      },
       errors: {},
     };
+  },
+
+  computed: {
+    ...mapState('Auth', ['me']),
+  },
+
+  methods: {
+    ...mapActions('Profile', ['updateMe']),
+
+    async onUpdate() {
+      try {
+        await this.updateMe(this.me);
+      } catch (e) {
+        this.errors = e;
+      }
+    },
+
+
   },
 
 };

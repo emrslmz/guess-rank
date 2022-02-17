@@ -1,4 +1,4 @@
-import ApiService from '../../../core/api/api.service';
+import ApiService from '@/core/api/api.service';
 
 import AuthLoginEntity from '../entitites/login.entity';
 import AuthRegisterEntity from '../entitites/register.entity';
