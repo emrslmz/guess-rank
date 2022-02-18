@@ -2,7 +2,7 @@
   <div class="grid grid-cols-12 mx-20 pb-20">
     <div class="col-span-12 md:col-span-10 flex flex-wrap justify-center items-center">
       <div v-for="(product, index) in products" :key="index">
-        <market-item :item="product" />
+        <market-item :item="product" v-if="product.is_hidden" />
       </div>
     </div>
     <div class="col-span-12 md:col-span-2">
@@ -11,7 +11,7 @@
           <p class="font-bold text-sm uppercase">Services</p>
           <p class="text-3xl font-bold">Multimedia products</p>
           <p class="text-2xl mb-10 leading-none">Atractive designs for your brand</p>
-          <a href="#" class="bg-purple-800   text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800 w-100">Contact us</a>
+          <a href="#" class="bg-purple-800 p-3  text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800 w-100">Contact us</a>
         </div>
       </div>
     </div>
